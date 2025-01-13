@@ -4,7 +4,7 @@ const core = require('./core');
 const exec = require('child_process').exec;
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sassGlob = require('gulp-sass-glob');
 const join = require('path').join;
 const consolePath = './core/console';
@@ -83,7 +83,7 @@ var config = {
 
 };
 
-let plConfig = yaml.safeLoad(
+let plConfig = yaml.load(
     fs.readFileSync(config.patternLab.configFile, 'utf8')
 );
 
@@ -201,5 +201,3 @@ function addTwigNamespaceConfigToPl(done) {
     fs.writeFileSync(config.patternLab.configFile, newConfigFile, 'utf8');
     // done();
 }
-
-
