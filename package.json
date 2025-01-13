@@ -24,6 +24,7 @@
     "child_process": "^1.0.2",
     "core-js": "^3.40.0",
     "domready": "^1.0.8",
+    "foundation-sites": "^6.9.0",
     "fs": "^0.0.1-security",
     "glob": "^11.0.1",
     "gulp-sass": "^6.0.0",
