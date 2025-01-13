@@ -1,30 +1,37 @@
 {
-  "name": "pl-drupal",
+  "name": "pl_drupal",
   "version": "1.0.0",
   "description": "[![Build Status](https://travis-ci.org/pattern-lab/edition-php-drupal-standard.svg?branch=master)](https://travis-ci.org/pattern-lab/edition-php-drupal-standard)",
-  "main": "index.js",
-  "dependencies": {
-    "@pattern-lab/core": "^3.0.0-beta.2",
-    "domready": "^1.0.8",
-    "foundation-sites": "^6.7.5",
-    "gulp-sourcemaps": "^2.6.5",
-    "jquery-once": "^2.2.1",
-    "js-yaml": "^3.13.0",
-    "motion-ui": "^2.0.3",
-    "node-notifier": "^5.4.0",
-    "scroll-depth": "^1.0.0",
-    "slick-carousel": "^1.8.1"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "gulp-sass-glob": "^1.0.9"
-  },
+  "main": "core.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "lando composer install && npm install && gulp build"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/University-of-Denver/pl_drupal.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/University-of-Denver/pl_drupal/issues"
+  },
+  "homepage": "https://github.com/University-of-Denver/pl_drupal#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0"
+  },
+  "dependencies": {
+    "@pattern-lab/core": "^6.1.0",
+    "child_process": "^1.0.2",
+    "core-js": "^3.40.0",
+    "domready": "^1.0.8",
+    "fs": "^0.0.1-security",
+    "glob": "^11.0.1",
+    "gulp-sass": "^6.0.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "js-yaml": "^4.1.0",
+    "node-notifier": "^10.0.1",
+    "path": "^0.12.7",
+    "sass": "^1.83.1"
+  }
 }
