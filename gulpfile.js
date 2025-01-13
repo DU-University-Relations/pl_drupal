@@ -95,7 +95,7 @@ const plMeta = path.join(plSource, '/_meta');
 const watchTriggeredTasks = [];
 
 
-gulp.task('sass-dev', function () {
+gulp.task('sass-dev', async function() {
   return gulp.src(config.src)
     .pipe(sassGlob())
     .pipe(sourcemaps.init({
@@ -106,15 +106,17 @@ gulp.task('sass-dev', function () {
     }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dest'));
+    done();
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', async function() {
   return gulp.src(config.src)
     .pipe(sassGlob())
     .pipe(sass({
       includePaths: config.css.includePaths,
     }))
     .pipe(gulp.dest('dest'));
+    done();
 });
 
 gulp.task('pattern-lab', gulp.series(function buildPromise () {
@@ -127,7 +129,7 @@ gulp.task('pattern-lab', gulp.series(function buildPromise () {
 
 gulp.task('build', gulp.series('sass','pattern-lab'));
 
-gulp.task('watch', gulp.series(function () {
+gulp.task('watch', gulp.series(function (done) {
     gulp.watch(['du-resources/**/*.scss', 'scss/**/*.scss', 'source/_patterns/**/*.scss'], gulp.series('sass-dev'));
 }));
 

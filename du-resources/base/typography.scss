@@ -1,3 +1,5 @@
+@use "../../scss/variables";
+
 #main-content {
   h1 {
     font-weight: 800;
@@ -28,11 +30,11 @@
       bottom: 0;
       height: .8rem;
       width: 8.5rem;
-      background-color: $neutral-color-2;
+      background-color: variables.$neutral-color-2;
     }
   } //end h1
   .intro {
-    font-family: $accent-font;
+    font-family: variables.$accent-font;
     font-size: 1.7rem;
     @include breakpoint(medium up) {
       font-size: 1.8rem;
@@ -111,7 +113,7 @@ h3, h5 { font-weight: 700; }
     &:after {
       content: "";
       height: .6rem;
-      background-color: $neutral-color-2;
+      background-color: variables.$neutral-color-2;
       width: 7.7rem;
       position: absolute;
       bottom: 0;
@@ -137,7 +139,7 @@ h3, h5 { font-weight: 700; }
     &:before {
       content: "";
       height: .6rem;
-      background-color: $neutral-color-2;
+      background-color: variables.$neutral-color-2;
       width: 7.7rem;
       position: absolute;
       top: 0;
@@ -159,11 +161,11 @@ h3, h5 { font-weight: 700; }
 } //end h2, h3, h4, h5, h6
 
 a {
-	color: $link-accessibility-color-teal-light;
+	color: variables.$link-accessibility-color-teal-light;
 	text-decoration: underline;
 	&:hover,
 	&:focus {
-		color: $link-accessibility-color-teal-dark;
+		color: variables.$link-accessibility-color-teal-dark;
 	}
 	&,
 	& > * {
@@ -196,7 +198,7 @@ ul {
 //TABLE
 table {
   border-collapse: collapse;
-  border-bottom: .2rem solid $neutral-color-4;
+  border-bottom: .2rem solid variables.$neutral-color-4;
   &.table--full-width {
     width: 100%;
   }
@@ -206,7 +208,7 @@ table {
       font-size: 1.8rem;
     }
     th + th {
-      border-left: .1rem solid $neutral-color-4;
+      border-left: .1rem solid variables.$neutral-color-4;
     }
   }
   th,
@@ -216,7 +218,7 @@ table {
   td {
     font-size: 1.6rem;
     + td {
-      border-left: .1rem solid $neutral-color-4;
+      border-left: .1rem solid variables.$neutral-color-4;
     }
   }
 }
