@@ -50,3 +50,14 @@ research-project:
   js:
     js/fullresearchproject.js:
       preprocess: true
+
+attach_utm_cookies:
+  version: 1.x
+  js:
+    js/attach_utm_cookies.js:
+      preprocess: true
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    # not totally sure which dependancy's are needed

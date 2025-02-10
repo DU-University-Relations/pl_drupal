@@ -6,6 +6,7 @@ core_version_requirement: ^8 || ^9 || ^10
 libraries:
   - pl_drupal/core
   - pl_drupal/js_header
+  - pl_drupal/attach_utm_cookies
 regions:
   header: Header
   utility_nav: Utility Nav
