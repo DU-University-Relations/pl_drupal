@@ -1,0 +1,14 @@
+{
+  "card": {
+    "title": "Card Title",
+    "type": "h4",
+    "cssClass": "",
+    "has_wrapper": true,
+    "src": "http://placehold.it/386x151",
+    "alt_text": "image text",
+    "button": {
+      "title": "Learn More",
+      "type": ""
+    }
+  }
+}

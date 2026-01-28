@@ -1,0 +1,426 @@
+// Course Node Module Style
+.course-module {
+  margin-bottom: 14rem;
+  .course-code-number h2 {
+    color: $neutral-color-2;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+}
+
+.additional-info {
+  margin-top: 6rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  .show-top-border {
+    border-top: .1rem solid #efefef;
+    @include breakpoint(large up) {
+      border-top: none;
+    }
+  }
+  .show-right-border {
+    border-right: .1rem solid #efefef;
+    border-bottom: hidden;
+    @include breakpoint(medium up) {
+      border-right: hidden;
+      border-bottom: .1rem solid #efefef;
+    }
+    @include breakpoint(large up) {
+      border-right: .1rem solid #efefef;
+      border-bottom: hidden;
+    }
+  }
+  .show-bottom-border {
+    border-bottom: .1rem solid #efefef;
+    @include breakpoint(medium up) {
+      border-bottom: hidden;
+    }
+    @include breakpoint(large up) {
+      border-bottom: .1rem solid #efefef;
+    }
+  }
+  .show-top-right-border {
+    border-top: .1rem solid #efefef;
+    border-bottom: hidden;
+    border-right: .1rem solid #efefef;
+    @include breakpoint(medium up) {
+      border-top: .1rem solid #efefef;
+      border-bottom: .1rem solid #efefef;
+      border-right: hidden;
+    }
+    @include breakpoint(large up) {
+      border-top: .1rem solid #efefef;
+      border-right: .1rem solid #efefef;
+    }
+  }
+  &--has-icons {
+    h4 {
+      font-size: 1.4rem;
+      padding-top: 1rem;
+    }
+    .img-wrapper {
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-top: 0;
+      margin-bottom: 0;
+      opacity: 1;
+    }
+    .info-text {
+      height: 10rem;
+      text-align: center;
+      position: relative;
+      top: 2rem;
+      h2 {
+        font-weight: 800;
+        font-size: 3rem;
+        color: $accent-color-2a;
+        font-family: $icon-font;
+        @include breakpoint(medium up) {
+          font-size: 3.8rem;
+        }
+        @include breakpoint(large up) {
+          font-size: 4.5rem;
+        }
+      }
+    }
+  }
+  > .row {
+    position: relative;
+    top: -3.0rem;
+    padding-bottom: .5rem;
+    @include breakpoint(large up) {
+      padding-bottom: 0;
+    }
+    > .columns {
+      flex-basis: 50%;
+      padding-bottom: 1.5rem;
+      @include breakpoint(medium up) {
+        flex-basis: 100%;
+        padding-bottom: .5rem;
+      }
+      @include breakpoint(large up) {
+        flex-basis: 50%;
+        padding-bottom: .5rem;
+      }
+    }
+  }
+}
+
+// Featured Courses Component Style
+.featured-courses-module-title {
+  margin-top: 3rem;
+  h2 {
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.featured-course-cards-module {
+    background: #f4f4f4;
+    margin-top: 3rem;
+    margin-bottom: 14rem;
+    @include breakpoint(small down) {
+        margin-bottom: 14rem;
+    }
+    > .row {
+        margin-top: 3rem;
+        padding-bottom: 3rem;
+        position: relative;
+        top: -3rem;
+        padding-left: 1.8rem;
+        padding-right: 1.8rem;
+        @include breakpoint(large up) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        > .columns {
+            flex-basis: 100%;
+            float: left;
+            @include breakpoint(medium up) {
+              flex-basis: 30%;
+            }
+        }
+    }
+    .course-info-card__content {
+        padding: 1rem 1.4rem;
+        margin-bottom: 1.8rem;
+        //border-width: 1;
+        border-style: solid;
+        border-color: #ededf2;
+        h2 {
+            font-size: 2.4rem;
+            padding-top: 1rem;
+            padding-right: 3rem;
+            position: relative;
+            cursor: pointer;
+        }
+        h3 {
+            font-size: 2.4rem;
+            padding-top: 1rem;
+            padding-right: 3rem;
+            position: relative;
+            cursor: pointer;
+        }
+    }
+}
+.fc-item {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+//plus and minus icons
+.fc-item > div > div > span {
+  position: absolute;
+  right: 1rem;
+  @include breakpoint(small down) {
+    font-size: 2.7rem;
+    top: .4rem;
+  }
+}
+.fc-item .curricula-card  span {
+  top: -.8rem;
+  @include breakpoint(medium up) {
+    top: -.1rem;
+  }
+}
+.fc-item {
+  .icon-du-minus { display: none; }
+  .icon-du-plus { display: initial; }
+}
+.fc-item.fc-item--open {
+  .icon-du-plus { display: none; }
+  .icon-du-minus { display: initial; }
+}
+//end plus and minus icons
+
+.course-info-card__holder {
+  position: relative;
+    &:after {
+      content: '';
+      display: inline-block;
+      border-bottom: 2.8rem solid #fff;
+      border-left: 2.8rem solid transparent;
+      border-right: 2.8rem solid transparent;
+      position: absolute;
+      bottom: -4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .fc-item--open &:after,
+    &.fading:after {
+      opacity: 1;
+    }
+    .fc-item--open &.fading:after {
+      opacity: 0;
+    }
+    .course-info-card__content {
+      background-color: #ffffff;
+      position: relative;
+      border: .1rem solid #efefef;
+      transition: border 0.3s ease;
+      padding: 1.1rem 1.7rem 1.7rem;
+      margin-bottom: 4rem;
+      @include breakpoint(medium up) {
+        min-height: 22rem;
+      }
+      .fc-course & {
+        border-top: .6rem solid #C3C3C3;
+        background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+        h2 {
+          font-size: 12rem;
+          line-height: 13.2rem;
+          font-weight: 800;
+          color: #b0b0b0;
+        }
+      }
+      .fc-course & h2 {
+        font-size: 3.6rem;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .fc-item--open & {
+        border-top: 6px solid $accent-color-2b;
+      }
+      p.course-code-number {
+        font-size: 1.6rem;
+        font-family: $primary-font;
+        color: $neutral-color-3;
+        line-height: 2rem;
+        border-bottom: .1rem solid #efefef;
+        padding-bottom: 1.3rem;
+      }
+      .course-info-card__course-title {
+        h2.course-title {
+          font-family: $headline-font;
+          font-size: 1.6rem;
+          font-size: 2.6rem;
+          line-height: 3.4rem;
+          font-weight: 800;
+          transition: color 0.3s ease;
+          @include breakpoint(large up) {
+            font-size: 2rem;
+          }
+          @include breakpoint(xlarge up) {
+            font-size: 2.6rem;
+          }
+          .fc-item--open & {
+            color: $accent-color-2b;
+          }
+        }
+      }
+      .columns &:hover {
+        cursor: pointer;
+        .course-info-card__course-title h2.course-title {
+          color: $accent-color-2b;
+        }
+      }
+    }
+    .featured-course-flyout {
+      box-sizing: border-box;
+      display: none;
+      position: relative;
+      background: white;
+      z-index: 2; // changed 1000 to 2, to stay under sticky header.
+      float: left;
+      right: -18px;
+      margin: 0 0 2rem;
+      border-bottom: .6rem solid $accent-color-2b;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.2s;
+      // transition-delay: 0.2s;
+      @include breakpoint(small down) {
+        left: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+        .flyout-content__holder {
+          padding: 2.5rem 2rem;
+          margin-left: 0;
+          margin-right: 0;
+          position: relative;
+          @include breakpoint(medium up) {
+            padding: 4rem;
+          }
+          h3 {
+            font-size: 1.6rem;
+          }
+          @include breakpoint(large) {
+            > .columns:first-child {
+              padding-right: 2rem;
+              + .columns {
+                padding-left: 2.0rem;
+              }
+            }
+          }
+        }
+        .fc-item--open & {
+      z-index: 9;
+      opacity: 1;
+      transition: opacity 0.2s;
+        }
+    }
+}
+
+.course-info__rightside {
+  margin-top: 6rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  .show-top-border {
+    border-top: .1rem solid #efefef;
+  }
+  .show-right-border {
+    border-right: .1rem solid #efefef;
+    @include breakpoint(medium up) {
+      border-right: hidden;
+      border-bottom: .1rem solid #efefef;
+    }
+    @include breakpoint(large up) {
+      border-right: .1rem solid #efefef;
+      border-bottom: hidden;
+    }
+  }
+  .show-bottom-border {
+    border-bottom: .1rem solid #efefef;
+    @include breakpoint(medium up) {
+      border-bottom: hidden;
+    }
+    @include breakpoint(large up) {
+      border-bottom: .1rem solid #efefef;
+    }
+  }
+  .show-top-right-border {
+    border-top: .1rem solid #efefef;
+    border-right: .1rem solid #efefef;
+    @include breakpoint(medium up) {
+      border-bottom: .1rem solid #efefef;
+      border-right: hidden;
+    }
+    @include breakpoint(large up) {
+      border-right: .1rem solid #efefef;
+    }
+  }
+  &--has-icons {
+    h4 {
+      font-size: 1.4rem;
+      padding-top: 1rem;
+    }
+    .img-wrapper {
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 10rem;
+      opacity: 1;
+    }
+    .info-text {
+      height: 10rem;
+      text-align: center;
+      position: relative;
+      top: 2rem;
+      h2 {
+        font-weight: 800;
+        font-size: 3rem;
+        color: $accent-color-2a;
+        font-family: $icon-font;
+        @include breakpoint(medium up) {
+          font-size: 3.8rem;
+        }
+        @include breakpoint(large up) {
+          font-size: 4.5rem;
+        }
+      }
+    }
+  }
+  > .row {
+    position: relative;
+    top: -3rem;
+    padding-bottom: .5rem;
+    @include breakpoint(large up) {
+      padding-bottom: 0;
+    }
+      > .columns {
+      flex-basis: 50%;
+      padding-bottom: 2rem;
+      flex-basis: 50%;
+      padding-bottom: .5rem;
+      @include breakpoint(medium up) {
+        flex-basis: 100%;
+        padding-bottom: .5rem;
+      }
+      @include breakpoint(large up) {
+        flex-basis: 50%;
+        padding-bottom: .5rem;
+      }
+
+    }
+  }
+}//end .course-info__rightside

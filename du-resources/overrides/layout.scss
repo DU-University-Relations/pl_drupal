@@ -1,0 +1,105 @@
+@media screen {
+ 	// html {
+ 	// 	min-width: 32.0rem;
+ 	// }
+	//.utility-page {
+	//	header > div {
+	//		height: 392px;
+	//		overflow: hidden;
+	//		@include breakpoint(small down) {
+	//			height: 354px;
+	//		}
+	//	}
+	//}
+    .hide-hero {
+        header {
+            height: 26.0rem;
+            @include breakpoint(small down) {
+                height: 20.0rem;
+            }
+            #top-bar-sticky-wrap {
+                box-shadow: 0px .4rem 1.8rem 0px rgba(0, 0, 0, .45);
+								z-index: 500;
+            }
+        }
+    }
+	.page-title-band {
+		position: relative;
+		padding-right: 1.5rem;
+		&:before {
+		    content: "";
+		    position: absolute;
+		    top: 0;
+		    left: -5.4rem;
+		    background-color: white;
+		    right: 0;
+		    width: auto;
+		    bottom: 0;
+		    @include breakpoint(medium down) {
+		    	left: 0;
+		    }
+		}
+	}
+	.intro {
+		margin-bottom: 5.1rem;
+		> *:last-child {
+		    margin-bottom: 0;
+		}
+		@include breakpoint(small down) {
+			margin-bottom: 4.1rem;
+		}
+	}
+	@include breakpoint(large) {
+		.pull-up > *:last-child {
+		    margin-bottom: 7.0rem;
+		}
+	}
+	.heading {
+		margin-bottom: -10.0rem;
+	}
+}
+@include breakpoint(large) {
+	.pull-up {
+		margin-top: -9.3rem;
+		padding-top: 4.3rem;
+	}
+}
+@include breakpoint(large down) {
+	#main-content > .row,
+	footer > .row {
+		margin-left: 5.5rem;
+		margin-right: 5.5rem;
+		&.expanded {
+			margin-left: 0;
+			margin-right: 0;
+		}
+		@include breakpoint(small down) {
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 1.8rem;
+			padding-right: 1.8rem;
+		}
+	}
+}
+@include breakpoint(medium down) {
+	#main-content {
+		> .row:first-child > .pull-up {
+			margin-top: -8.1rem;
+			padding-top: 3.2rem;
+			margin-left: -3.5rem;
+			margin-right: -3.5rem;
+			padding-left: 4.2rem;
+			padding-right: 4.2rem;
+			@include breakpoint(small down) {
+			    margin-left: -1.8rem;
+			    margin-right: -1.8rem;
+			    padding-left: 2.2rem;
+			    padding-right: 2.2rem;
+			}
+		}
+	}
+}
+
+.unit-site header.no-hero ~ article .pull-up {
+	margin-top: 0;
+}

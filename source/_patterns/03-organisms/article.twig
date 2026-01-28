@@ -1,0 +1,127 @@
+<article{{ attributes.addClass("article") }} id="main-content" role="main" >
+    <div class="row">
+        <div class="columns large-offset-4 large-8 pull-up page-title-band">
+            {% block page_title %}
+                {% include "@atoms/headline.twig" with {'title' : "This is the Page Title", 'type' : 'h1'} %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-12 large-3 pull-up">
+            <p>
+                <a onclick="history.back()" class="sub-menu__back-link"><span class="icon-du-left-arrow" aria-hidden="true"></span> {{ back_to_parent.title }}</a>
+                <script>
+                    // If the user came from a different site or has referrer clicking the back button will take them to the default listing page
+                    if (document.referrer === '' || document.referrer.search('du.edu') === -1) {
+                        document.querySelector('.sub-menu__back-link').onclick = function(e) {
+                            window.location.href = '{{ back_to_parent.link }}';
+                        }
+                    }
+                </script>
+            </p>
+            <div class="social-media add-this">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            </div>
+            <div class="author">
+                {% if author_list %}
+                    <h3>{{ author_title }}</h3>
+                    {% block article_author_list %}
+                        {% for article_author in author_list %}
+                            {{ article_author }}
+                        {% endfor %}
+                    {% endblock %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="columns small-12 large-8 large-offset-1 intro">
+            <h2 class="subhead">
+            {% block page_subtitle %}
+                {% include "@atoms/headline.twig" %}
+            {% endblock %}
+            </h2>
+            <div class="row article-type-date">
+
+                <div class="columns shrink article-type">
+
+                    {% if article_type[0] %}
+
+                            {% for key, item in article_type if key|first != '#' %}
+                                {{ item }}<span>&nbsp;&nbsp;&bull;</span>
+                            {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+                {% set article_categories = content.field_article_category|field_value %}
+                {% block article_category %}
+                    <div class="news-category">
+                        {% for category in article_categories %}
+                            {% set category_title = category['#title'] %}
+                            {% set category_tid = category['#options'].entity.id %}
+                            {% set category_link = article_category_location ~ category_title | replace({' ': '-'}) | lower %}
+
+                            {% if loop.last %}
+                                <a href="{{ category_link }}">{{ category_title }}</a>
+                            {% else %}
+                                <a href="{{ category_link }}">{{ category_title }}</a>,
+                            {% endif %}
+                        {% endfor %}<span>&nbsp;&bull;</span>
+                    </div>
+                {% endblock %}
+
+                <div class="columns">{{ publish_date }}</div>
+
+            </div>
+            <div class="article-overview">
+                <div>
+                    {{ overview }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ article_content }}
+    {% if comment|field_value %}
+        <div class="article-comment row align-center">
+            <div class="columns shrink">
+                {{ comment }}
+            </div>
+        </div>
+    {% endif %}
+    {% include "@organisms/article-related-section.twig" %}
+</article>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ canonical }}"
+    },
+    "headline": "{{ schema_title }}",
+    "image": [
+        "{{ featured_media }}",
+        "{{ featured_thumbnail }}",
+        "{{ featured_medium }}"
+    ],
+    "datePublished": "{{ createdDate }}",
+    "dateModified": "{{ createdDate }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{author_name }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "University of Denver",
+        "logo": {
+        "@type": "ImageObject",
+        "url": "{{ logo }}"
+        }
+    },
+    "description": "{{ description }}"
+}
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ff759bdd589ba5"></script>

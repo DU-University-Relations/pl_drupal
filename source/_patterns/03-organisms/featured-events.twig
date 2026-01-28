@@ -1,0 +1,20 @@
+<div class="featured-events-module">
+    <div class="row">
+        {% if calendar_link %}
+            <div class="columns small-12">
+                <p class="featured-events__calendar-link">{{ calendar_link }}</p>
+            </div>
+        {% endif %}
+        <div class="columns small-12">
+            <div class="slick-slider" role="region" {# aria-label="Favorite Space Pictures" #} data-auto-play="false">
+                <div class="slider-container">
+                    {% block slides %}
+                        {% for slide_item in slides %}
+                          {% include "@molecules/featured-event-slide.twig" with slide_item %}
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

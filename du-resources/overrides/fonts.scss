@@ -1,0 +1,55 @@
+/// Font stack of the body.
+/// @type List
+//@import '_fontface';
+@include fontFace ('BreveText', 'fonts/breve-text-web/medium/BreveText-Medium', normal, normal);
+@include fontFace ('BreveText', 'fonts/breve-text-web/medium/BreveText-MediumItalic', italic, normal);
+@include fontFace ('BreveText', 'fonts/breve-text-web/bold/BreveText-Bold', normal, bold);
+@include fontFace ('BreveText', 'fonts/breve-text-web/bold/BreveText-BoldItalic', italic, bold);
+
+// Navigation Font
+@include fontFace ('BreveSans', 'fonts/breve-sans-text-web/book/BreveSansText-Book', normal, 500);
+@include fontFace ('BreveSans', 'fonts/breve-sans-text-web/medium/BreveSansText-Medium', normal, 600);
+@include fontFace ('BreveSans', 'fonts/breve-sans-text-web/black/BreveSansText-Black', normal, 800);
+
+// Headline Font
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/book/BreveSlabTitle-Book', normal, 500);
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/book/BreveSlabTitle-BookItalic', italic, 500);
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/bold/BreveSlabTitle-Bold', normal, 700);
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/bold/BreveSlabTitle-BoldItalic', italic, 700);
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/black/BreveSlabTitle-Black', normal, 800);
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/black/BreveSlabTitle-BlackItalic', italic, 800);
+
+//Call to Action Font
+@include fontFace ('Acto', 'fonts/acto-web/black/Acto-Black', normal, 800);
+
+//Thin Title Font//Newsroom
+@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/thin/BreveSlabTitle-Thin', normal, 300);
+
+//Quick Facts
+@include fontFace ('BreveDisplay', 'fonts/breve-display-web/stencil/BreveDisplay-Stencil', normal, bold);
+
+//Home
+
+@include fontFace ('BreveDisplay', 'fonts/breve-display-web/regular/BreveDisplay', normal, normal);
+@include fontFace ('BreveDisplay', 'fonts/breve-display-web/stencil/BreveDisplay-Stencil', normal, bold);
+@include fontFace ('BreveNews', 'fonts/breve-news-web/book/BreveNews-Book', normal, normal);
+@include fontFace ('BreveNews', 'fonts/breve-news-web/book/BreveNews-BookItalic', italic, normal);
+@include fontFace ('BreveNews', 'fonts/breve-news-web/bold/BreveNews-Bold', normal, bold);
+@include fontFace ('BreveNews', 'fonts/breve-news-web/bold/BreveNews-BoldItalic', italic, bold);
+
+
+
+
+@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello-icons/fontello.eot');
+  src: url('fonts/fontello-icons/fontello.eot?#iefix') format('embedded-opentype'),
+       url('fonts/fontello-icons/fontello.woff2') format('woff2'),
+       url('fonts/fontello-icons/fontello.woff') format('woff'),
+       url('fonts/fontello-icons/fontello.ttf') format('truetype'),
+       url('fonts/fontello-icons/fontello.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+

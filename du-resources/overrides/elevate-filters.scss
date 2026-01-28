@@ -1,0 +1,187 @@
+.elevate-cards-list form {
+  display: flex;
+  align-items: flex-end;
+  @include breakpoint(large up) {
+    padding: 2.4rem 0 2.3rem 0;
+  }
+  @include breakpoint(large up) {
+    padding: 2.4rem 0 2.3rem 0;
+  }
+}
+
+.elevate-cards-list .form-item {
+  &.js-form-item-search {
+    max-width: 75%;
+    flex: 0 0 75%;
+    padding-left: 0;
+    padding-right: 0;
+    @include breakpoint(medium up) {
+      max-width: 22%;
+      flex: 0 0 22%;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+    }
+  }
+  @include breakpoint(medium up) {
+    max-width: 22%;
+    flex: 0 0 22%;
+  }
+}
+
+.elevate-cards-list .du-elevate-filters {
+  display: none;
+  width: 100%;
+  @include breakpoint(medium up) {
+    width: 66%;
+    display: flex;
+    .form-item {
+      max-width: 24%;
+      flex: 0 0 24%;
+    }
+  }
+  @include breakpoint(large up) {
+    display: flex;
+  }
+}
+
+.elevate-cards-list .form-actions{
+  flex: 0 0 14rem;
+  @include breakpoint(medium up) {
+    width: 11%;
+    flex: none;
+  }
+}
+.elevate-cards-list .form-actions .button {
+  margin: 0;
+  width: 100%;
+}
+
+.elevate-cards-list {
+  input {
+    @include breakpoint(medium up) {
+      margin-bottom: 0;
+    }
+  }
+  select {
+    height:4.1rem;
+    @include breakpoint(medium up) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// Cart button mobile
+
+.cart-item {
+  position: absolute;
+  bottom: -4.8rem;
+  right: 2rem;
+  height: 4.8rem;
+  width: 4.8rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: $secondary-color-1;
+  display: none;
+  .centers & {
+    display: flex;
+    @include breakpoint(large up) {
+      display: none;
+    }
+  }
+  @include breakpoint(medium up) {
+    height: 6rem;
+    width: 6rem;
+    bottom: -6rem;
+  }
+  @include breakpoint(large up) {
+    display: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  .toggle-icon {
+    color: $white;
+    font-size: 2.4rem;
+    @include breakpoint(medium up) {
+      margin-right: .7rem;
+      margin-top: .5rem;
+    }
+  }
+  .toggle-label {
+    display: none;
+  }
+  .items-in-cart {
+    position: absolute;
+    top: .8rem;
+    right: .6rem;
+    font-size: 1.2rem;
+    color: $white;
+    background-color: $primary-color-3;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex !important;
+    @include breakpoint(medium up) {
+      top: 1.2rem;
+      right: .9rem;
+      font-size: 1.4rem;
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+}
+
+.core-elevate-button {
+  &:hover {
+    background-color: $primary-color-3;
+  }
+  .core-utility-menu__cart-button {
+    height: 100%;
+    position: relative;
+    display: inline-flex !important;
+    justify-content: center;
+    flex-direction: column;
+    .items-in-cart {
+      position: absolute;
+      color: $white;
+      background-color: $primary-color-3;
+      border-radius: 50%;
+      line-height: 1.2rem;
+      justify-content: center;
+      align-items: center;
+      display: flex !important;
+      top: 0.5rem;
+      right: 1.5rem;
+      font-size: 1.2rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      @include breakpoint(medium up) {
+        top: 1.5rem;
+        right: 1rem;
+        font-size: 1.4rem;
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
+
+// Small fix for inline/core menu differences
+.core-inline-site .core-elevate-button {
+  .core-utility-menu__cart-button {
+    .items-in-cart {
+      right: 1.5rem;
+      @include breakpoint(medium up) {
+        top: 1.5rem;
+        right: 3.5rem;
+      }
+    }
+  }
+}
+

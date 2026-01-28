@@ -1,0 +1,24 @@
+<div{{ attributes.addClass(classes) }}>
+    <div class="page-info columns">
+        {{ page_info }}
+    </div>
+    <div class="filter-button-wrapper columns shrink" data-filter-id="{{ filter_id }}" aria-controls="{{ filter_id }}">
+        {% include "@atoms/filter-button.twig" %}
+    </div>
+    {% if exposed %}
+        {% embed "@molecules/listing-filters.twig" %}
+            {% block filter_form %}
+                {{ exposed }}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+    <div class="resource-listing row">
+        {{ rows }}
+        {% if empty %}
+            <div class="no-results-found">
+                {{ empty }}
+            </div>
+        {% endif %}
+    </div>
+    {{ pager }}
+</div>

@@ -1,0 +1,15 @@
+{% set filters = "" %}
+{% for filter in custom.degree_classes %}
+    {% if loop.index0 > 0 %}
+        {% set filters = filters ~ ", " %}
+    {% endif %}
+    {% set filters = filters ~ ".filter-" ~ filter %}
+{% endfor %}
+{% include "@atoms/button.twig" with {
+    "title": content.field_program_filter_label|field_value,
+    "type": "academic-filter",
+    "data": {
+        "key": "filter",
+        "value": filters
+    }
+} %}

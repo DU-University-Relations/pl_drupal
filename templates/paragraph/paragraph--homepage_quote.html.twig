@@ -1,0 +1,9 @@
+{#
+    See hook_preprocess_paragraph__homepage_quote
+#}
+{% embed "@molecules/quote.twig" %}
+    {% set text = content.field_hpq_title|field_value %}
+    {% set image = content.field_hpq_image|field_value %}
+    {% set cite_name = content.field_hpq_name|field_value %}
+    {% set cite_caption = content.field_hpq_caption|field_value %}
+{% endembed %}

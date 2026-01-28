@@ -1,0 +1,10 @@
+{% if has-wrapper %}
+<div class="responsive-embed widescreen">
+{% endif %}
+	<video {% if is_hero_video %} muted="true" onloadedmetadata="this.muted = true" loop="true"{% endif %} poster="{{ poster_url }}" id="{{ id }}"{% if is_feature_video %} class="show-for-large"{% endif %}{% if is_wide_carousel %} muted="true" onloadedmetadata="this.muted = true"{% endif %}>
+	    <source src="{{ mp4_url }}" type="video/mp4">
+	    <source src="{{ ogg_url }}" type="video/ogg">
+	</video>
+{% if has-wrapper %}
+</div>
+{% endif %}

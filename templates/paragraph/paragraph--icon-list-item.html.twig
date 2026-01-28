@@ -1,0 +1,6 @@
+{% embed "@atoms/icon-list-item.twig" %}
+    {% set image = content.field_icon_list_image|field_value %}
+    {% set title = content.field_icon_list_heading|field_value %}
+    {% set description = content.field_icon_list_description|field_value %}
+    {% set link = content.field_icon_list_link|field_value %}
+{% endembed %}

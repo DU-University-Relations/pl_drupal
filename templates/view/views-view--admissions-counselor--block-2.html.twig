@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+    set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'resource',
+    'generic-listing'
+]
+%}
+{% set title = view.getTitle()|replace({'&amp;':"&"}) %}
+
+<div{{ attributes.addClass(classes, 'counselor-staff-directory') }} id="profile-list-counselors">
+
+    <div class="row">
+        <div class="counselor-staff-header columns">
+            <h3>{{ title }}</h3>
+
+            <div class="admissions-counselor-filters">
+                {% if exposed %}
+                        {% block filter_form %}
+                            {{ exposed }}
+                        {% endblock %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="resource-listing columns">
+            {{ rows }}
+            {% if empty %}
+                <div class="no-results-found">
+                    {{ empty }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {{ pager }}
+</div>

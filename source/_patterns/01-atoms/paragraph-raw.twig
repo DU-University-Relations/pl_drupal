@@ -1,0 +1,18 @@
+{% if html %}
+    {{ html|raw }}
+{% else %}
+    {% if wrapper_prefix %}
+        {{ wrapper_prefix|raw }}
+    {% endif %}
+    {% if wrapper_start %}
+        {{ wrapper_start|raw }}
+            <p{% if style %} style="{{ style }}"{% endif %}{% if class %} class="{{ class }}"{% endif %}>{{ text|raw }}</p>
+        {{ wrapper_end|raw }}
+    {% else %}
+        <p{% if style %} style="{{ style }}"{% endif %}{% if class %} class="{{ class }}"{% endif %}>{{ text|raw }}</p>
+    {% endif %}
+
+    {% if wrapper_suffix %}
+        {{ wrapper_suffix|raw }}
+    {% endif %}
+{% endif %}

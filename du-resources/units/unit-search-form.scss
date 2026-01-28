@@ -1,0 +1,67 @@
+.unit-site {
+  .unit-search-form {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    background: #e7e7e7;
+    top: 8.7rem;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 0 -5.0rem 5.0rem 5.0rem rgba(0,0,0,0.3);
+
+    &.expanded { display: block;} //display menu js activation
+
+    .unit-search-form-wrapper {
+      overflow: hidden;
+      position: relative;
+      max-width: 63.0rem;
+      padding: 4.5rem 2.0rem 5.0rem 2.0rem;
+      margin: 0 auto;
+    }
+    @include breakpoint(medium up) {
+      top: 12.0rem;
+      .unit-search-form-wrapper {
+        padding-bottom: 4.0rem;
+      }
+    }
+    @include breakpoint(large up) {
+      top: 0;
+      max-height: 75vh;
+      position: relative;
+    }
+    input[type=text] {
+      background: transparent;
+      border: 0;
+      border-bottom: .4rem solid $primary-color-4;
+      box-shadow: none;
+      padding: .4rem 1.0rem;
+      line-height: 1.8rem;
+      height: auto;
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: $neutral-color-2;
+    }
+    //.search-mode {
+    //  float: left;
+    //  margin-left: 10px;
+    //  margin-right: 20px;
+    //  color: $neutral-color-2;
+    //  line-height: 1em;
+    //  font-size: 18px;
+    //  font-weight: 400;
+    //}
+    .search-submit {
+      font-size: 2.6rem;
+      position: absolute;
+      right: 2.5rem;
+      top: 5.5rem;
+    }
+  }// end .unit-search-form
+}// end .unit-site
+
+.unit-site .is-stuck .unit-search-form {  //compensate for reduced nav height on scroll -mobile
+  top: 6.0rem;
+  @include breakpoint(large up) {
+    top:0;
+  }
+}

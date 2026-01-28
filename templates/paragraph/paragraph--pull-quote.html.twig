@@ -1,0 +1,6 @@
+{% embed "@organisms/pull-quote.twig" %}
+	{% set blockquote = {
+        "text": content.field_quote_text|field_value,
+        "cite": content.field_attribution|field_value
+    } %}
+{% endembed %}

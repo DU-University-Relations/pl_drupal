@@ -1,0 +1,10 @@
+<ul class="accordion" data-accordion="true" data-multi-expand="true" data-allow-all-closed="true">
+    {% for item in expanding_list %}
+        <li class="accordion-item{% if item.is_active %} is-active{% endif %}" data-accordion-item="true">
+            <a href="#" class="accordion-title">{{ item.title|raw }}</a>
+            <div class="accordion-content" data-tab-content="true">
+                {{ item.text|raw }}
+            </div>
+        </li>
+    {% endfor %}
+</ul>

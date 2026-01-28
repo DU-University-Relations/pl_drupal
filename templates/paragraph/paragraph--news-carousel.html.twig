@@ -1,0 +1,6 @@
+{% embed "@organisms/news-carousel.twig" %}
+    {% set title = content.field_title|field_value %}
+    {% block news_content %}
+        {{ content.field_news_content|field_value }}
+    {% endblock %}
+{% endembed %}

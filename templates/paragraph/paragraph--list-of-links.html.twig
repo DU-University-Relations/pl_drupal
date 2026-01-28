@@ -1,0 +1,11 @@
+{% embed "@atoms/list.twig" %}
+    {% set items = [] %}
+    {% for listItem in content.field_list_of_links|field_value %}
+        {% set items = items|merge([{"title" : listItem}]) %}
+    {% endfor %}
+
+    {% set list = {
+        "styleModifier": content.field_list_of_links_style.0['#markup'] ~ " " ~ content.field_list_of_links_layout.0['#markup'],
+        "items": items
+    } %}
+{% endembed %}

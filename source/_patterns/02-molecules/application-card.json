@@ -1,0 +1,16 @@
+{
+  "card": {
+	"image": "http://placehold.it/75x80/eeeeee/888888",
+    "alt_text": "icon",
+    "link": {
+      "title": "Learn More Link Title",
+      "type": "h4",
+      "href": "#",
+      "cssClass": "",
+	  "target": "https://www.du.edu/",
+	  "rel": "",
+	  "alt_text": "Alt Text Here",
+	  "onclick": ""
+    }
+  }
+}

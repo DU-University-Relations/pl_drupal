@@ -1,0 +1,73 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+{% embed  "@molecules/activity-card-list-item.twig" %}
+  {% set title = fields.title.content %}
+  {% set activity_type = fields.field_activity_card_type.content %}
+  {% set start_date = fields.field_start_date.content %}
+  {% set description = fields.field_activity_card_description.content %}
+  {% set cta = fields.field_cta_links.content %}
+
+  {% if 'Event' in fields.field_activity_card_type.content|render|render %}
+    {% set card_class_color = "event-card-color" %}
+  {% elseif 'Initiative' in fields.field_activity_card_type.content|render|render %}
+    {% set card_class_color = "initiative-card-color" %}
+  {% elseif 'Update' in fields.field_activity_card_type.content|render|render %}
+    {% set card_class_color = "update-card-color" %}
+  {% else %}
+    {% set card_class_color = 'event-card-color' %}
+  {% endif %}
+
+  {% set flyout_title = 'About' %}
+  {% if 'nofieldvalue' not in fields.field_flyout_headline.content|render|render %}
+    {% set flyout_headline = fields.field_flyout_headline.content %}
+  {% else %}
+    {% set flyout_headline = '' %}
+  {% endif %}
+  {% if flyout_headline %}
+    {% set flyout_title = flyout_headline %}
+  {% endif %}
+
+  {% if 'nofieldvalue' not in fields.field_activity_card_host.content|render|render %}
+    {% set host_by = fields.field_activity_card_host.content %}
+  {% else %}
+    {% set host_by = '' %}
+  {% endif %}
+
+  {% if 'nofieldvalue' not in fields.field_end_date.content|render|render %}
+    {% set end_date = fields.field_end_date.content %}
+  {% else %}
+    {% set end_date = '' %}
+  {% endif %}
+
+{% endembed %}

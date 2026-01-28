@@ -1,0 +1,26 @@
+{#
+    Note that some of the sizing of slides is controlled via the slick carousel configuration in JS
+#}
+{% if title %}
+<div class="row">
+    <div class="columns small-12">
+        {% include "@atoms/headline.twig" with {'title': title, 'type': 'h3', 'cssClass': 'buffer-top btm-divider unit-carousel-header'} %}
+    </div>
+</div>
+{% endif %}
+<div class="row align-center {% if slide_count > 1 %}expanded collapse unit-site-carousel__multi{% else %}unit-site-carousel__single{% endif %} unit-site-carousel">
+    <div class="columns small-12">
+        <div class="unit-site-carousel__nav">
+            <div class="prev-button">{% include "@atoms/_du-icon.twig" with {"icon_name":"cust-left-arrow"} %}</div>
+            <div class="next-button">{% include "@atoms/_du-icon.twig" with {"icon_name":"cust-right-arrow"} %}</div>
+        </div>
+        <div class="unit-site-carousel__slides">
+            {% block slides %}
+                {% for slide in slides %}
+                    {% embed "@molecules/unit-carousel-slide.twig" with slide only %}
+                    {% endembed %}
+                {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+</div>

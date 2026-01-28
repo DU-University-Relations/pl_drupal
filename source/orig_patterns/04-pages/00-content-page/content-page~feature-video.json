@@ -1,0 +1,26 @@
+{
+	"feature_video": {
+	    "blockquote": {
+	    	"feature_video_quote": true,
+	        "text": "\"Getting involved and helping the community is really important because it develops that sense of civic identity, so that makes you a lot closer to your community… when you really know what's going on.\"",
+	        "cite": "Attribution"
+	    },
+		"play_pause_icons": [
+			{
+				"icon_name": "play_circled2"
+			},
+			{
+				"icon_name": "pause_circled"
+			}
+		],
+		"id": "exampleVideo",
+		"is_feature_video": true,
+		"mp4_url": "/_duresources/foundation/videos/where_phenomenal_happens.mp4"
+	},
+	"copy_modules": [
+		{
+			"image": false,
+			"content": "<p>We know that financing your coursework can be challenging and stressful. That’s why we award over $130 million in aid each year, with 85% of students receiving some form of financial assistance.</p><p>And that’s not limited to loans. 76.9% of those funds are in the form of scholarships or grants, with awards ranging from $10,000 to $24,000. We also offer talent_based scholarships in the arts and athletics. If you think DU is the place for you, we’ll do everything we can to make it happen.</p>"
+		}
+	]
+}

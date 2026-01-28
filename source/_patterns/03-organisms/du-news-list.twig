@@ -1,0 +1,21 @@
+<div class="row columns du-news-list-content">
+    {% if title %}
+        <div class="row align-center">
+            {% include "@atoms/headline.twig" with {'title' : title, 'type' : 'h3', 'cssClass': 'btm-divider'} %}
+        </div>
+    {% endif %}
+    <div class="row">
+        {% block du_news_list %}
+            {% for item in rows %}
+                {% include "@molecules/du-in-the-news.twig" with item %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+    {% if display == "block_1" %}
+        <div class="row align-center">
+            <div class="columns shrink">
+                {% include "@atoms/link.twig" with url %}
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,15 @@
+<div class="news-carousel">
+  <div class="news-carousel__wrapper">
+    {% if title %}
+      <h2 class="slider-title">{{ title }}</h2>
+    {% endif %}
+    <div class="slider-container">
+      {% block news_content %}
+        {% for news_item in news_content %}
+          {% include "@molecules/news-carousel-item.twig" with news_item %}
+        {% endfor %}
+      {% endblock %}
+    </div>
+    <div class="slider-buttons"></div>
+  </div>
+</div>

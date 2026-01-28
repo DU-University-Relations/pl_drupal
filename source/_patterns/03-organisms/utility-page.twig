@@ -1,0 +1,16 @@
+<article{{ attributes }} id="main-content" role="main" >
+    <div class="row">
+        <div class="columns small-12 large-12">
+            {% if node.field_alternative_h1.0 is not empty %}
+                <h1>{{ content.field_alternative_h1 }}</h1>
+            {% else %}
+                {% block page_title %}
+                    {% include "@atoms/headline.twig" with title_info %}
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+    {% block page_content %}
+         {{ content }}
+    {% endblock %}
+</article>

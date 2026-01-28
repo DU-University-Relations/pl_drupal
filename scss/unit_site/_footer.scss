@@ -1,0 +1,36 @@
+footer {
+	$font-color: #8c8c8c;
+	color: $font-color;
+	.menu {
+		background-color: $neutral-color-1;
+		$padding-top: 2.1rem;
+		padding: $padding-top 0 1rem 0;
+		li {
+			a {
+				padding: 0.5rem 1rem;
+				color: $font-color;
+			}
+		}
+		@include breakpoint(small down) {
+			padding: $padding-top 5rem 0 5rem;
+        }
+	}
+	.copyright {
+		padding-top: 1rem;
+		padding-bottom: 2.3rem;
+		$padding-side: 2rem;
+		padding-left: $padding-side;
+		padding-right:$padding-side;
+		line-height: inherit;
+		@include breakpoint(medium) {
+			$padding-side: 10rem;
+			padding-left: $padding-side;
+			padding-right:$padding-side;
+		}
+		@include breakpoint(small) {
+			$padding-side: 5vw;
+			padding-left: $padding-side;
+			padding-right:$padding-side;
+		}
+	}
+}

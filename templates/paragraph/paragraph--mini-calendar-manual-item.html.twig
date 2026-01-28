@@ -1,0 +1,8 @@
+{% embed "@molecules/event-card.twig" %}
+    {% set date = content.field_mini_calendar_item_date|field_value %}
+    {% set start_time = content.field_mini_calendar_item_time|field_value %}
+    {% set end_time = null %}
+    {% set location = content.field_mini_calendar_item_loc|field_value %}
+    {% set title = custom.title %}
+    {% set url = custom.url %}
+{% endembed %}

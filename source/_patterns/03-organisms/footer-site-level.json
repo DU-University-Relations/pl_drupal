@@ -1,0 +1,22 @@
+{
+  "logo": {
+    "href": "/",
+    "cssClass": "logo"
+  },
+  "social": {
+    "icons": [
+      {
+        "icon_class": "facebook",
+        "url": "http://www.facebook.com/uofdenver"
+      }
+    ]
+  },
+  "address": {
+    "office": "Office of the Dean"
+  },
+  "info": {
+    "email": "nsm@du.edu",
+    "phone": "303-871-2693",
+    "fax": "303-871-3223"
+  }
+}

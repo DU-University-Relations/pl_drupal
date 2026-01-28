@@ -1,0 +1,34 @@
+{% embed "@molecules/cta.twig" %}
+
+    {% set catch_cache = content.field_link|render %}
+    {% set style = content.field_cta_style|field_raw('value') %}
+    {% set color_theme = content.field_cta_color|field_raw('value') %}
+    {% set cta_content = {
+        "img_url": file_url(content.field_cta_bg_image|field_target_entity.uri.value),
+        "type": "h2",
+        "title": render_var(content.field_headline|field_value),
+        "text": render_var(content.field_subhead_long|field_value),
+        "button": {
+            "title": content.field_link|field_raw('title'),
+            "type": "",
+            "url": content.field_link.0['#url'],
+            "target": content.field_link.0['#options']['attributes']['target'],
+            "alt_text": content.field_link.0['#options']['attributes']['title'],
+            "onclick": content.field_link.0['#options']['attributes']['onClick'],
+            "type": (style == 'large') ? 'white' : ''
+        }
+    } %}
+    {% set imagestyle_large = {
+        '#type': 'responsive_image',
+        '#responsive_image_style_id': 'cta_module_tall',
+        '#uri': content.field_cta_bg_image|field_target_entity.uri.value,
+        '#attributes': { 'alt': content.field_cta_bg_image|field_raw('alt') },
+    } %}
+
+    {% set imagestyle_small = {
+        '#type': 'responsive_image',
+        '#responsive_image_style_id': 'cta_module_narrow',
+        '#uri': content.field_cta_bg_image|field_target_entity.uri.value,
+        '#attributes': { 'alt': content.field_cta_bg_image|field_raw('alt') },
+    } %}
+{% endembed %}

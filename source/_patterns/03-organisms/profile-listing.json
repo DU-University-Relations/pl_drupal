@@ -1,0 +1,22 @@
+{
+  "page_info": "Showing 11&mdash;20 of 58 Faculty Profiles",
+  "filter_id": "GenericFilter1",
+  "rows": [{
+    "thumbnail_image": "<img src=\"http://placehold.it/75x80\" />",
+    "teaser": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit dolor",
+    "publish_date": "May 4, 2018",
+    "title": "<a href=\"/\">Test Title</a>",
+    "email": "bob.testing@du.edu",
+    "first_name": "Bob",
+    "last_name": "Testing",
+    "phone_number": "123-456-7890"
+  }, {
+    "thumbnail_image": "<img src=\"http://placehold.it/75x80\" />",
+    "teaser": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit dolor",
+    "title": "<a href=\"/\">Test Title</a>",
+    "email": "jack.testing@du.edu",
+    "first_name": "Jack",
+    "last_name": "Testing",
+    "phone_number": "123-456-7890"
+  }]
+}

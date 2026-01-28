@@ -1,0 +1,103 @@
+{#
+ /**
+  * @file
+  * Contains theme representation of search results
+  *
+  * Available variables:
+  *  - form - the search form
+  *  - results - the search results
+  */
+#}
+
+<article id="main-content" role="main">
+	<div class="row">
+		<div class="columns small-12 large-12">
+			<h1 class="buffer-top"><span>Search Results</span></h1>
+		</div>
+	</div>
+    <div class="row">
+        <div class="columns small-12 large-12">
+            <div class="sub-menu-wrap">
+                <p id="sub-menu-toggler" data-responsive-toggle="sub-menu" data-hide-for="large" style="display: none;">
+                    <a href="#" data-toggle="data-toggle">Filter Search Results</a></p>
+                <nav id="sub-menu" class="sub-menu--horizontal" aria-label="sub-navigation" data-role="facets">
+                    <ul>
+                        {% for tab in tabs %}
+                            <li{% if tab.active %} class="active"{% endif %}>
+                                <a href="{{ tab.href }}">{{ tab.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="columns small-12 large-12">
+            {% if results.hasResults %}
+                <p class="search-results__listing-summary">
+                    Showing <span class="range">{{ start }}-{{ offset }}</span> of about
+                    <span class="total">{{ total }}</span> matches for "<em><strong><span class="term">{{ keywords }}</span>
+                        </strong></em>"
+                </p>
+                <ol class="search-results" start="1">
+                    {% for result in results.getKeyMatch %}
+                        <li class="search-result--keyword-hit">
+                            <a href="{{ result.getUrl }}">
+                                <h2>{{ result.getDescription }}</h2>
+                                <p class="search-result--url">{{ result.url }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                    {% for result in results.getResults %}
+                        <li>
+                            <a href="{{ result.absoluteUrl }}">
+                                <h2>{{ result.title }}</h2>
+                                <p>
+                                    <span class="search-result--summary">
+                                        {{ result.snippet }}
+                                    </span>
+                                </p>
+                                <p class="search-result--url">{{ result.absoluteUrl }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <div class="search-results__no-results">
+                    <div>
+                        <p>
+                            Sorry, no pages were found containing <strong>“<span class="term">{{ keywords }}</span>”</strong>
+                            </p>
+                            <p>Here's some suggestions:</p>
+                        <ul>
+                            <li>Check your spelling.</li>
+                            <li>Try different keywords.</li>
+                            <li>Try more general words.</li>
+                        </ul>
+                    </div>
+                    <div class="no-result-search-form-wrapper">
+                        <div class="search-box">
+                            <label class="show-for-sr" for="no-result-site-search-input" aria-label="search-label">Search Input</label>
+                            <input name="search" id="no-result-site-search-input" placeholder="Search" type="text" required="required" tabindex="1">
+                            <button class="search-submit" type="button" title="Submit Search">
+                                <span class="icon-du-cust-search" aria-hidden="true"></span>
+                                <span class="show-for-sr">Submit Search</span>
+                            </button>
+                            <button class="search-submit-btn no-result-search" type="button" title="Submit Search Button">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p></p>
+                        <p>Not finding what you are looking for?<br>Send us feedback at our <a href="https://du.supporthero.io" target="_blank" title="Feedback">support portal</a> and we'll figure out what went wrong.</p>
+
+                    </div>
+                </div>
+            {% endif %}
+
+            {{ results.getPager }}
+
+        </div>
+    </div>
+</article>

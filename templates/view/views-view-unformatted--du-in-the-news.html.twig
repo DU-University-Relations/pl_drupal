@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% embed "@organisms/du-news-list.twig" %}
+    {% set title = view.title %}
+    {% set url = {
+        "href": '/news/du-in-the-news',
+        "title": 'View All Articles',
+        'cssClass': 'btn'
+    } %}
+
+    {% set display =  view.current_display %}
+
+    {% block du_news_list %}
+        {% for item in rows %}
+            <div class="columns small-12 medium-6 large-4{% if loop.index > 4 %} show-for-large{% endif %}">
+                {{ item.content }}
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

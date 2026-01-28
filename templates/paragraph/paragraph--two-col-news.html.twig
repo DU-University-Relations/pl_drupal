@@ -1,0 +1,25 @@
+{% embed "@organisms/two-column-news.twig" %}
+    {% set header = {
+        "title": content.field_two_col_news_header|field_value,
+        "type": "h3",
+        "cssClass": "btm-divider"
+    } %}
+    {% set view_all_stories_url = content.field_view_all_news_stories_link.0['#url'] %}
+    {% set view_all_stories_text = content.field_view_all_news_stories_link.0['#title'] %}
+    {% if view_all_stories_text != '' %}
+      {# something #}
+    {% else %}
+      {% set view_all_stories_text = 'View All News Stories' %}
+    {% endif %}
+
+    {% set column1_content = content.field_news_column_1|field_value %}
+    {% set column2_content = content.field_news_column_2|field_value %}
+
+    {% block column_1 %}
+        {{ column1_content }}
+    {% endblock %}
+    {% block column_2 %}
+        {{ column2_content }}
+    {% endblock %}
+
+{% endembed %}

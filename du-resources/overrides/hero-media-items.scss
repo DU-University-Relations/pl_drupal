@@ -1,0 +1,17 @@
+.hero-items {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  @include breakpoint(medium up) {
+    bottom: 5rem;
+  }
+  .columns {
+    padding: 0;
+    span {
+      font-weight: bold;
+      &.value {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

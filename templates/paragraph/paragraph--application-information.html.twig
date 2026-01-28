@@ -1,0 +1,33 @@
+{% embed "@organisms/application-cards.twig" %}
+	{% set cards = content.field_application_cards|field_value %}	
+
+	{% if cards|length == 2 %}
+		{% set card_columns_layout = 'medium' %}
+	{% else %}
+		{% set card_columns_layout = 'small-12 medium-4' %}
+	{% endif %}
+
+	{% if content.field_deadline_text|field_value is not empty %}
+		{% set deadline_data_css = 'medium-8' %}
+	{% else %}
+		{% set deadline_data_css = '' %}
+	{% endif %}
+
+    {% set application_card_info = {
+        "title": content.field_app_info_heading|field_value,
+		"body_text": content.field_app_info_body_text|field_value,
+		"deadline_text": content.field_deadline_text|field_value,
+		"deadline_date": content.field_deadline_date|field_value,
+		"img_url": file_url(content.field_background_image|field_target_entity.uri.value),
+        "type": "h3",
+        "cssClass": "btm-divider"
+    } %}
+
+    {% block cards %}
+        {% for card in cards|slice(0, 3) %}
+            {{ card }}
+        {% endfor %}
+    {% endblock %}
+{% endembed %}
+
+

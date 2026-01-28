@@ -1,0 +1,18 @@
+<div class="columns small-12 medium-4">
+    <div class="stories-module__story">
+        <div class="content" data-equalizer-watch="row">
+            {% block story %}
+                <div>{{ thumbnail|raw }}</div>
+			          <h4>{{ title|render }}</h4>
+                <p>{{ body|render|striptags|raw|slice(0, 250) ~ '...' }}</p>
+            {% endblock %}
+        </div>
+        <div class="story-cta">
+            {% block button %}
+                <a role="button" href="{{ url|raw }}" class="btn" aria-description="Read the full article here">
+                    Learn More
+                </a>
+            {% endblock %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "header": "Follow Us:",
+      "view_all": "View All",
+      "social_page_url": "#"
+    }
+  ],
+  "social_media": [
+    {
+      "title": "Facebook",
+      "icon_class": "facebook",
+      "url": "facebook"
+    },
+    {
+      "title": "Twitter",
+      "icon_class": "twitter",
+      "url": "#"
+    },
+    {
+      "title": "LinkedIn",
+      "icon_class": "linkedin",
+      "url": "#"
+    }
+  ]
+}

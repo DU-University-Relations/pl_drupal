@@ -1,0 +1,288 @@
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.gallery-date {
+  margin-bottom: 7.5rem;
+
+  // Default Skin - We'll separate these in case we want a custom skin later on.
+  .skin-default {
+    .views_slideshow_cycle_main {
+      .views_slideshow_cycle_slide {
+        background-color: black;
+        color: white;
+        z-index: 2;
+        .views-field-title,
+        .views-field-field-gallery-date {
+          background-color: black;
+          color: white;
+          margin-right: 10px;
+        }
+
+        .views-field-title {
+          float: left;
+          margin-left: 10px;
+        }
+
+        .views-field-field-gallery-date {
+          float: right;
+          margin-right: 10px;
+        }
+
+        .views-row {
+
+        }
+      }
+    }
+    .views-slideshow-controls-bottom {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      width: 95%;
+      background-color: black;
+      color: white;
+      margin: 0 auto;
+
+      @include breakpoint(780px up) {
+        margin: 0;
+        width: 780px;
+      }
+
+      a {
+        color: white;
+      }
+
+      .views_slideshow_slide_counter {
+        width: 95px;
+        margin-left: 5px;
+      }
+
+      .views_slideshow_controls_text {
+        width: 35%;
+        margin: 0 auto;
+        .views_slideshow_controls_text_previous,
+        .views-slideshow-controls-text-status-play,
+        .views-slideshow-controls-text-status-pause,
+        .views_slideshow_controls_text_next {
+          font-family: "fontello";
+          font-style: normal;
+          font-weight: normal;
+          speak: never;
+          display: contents;
+          text-decoration: inherit;
+          width: 1em;
+          margin-right: 0.2em;
+          text-align: center;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1em;
+          margin-left: 0.2em;
+          user-select: none;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          span, a {
+            color: white;
+            width: 1em;
+            text-overflow: hidden;
+          }
+          a {
+            color: transparent;
+            opacity: 0;
+            font-size: 0;
+          }
+          &::before {
+            color: white;
+            opacity: 1;
+            pointer-events: auto;
+            position: absolute;
+            margin-top: 5px;
+          }
+        }
+        .views_slideshow_controls_text_previous {
+          &::before {
+            content: '\e820';
+            left: 35%;
+
+            @include breakpoint(1200px up) {
+              left: 25%;
+            }
+          }
+        }
+        .views-slideshow-controls-text-status-play {
+          &::before {
+            content: '\e80e';
+            left: 46%;
+
+            @include breakpoint(1200px up) {
+              left: 29%;
+            }
+          }
+        }
+        .views-slideshow-controls-text-status-pause {
+          &::before {
+            content: '\e80f';
+            left: 46%;
+
+            @include breakpoint(1200px up) {
+              left: 29%;
+            }
+          }
+        }
+        .views_slideshow_controls_text_next {
+          &::before {
+            content: '\e821';
+            left: 57%;
+
+            @include breakpoint(1200px up) {
+              left: 33%;
+            }
+          }
+        }
+      }
+    }
+    .views_slideshow_cycle_teaser_section {
+      margin: 0 auto;
+      width: 95% !important;
+
+      @media (min-width: 576px) and (max-width: 767px) {
+        height: 400px !important;
+      }
+
+      @media (min-width: 767px) and (max-width: 1199px) {
+        width: initial !important;
+      }
+
+
+      @include breakpoint(1200px up) {
+        margin: 0;
+        width: initial !important;
+      }
+    }
+  }
+
+  // The attached actual gallery.
+  .gallery-actual-attached {
+    scrollbar-width: 5px;
+    width: 34%;
+    position: absolute;
+    background: rgba(0,0,0,.1);
+    right: -5px;
+    bottom: 0px;
+    height: 574px;
+    overflow-y: auto;
+    animation: fadeRight 0.5s ease-in-out;
+    display: none;
+
+    @include breakpoint(1200px up) {
+      display: initial;
+    }
+
+    .views-view-grid {
+      .views-row {
+        .views-col {
+          img {
+            padding: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  // Exposed form filters for the gallery.
+  .views-element-container {
+    position: relative;
+
+    .views-exposed-form {
+      margin-bottom: 35px;
+      z-index: 3;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-around;
+      align-items: flex-start;
+      .form-item-field-gallery-tags-target-id {
+        margin: 0 auto;
+        padding: 1.5rem;
+        width: 67%;
+        border: 1px solid #d1d1d2;
+
+        @include breakpoint(1200px up) {
+          margin: 3rem 0 0 0;
+          width: 40%;
+        }
+      }
+      .edit-actions {
+        margin-top: 87px;
+      }
+      .fieldset-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        z-index: 10;
+
+        .js-form-item {
+          width: 48%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  // "Footer", or the section where we'll show the gallery on/off switches.
+  footer {
+    position: relative;
+    .gallery-actual-select-button {
+      display: flex;
+      flex-direction: row-reverse;
+      color: white;
+      right: 415px;
+      bottom: 0px;
+      position: absolute;
+      cursor: pointer;
+      display: none;
+
+      @include breakpoint(1200px up) {
+        display: flex;
+      }
+      p {
+        font-family: "fontello";
+        font-style: normal;
+        font-weight: normal;
+        speak: never;
+        display: contents;
+        text-decoration: inherit;
+        width: 1em;
+        margin-right: 0.2em;
+        text-align: center;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1em;
+        margin-left: 0.2em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        &::before {
+          content: '\e808';
+          margin: 5px 10px 0;
+        }
+      }
+    }
+    .gallery-actual-show-minus {
+      p {
+        &::before {
+          content: '\e809' !important;
+        }
+      }
+    }
+  }
+}

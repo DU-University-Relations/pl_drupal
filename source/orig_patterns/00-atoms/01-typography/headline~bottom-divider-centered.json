@@ -1,0 +1,5 @@
+{
+	"title": "This a centered header with a divider",
+	"type": "h3",
+	"cssClass": "btm-divider text-center"
+}

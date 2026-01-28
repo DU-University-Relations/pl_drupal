@@ -1,0 +1,19 @@
+<div class="quotes-module__wrapper">
+	<div class="row row--expanded quotes-module">
+		<div class="columns small-12">
+            {# TODO: Figure out whether / what should go in aria-label #}
+            {% if slides|length > 1 %}
+				<div class="slick" role="region" {#aria-label="Favorite Space Pictures"#}  data-auto-play="false" >
+					<div class="slider-container">
+						{{ slides }}
+					</div>
+
+				</div>
+			{% else %}
+				<div>
+					{{ slides }}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>

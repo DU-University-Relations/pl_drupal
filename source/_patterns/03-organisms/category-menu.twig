@@ -1,0 +1,18 @@
+{% if title %}
+    <div class="row">
+        <div class="columns small-12">
+            <h3 class="buffer-top btm-divider">{{ title }}</h3>
+        </div>
+    </div>
+{% endif %}
+<div class="row">
+    <div class="columns small-12">
+        <ul class="category-list category-list--purple" id="news-categories">
+            {% block category_menu %}
+                {% for category_link in category_menu %}
+                    <li>{{ category_link }}</li>
+                {% endfor %}
+            {% endblock %}
+        </ul>
+    </div>
+</div>

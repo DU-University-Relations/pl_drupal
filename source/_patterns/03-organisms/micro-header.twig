@@ -1,0 +1,49 @@
+<nav class="unit-nav-group {% if hide_hero %}no-hero{% endif %}">
+    {% block alert %}
+        {{ du_alert }}
+    {% endblock %}
+    <div data-sticky-container>
+
+        <div id="top-bar-sticky-wrap" class="sticky" data-sticky data-sticky-on="small" data-margin-top="0" data-top-anchor="0">
+
+            <div class="top-bar">
+                <nav id="main-menu-wrap">
+                    <div class="row expanded">
+                        <div class="columns shrink">
+                                <a href="/" class="text-logo logo">
+                                    <div class="site-logo">
+                                        <img src="/themes/custom/pl_drupal/images/svg/university-of-denver-du-logo-unit.svg" width="80" alt="University of Denver">
+                                    </div>
+                                    <div class="site-identity">
+                                        <span class="site-prefix">{{ site_prefix }}</span>
+                                        <span class="site-name">{{ site_name }}</span>
+                                    </div>
+                                </a>
+                        </div>
+                        <div class="columns">
+                            <div id="main-menu" aria-expanded="false">
+                                <div class="main-menu-contents">
+                                    {% block mega_nav %}
+                                        {% include "@molecules/mega-nav.twig" %}
+                                    {% endblock %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns shrink">
+                            <div id="unit-main-menu-toggler" class="align-right hide-for-large" >
+                                <button class="icon-du-cust-menu" type="button" aria-controls="main-menu">
+                                    <span class="show-for-sr">Toggle Menu</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+<header class="header micro-header {% if hide_hero %}no-hero{% endif %}{% if hero_class == "content-card" %}content-card{% endif %}" role="banner">
+    {% if not hide_hero %}
+        {% include "@organisms/hero-media-unit.twig" %}
+    {% endif %}
+</header>

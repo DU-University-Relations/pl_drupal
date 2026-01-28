@@ -1,0 +1,71 @@
+.micro {
+  #profile-list {
+    .views-row {
+      width: 100%;
+      @include breakpoint(medium up) {
+        width: 50%;
+      }
+    }
+    .resource-listing {
+      margin-bottom: 3.6rem;
+      width: 100%;
+    }
+    .pager__items {
+      display: flex;
+      justify-content: center;
+    }
+    .generic-listing {
+      margin-bottom:4rem;
+      padding: 0 1rem;
+
+      @include breakpoint(large up) {
+        padding: 0;
+      }
+
+      .page-info {
+        padding-top: 2rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: $neutral-color-2;
+      }
+
+      .results-container {
+        @include flex-grid-row();
+        margin-bottom: 0;
+        width: 100%;
+        @include breakpoint(medium up) {
+          margin-bottom: 1rem;
+        }
+      }
+      .results-item {
+        @include flex-grid-column(12);
+        @include breakpoint(medium up) {
+          @include flex-grid-column(6);
+        }
+      }
+
+      .results-container.one-col .results-item {
+        @include flex-grid-column(12);
+      }
+
+      .listing-pager {
+        width: 100%;
+        padding-bottom: 3rem;
+      }
+
+      .empty-results {
+        padding: 2rem;
+      }
+
+      .no-results-found {
+        width: 100%;
+        text-align: center;
+        padding: 2rem;
+      }
+    }
+  }
+
+  .article.teaser {
+    max-height: 100%;
+  }
+}

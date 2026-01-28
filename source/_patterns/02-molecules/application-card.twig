@@ -1,0 +1,17 @@
+<div class="columns {{ card_columns_layout }}">
+	<a href="{% if not card.link.href %}#{% endif %}{% if card.link.href %}{{ card.link.href }}{% endif %}"
+    {% if card.link.cssClass %}class="{{ card.link.cssClass }}"{% endif %}
+    title="{{card.link.alt_text|e('html_attr')}}"
+    {% if card.link.target %}target="{{ card.link.target|e('html_attr') }}"{% endif %}
+    {% if card.link.onclick %}onclick="{{ card.link.onclick|e('html_attr') }}"{% endif %}
+	>
+		<div class="cards-module--has-icons">
+			<div class="cards-module__content" data-equalizer-watch="cards-module__content">
+				<div class="img-wrapper">
+					{% if card.image %} {{ card.image }}  {% endif %}
+				</div>
+				{% include "@atoms/headline.twig" with card.link %}
+			</div>
+		</div>
+	</a>
+</div>

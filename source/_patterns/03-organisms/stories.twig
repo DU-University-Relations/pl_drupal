@@ -1,0 +1,26 @@
+{% if layout == 'three_col' %}
+  {% if col_header.title|length %}
+    <div class="row">
+        <div class="columns small-12">
+            {% include "@atoms/headline.twig" with col_header %}
+        </div>
+    </div>
+  {% endif %}
+{% endif %}
+<div class="stories-module{% if buffer_top %} buffer-top{% endif %}{% if layout == 'two_col' %} stories-module--two-col{% endif %} buffer-on-inner-row">
+    <div class="row stories-module__wrapper" data-equalizer="row" data-equalize-on-row="true">
+        {% if layout == 'two_col' %}
+            <div class="columns small-12 medium-4">
+              {% if col_header.title|length %}
+                {% include "@atoms/headline.twig" with col_header %}
+              {% endif %}
+            </div>
+        {% endif %}
+
+        {% block stories %}
+            {% for story in stories %}
+                {% include "@molecules/story.twig" with story %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

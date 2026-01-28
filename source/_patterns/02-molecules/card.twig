@@ -1,0 +1,23 @@
+<div class="columns small-12 medium-12 large-4">
+    <div class="{% if card.card_type == 'icon' %}cards-module--has-icons{% endif %}">
+        <div class="cards-module__content {{ card.plusMinusCss }}" data-equalizer-watch="cards-module__content">
+            <div class="{% if card.card_type != 'icon' %}card-{% endif %}img-wrapper">
+                {% if card.image %} {{ card.image }}  {% endif %}
+            </div>
+            {% include "@atoms/headline.twig" with card %}
+            <div class="cards-module__hidden-on-small">
+                {% block card_content %}
+                    {% if card.text %}
+                        {% include "@atoms/paragraph.twig" with card %}
+                    {% endif %}
+                    {% if list_of_links %}
+                        {% include "@atoms/list.twig" with card %}
+                    {% endif %}
+                    {% if card.button.title %}
+                        <p>{% include "@atoms/button.twig" with card.button %}</p>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

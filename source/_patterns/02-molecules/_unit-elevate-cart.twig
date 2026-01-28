@@ -1,0 +1,11 @@
+<div class="unit-elevate-cart-popup" id="utility-elevate-cart-popup" aria-expanded="false">
+    <div class="unit-elevate-cart-wrapper">
+    {% include "@atoms/_unit-nav-back.twig" with {controls: "#elevate-cart-popup"} %}
+        <div id="elevate-cart-title">Cart</div>
+        <div id="elevate-cart-courses">The cart is empty.</div>
+        <div id="elevate-cart-total">Total<span>$0.00</span></div>
+        <a href="" class="btn" id="elevate-cart-checkout">Checkout</a>
+        <p id="elevate-more-courses">Interested in more? <a href="" id="elevate-checkout-search-courses">Search Courses</a></p>
+    </div>
+    {% include "@atoms/_unit-nav-close.twig" with {controls: "#elevate-cart-popup"} %}
+</div>

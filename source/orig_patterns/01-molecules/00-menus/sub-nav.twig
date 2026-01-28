@@ -1,0 +1,31 @@
+<div class="sub-menu-wrap">
+	{% if back_to_parent %}
+		<p><a href="#" class="sub-menu__back-link"><span class="icon-du-left-arrow" aria-hidden="true"></span> {{ back_to_parent.title }}</a></p>
+	{% endif %}
+	<p id="sub-menu-toggler" data-responsive-toggle="sub-menu" data-hide-for="large"> 
+		<a href="#" data-toggle>
+			{{ toggler_text }}
+		</a>
+	</p>
+	<nav id="sub-menu"{% if is_tab_menu %} class="sub-menu--horizontal"{% endif %} aria-label="sub-navigation"{% if role %} data-role="{{ role }}"{% endif %}>
+		{% if has_sub_menu_search %}
+			{% include "@atoms/search-box.twig" %}
+		{% endif %}
+		<ul>
+			{% for item in items %}
+				<li{% if item.is_active %} class="active"{% endif %}>
+					{% include "@atoms/link.twig" with  item %}
+					{% if third_level %}
+						<ul>
+							{% for item in third_level.item %}
+								<li{% if is_active %} class="active"{% endif %}>
+									{% include "@atoms/link.twig" %}
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+</div>

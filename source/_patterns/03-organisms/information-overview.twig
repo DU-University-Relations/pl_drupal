@@ -1,0 +1,11 @@
+<div class="information-overview-module buffer-on-inner-row{% if not bckgrnd %} information-overview-module-no-background{% endif %}">
+  <div class="row">
+    {% for item in items %}
+      {% if items|length == 4 %}
+        <div class="small-12 medium-3 columns fact">{{ item }}</div>
+      {% else %}
+        <div class="small-12 medium-4 columns fact">{{ item }}</div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

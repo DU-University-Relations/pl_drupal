@@ -1,0 +1,29 @@
+<article class="academic-program" id="main-content" role="main" >
+    <div class="row">
+        <div class="columns small-12 large-3">
+            <p>
+                <a class="sub-menu__back-link">
+                    <span class="icon-du-left-arrow" aria-hidden="true"></span> {{ back_to_parent.title }}
+                </a>
+            </p>
+            <div class="program-links">
+                {%  block link_list %}
+                    {% include "@atoms/list.twig" with list %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="columns small-12 large-8 large-offset-1 intro">
+            <div class="program-overview">
+                <div>
+                    {% if marketing_desc %}
+                        {{ marketing_desc }}
+                    {% else %}
+                        {{ description_1 }}
+                        {{ description_2 }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ program_content }}
+</article>

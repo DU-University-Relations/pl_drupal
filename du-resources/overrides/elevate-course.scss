@@ -1,0 +1,42 @@
+.full-elevate-course {
+  .elevate-course-cart {
+    .btn {
+      margin-top: 0px;
+
+      @include breakpoint(small down) {
+        margin-top: 5px;
+      }
+    }
+  }
+  .elevate-course-details {
+    #elevate-detail-location {
+      display: none;
+    }
+  }
+  #elevate-cart-btn-msg {
+    color: $unit-accent-color-green;
+    margin-left: 2rem;
+  }
+  #elevate-cart-waitlist,
+  #elevate-cart-full strong,
+  #elevate-cart-closed {
+    color: #c50c0c;
+  }
+  .elevate-summary {
+    padding-bottom: 2rem;
+  }
+  .elevate-sessions {
+    display: block;
+
+    table {
+      width: 85%;
+    }
+  }
+}
+
+// Hide gray band on full elevate course page.
+.full-elevate-course + footer {
+  .has-gray-band {
+    display: none;
+  }
+}

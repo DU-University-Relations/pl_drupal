@@ -1,0 +1,9 @@
+<div class="cards-list-module scholarship-list">
+    <div class="row js-filter-cards">
+        {% block scholarship %}
+            {% for row in rows %}
+                {% include "@molecules/scholarship-item.twig" with row.content %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

@@ -1,0 +1,13 @@
+.unit-site {
+  .du-home header {
+    height: auto;
+    position: relative;
+  }
+  .du-home #main-content {
+    margin-bottom: 0;
+  }
+  #main-content {
+    position: relative;
+    z-index: 8;
+  }
+}

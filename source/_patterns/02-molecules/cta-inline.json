@@ -1,0 +1,22 @@
+{
+  "cta_inline_content": {
+	"headline":  {
+		"title": "Don’t know which program is right for you?",
+		"type": "h4",
+		"url": "https://www.du.edu/admission-aid/graduate/admission-policies-procedures.html",
+		"target": "_blank",
+		"alt_text": "alternative text",
+		"onclick": "",
+		"cssClass": ""
+	},
+	"button": {
+		"title": "Explore",
+		"type": "",
+		"url": "https://www.du.edu/admission-aid/graduate/admission-policies-procedures.html",
+		"target": "_blank",
+		"alt_text": "alternative text",
+		"onclick": "",
+		"type": "large"
+	}
+  }
+}

@@ -1,0 +1,25 @@
+{% embed "@molecules/contact.twig" %}
+
+    {% set  contact =  {
+        "color_theme": "teal",
+        "type": "h4",
+        "cssClass": "",
+        "title": node.label,
+        "text": content.field_text_contact|field_value,
+        "phone": content.field_phone_contact|field_value,
+        "email": content.field_email_contact|field_value,
+        "fax": content.field_fax_contact|field_value,
+        "building": content.field_building_contact|field_value,
+        "address1": content.field_address1_contact|field_value,
+        "city": content.field_city_contact|field_value,
+        "state": content.field_state_contact|field_value,
+        "postalcode": content.field_postalcode_contact|field_value,
+        "url": node.field_url_contact.0.url,
+        "url_text": node.field_url_contact.0.title,
+        "target": content.field_url_contact.0['#options']['attributes']['target'],
+        "alt_text": content.field_url_contact.0['#options']['attributes']['title'],
+        "onclick": content.field_url_contact.0['#options']['attributes']['onClick']
+      }
+    %}
+
+{% endembed %}

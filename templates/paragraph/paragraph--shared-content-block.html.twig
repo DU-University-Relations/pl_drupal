@@ -1,0 +1,11 @@
+{% embed "@organisms/shared-content-block.twig" %}
+
+    {% set shared_content = content.field_shared_content_reference|field_value %}
+
+    {% block shared_content %}
+        {% for shared in shared_content %}
+            {{ shared }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="columns small-12{% if not alt_layout %} medium-4  medium-offset-1{% endif %}">
+		{% if headline %}
+			{% include "@atoms/headline.twig" %}
+		{% endif %}
+	</div>
+</div>
+<div class="row row--expanded swapping-img-feature{% if alt_layout %} swapping-img-feature--alt{% endif %}">
+	{% if cols %}
+		<div class="columns small-12 medium-6{% if not is_text %} swapping-img-feature__image{% endif %}">
+			{% if image %}
+				<img src="{{ src|raw }}" alt="alt text"{% if data_attrs %} data-img-{{ img_number }}="{{ img_url|raw }}"{% endif %} />
+			{% endif %}
+			
+			{% if not image %}
+				<div class="swapping-img-feature__content">
+					{% if paragraphs %}
+						{% include "@atoms/paragraph.twig" %}
+					{% endif %}
+					{% include "@atoms/list.twig" %}
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+</div>

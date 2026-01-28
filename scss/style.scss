@@ -1,0 +1,28 @@
+//
+// Config
+//
+
+@import "variables";
+
+@import "foundation-sites/scss/foundation";
+@import "foundation-sites/scss/util/util";
+
+@import "settings";
+
+@include foundation-everything;
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+
+//pull in du-specific scss that is not in the patterns dir
+@import "global";
+@import "../du-resources/base/*.scss";
+@import "../du-resources/overrides/*.scss";
+@import "../du-resources/units/*.scss";
+@import "../du-resources/micro/*.scss";
+
+// Run through the entire patterns collection, finding all scss files included therein
+// @import "../source/**/*.scss";
+
+@import "../../../libraries/slick-carousel/slick/slick.scss";
+
+@import "../../../core/themes/seven/css/components/tabs";

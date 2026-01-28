@@ -1,0 +1,43 @@
+{
+	"headline": {
+		"title": "Forging the Future <strong>Together</strong>.",
+		"type": "h2",
+		"cssClass": "btm-divider text-center"
+	},
+	"alt_layout": true,
+	"cols": [
+		{
+			"is_text": true,
+			"paragraphs": [
+				{
+					"text": "It’s about finding your place, and we have a niche for almost everyone. For our Pioneers, new opportunities and lifelong relationships are rewards for the courageous and collaborative. From joining a club, improving local communities, or exploring Colorado’s natural landscape, your experiences will shape your future."
+				}
+			],
+			"list": {
+				"styleModifier": "list_of_links__alt",
+				"items": {
+					"title": "<a href=\"#\">The DU Community</a>"
+				}
+			}
+		},
+		{
+			"image": {
+				"src": "/_duresources/foundation/images/home_com_01_llc.jpg",
+				"data_attrs": [
+					{
+						"img_number": "0",
+						"img_url": "/_duresources/foundation/images/home_com_01_llc.jpg"
+					},
+					{
+						"img_number": "1",
+						"img_url": "/_duresources/foundation/images/home_com_02_classoutside.jpg"
+					},
+					{
+						"img_number": "2",
+						"img_url": "/_duresources/foundation/images/home_com_03_watchparty.jpg"
+					}
+				]
+			}
+		}
+	]
+}

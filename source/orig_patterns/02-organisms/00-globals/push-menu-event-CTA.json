@@ -1,0 +1,68 @@
+{
+
+"img_link_cards": [
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Current Students",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Alumni",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Families",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Neighbors",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Faculty",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Staff",
+      "cssClass": "bg-img-btn"
+    }
+  ],
+  "audience_buttons": [
+    {
+      "title": "Button Text",
+      "type": "dark_red",
+      "altClass": "display_block"
+    },
+    {
+      "title": "Button Text 2",
+      "type": "dark_red",
+      "altClass": "display_block"
+    },
+    {
+      "title": "Button Text 3",
+      "type": "dark_red",
+      "altClass": "display_block"
+    },
+    {
+      "title": "Button Text 4",
+      "type": "dark_red",
+      "altClass": "display_block"
+    },
+    {
+      "title": "Button Text 5",
+      "type": "dark_red",
+      "altClass": "display_block"
+    }
+  ]
+}

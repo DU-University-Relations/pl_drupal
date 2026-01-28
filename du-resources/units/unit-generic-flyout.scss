@@ -1,0 +1,50 @@
+.unit-site {
+  .unit-generic-flyout {
+    position: relative;
+    display: none;
+    max-height: 75vh;
+    overflow: auto;
+    background: #e7e7e7;
+    &.expanded { display: block; }
+
+    .unit-generic-flyout-wrapper {
+      overflow: hidden; // poor mans clearfix
+      position: relative;
+      max-width: 100.0rem;
+      padding: 5.0rem 2.0rem 3.0rem 2.0rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .columns {
+      padding-bottom: 3.0rem;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.0rem;
+    }
+
+    .flyout-button {
+      margin-top: 2.0rem;
+    }
+
+    @include breakpoint(medium down) {
+      position: absolute;
+      z-index: 2;
+      top: 12.0rem;
+      box-shadow: 0 -5.0rem 5.0rem 5.0rem rgba(0,0,0,0.3);
+      width: 100%;
+      .unit-header .is-stuck & {
+        top: 6.0rem;
+      }
+      .unit-generic-flyout-wrapper {
+        padding-top: 3.0rem;
+        padding-bottom: 2.0rem;
+      }
+    }
+    @include breakpoint(small down) {
+      top: 8.7rem;
+    }
+  }
+}// end .unit-site

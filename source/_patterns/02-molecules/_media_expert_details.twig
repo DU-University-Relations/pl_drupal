@@ -1,0 +1,43 @@
+<div class="details">
+    <div class="thumb-wrapper">
+        {{ thumbnail }}
+        <div class="profile-button show-for-medium">
+            {{ profile_link }}
+        </div>
+    </div>
+    <div class="expertise">
+        {% if topics %}
+            <div class="expert-topics">
+                <h4>Areas of Expertise:</h4>
+                {% for topic in topics %}
+                    <div class="topic-link">{{ topic }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if show_video or show_print or show_radio %}
+            <div class="expert-icons">
+                {% if show_video %}
+                    <div class="expert-icon">
+                        <div class="show-for-sr">Expert in </div>
+                        <span class="expert-icon-glyph">{% include "@atoms/_du-icon.twig" with {icon_name: "videocam"} %}</span>&nbsp;<span class="expert-icon-name">Video</span>
+                    </div>
+                {% endif %}
+                {% if show_print %}
+                    <div class="expert-icon">
+                        <div class="show-for-sr">Expert in </div>
+                        <span class="expert-icon-glyph">{% include "@atoms/_du-icon.twig" with {icon_name: "newspaper"} %}</span>&nbsp;<span class="expert-icon-name">Print</span>
+                    </div>
+                {% endif %}
+                {% if show_radio %}
+                    <div class="expert-icon">
+                        <div class="show-for-sr">Expert in </div>
+                        <span class="expert-icon-glyph">{% include "@atoms/_du-icon.twig" with {icon_name: "podcast"} %}</span>&nbsp;<span class="expert-icon-name">Radio</span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="profile-button hide-for-medium">
+    {{ profile_link }}
+</div>

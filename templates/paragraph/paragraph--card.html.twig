@@ -1,0 +1,29 @@
+{% set catch_cache = content.field_link|render %}
+{% embed "@molecules/card.twig" %}
+    {% set card_plus_minus_css = '' %}
+    {% if content.field_paragraph_ref|field_value is not empty %}
+        {% set card_plus_minus_css = 'has-plus-minus' %}
+    {% endif %}
+
+    {% set card =  {
+        "title": content.field_title|field_value,
+        "type": "h4",
+        "cssClass": "",
+        "has_wrapper": true,
+        "image": content.field_card_image,
+        "text" : content.field_paragraph_ref|field_value,
+        "card_type" : content.field_card_type|field_raw('value'),
+        "button": {
+            "title": content.field_link|field_raw('title'),
+            "type": "",
+            "url": content.field_link.0['#url'],
+            "target": content.field_link.0['#options']['attributes']['target'],
+            "alt_text": content.field_link.0['#options']['attributes']['title'],
+            "onclick": content.field_link.0['#options']['attributes']['onClick']
+        },
+        "plusMinusCss": card_plus_minus_css
+    } %}
+    {% block card_content %}
+        {{ content.field_paragraph_ref|field_value }}
+    {% endblock %}
+{% endembed %}

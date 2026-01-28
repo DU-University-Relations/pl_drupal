@@ -1,0 +1,133 @@
+.mega-flyout {
+
+  &.is-dropdown-submenu {
+    left: 0 !important; // force override foundation dropdown styling
+    right: 0 !important;
+    top: auto !important;
+    position: absolute;
+    border: 0 none;
+    box-shadow: 0 .8rem .9rem 0 rgba(0, 0, 0, 0.2);
+  }
+  @include breakpoint(medium down) {
+    &.is-dropdown-submenu {
+      display: none;
+    }
+  }
+
+  > li > .row {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3.9rem;
+    padding-bottom: 3.9rem;
+    ul {
+      border-top: .8rem solid $neutral-color-5;
+      li {
+        list-style-type: none;
+        display: table !important; // force override foundation styling
+        width: 100%;
+        a {
+          display: table-cell;
+          vertical-align: middle;
+          height: 6.2rem;
+          border-bottom: .2rem solid $neutral-color-5;
+          font-size: 1.8rem;
+          line-height: 1.2;
+          padding: 0 1.5rem 0 1.0rem;
+          text-align: left;
+          text-decoration: none;
+          &:hover,
+          &:focus {
+            background-color: $neutral-color-6;
+            color: $primary-color-3 !important;
+          }
+          &.is-active {
+            background-color: transparent;
+            border-left: .8rem solid $primary-color-3;
+            @include breakpoint(medium down) {
+              border-bottom: 0 none;
+            }
+          }
+        }
+        .external-link-icon {
+          font-size: 1.2rem;
+          padding-left: .5rem;
+          vertical-align: text-top;
+        }
+      }
+    }
+    .content {
+      background-color: white;
+      margin-right: 3.0rem;
+      margin-top: -4.8rem;
+      position: relative;
+      padding-top: 1.7rem;
+      padding-right: 1.5rem;
+      h2 {
+        font-size: 2.4rem;
+        font-weight: 700;
+      }
+    }
+  }
+  &.mega-menu--alt-layout {
+    .content-wrap {
+      position: relative;
+      .content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-width: 35.8rem;
+        margin-right: 0;
+        margin-top: 0;
+        padding-right: 3.0rem;
+        text-align: left
+      }
+    }
+  }
+  &.mega-menu--dropdown {
+    left: auto !important;
+    right: auto !important;
+    margin-left: -3.4rem;
+    box-shadow: 0 0 3.0rem 0 rgba(0, 0, 0, 0.2);
+    z-index: -1; // mask box-shadow behind banner
+    background: transparent;
+    padding: 0;
+    &.js-dropdown-active { display: table-cell; }
+
+    @include breakpoint(medium down) {
+      display: none !important;
+    }
+    > li {
+      display: table-cell;
+    }
+    > li > .row {
+      padding-top: 0;
+      padding-bottom: 0;
+      display: table-cell;
+      ul {
+        width: 36.0rem;
+        margin: 0;
+        padding: 3.0rem 3.4rem;
+        border-top: 0;
+        li {
+          width: 100%;
+        }
+        li a {
+          display: block !important; // force override id selectors
+          width: 100%;
+          height: auto;
+          padding: 2.0rem 1.0rem;
+          border-top: .2rem solid $neutral-color-5;
+          border-bottom: 0;
+        }
+        li:last-child a {
+          border-bottom: .8rem solid $neutral-color-5;
+        }
+      }
+    }
+  }
+}//. end .mega-flyout
+@media screen and (min-width: 1025px) and (max-width: 1525px) {  //this fixes the top nav breaking layout when text overflows to the right
+  .mega-flyout.mega-menu--dropdown > li > .row ul {
+    width: initial;
+  }
+}

@@ -1,0 +1,7 @@
+{% if type %}
+	<{{ type }}{% if cssClass %} class="{{ cssClass }}"{% endif %}>
+{% endif %}
+	{{ title|raw }}
+{% if type %}
+	</{{ type }}>
+{% endif %}

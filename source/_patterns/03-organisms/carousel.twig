@@ -1,0 +1,29 @@
+<div class="large-image-module__container">
+    {% if title is defined and title is not empty %}
+    <div class="row">
+        <div class="columns">
+            <h3 class="btm-divider">{{ title }}</h3>
+        </div>
+    </div>
+    {% endif %}
+    <div class="orbit large-image-module" role="region" data-auto-play="false" aria-label="Large Image Carousel" data-orbit data-options="{% if slide_animation %} {{ slide_animation }} {% endif %}">
+        <div class="large-image-module__wrapper orbit-wrapper">
+            <ul class="orbit-container">
+                {% block slides %}
+                    {% for slide in slides %}
+                        {{ slide }}
+                    {% endfor %}
+                {% endblock %}
+            </ul>
+            <div class="orbit-controls">
+                {% if slideshow_prev %}
+                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>{% include "@atoms/_du-icon.twig" with slideshow_prev %}</button>
+                {% endif %}
+                <div class="slide-number"></div>
+                {% if slideshow_next %}
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>{% include "@atoms/_du-icon.twig" with slideshow_next %}</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

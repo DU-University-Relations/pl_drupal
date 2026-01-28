@@ -1,0 +1,348 @@
+.du-alert {
+	padding: 2.2rem 0;
+	background-color: #faebce;
+	> .row {
+		> .columns {
+			position: relative;
+			padding-right: 0;
+			@include breakpoint(medium up) {
+				padding-right: 8.2rem;
+			}
+			.du-alert__action-button {
+				display: none;
+			}
+			.js & .du-alert__action-button {
+				position: absolute;
+				right: 3rem;
+				top: 50%;
+				margin-top: -1rem;
+				color: #666666;
+				font-size: 2.4rem;
+				display: block;
+				&.open {
+					.icon-du-down-arrow:before {
+						content: "\e802";
+					}
+				}
+				&:hover,
+				&:focus {
+					color: $neutral-color-1;
+					cursor: pointer;
+				}
+			}
+		}
+	} //end .row
+	.js & #du-alert__content {
+		display: none;
+		&.du-alert__content--expanded {
+			display: contents;  // Expanded content should not cover menus.
+			padding: 1rem;
+			position: absolute;
+			margin-top: 2rem;
+			width: 100%;
+			z-index: 11;
+			background-color: inherit;
+		}
+	}
+	#du-alert__content {
+		&.du-alert__content--expanded {
+			text-align: center;
+			p {
+				font-size: 1.4rem;
+				line-height: 2.2rem;
+				color: #302d2e;
+				@include breakpoint(medium up) {
+					font-size: 1.6rem;
+				}
+			}
+			a {
+				color: #302d2e;
+				&:hover,
+				&:focus {
+					color: $primary-color-1;
+				}
+			}
+		}
+	}
+	&__first-word {
+		font-family: "BreveSlabTitle", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #18161f;
+    text-rendering: optimizeLegibility;
+	}
+	h1, h2, &__first-word {
+		font-size: 2.6rem;
+		text-transform: uppercase;
+		margin-right: 0;
+		margin-bottom: .5rem;
+		padding-right: 0;
+		@include breakpoint(medium up) {
+			padding-right: 1rem;
+			margin-right: 1rem;
+			margin-bottom: 0;
+			border-right: .1rem solid $neutral-color-1;
+		}
+		&:before {
+			content: "\e810";
+			font-family: $icon-font;
+			color: #c50c0c;
+			padding-right: .4rem;
+		}
+
+		&,
+		+ p {
+			display: block;
+			@include breakpoint(medium up) {
+				display: inline-block;
+			}
+		}
+		+ p {
+			font-weight: bold;
+			color: $neutral-color-2;
+			border-left: 0 none;
+			margin-left: 0;
+			padding-left: 0;
+			font-size: 2rem;
+			line-height: 2.2rem;
+			@include breakpoint(medium up) {
+				border-left: .2rem solid #ccbda3;
+				margin-left: 1.4rem;
+				padding-left: 1.6rem;
+				font-size: 2.4rem;
+				line-height: inherit;
+			}
+		}
+	}
+	.title {
+		font-weight: bold;
+		font-size: 2rem;
+	}
+	&--notification {
+		.js & {
+			display: none;
+			&.du-alert--notification--show {
+				display: block;
+			}
+		}
+		h1, h2 {
+            font-size: 2.2rem;
+			&:before {
+				color: #ac9147;
+			}
+			+ p {
+				font-size: 1.8rem;
+			}
+		}
+	}
+	&.notification-green {
+		background: #198919;
+		color: white;
+		h2,
+		h2:before,
+		.icon-du-down-arrow:before,
+		.icon-du-up-arrow:before,
+		.icon-du-cust-close:before,
+		#du-alert__content.du-alert__content--expanded p,
+		#du-alert__content.du-alert__content--expanded a  {
+			color: white;
+		}
+		h2 {
+			border-right-color: white;
+		}
+	}
+	&.notification-yellow {
+		background: #d3ae46;
+		color: $neutral-color-2;
+		h2,
+		h2:before,
+		.icon-du-down-arrow:before,
+		.icon-du-up-arrow:before,
+		.icon-du-cust-close:before,
+		#du-alert__content.du-alert__content--expanded p,
+		#du-alert__content.du-alert__content--expanded a  {
+			color: $neutral-color-2;
+		}
+		h2 {
+			border-right-color: $neutral-color-2;
+		}
+	}
+
+	&.notification-orange {
+		background: #BA5C00;
+		color: white;
+		h2,
+		h2:before,
+		.icon-du-down-arrow:before,
+		.icon-du-up-arrow:before,
+		.icon-du-cust-close:before,
+		#du-alert__content.du-alert__content--expanded p,
+		#du-alert__content.du-alert__content--expanded a  {
+			color: white;
+		}
+		h2 {
+			border-right-color: white;
+		}
+	}
+	&.notification-red {
+		background:#a91617;
+		color: white;
+		h2,
+		h2:before,
+		.icon-du-down-arrow:before,
+		.icon-du-up-arrow:before,
+		.icon-du-cust-close:before,
+		#du-alert__content.du-alert__content--expanded p,
+		#du-alert__content.du-alert__content--expanded a  {
+			color: white;
+		}
+		h2 {
+			border-right-color: white;
+		}
+	}
+	// notification blue
+	&.notification-blue {
+		background:#9fc5e9;
+		color: $neutral-color-2;
+		h2,
+		h2:before,
+		.icon-du-down-arrow:before,
+		.icon-du-up-arrow:before,
+		.icon-du-cust-close:before,
+		#du-alert__content.du-alert__content--expanded p,
+		#du-alert__content.du-alert__content--expanded a  {
+			color: $neutral-color-2;
+		}
+		h2 {
+			border-right-color: $neutral-color-2;
+		}
+	}
+	// notification purple
+	&.notification-purple{
+		background:#d7bfd7;
+		color: $neutral-color-2;
+		h2,
+		h2:before,
+		.icon-du-down-arrow:before,
+		.icon-du-up-arrow:before,
+		.icon-du-cust-close:before,
+		#du-alert__content.du-alert__content--expanded p,
+		#du-alert__content.du-alert__content--expanded a  {
+			color: $neutral-color-2;
+		}
+		h2 {
+			border-right-color: $neutral-color-2;
+		}
+	}
+} //end .du-alert
+
+//Catastrophic Alert
+.catastrophic-alert {
+	header {
+		background-color: #333335;
+		height: auto;
+		margin-bottom: 4rem;
+		text-align: center;
+		padding-bottom: 1.3rem;
+		padding-top: 2.1rem;
+		padding-left: 2.2rem;
+		padding-right: 2.2rem;
+		@include breakpoint(medium up) {
+			padding-bottom: 3.2rem;
+			padding-top: 4rem;
+			padding-left: 6.2rem;
+			padding-right: 6.2rem;
+			text-align: left;
+			img {
+				width: 23.5rem;
+				height: auto;
+			}
+		}
+		h1 {
+
+			text-align: left;
+			padding-left: 4.9rem;
+			position: relative;
+			max-width: 26.4rem;
+			margin-left: auto;
+			margin-right: auto;
+			text-transform: uppercase;
+			color: white;
+			font-size: 4rem;
+			@include breakpoint(medium up) {
+				font-size: 5rem;
+				margin-top: 1.4rem;
+				margin-bottom: 1.1rem;
+				max-width: 100%;
+			}
+			&:before {
+				content: "";
+				background: transparent url('../images/alert-attention-circle.png') no-repeat scroll center center;
+				background-size: 100% 100%;
+				width: 3.1rem;
+				height: 3.1rem;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				margin-top: -1.7rem;
+				margin-left: .6rem;
+				@include breakpoint(medium up) {
+					width: 3.3rem;
+					height: 3.3rem;
+				}
+				@include breakpoint(large up) {
+					width: 3.9rem;
+					height: 3.9rem;
+					margin-right: 1rem;
+					display: inline-block;
+				}
+			}
+		} //end h1
+		h2 {
+			color: white;
+			font-size: 2.6rem;
+			@include breakpoint(medium up) {
+				font-size: 3.2rem;
+			}
+			@include breakpoint(large up) {
+				font-size: 3.8rem;
+			}
+		} //end h2
+	}// end header
+	aside {
+		@include breakpoint(large) {
+			padding-right: 8%;
+		}
+		h3 {
+			margin-bottom: 2.0rem;
+			font-size: 2.4rem;
+		}
+		h4 {
+			margin-bottom: 2.0rem;
+			font-size: 2.2rem;
+		}
+		p {
+			margin-left: 2.0rem;
+			+ h3 {
+				margin-top: 3.6rem;
+			}
+		}
+	}
+} // end .catastrophic-alert
+
+//Urgent Alert
+.du-alert--urgent.du-alert > .row > .columns {
+	.du-alert__action-button {
+		right: 0;
+		top: 0;
+		margin-top: -1.5rem;
+		span {
+			font-size: 2.4rem;
+		}
+	}
+	#urgent-alert-toggle {
+		font-size: 2.4rem;
+		vertical-align: middle;
+	}
+}
+

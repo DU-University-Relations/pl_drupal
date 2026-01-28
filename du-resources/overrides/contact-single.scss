@@ -1,0 +1,196 @@
+@media screen {
+
+	.contact-single-module {
+      color: #ffffff;
+      margin-bottom: 6rem;
+      margin-bottom: 8.6rem;
+      text-align: left;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    @include breakpoint(medium up) {
+      margin-bottom: 7rem;
+    }
+    @include breakpoint(large up) {
+      margin-bottom: 8.6rem;
+    }
+
+    &--teal {
+      background-color: $accent-color-2b;
+    }
+    &--purple {
+      background-color: $accent-color-1b;
+    }
+    &--green {
+      background-color: $accent-color-3b;
+    }
+    &--gold {
+      background-color: $secondary-color-2;
+    }
+
+    .contact-single-module_overlay {
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+      }
+      > .row {
+        position: relative;
+        z-index: 1;
+      }
+      &--black {
+        &:before {
+          background-color: $neutral-color-1;
+          opacity: 0.5;
+        }
+      }
+      &--teal {
+        &:before {
+          background-color: $accent-color-2b;
+          opacity: 0.85;
+        }
+      }
+      &--purple {
+        &:before {
+          background-color: $accent-color-1a;
+          opacity: 0.8;
+        }
+      }
+      &--green {
+        &:before {
+          background-color: $accent-color-3a;
+          opacity: 0.8;
+        }
+      }
+      &--gold {
+        &:before {
+          background-color: $secondary-color-1;
+          opacity: 0.8;
+        }
+      }
+    } // end overlay
+
+
+
+    .contact-single-module__content {
+      padding: 3rem;
+      margin-bottom: 1.8rem;
+      color: #ffffff;
+
+      p {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+        margin-bottom: 3.6rem;
+        @include breakpoint(xlarge up) {
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+      a {
+        color:#ffffff;
+        &:hover {
+          color: #ffffff;
+        }
+      }
+      h3, h6 {
+        color: #ffffff;
+        &.btm-divider:after {
+          background-color: #ffffff;
+        }
+      }
+      h3 {
+        margin-bottom: -3rem;
+        @include breakpoint(medium up) {
+          margin-bottom: 0;
+        }
+      }
+      h6{
+        font-size: 1.4rem;
+        font-family: $primary-font;
+        max-width: 63%;
+        margin-top: 0;
+        @include breakpoint(medium up) {
+          max-width: 54%;
+        }
+        @include breakpoint(large up) {
+          margin-top: 6rem;
+          max-width: 63%;
+        }
+      }
+      .contact-list {
+        color: #ffffff;
+        li {
+          margin-left: 0;
+          color: #ffffff;
+          border: none;
+          padding-left: 4.2rem;
+          padding-bottom: 2.1rem;
+          line-height: 2rem;
+          font-size: 1.5rem;
+          @include breakpoint(medium up) {
+            font-size: 1.6rem !important;
+          }
+          a {
+            color: #ffffff;
+            font-size: 1.6rem;
+            &:hover {
+              color: #ffffff;
+              text-decoration: underline;
+            }
+            /* Force Wrap of long URLs */
+            /* These are technically the same, but use both */
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            -ms-word-break: break-all;
+            /* This is the dangerous one in WebKit, as it breaks things wherever */
+            word-break: break-all;
+            /* Instead use this non-standard one: */
+            word-break: break-word;
+            /* Adds a hyphen where the word breaks, if supported (No Blink) */
+            -ms-hyphens: auto;
+            -moz-hyphens: auto;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+            /* END - Force Wrap */
+          }
+          .contact-list__media {
+            margin-top: -.2rem;
+            margin-left: -4.5rem;
+            font-size: 2rem;
+            @include breakpoint(medium up) {
+              font-size: 2.4rem;
+            }
+          }
+        } //end li
+      } // end contact list
+      .social-media {
+        margin-left: -1.3rem;
+        li {
+          margin-left: 0;
+          font-size: 2.2rem;
+          @include breakpoint(medium up) {
+            font-size: 2.3rem;
+          }
+          &:before {
+            display: none;
+          }
+          a {
+            padding: .9rem .4rem;
+            border-radius: 2.1rem;
+            &:hover,
+            &:focus {
+              background-color: $accent-color-2a;
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
+      } // end social
+    } // end contact single
+	} // end contact single module
+} // end @screen

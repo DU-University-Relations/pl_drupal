@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="columns small-12 featured-courses-module-title">
+		{% include "@atoms/headline.twig" with {'title' : title, 'type' : 'h2', 'cssClass':'btm-divider text-center'} %}
+    </div>
+</div>
+<div class="featured-course-cards-module">
+  <div class="row js-featured-courses">
+	{% block curriculums %}
+		{% for curriculum in curriculums %}
+			{% include "@molecules/featured-curricula-card.twig" with curriculum %}
+		{% endfor %}
+	{% endblock %}
+  </div>
+</div>

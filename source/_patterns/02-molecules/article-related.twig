@@ -1,0 +1,6 @@
+<article{{ attributes }} >
+    {{ thumbnail }}
+    <div class="article-related-type">{{ type }}</div>
+    {% include "@atoms/headline.twig" with { 'title' : title, 'type' : 'h3' } %}
+    {% include "@atoms/button.twig" with { 'title': "Read More", 'type' : 'small' } %}
+</article>

@@ -1,0 +1,33 @@
+.cta-inline-module {
+  border-left: .2rem solid $accent-color-2b;
+  padding: 0 0 0 1.0rem;
+  margin-bottom: 8.6rem;
+  @include breakpoint(medium up) {
+    padding: 0 0 0 1.0rem;
+    margin-bottom: 3.0rem;
+  }
+  @include breakpoint(large up) {
+    padding: 0 0 0 1.0rem;
+    margin-bottom: 1.5rem;
+  }
+  .inline-content {
+    h4 {
+      font-weight: 600;
+      font-size: 2.4rem;
+      @include breakpoint(large up) {
+        font-size: 2.8rem;
+      }
+    }
+    .btn {
+      margin-top: .5rem;
+      @include breakpoint(medium up) {
+        margin-top: 0;
+      }
+    }
+  }
+  .cta-inline {
+    text-align: left;
+    font-style: italic;
+    color: $accent-color-2b;
+  }
+}

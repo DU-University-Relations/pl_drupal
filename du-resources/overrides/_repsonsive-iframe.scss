@@ -1,0 +1,58 @@
+$embed-responsive-aspect-ratios: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$embed-responsive-aspect-ratios: join(
+  (
+    (21 9),
+    (16 9),
+    (4 3),
+    (1 1),
+  ),
+  $embed-responsive-aspect-ratios
+);
+
+.embed-responsive-16by9 {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  &.left {
+    @include breakpoint(medium up) {
+      float: right;
+      margin-left: 1rem;
+      width: 75%;
+    }
+  }
+  &.right {
+    @include breakpoint(medium up) {
+      float: right;
+      margin-left: 1rem;
+      width: 75%;
+    }
+  }
+  &::before {
+    display: block;
+    content: "";
+  }
+  iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+
+@each $embed-responsive-aspect-ratio in $embed-responsive-aspect-ratios {
+  $embed-responsive-aspect-ratio-x: nth($embed-responsive-aspect-ratio, 1);
+  $embed-responsive-aspect-ratio-y: nth($embed-responsive-aspect-ratio, 2);
+
+  .embed-responsive-#{$embed-responsive-aspect-ratio-x}by#{$embed-responsive-aspect-ratio-y} {
+    &::before {
+      padding-top: percentage($embed-responsive-aspect-ratio-y / $embed-responsive-aspect-ratio-x);
+    }
+  }
+}

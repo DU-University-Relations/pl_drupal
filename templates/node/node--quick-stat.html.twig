@@ -1,0 +1,15 @@
+{% embed "@organisms/single-quick-stat.twig" %}
+    {% set view_mode = content.view_mode %}
+    {% set title = content.title %}
+    {% set item = {
+        'image': content.field_quick_stat_thumbnail|field_value,
+        'headline': content.field_quick_stat_headline|field_value,
+        'statistic': content.field_quick_stat_statistic|field_value,
+        'caption': content.field_quick_stat_caption|field_value,
+        'citation': content.field_quick_stat_citation|field_value,
+        "url": content.field_quick_stat_link.0['#url'],
+        "target": content.field_quick_stat_link.0['#options']['attributes']['target'],
+        "alt_text": content.field_quick_stat_link.0['#options']['attributes']['name']
+    } %}
+{% endembed %}
+

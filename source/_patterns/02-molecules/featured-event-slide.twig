@@ -1,0 +1,32 @@
+<div class="slick-slide{% if slide_item.is_active %} is-active{% endif %}">
+    <div class="row">
+        <div class="columns small-12 medium-12 large-6">
+            {% block image %}
+                {% include "@atoms/image.twig" with image %}
+            {% endblock %}
+        </div>
+        <div class="columns small-12 medium-12 large-6">
+            <div class="featured-events__content">
+                {% if date %}
+                    <p class="featured-events__date">{{ date }}</p>
+                {% endif %}
+                {% if title %}
+                    {% include "@atoms/headline.twig" with { "headline": title, "type": "h4" } %}
+                {% endif %}
+                {% block paragraph %}
+                    {% include "@atoms/paragraph.twig" with { "text": text } %}
+                {% endblock %}
+                {% if details|length > 0 %}
+                    <ul class="featured-events__details">
+                        {% for detail in details %}
+                            <li>{% include "@atoms/_du-icon.twig" with {"icon_name" : detail.icon_name} %} {{ detail.detail_text }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if button %}
+                    <p class="btn-wrap">{% include "@atoms/button.twig" with button %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

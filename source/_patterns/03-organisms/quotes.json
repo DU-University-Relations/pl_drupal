@@ -1,0 +1,29 @@
+{
+	"slides": [
+		{
+			"is_active": true,
+			"text": "I love DU. It’s big enough that I could discover so many new things but small enough that I don’t feel like a face in the crowd.",
+			"cite": "Zane Sanchez <small>Undergraduate</small>",
+			"image": {
+				"src": "/_duresources/foundation/images/home_quote_img.jpg",
+				"alt_text": "alt text"
+			}
+		},
+		{
+			"text": "This is a second quote. This is an interesting quote. Really, really interesting. And even more interesting.",
+			"cite": "First Lastname <small>Graduate</small>",
+			"image": {
+				"src": "/_duresources/foundation/images/home_quote_img1.jpg",
+				"alt_text": "alt text"
+			}
+		},
+		{
+			"text": "This is a third quote. This is an interesting quote. Really, really interesting. And even more interesting.",
+			"cite": "First Lastname <small>Graduate</small>",
+			"image": {
+				"src": "/_duresources/foundation/images/home_quote_img2.jpg",
+				"alt_text": "alt text"
+			}
+		}
+	]
+}

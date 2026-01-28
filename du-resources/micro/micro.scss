@@ -1,0 +1,71 @@
+// Setting nav height across breakpoints.
+.micro .header #main-menu-wrap {
+  transition-duration: all 0.5s ease;
+  height: 60px;
+  @media (min-width: 600px) {
+    height: 8.0rem;
+  }
+  @include breakpoint(medium up) {
+    height: 9.0rem;
+  }
+  @include breakpoint(large up) {
+    height: 11.2rem;
+  }
+}
+
+// Header logged in
+.adminimal-admin-toolbar.micro {
+  padding-top: 1.9rem !important;
+}
+
+.adminimal-admin-toolbar.micro .unit-nav-group {
+  margin-top: 8rem;
+}
+
+// Setting nav height when stuck.
+.micro .header .is-stuck #main-menu-wrap {
+  height: 6.0rem;
+}
+
+// Setting height of navigation links.
+.micro .header #main-menu-wrap #main-menu > ul > li > a {
+  height: 6.0rem;
+  @include breakpoint(medium up) {
+    height: 9.0rem;
+  }
+  @include breakpoint(large up) {
+    height: 11.2rem;
+  }
+}
+
+// Setting logo dimensions.
+// Text logo
+.micro .header #main-menu-wrap a.text-logo {
+  display: flex;
+  margin-left: 2rem;
+  @include breakpoint(medium up) {
+    margin-left: 0;
+  }
+}
+
+// Card-module footer override
+.micro footer .cards-module {
+  background: #fff;
+  position: relative;
+}
+
+.micro footer .cards-module:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: calc(100% - 3rem);
+  background: #f4f4f4;
+  margin-top: 3rem;
+  position: absolute;
+  top: 0;
+}
+
+.micro footer .cards-module > .row {
+  margin-top: 0;
+  top: 0;
+}

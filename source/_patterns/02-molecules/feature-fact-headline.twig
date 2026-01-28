@@ -1,0 +1,15 @@
+<div class="quick-fact-module__content {% if statistic %} statistic {% endif %}">
+    <div class="row">
+        {% if item.url is not empty %}<a href="{{ item.url }}" title="{{ item.alt_text }}" target="{{ item.target }}">{% endif %}
+        <h3>
+            <strong>{{ statistic }}</strong>
+            <span class="headline">{{ headline }}</span>
+            {% if caption %}
+            <span class="caption">{{ caption }}</span>
+            {% endif %}
+            {% if citation %}
+            <span class="citation">{{ citation }}</span>
+            {% endif %}
+        </h3>{% if item.url is not empty %}</a>{% endif %}
+    </div>
+</div>

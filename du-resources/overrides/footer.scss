@@ -1,0 +1,66 @@
+footer {
+	text-align: center;
+	.menu {
+		flex-wrap: wrap;
+		li {
+			margin-left: 0;
+			a {
+				color: white;
+				font-size: 1.4rem;
+				font-weight: normal;
+				font-family: $primary-font;
+				text-decoration: none;
+				padding: $menu-item-padding;
+				&:hover,
+				&:focus {
+					color: $secondary-color-4;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.bg-dark-gray {
+		padding: 3.6rem 0;
+	}
+	.copyright {
+		background-color: $neutral-color-1;
+		color: #797979;
+		font-size: 1.4rem;
+		padding: 1.5rem;
+		font-family: $primary-font;
+		margin-bottom: 0;
+	}
+	@include breakpoint(medium down) {
+		.has-gray-band {
+			> .row {
+				padding-left: 5.5rem;
+				padding-right: 5.5rem;
+				@include breakpoint(small down) {
+					padding-left: 1.8rem;
+					padding-right: 1.8rem;
+				}
+			}
+		}
+	}
+}// end footer
+.has-gray-band { //seen only on footer for now
+	position: relative;
+	padding-bottom: 5.0rem;
+	&:after {
+		content: "";
+		background-color: #f4f4f4;
+		height: 13.8rem;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+
+	@include breakpoint(small down) {
+		padding-bottom: 3.0rem;
+		&:after {
+			height: 27.4rem;
+		}
+	}
+}

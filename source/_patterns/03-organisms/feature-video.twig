@@ -1,0 +1,29 @@
+<div class="feature-video-module buffer-on-inner-row">
+    {% if blockquote %}
+        {% include "@organisms/blockquote.twig" with blockquote %}
+    {% endif %}
+    <div class="row">
+    	<div class="columns small-12 medium-12 large-8">
+    		<div class="feature-video-module__video-wrapper">
+                {% if is_youtube %}
+                    {% embed "@atoms/YouTube.twig" %}
+                        {% block youtube_embed %}
+                            {{ youtube_embed }}
+                        {% endblock %}
+                    {% endembed %}
+                {% else %}
+                    <a href="#" class="video-toggle show-for-large">
+                        <span class="video-toggle__text">
+                            <span class="show-for-sr">Play/Pause Video</span>
+                            {% for icon in play_pause_icons %}
+                                {% include "@atoms/_du-icon.twig" with icon %}
+                            {% endfor %}
+                            {{ play_label }}
+                        </span>
+                    </a>
+                    {% include "@atoms/video.twig" with video_upload %}
+                {% endif %}
+        	</div>
+    	</div>
+    </div>
+</div>

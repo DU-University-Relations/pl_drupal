@@ -1,0 +1,18 @@
+<div class="information-overview-module buffer-on-inner-row" id="uniqueInfoOverviewID">
+
+    <div class="row">
+            {% if quick_facts %}
+                {% if statistic %}
+			         {% include "@molecules/quick-fact.twig" %}
+                {% endif %}
+                {% if src %}
+			         {% include "@molecules/quick-fact.twig" %}
+		        {% endif %}
+                {% if list %}
+			      {% include "@molecules/quick-fact.twig" %}
+		        {% endif %}
+		    {% endif %}
+
+    </div>
+    
+</div>

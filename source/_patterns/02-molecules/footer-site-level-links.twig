@@ -1,0 +1,12 @@
+<div class="footer-site-level-links">
+    <div class="large-10 medium-8 footer-links">
+        {% for item in footerlinks %}
+            <a href="{{ item.href }}"
+                {% if item.alt_text %}title="{{ item.alt_text|e('html_attr') }}"{% endif %}
+                {% if item.onclick %}onclick="{{ item.onclick|e('html_attr') }}"{% endif %}
+                {% if item.target %}target="{{ item.target|e('html_attr') }}"{% endif %} >
+              {{ item.title }}
+            </a>
+        {% endfor %}
+    </div>
+</div>

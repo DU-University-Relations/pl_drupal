@@ -1,0 +1,124 @@
+.quotes-module__wrapper {
+	position: relative;
+	&,
+	+ .row {
+		margin-top: 15.0rem;
+		@include breakpoint(small down) {
+			margin-top: 6.0rem;
+		}
+	}
+	@include breakpoint(xlarge) {
+		&:before {
+			content: "";
+			background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			margin-top: -17.5rem;
+			left: 0;
+			width: 100%;
+			height: 35.0rem;
+			z-index: 0;
+		}
+	}
+}
+.quotes-module {
+	.orbit-slide,
+	.slick-slideshow {
+		> .row {
+			margin-left: 0;
+			margin-right: 0;
+			> .columns {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+	.quotes-module__content {
+		background-color: $accent-color-2c;
+		padding: 0 25.0rem 0 5.0rem;
+		display: table;
+		width: 100%;
+		@include breakpoint(medium) {
+			min-height: 44.5rem;
+			@include breakpoint(large down) {
+				min-height: 34.5rem;
+			}
+		}
+		@include breakpoint(large down) {
+			padding-right: 20.0rem;
+			padding-left: 2.5rem;
+		}
+		@include breakpoint(small down) {
+			padding: 5.4rem 2.5rem;
+		}
+		blockquote {
+			display: table-cell;
+			vertical-align: middle;
+			color: white;
+			text-align: center;
+			font-style: normal;
+			padding: 0;
+			p {
+				color: white;
+				font-family: $breve-display !important;
+				font-size: 3.8rem;
+				line-height: 5.1rem;
+				@include breakpoint(large down) {
+					font-size: 2.8rem;
+					line-height: 3.8rem;
+				}
+				@include breakpoint(medium down) {
+					font-size: 2.6rem;
+					line-height: 3.6rem;
+				}
+				@include breakpoint(small down) {
+					font-size: 2.3rem;
+					line-height: 2.9rem;
+				}
+			}
+			cite {
+				&:before {
+					display: none;
+				}
+				font-family: $primary-font;
+				font-weight: 500;
+				font-style: normal;
+				color: white;
+				font-size: 1.8rem;
+				line-height: 2.2rem;
+				small {
+					font-size: 1.5rem;
+					text-transform: uppercase;
+					display: block;
+					margin-top: 1.0rem;
+				}
+			}
+			@include breakpoint(small down) {
+				padding-bottom: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.quotes-module__image {
+		position: relative;
+		left: -20.8rem;
+		margin-right: -20.0rem;
+		top: 60px;
+		@include breakpoint(large down) {
+			left: -15.8rem;
+			margin-right: -15.0rem;
+			top: 4.0rem;
+		}
+		@include breakpoint(small down) {
+			left: 0;
+			margin-right: 0;
+			top: 0;
+		}
+	}
+}// end .quotes-module
+// Overriding styles for newsroom quote.
+.orbit-slide.quote,
+.slick-slideshow.quote {
+	position: relative;
+}

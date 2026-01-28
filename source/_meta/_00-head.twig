@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="{{ htmlClass }}" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1"/>
+
+    <title>{{ title }}</title>
+    <meta name="description" content="Page specific description. No longer than 155 characters."/>
+
+    <!-- Essential META Tags -->
+    <meta property="og:title" content="Defaults to Page Title"/>
+    <meta property="og:description" content="Defaults to Page Description"/>
+    <meta property="og:image" content="https://www.du.edu/facebook_avatar.jpg"/>
+    <meta property="og:url" content="https://www.du.edu/"/>
+    <meta property="og:site_name" content="University of Denver"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:image:alt" content="University of Denver shield"/>
+    <meta name="twitter:site" content="@uofdenver"/>
+
+    {% if is-home %}
+        <!-- HOME PAGE ONLY -->
+        <script type="application/ld+json">
+    {
+       "@context": "http://schema.org",
+       "@type": "WebSite",
+       "url": "https://www.du.edu/",
+         "potentialAction": {
+         "@type": "SearchAction",
+         "target": "https://www.du.edu/search/{search_term_string}/",
+         "query-input": "required name=search_term_string"
+       },
+       "author": {
+         "@type": "CollegeOrUniversity",
+         "url": "https://www.du.edu/",
+       "name": "University of Denver",
+         "logo": "https://www.du.edu/apple-touch-icon.png",
+         "address": {
+           "@type": "PostalAddress",
+           "addressLocality": "Denver",
+         "addressRegion": "CO",
+         "postalCode": "80208",
+           "streetAddress": "2199 S University Blvd"
+         },
+         "telephone": "(303) 871-2000",
+         "location": {
+           "@type": "Place",
+           "geo": {
+             "@type": "GeoCoordinates",
+             "latitude": "39.676617",
+         "longitude": "-104.961896"
+           }
+         },
+         "founder": {
+           "@type": "Person",
+           "name": "John Evans"
+         },
+         "foundingDate": {
+           "@type": "Date",
+           "@value": "1864-03-05T00:00:00-06:00"
+         }
+       }
+    }
+
+        </script>
+        <meta name="p:domain_verify" content="013556edf2d1ad1f939949f37e000a24"/>
+        <meta name="msvalidate.01" content="734633DF3F913A1A3CEC61CA91D56628"/>
+        <!-- END HOME PAGE ONLY -->
+    {% endif %}
+
+
+
+    <!-- JQUERY -->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- General DU Meta/Link/tracking -->
+    <meta name="author" content="University of Denver"/>
+    <meta name="Copyright" content="Copyright (c) 2017 University of Denver"/>
+    <link rel="alternate" href="http://feeds.feedburner.com/DuNewsroom" type="application/rss+xml" title="University of Denver News RSS Feed"/>
+    <link rel="shortcut icon" href="https://www.du.edu/favicon.ico" sizes="16x16" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="https://www.du.edu/apple-touch-icon.png"/>
+    <link rel="canonical" hreflang="en-US" href="https://www.du.edu/"/>
+    <!-- End General DU Meta/Link/tracking -->
+
+    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+    {{ patternLabHead | raw }}
+    <!-- End Pattern Lab -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../../dest/style.css?cacheBuster={{ cacheBuster }}">
+    <!-- endinject -->
+
+
+</head>
+<body class="{{ bodyClass }}">
+<p class="show-on-focus"><a href="#main-content">Skip to Content</a></p>
+
+<div class="off-canvas-wrap">

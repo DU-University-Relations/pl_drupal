@@ -1,0 +1,23 @@
+{% embed "@molecules/featured-article.twig" %}
+      {% set headline = {
+        "title": content.field_featured_article_headline|field_value,
+        "type": "h3",
+        "cssClass": "btm-divider"
+        }
+      %}
+    {% set category = content.field_featured_article_category[0]['#title'] %}
+    {% block image %}
+        {{ content.field_featured_article_image|field_value }}
+    {% endblock %}
+    {% block paragraph %}
+        {{ content.field_featured_article_teaser|field_value }}
+    {% endblock %}
+    {% if content.field_featured_article_link|field_value %}
+        {% set link = {
+            'href': content.field_featured_article_link.0['#url'],
+            'title': content.field_featured_article_link[0]['#options']['attributes']['title'],
+            'target': content.field_featured_article_link[0]['#options']['attributes']['target'],
+            "onclick": content.field_featured_article_link[0]['#options']['attributes']['onClick']
+        } %}
+    {% endif %}
+{% endembed %}

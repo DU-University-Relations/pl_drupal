@@ -1,0 +1,120 @@
+@media screen {
+
+	.contacts-module {
+		color: #ffffff;
+		> .row {
+			margin-top: 4rem;
+			padding-bottom: 1.6rem;
+			position: relative;
+			top: -3rem;
+			padding-left: 1.8rem;
+			padding-right: 1.8rem;
+			@include breakpoint(medium up) {
+				padding-bottom: 3rem;
+			}
+			@include breakpoint(xlarge up) {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+		.contacts-module__content {
+			background-color: $accent-color-2b;
+			padding: 3rem;
+			margin-bottom: 1.8rem;
+			p {
+				margin-bottom: 3.6rem;
+				font-size: 1.5rem;
+				line-height: 2.2rem;
+				@include breakpoint(medium up) {
+					font-size: 1.6rem;
+					line-height: 2.4rem;
+				}
+				a {
+					color:#ffffff;
+					&:hover {
+						color: #ffffff;
+					}
+				}
+			} //end p
+			p:empty {
+				display: none;
+			}
+			h4 {
+				font-weight: 800;
+				font-size: 2.6rem;
+				line-height: 3rem;
+				color: #ffffff;
+			}
+			.contact-list {
+				color: #ffffff;
+				li {
+					margin-left: 0;
+						color: #ffffff;
+						border-color: #044f62;
+					a {
+						color: #ffffff;
+						&:hover {
+							color: #ffffff;
+							text-decoration: underline;
+						}
+					}
+				}
+			} //end contact-list
+		}//end contacts-module__content
+		@include breakpoint(small down) {
+			>.row > .columns:first-child .contacts-module__content {
+				&.expanded {
+					border-top: .5rem solid $accent-color-2b;
+					margin-top: 0;
+				}
+			}
+			.contacts-module__content {
+				.js & {
+					padding: 1rem 1.4rem;
+					margin-bottom: 0;
+					border-width: 0 0 .1rem 0;
+					border-style: solid;
+					border-color: $neutral-color-4;
+					&.expanded {
+						border-width: .5rem 0;
+						border-color: $accent-color-2b;
+						margin-top: 0px;
+						margin-bottom: .1rem;
+						> h4 {
+							&:after {
+								content: '\e808';
+								color: #ffffff;
+							}
+							+ .contacts-module__hidden-on-small {
+								max-height: 150rem;
+							}
+						}
+					}// end expanded
+					> h4 {
+						font-size: 2.2rem;
+						line-height: 2.6rem;
+						display: block;
+						padding-top: .4rem;
+						padding-right: 3rem;
+						padding-bottom: .5rem;
+						position: relative;
+						cursor: pointer;
+						&:after {
+							content: "\e809";
+							font-family: $icon-font;
+							position: absolute;
+							right: 0;
+							top: 50%;
+							margin-top: -.9rem;
+						}
+						+ .contacts-module__hidden-on-small {
+							max-height: 0;
+							overflow: hidden;
+							transition: max-height 0.5s ease;
+						}
+					}
+				}
+			}
+		}
+	} //end .contacts-module
+}//end @screen

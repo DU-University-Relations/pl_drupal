@@ -1,0 +1,27 @@
+
+
+{% if header %}
+    <div class="row">
+        <div class="columns small-12">
+            {% include "@atoms/headline.twig" %}
+        </div>
+    </div>
+{% endif %}
+
+<div class="related-stories-module{% if buffer_top %} buffer-top{% endif %} buffer-on-inner-row orbit" id="{% if not specific_id %}uniqueRelatedStoriesID{% endif %}{% if specific_id %}{{ specific_id }}{% endif %}" data-orbit-small>
+
+    <div class="row orbit-container">
+        {% if not API_enabled %}
+
+            {% if related_stories %}
+              {#  {% include "@molecules/related-story.twig" %}#}
+            {% endif %}
+
+        {% endif %}
+
+    </div>
+    <nav class="orbit-bullets show-for-small-only">
+        <button class="is-active" data-slide="0"><span class="show-for-sr">Slide 1</span></button>
+        <button data-slide="1"><span class="show-for-sr">Slide 2</span></button>
+    </nav>
+</div>

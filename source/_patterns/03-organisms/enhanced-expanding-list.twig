@@ -1,0 +1,57 @@
+{% if col_header %}
+    <div class="row">
+        <div class="columns">
+            {% include "@atoms/headline.twig" with col_header %}
+        </div>
+    </div>
+{% endif %}
+{% if expanding_list is not empty %}
+    <div class="row">
+        <div class="columns">
+            <div class="item-list row" id="enhanced-expanding-list-container">
+                <ul class="accordion" data-multi-expand="true" data-allow-all-closed="true" data-accordion="data-accordion" role="tablist">
+                    {% for item in expanding_list %}
+                        <li class="accordion-item" data-accordion-item="true">
+                            <a href="#" class="accordion-title"> <!--Visible when closed-->
+                                <div class="expanded row expanding-item">
+                                    <div class="small-12 medium-6 large-4 columns expanding-item-title">
+                                        {% if item.title_headline %}
+                                        <p class="title-headline">{{ item.title_headline }}</p>
+                                        {% endif %}
+                                        {% if item.title %}
+                                            <h3>{{ item.title }}</h3>
+                                        {% endif %}
+                                    </div>
+                                    <div class="small-12 medium-5 large-4 large-offset-1 columns subtitle">
+                                        {% if item.subtitle %}
+                                            <h4>{{ item.subtitle}}</h4>
+                                        {% endif %}
+                                        {% if item.summary %}
+                                            <p class="excerpt">{{ item.summary }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="accordion-content" data-tab-content> <!--Visible when open only-->
+                                <div class="expanded row">
+                                    <div class="small-12 small-order-2 medium-order-2 medium-12 large-4 large-order-1 columns">
+                                        {% if item.button.title %}
+                                            <div class="cta">
+                                                {% include "@atoms/button.twig" with item.button %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="small-12 small-order-1 medium-order-1 medium-12 large-6 large-offset-1 large-order-2 columns">
+                                        {% if item.text['#text'] %}
+                                            {{ item.text['#text']|raw }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}

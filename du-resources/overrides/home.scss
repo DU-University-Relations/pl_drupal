@@ -1,0 +1,401 @@
+//@include fontFace ('BreveDisplay', 'fonts/breve-display-web/regular/BreveDisplay', normal, normal);
+//@include fontFace ('BreveDisplay', 'fonts/breve-display-web/stencil/BreveDisplay-Stencil', normal, bold);
+//@include fontFace ('BreveNews', 'fonts/breve-news-web/book/BreveNews-Book', normal, normal);
+//@include fontFace ('BreveNews', 'fonts/breve-news-web/book/BreveNews-BookItalic', italic, normal);
+//@include fontFace ('BreveNews', 'fonts/breve-news-web/bold/BreveNews-Bold', normal, bold);
+//@include fontFace ('BreveNews', 'fonts/breve-news-web/bold/BreveNews-BoldItalic', italic, bold);
+
+//@include fontFace ('BreveSlabTitle', 'fonts/breve-slab-title-web/thin/BreveSlabTitle-Thin', normal, 300);
+
+.du-home { //:not(.micro)    // this is for headers that are not fixed and scroll with the page and the micro template
+	header { // see top-bar-main-menu.scss for global .header styles
+		// min-height: 20rem; // this spaces content if no image loads
+		// min-height: initial;
+		@include breakpoint(large up) {
+			// height: 39vw; // aspect ratio of image height to width
+		}
+		&.hero-video.hero-image {
+			height: auto;
+			@media (min-width: 1200px) {
+				height: 39vw;
+			}
+			@media (min-width: 1120px) and (max-width: 1199px) {
+				height: 63rem;
+			}
+			@media (min-width: 1024px) and (max-width: 1119px) {
+				height: 63.0rem;
+			}
+		}
+		&:before,
+		&:after {
+			@include breakpoint(medium up) {
+				content: "";
+				width: 50%;
+				border-bottom: 4rem solid white;
+				position: absolute;
+				bottom: 0;
+				height: 4rem;
+				z-index: 1;
+			}
+		}
+		&:before {
+			border-right: 4rem solid transparent;
+			left: 0;
+			margin-right: 4rem;
+		}
+		&:after {
+			border-left: 4rem solid transparent;
+			right: 0;
+			margin-left: 4rem;
+		}
+		@media screen and (max-width: 920px){
+			&:before,
+			&:after {
+				border-bottom-width: 3rem;
+				height: 3rem;
+			}
+			&:before {
+				border-right-width: 3rem;
+				margin-right: 3rem;
+			}
+			&:after {
+				border-left-width: 3rem;
+				margin-left: 3rem;
+			}
+		}
+		.hero-media {
+			@include breakpoint(large) {
+				display: block;
+			}
+			> video {
+				width: 100%;
+				@media (min-width: 1200px) and (max-width: 1488px) {
+					width: 148.8rem;
+					margin-left: -74.4rem;
+					height: 83.7rem;
+					left: 50%;
+					position: relative;
+					min-height: 0;
+					min-width: 0;
+				}
+				@media (min-width: 1120px) and (max-width: 1199px) {
+					min-width: 100%;
+					width: 100%;
+					position: static;
+					margin-left: 0;
+					height: auto;
+				}
+				@media (min-width: 1024px) and (max-width: 1119px) {
+					width: 112.0rem;
+					margin-left: -56.0rem;
+					height: 63.0rem;
+					left: 50%;
+					position: relative;
+					min-height: 0;
+					min-width: 0;
+				}
+				@include breakpoint(medium down) {
+					width: 158.8rem;
+					margin-left: -79.4rem;
+					left: 50%;
+					min-height: 0;
+					min-width: 0;
+					position: relative;
+				}
+				@include breakpoint(small down) {
+					width: 126.0rem;
+					margin-left: -63.0rem;
+					height: 500px;
+				}
+			}
+			&.hero-embed-wrapper {
+				display: flex;
+			}
+		}
+		#hero-media__caption {  // target the ID to gain specificity
+			padding-left: 2.2rem;
+			padding-right: 2.2rem;
+			position: absolute;
+			top: 50%;
+			.unit-site & {
+				position: relative;
+				top: inherit;
+			}
+			@include breakpoint(medium up) {
+				padding-left: 8.0rem;
+				padding-right: 8.0rem;
+			}
+			@include breakpoint(xlarge up) {
+				padding-left: inherit;
+				padding-right: inherit;
+			}
+
+			h1, h2 {
+				font-size: 3.0rem;
+				line-height: 4.0rem;
+				color: white;
+				font-weight: bold;
+				font-family: $breve-display;
+				@media screen and (min-width: 400px) and (max-width: 768px) {
+					font-size: 4.8rem;
+					line-height: 5.1rem;
+				}
+				@include breakpoint(medium up) {
+					font-size: 7.0rem;
+					line-height: 7.3rem;
+				}
+				@include breakpoint(xlarge up) {
+					font-size: 7.8rem;
+					line-height: 8.1rem;
+				}
+				a {
+					color: inherit;
+					text-decoration: inherit;
+				}
+				p {
+					line-height: 1;
+					font-size: inherit;
+				}
+				span.line {
+					line-height: 1.8rem;
+					display: inline;
+					@include breakpoint(medium up){
+						display: block;
+					}
+				}
+			}
+		}
+	}// end header
+
+	#main-content {
+		padding-top: 5.0rem;
+		padding-bottom: 15.0rem;
+		@include breakpoint(large down) {
+			padding-top: 4.0rem;
+			padding-bottom: 10.0rem;
+		}
+		@include breakpoint(small down) {
+			padding-top: 3.0rem;
+			padding-bottom: 5.0rem;
+		}
+		@media screen and (max-width: 500px) {
+			padding-top: 0;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: 300;
+		}
+		h1, h2 {
+			font-size: 6.6rem;
+			line-height: 6.6rem;
+			@include breakpoint(large down) {
+				font-size: 5.5rem;
+				line-height: 5.5rem;
+			}
+			@include breakpoint(small down) {
+				font-size: 3.8rem;
+				line-height: 3.8rem;
+				margin-top: 1.5rem;
+			}
+		}
+		h3 {
+			font-size: 4.5rem;
+			line-height: 5.9rem;
+			@include breakpoint(large down) {
+				font-size: 3.3rem;
+				line-height: 4.4rem;
+			}
+		}
+		p {
+			font-family: 'BreveNews', san-serif;
+		}
+		> .row + .row {
+			margin-top: 15.0rem;
+			@include breakpoint(medium down) {
+				margin-top: 7.0rem;
+			}
+			@include breakpoint(small down) {
+				margin-top: 6.0rem;
+			}
+		}
+    // Feature Media and caption
+    .feature-media {
+      & > div {
+        width: 100%;
+        margin: 2.0rem 0 4.4rem 0;
+        text-align: center;
+      }
+      span.caption {
+        margin-bottom: 3.0rem;
+        p {
+          font-size: 1.4rem;
+          font-style: italic;
+          line-height: 1.8rem !important;
+          @include breakpoint(medium up) {
+            font-size: 1.6rem;
+            line-height: 2.2rem !important;
+          }
+        }
+      }
+    }
+    .feature-media-caption-margin > div {
+      margin-bottom: 1.0rem;
+    }//end Feature Media and caption
+	}
+	.du-home__section-1 {
+		align-items: center;
+        margin-top: 3.0rem;
+		p {
+			font-size: 2.4rem;
+			line-height: 3.2rem;
+			@include breakpoint(large down) {
+				font-size: 1.8rem;
+				line-height: 2.8rem;
+			}
+			@include breakpoint(small down) {
+				font-size: 1.6rem;
+				line-height: 2.3rem;
+			}
+		}
+		@include breakpoint(xlarge) {
+			h2.btm-divider {
+				margin-bottom: 5.3rem;
+			}
+			.list-of-links--alt {
+				text-align: center;
+				a {
+					text-align: left;
+				}
+			}
+		}
+		@media screen and (max-width: 499px) { //iphone 6/7/8 Plus
+			margin-top: 2.0rem;
+		}
+		@media screen and (max-width: 375px) { //iphone 6/7/8
+			// margin-top: -2.0rem;
+		}
+	}
+	.du-home__academic-programs {
+		.search-box {
+			max-width: none;
+			input[type="text"] {
+				font-weight: 300;
+				font-size: 4.0rem;
+				line-height: 6.7rem;
+				margin-bottom: 2.7rem;
+				height: 8.1rem;
+				@include breakpoint(large down) {
+					font-size: 3.0rem;
+					line-height: 4.5rem;
+					margin-bottom: 2.6rem;
+					height: 5.9rem;
+				}
+				@include breakpoint(small down) {
+					font-size: 2.2rem;
+					line-height: 3.7rem;
+					margin-bottom: 2.0rem;
+					padding-left: .5rem;
+					padding-right: 3.6rem;
+					height: 5.1rem;
+				}
+			}
+			@include breakpoint(small down) {
+				> button {
+					right: .8rem;
+					bottom: 1.2rem;
+					> .icon-du-cust-search {
+						font-size: 2.0rem;
+					}
+				}
+			}
+		}
+		.btn {
+			font-size: 1.9rem;
+			text-align: center;
+			display: flex;
+			width: 100%;
+			height: 6.4rem;
+			align-items: center;
+			justify-content: center;
+			line-height: 2.1rem;
+			//padding-bottom: 5;
+			//padding-top: 5;
+			@include breakpoint(large down) {
+				font-size: 1.7rem;
+				line-height: 1.9rem;
+			}
+			@include breakpoint(small down) {
+				height: 8.4rem;
+			}
+			.icon-du-cust-search {
+				padding-left: .6rem;
+			}
+			&:hover,
+			&:focus {
+				cursor: pointer;
+			}
+		}
+		@include breakpoint(small down) {
+			button {
+				margin-bottom: .4rem;
+			}
+		}
+	}
+
+	@include breakpoint(large down) {
+		#main-content > .row.row--expanded {
+			max-width: 120rem;
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	//Fixed positioning of Header Media
+	header .hero-media {
+		position: relative;
+		// @include breakpoint(large up) {
+		// 	position: fixed;
+		// }
+	}
+	&.du-alert--active {
+		header .hero-media {
+			position: absolute;
+		}
+	}
+	#main-content,
+	footer {
+		background-color: white;
+	}
+	// for unit site homepage only-- make headers bold - not h1, h2, h3
+	&.unit-site {
+		#main-content {
+			h4, h5, h6 {
+				font-weight: 600;
+			}
+		}
+	}
+}  //end of du-home
+
+
+//Fix Video hero for unit and inline-unit sites
+body.unit-site.du-home header .hero-media>video {
+	height: auto;
+	@media (min-width: 1200px) and (max-width: 1488px) {
+		height: auto
+	}
+	@media (min-width: 1024px) and (max-width: 1119px) {
+		height: auto;
+	}
+	@include breakpoint(small down) {
+		height: auto;
+	}
+}
+
+/*.du-home header.header--fade-out-gold {
+	.hero-media {
+		&:before {
+			background-color: rgba(184, 161, 98, 0.25);
+		}
+	}
+}*/

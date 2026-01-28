@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="columns small-12 medium-5 medium-offset-7">
+		{% if headline %}
+			{% include "@atoms/headline.twig" with {type: "h3", title: headline, cssClass: "top-divider"}  %}
+		{% endif %}
+	</div>
+</div>
+<div id="{{ specific_id }}" class="row three-col-facts" style="background-image: url('{{ src }}');">
+	<div class="columns small-12" data-sticky-container="data-sticky-container">
+		<div class="show-for-small-only">
+			<div class="three-col-facts__img sticky" data-sticky="data-sticky" data-margin-top="4" data-margin-bottom="0" data-anchor="{{ specific_id }}" data-sticky-on="small">
+				{% include "@atoms/image.twig" %}
+			</div>
+		</div>
+	</div>
+	{% for cols_item in cols %}
+		<div class="columns small-12 medium-4 three-col-facts__item">
+			<p><strong>{{ cols_item.number }}</strong> {{ cols_item.description }}</p>
+			{#<p>{{ cols_item }}</p>#}
+		</div>
+	{% endfor %}
+</div>

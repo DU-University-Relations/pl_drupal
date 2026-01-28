@@ -1,0 +1,182 @@
+@media screen {
+    .research-project {
+        padding-bottom: 3.6rem;
+        .columns.page-title-band {
+            padding-left: 0;
+        }
+        .project-info {
+            padding: 1rem 0 3.6rem 0;
+            font-size: 2.2rem;
+            h6 {
+                font-size: 2.2rem;
+                font-weight: bold;
+            }
+        }
+        .research-project-lab {
+            margin-bottom: 1.8rem;
+            a {
+                text-decoration: none;
+            }
+        }
+        .research-project-date {
+            padding-bottom: 2.7rem;
+            font-weight: bold;
+        }
+        .research-project-faculty {
+            font-weight: bold;
+        }
+        .research-project-image,
+        .research-project-video {
+            margin-top: 2.2rem;
+            margin-bottom: 2.2rem;
+        }
+        .research-project-abstract,
+        .research-project-text {
+            padding-top: 0.9rem;
+            font-size: 1.8rem;
+        }
+        .sidebar {
+            margin-top: 1rem;
+            margin-bottom: 3.6rem;
+            p {
+                line-height: 2rem;
+                font-size: 1.4rem;
+            }
+            p.title { margin-bottom: 1.3rem }
+            p:last-child {
+                margin-bottom: 1.8rem;
+            }
+            & > div {
+                padding-top: 1.8rem;
+                border-top: .2em solid $neutral-color-7;
+            }
+            & :nth-child(2) {
+                border-top: none;
+            }
+            .research-interest {
+                padding-bottom: 0.5rem;
+                border-bottom: .2rem solid $neutral-color-7;
+            }
+        }
+        .title {
+            font-weight: bold;
+        }
+        h3 > p {
+           line-height: normal;
+        }
+        .pis, .author > p {
+            font-style: italic;
+        }
+        .related-materials {
+            margin-bottom: 5.4rem;
+            .columns.large-up-3 {
+                padding-right: 0;
+            }
+            .columns {
+                padding-right: 2.6rem;
+                vertical-align: top;
+            }
+            .columns:nth-child(3n+0) {
+                padding-right: 0;
+            }
+            .large-8 .columns {
+                flex: 0 0 50%;
+                max-width: 49%;
+            }
+            .large-up-3 .columns {
+                flex: 0 0 33.33333%;
+                max-width: 32.33333%;
+            }
+            .medium-up-2 .columns {
+                flex: 0 0 50%;
+                max-width: 49%;
+            }
+            .small-up-1 .columns {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .related-card-section {
+              @include breakpoint(small down) {
+                margin-bottom: 2.7rem;
+              }
+            }
+            h2 {
+              font-weight: bold;
+            }
+            h3 {
+              margin-bottom: 1.5rem;
+            }
+        }
+        .material {
+            padding-left: 0;
+            display: inline-block;
+            margin-bottom: 3.6rem;
+            .btn {
+                padding: 1rem 2.8rem;
+            }
+        }
+        .related-type {
+            font-weight: normal;
+        }
+        .related-title {
+            margin: 0.9rem 0 1.8rem 0;
+            a {
+                color: $neutral-color-2;
+                text-decoration: none;
+            }
+        }
+        .read-more {
+            margin-top: 1.8rem;
+            a {
+                color: $neutral-color-6;
+                text-decoration: none;
+            }
+        }
+    }
+}//end @screen
+
+.research-project-listing {
+    margin-bottom: 6.8rem;
+    .generic-listing {
+        width: 100%;
+    }
+    #main-content {
+        h1 {
+            width: 108rem;
+        }
+    }
+    .large-6:only-child,
+    .medium-6:only-child,
+    .research-item:only-child {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    p {
+        margin-bottom: 0;
+    }
+    .research-items {
+        background: white;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .pager {
+        @include breakpoint(medium down) {
+            margin-bottom: 2rem;
+        }
+        @include breakpoint(small down) {
+            margin-bottom: 1rem;
+        }
+    }
+    .pager__items {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+    .no-results-found {
+        width: 100%;
+        text-align: center;
+        padding: 4rem remx 7rem 4rem;
+    }
+}

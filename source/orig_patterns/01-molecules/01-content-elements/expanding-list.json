@@ -1,0 +1,18 @@
+{	
+	"expanding_list": {
+	    "items": [
+	      {
+	        "title": "Expanding Item 1",
+	        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+	      },
+	      {
+	        "title": "Expanding Item 2",
+	        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+	      },
+	      {
+	        "title": "Expanding Item 3",
+	        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+	      }
+	    ]
+	}
+}

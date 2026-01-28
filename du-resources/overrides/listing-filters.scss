@@ -1,0 +1,118 @@
+.filter-container {
+  padding-top: 2.5rem;
+}
+.filter-container-inner {
+  position: relative;
+  border-bottom: .8rem solid $neutral-color-5;
+}
+
+.listing-filters {
+  position: absolute;
+  z-index: 1;
+  background: #2a2930;
+  color: white;
+  display: none;
+  width: 100%;
+
+  &.open { display: block; }
+
+  .listing-filters-contents form {
+    width: 100%;
+    padding: 2.4rem 2.2rem 2.3rem 2.2rem;
+    @include flex-grid-row();
+  }
+  form [type="text"] {
+    height: 3.3rem;
+  }
+
+  .form-item {
+    @include flex-grid-column(4);
+  }
+  label {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: $primary-font;
+    margin-bottom: .3rem;
+  }
+  .form-item-field-res-date-of-publication-value-min,
+  .form-item-field-res-date-of-publication-value-max {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  .marketing-specializations-form-item {
+    width: 66.6666%;
+  }
+  .marketing-specializations-form-item .form-item {
+    max-width: 50%;
+  }
+
+  /* view filter dropdown displays extra arrow icon,
+  set no image to default browser arrow
+   */
+  select {
+    background-image: none;
+  }
+  .form-actions {
+    margin-top:1.5rem;
+
+    @include flex-grid-column(12);
+    display: flex;
+    justify-content: center;
+    > * + * { margin-left: 1.5rem; }
+
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    border-bottom: 2.0rem solid #2a2930;
+    border-left: 2.0rem solid transparent;
+    border-right: 2.0rem solid transparent;
+    position: absolute;
+    top: -2.0rem;
+    right: 4.2rem;
+    z-index: 0;
+  }
+  @include breakpoint(medium down) {
+    .form-item {
+      @include flex-grid-column(6);
+    }
+    .form-item-field-res-date-of-publication-value-min,
+    .form-item-field-res-date-of-publication-value-max {
+      flex: 0 0 25%;
+    }
+    .marketing-specializations-form-item {
+      width: 100%
+    }
+  }
+  @include breakpoint(small down) {
+    .form-item {
+      @include flex-grid-column(12);
+    }
+    .form-item-field-res-date-of-publication-value-min,
+    .form-item-field-res-date-of-publication-value-max {
+      width: 50%;
+      max-width: 50%;
+      flex: 0 0 50%;
+    }
+    .marketing-specializations-form-item .form-item {
+      max-width: 100%;
+    }
+  }
+} //end .listing-filters
+
+#profile-list .listing-filters {
+  position: initial;
+}
+
+// The two sub class here are also set above already, may not need this for unit-site class
+.unit-site {
+  .filter-container {
+    padding-top: 2.5rem;
+  }
+  .filter-container-inner {
+    position: relative;
+    border-bottom: .8rem solid $neutral-color-5;
+  }
+}//end .unit-site

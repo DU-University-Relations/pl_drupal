@@ -1,0 +1,46 @@
+.taxonomy-term-page-list {
+  margin: 7.2rem auto;
+  width: 40%;
+  @media print, screen and (max-width: 1150px) {
+    width: 50%;
+  }
+  @media print, screen and (max-width: 900px) {
+    width: 60%;
+  }
+  @media print, screen and (max-width: 800px) {
+    width: 70%;
+  }
+  @media print, screen and (max-width: 400px) {
+    width: 80%;
+  }
+  .taxonomy-term-title {
+    a {
+      display: block;
+      margin-bottom: 2.7rem;
+      font-size: 2.7rem;
+      line-height: 2.8rem;
+      text-rendering: optimizeLegibility;
+      color: $neutral-color-2;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+        color: $accent-color-2b;
+      }
+    }
+  }
+} //end .taxonomy-term-page-list
+.taxonomy-term-page-feed {
+  margin: 0 auto 5.4rem auto;
+  width: 40%;
+  a {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    text-rendering: optimizeLegibility;
+    color: $neutral-color-2;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $accent-color-2b;
+    }
+  }
+}

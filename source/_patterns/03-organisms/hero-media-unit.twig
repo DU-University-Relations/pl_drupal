@@ -1,0 +1,142 @@
+{% if not is_home %}
+  <div class="hero-media {% if hero_image is empty %}hero-image-empty {% endif %}{% if hero_embed is not empty %}hero-embed-wrapper{% endif %}">
+    {% block experiential_story %}
+      {% if experiential_story %}
+        {{ experiential_story }}
+      {% endif %}
+    {% endblock %}
+
+    {%  block hero_video %}
+      {% if hero_video %}
+        {% include "@atoms/video.twig" with hero_video %}
+      {% endif %}
+    {%  endblock %}
+    {%  block hero_image %}
+      {% if hero_image %}
+        {{ hero_image }}
+      {% endif %}
+    {%  endblock %}
+    {% block hero_embed %}
+      {% if hero_embed %}
+        <div class="hero-embed">{{ hero_embed|raw }}</div>
+      {% endif %}
+    {% endblock %}
+    {% if hero_background %}<div class="hero-background{% if hero_image %} hero-overlay{% endif %}"></div>{% endif %}
+    {% if hero_headline %}
+      <div class="hero-headline-wrapper">
+        <div class="hero-headline">{{ hero_headline }}</div>
+        <div class="hero-subhead">{{ hero_subhead }}</div>
+      </div>
+    {% endif %}
+  </div>
+  {% if not hide_hero_caption %}
+    <div class="hero-media__caption {{ hero_class }}" id="hero-media__caption"{% if not is_home %} data-toggler=".caption-expanded"{% endif %}>
+      <div class="row">
+        {% if hero_caption %}
+          <div class="columns small-12 large-offset-4 large-8">
+            <div class="hero-media__caption__text">
+              <a data-toggle="hero-media__caption">
+                <p>{{ hero_caption|raw }}</p>
+                <p class="hero-media__caption__toggler"><span class="show-for-sr">Toggle Caption</span><span class="icon-du-plus"></span><span class="icon-du-minus"></span></p>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        <div class="columns small-12">
+          {% if headline %}
+            {% include "@atoms/headline.twig" with headline %}
+          {% endif %}
+          {% if hero_link['0'].title is not empty %}
+            {% for item in hero_link %}
+                {% include "@atoms/link.twig" with item %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% if is_home and not (hero_class == "content-card") %}
+  <div class="hero-media unit-hero-media {% if hero_image is empty %}hero-image-empty {% endif %}{% if hero_embed is not empty %}hero-embed-wrapper{% endif %}{% if unit_hero_embed is not empty %}hero-embed-wrapper{% endif %}">
+      {% if hero_video %}
+        {% include "@atoms/video.twig" with hero_video %}
+      {% endif %}
+      {% if hero_image %}
+        {{ hero_image }}
+        {% else %}
+          <img src="/themes/custom/pl_drupal/images/hero-image.jpg" />
+      {% endif %}
+      {% if hero_embed %}
+        <div class="hero-embed">{{ hero_embed|raw }}</div>
+      {% endif %}
+      {% if unit_hero_embed %}
+        <div class="hero-embed">{{ unit_hero_embed|raw }}</div>
+      {% endif %}
+    {% if hero_background %}<div class="hero-background{% if hero_image %} hero-overlay{% endif %}"></div>{% endif %}
+  </div>
+  {% if not hide_hero_caption %}
+    <div class="hero-media__caption {{ hero_class }}" id="hero-media__caption"{% if not is_home %} data-toggler=".caption-expanded"{% endif %}>
+      <div class="row">
+        <div class="columns small-12">
+          {% if headline %}
+            {% include "@atoms/headline.twig" with headline %}
+          {% endif %}
+          {% if hero_link['0'].title is not empty %}
+            {% for item in hero_link %}
+                {% include "@atoms/link.twig" with item %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% if is_home and (hero_class == "content-card") %}
+<div class="hero-media {{ hero_class }} unit-hero-media {% if hero_image is empty %}hero-image-empty {% endif %}{% if hero_embed is not empty %}hero-embed-wrapper{% endif %}">
+  <div class="columns">
+    <div class="row">
+      <div class="columns small-12 medium-12 large-9">
+        {% if hero_video == true %}
+          <div {{attributes.addClass('has-video')}}>
+            {% if hero_video %}
+              {% include "@atoms/video.twig" with hero_video %}
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if hero_embed %}
+          <div class="hero-embed">{{ hero_embed|raw }}</div>
+        {% endif %}
+        {% if hero_image %}
+          {{ hero_image }}
+        {% else %}
+          <img src="/themes/custom/pl_drupal/images/hero-image.jpg" />
+        {% endif %}
+      </div>
+      <div class="columns small-12 medium-12 large-3">
+        <div class="content-wrapper">
+          {% if headline %}
+            {% include "@atoms/headline.twig" with headline %}
+          {% endif %}
+          {% if hero_caption %}
+            <p>{{ hero_caption }}</p>
+          {% endif %}
+          {% if hero_link['0'].title is not empty %}
+            {% for item in hero_link %}
+                {% include "@atoms/link.twig" with item %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if hero_title %}
+    {% include "@molecules/hero-media-title-unit.twig" %}
+{% endif %}
+{% if hero_items %}
+  {% include "@molecules/hero-media-items.twig" with hero_items %}
+{% endif %}

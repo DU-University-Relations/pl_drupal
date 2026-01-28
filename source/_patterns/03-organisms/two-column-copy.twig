@@ -1,0 +1,77 @@
+{% if header %}
+    <div class="row">
+        <div class="columns small-12">
+            <h3 class="btm-divider buffer-top ">{{ header|raw }}</h3>
+        </div>
+    </div>
+{% endif %}
+<div class="row two-column-copy">
+    <div class="columns small-12 medium-6">
+        {% if col_1_header %}
+            <h4>{{ col_1_header|raw }}</h4>
+        {% endif %}
+        {% block column_1 %}
+            {% if col_1.h2 %}
+                {% include "@atoms/headline.twig" with col_1.h2 %}
+            {% endif %}
+
+            {% if col_1.image %}
+                {% include "@atoms/image.twig" with col_1.image %}
+            {% endif %}
+
+            {% if not col_1.hide_paragraph %}
+                {% include "@atoms/paragraph.twig" %}
+            {% endif %}
+
+            {% if col_1.h3 %}
+                {% include "@atoms/headline.twig" with col_1.h3 %}
+            {% endif %}
+
+            {% if col_1.two_col_list %}
+                {% include "@atoms/list.twig" with col_1.two_col_list %}
+            {% endif %}
+
+            {% if col_1.button %}
+                <p>{% include "@atoms/button.twig" %}</p>
+            {% endif %}
+
+            {% if col_1.expanding_list %}
+                {% include "@molecules/expanding-list.twig" %}
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div class="columns small-12 medium-6">
+        {% if col_2_header %}
+            <h4>{{ col_2_header|raw }}</h4>
+        {% endif %}
+        {% block column_2 %}
+            {% if col_2.h2 %}
+                {% include "@atoms/headline.twig" with col_2.h2 %}
+            {% endif %}
+
+            {% if col_2.image %}
+                {% include "@atoms/image.twig" with col_2.image %}
+            {% endif %}
+
+            {% if not col_2.hide_paragraph %}
+                {% include "@atoms/paragraph.twig" %}
+            {% endif %}
+
+            {% if col_2.h3 %}
+                {% include "@atoms/headline.twig" with col_2.h3 %}
+            {% endif %}
+
+            {% if col_2.two_col_list %}
+                {% include "@atoms/list.twig" with col_2.two_col_list %}
+            {% endif %}
+
+            {% if col_2.button %}
+                <p>{% include "@atoms/button.twig" %}</p>
+            {% endif %}
+
+            {% if col_2.expanding_list %}
+                {% include "@molecules/expanding-list.twig" %}
+            {% endif %}
+        {% endblock %}
+    </div>
+</div>

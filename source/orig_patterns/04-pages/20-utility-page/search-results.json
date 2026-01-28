@@ -1,0 +1,117 @@
+{
+    "bodyClass": "utility_page",
+    "header": {
+        "logo_images": [{
+            "alt_text": "Logo",
+            "src": "/_duresources/foundation/images/logo.png"
+        }, {
+            "alt_text": "Logo Text",
+            "src": "/_duresources/foundation/images/logo_text.png"
+        }],
+        "hero_image": {
+            "alt_text": "Hero Image",
+            "src": "/_duresources/foundation/images/hero_image_utility_page.jpg"
+        }
+    },
+    "page_title": {
+        "title": "Search Results"
+    },
+    "sub_menu": {
+        "is_tab_menu": true,
+        "toggler_text": "Filter Search Results",
+        "role": "facets",
+        "items": [{
+            "title": "Web Pages",
+            "href": "#du_web_no_news_events",
+            "is_active": true
+        }, {
+            "title": "Events",
+            "href": "#events"
+        }, {
+            "title": "News",
+            "href": "#news"
+        }]
+    },
+    "search_results": {
+        "listing_summary": "<p class=\"search_results__listing_summary\">Showing <span class=\"range\">1–10</span> of about <span class=\"total\">300</span> matches for \"<em><strong><span class=\"term\">Admissions</span></strong></em>\"</p>",
+        "keyword_items": [
+            {
+                "title": "The Morgridge College of Education is home to an array of education oriented graduate degree programs",
+                "type": "h2",
+                "url": "http://morgridge.du.edu/"
+            }
+        ],
+        "search_items": [{
+            "title": "<b>Bob</b> Graham | IAALS",
+            "type": "h2",
+            "search_type": "Web",
+            "description": "<b>...</b><b> Bob</b> Graham. <b>...</b> Senator <b>Bob</b> Graham is the former two–term governor of Florida<br> and served for 18 years in the United States Senate. <b>...</b>",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Bridging the Immigration Gap Through Food",
+            "type": "h2",
+            "search_type": "News",
+            "description": "If there’s one thing that can bring strangers together, even those from different countries, it’s food. The power of food represents culture, tradition and unity, and to some degree, food helps us understand that immigrants and natives aren’t all that different.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Living and Learning Communities",
+            "type": "h2",
+            "search_type": "Pages",
+            "description": "DU's Living and Learning Communities (LLCs) are among the most distinctive programs of their kind in the country.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Citizenship & Civility in a Political Year – Presenter: Professor Buie Sewell, University of Denver",
+            "type": "h2",
+            "search_type": "Events",
+            "description": "Professor Buie Sewell joins the Summer Seminar Series to discuss the roles of civilians and the media in the midst of a heated election cycle.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Bridging the Immigration Gap Through Food",
+            "type": "h2",
+            "search_type": "News",
+            "description": "If there’s one thing that can bring strangers together, even those from different countries, it’s food. The power of food represents culture, tradition and unity, and to some degree, food helps us understand that immigrants and natives aren’t all that different.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Living and Learning Communities",
+            "type": "h2",
+            "search_type": "Pages",
+            "description": "DU's Living and Learning Communities (LLCs) are among the most distinctive programs of their kind in the country.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Citizenship & Civility in a Political Year – Presenter: Professor Buie Sewell, University of Denver",
+            "type": "h2",
+            "search_type": "Events",
+            "description": "Professor Buie Sewell joins the Summer Seminar Series to discuss the roles of civilians and the media in the midst of a heated election cycle.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Bridging the Immigration Gap Through Food",
+            "type": "h2",
+            "search_type": "News",
+            "description": "If there’s one thing that can bring strangers together, even those from different countries, it’s food. The power of food represents culture, tradition and unity, and to some degree, food helps us understand that immigrants and natives aren’t all that different.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Living and Learning Communities",
+            "type": "h2",
+            "search_type": "Pages",
+            "description": "DU's Living and Learning Communities (LLCs) are among the most distinctive programs of their kind in the country.",
+            "url": "www.du.edu/apply/admission/"
+        }, {
+            "title": "Living and Learning Communities",
+            "type": "h2",
+            "search_type": "Pages",
+            "description": "DU's Living and Learning Communities (LLCs) are among the most distinctive programs of their kind in the country.",
+            "url": "www.du.edu/apply/admission/"
+        }]
+    },
+    "pagination": {
+        "previous": {
+            "icon_name": "left_arrow"
+        },
+        "next": {
+            "icon_name": "right_arrow"
+        }
+    },
+    "footer": {
+        "hide_big_btn_row": true
+    }
+}

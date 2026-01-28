@@ -1,0 +1,55 @@
+{
+    "application_card_info": {
+        "title": "H3 Cards Header",
+        "type": "h3",
+        "body_text": "A specialized component designed to provide Application Deadlines as well as links to key Actions.",
+        "deadline_text": "Summer Application Deadline",
+        "deadline_date": "Septemper 16, 2018",
+        "img_url": "#",
+        "cssClass": "btm-divider"
+    },
+    "cards": [
+        {
+            "image": "http://placehold.it/75x80/eeeeee/888888",
+            "alt_text": "icon",
+            "link": {
+				"title": "Learn More Link Title",
+                "type": "h4",
+				"href": "#",
+				"cssClass": "",
+				"target": "https://www.du.edu/",
+				"rel": "",
+				"alt_text": "Alt Text Here",
+				"onclick": ""
+            }
+        },
+        {
+            "image": "http://placehold.it/75x80/eeeeee/888888",
+            "alt_text": "icon",
+            "link": {
+				"title": "Learn More Link Title 2",
+                "type": "h4",
+				"href": "#",
+				"cssClass": "",
+				"target": "https://www.du.edu/",
+				"rel": "",
+				"alt_text": "Alt Text Here",
+				"onclick": ""
+            }
+        },
+        {
+            "image": "http://placehold.it/75x80/eeeeee/888888",
+            "alt_text": "icon",
+            "link": {
+				"title": "Learn More Link Title 3",
+                "type": "h4",
+				"href": "#",
+				"cssClass": "",
+				"target": "https://www.du.edu/",
+				"rel": "",
+				"alt_text": "Alt Text Here",
+				"onclick": ""
+            }
+        }
+    ]
+}

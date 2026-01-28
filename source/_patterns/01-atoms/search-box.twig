@@ -1,0 +1,25 @@
+{% if search_box.includeForm %}
+<form action="{{ search_box.action }}" method="{{ search_box.method }}" class="search-box search-anchor {% if search_box.altClass %}{{ search_box.altClass }}{% endif %}">{% endif %}
+    {% if not search_box.includeForm %}
+    <div class="search-box{% if search_box.altClass %}{{ search_box.altClass }}{% endif %}">{% endif %}
+        <label class="show-for-sr" for="{% if search_id %}{{ search_id }}{% endif %}{% if not search_id %}search-input{% endif %}"
+               aria-label="search-label">Search Input</label>
+        <input name="search" id="{% if search_id %}{{ search_id }}{% endif %}{% if not search_id %}search-input{% endif %}" placeholder="{{ search_box.placeholder }}" type="text" tabindex="1">
+
+        {% if search_box.includeSubmit %}
+        <button class="search-clear" type="reset" title="Clear Search">
+            <span class="icon-du-cust-close" aria-hidden="true"></span>
+            <span class="show-for-sr">Clear Search</span>
+        </button>
+        <button class="search-submit" type="submit" title="Submit Search">
+            <span class="icon-du-cust-search" aria-hidden="true"></span>
+            <span class="show-for-sr">Submit Search</span>
+        </button>
+        {% endif %}
+
+        {% for key,value in params %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}" />
+        {% endfor %}
+
+
+ </{% if search_box.includeForm %}form{% endif %}{% if not search_box.includeForm %}div{% endif %}>

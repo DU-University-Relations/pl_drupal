@@ -1,0 +1,32 @@
+<div class="row activity-card-list-filter">
+  <div class="column small-10 medium-10 large-10 align-center">
+
+    <div class="row">
+      <div class="column">
+        <!-- Search Filtering Section -->
+        <div class="row activity-card-list-filter-search align-center">
+          <div class="columns small-12 medium-8 large-6 search-box">
+            {{ form.combine }}
+            <button class="search-submit" type="button" title="Submit Search">
+              <span class="icon-du-cust-search" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        <!-- Selection Filtering Section -->
+        <div class="row activity-card-list-filter-dropdown">
+          <div class="row">
+            <div class="column small-10 medium-8 large-6 align-center">
+              {{ form.field_activity_card_type_target_id }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns small-12 medium-12 large-4 activity-card-list-filter-submit align-center" id="FormSubmit">
+        {{ form.actions }}
+      </div>
+    </div>
+
+  </div>
+</div>

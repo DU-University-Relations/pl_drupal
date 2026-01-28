@@ -1,0 +1,14 @@
+{
+    "back_to_parent": {"link": "/", "title": "Back to News Listing" },
+    "description_1": "Caption 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href=\"#\">Duis pharetra pretium mattis</a>. Donec faucibus egestas sodales. Phasellus et odio feugiat, bibendum nisi ac, pretium neque. In viverra ante non lorem vestibulum, at porttitor leo imperdiet. Sed id massa a magna aliquet dignissim ut quis arcu.",
+    "program_content": "<div class='row'>Caption 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href=\"#\">Duis pharetra pretium mattis</a>. Donec faucibus egestas sodales. Phasellus et odio feugiat, bibendum nisi ac, pretium neque. In viverra ante non lorem vestibulum, at porttitor leo imperdiet. Sed id massa a magna aliquet dignissim ut quis arcu.</div>",
+    "list": { "list": {
+        "styleModifier": "list-of-links--alt",
+        "items": [{
+            "title": "<a>Start Your Application</a>"
+        }, {
+            "title": "<a>Program Requirements</a>"
+        }]}
+    }
+}
+

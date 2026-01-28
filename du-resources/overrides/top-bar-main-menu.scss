@@ -1,0 +1,717 @@
+@media screen {
+
+  .header {   // global header class
+    position: relative;
+    min-height: 20.0rem; // this spaces content if no image loads
+    @media screen and (max-width: 40em) {
+      min-height: 10.0rem;
+    }
+    a {
+      color: $neutral-color-2;
+    }
+    .btn {
+      color: white;
+    }
+
+    #top-bar-sticky-wrap {
+      z-index: 500; //mega nav was the wrong index
+      width: 100%;
+      &.is-anchored {
+        box-shadow: 0 0 .25rem 0 rgba(0, 0, 0, 0.2); //shadow under nav-- visible on pages w no hero
+      }
+      &,
+      * {
+        @include breakpoint(large up) {// turn off transitions for mobile and tablet
+          transition: all 0.5s ease;
+        }
+        img {
+          max-width: none;
+        }
+      }
+    }
+
+    // MAIN MENU
+    #main-menu-wrap {
+      position: relative;
+      background-color: white;
+      height: 8.0rem;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      @media (max-width: 1023px) {
+        height: 6.0rem;
+        #main-menu {
+          top: 6.0rem !important;
+        }
+      }
+      .columns {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      a.logo {
+        position: relative;
+        width: 23.0rem;
+        height: 6rem;
+        display: block;
+        margin-left: 3.8rem;
+
+        @media screen and (max-width: 380px) {
+          width: 17.0rem;
+        }
+        @media screen and (min-width: 600px) {
+          height: 6rem;
+        }
+        @include breakpoint(large up) {
+          height: 8rem;
+        }
+        > span {
+          position: absolute;
+          z-index: 3;
+          > img {
+            float: left;
+            user-select: none;
+          }
+          > img:nth-of-type(1) { //new single image logo
+            height: 6.9rem;
+            margin-top: .5rem;
+            @include breakpoint(medium down) {
+              width: 16rem;
+              height: 4.9rem;
+            }
+            @include breakpoint(small down) {
+              width: 17rem !important;
+              height: 4.9rem;
+            }
+          }
+        }
+        @media (min-width: 1024px) and (max-width: 1100px) {
+          margin-left: 3.8rem;
+        }
+        @include breakpoint(small down) {
+          margin-left: 1.8rem;
+        }
+        @media (max-width: 600px) {
+          //width: 66px;
+          margin-left: 14px;
+          > span {
+            > img + img {
+              display: inline;
+              width: 70%;
+            }
+          }
+        }
+      } //end a.logo
+      a.logo.inline-site {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+
+        span {
+          display: block;
+        }
+        .site-identity {
+          // margin-top: 1.5rem;
+          margin-left: 1.6rem;
+        }
+        .site-prefix {
+          font-size: 1.7rem;
+          font-family: $primary-font;
+          font-weight: 600;
+          line-height: 1;
+          letter-spacing: .045rem;
+          min-height: 1.2rem;
+          @media (max-width: 600px) {
+            font-size: 1.2rem;
+          }
+        }
+        .site-name {
+          font-family: $accent-font;
+          font-size: 2.8rem;
+          font-weight: 900;
+          line-height: 1;
+          letter-spacing: -.0324rem;
+          margin-bottom: -.3rem;
+          white-space: pre;
+          word-wrap: normal;
+          @media (max-width: 600px) {
+              font-size: 1.6rem;
+          }
+        }
+      }
+      #alt-logo {
+        background-color: #fff;
+        text-align: center;
+        &.mobile {
+          display: none;
+        }
+        &.desktop {
+          display: block;
+        }
+        @include breakpoint(medium down) {
+          padding-bottom: 0;
+          text-align: left;
+          &.mobile {
+            display: block;
+            position: relative;
+          }
+          &.desktop {
+            display: none;
+          }
+        }
+        img {
+          height: 11.2rem;
+          @include breakpoint(medium down) {
+            height: 8.0rem;
+          }
+          @include breakpoint(small down) {
+            height: auto;
+            max-height: 6.0rem;
+          }
+        }
+      } // end #alt-logo
+      .shield-logo {
+        img {
+          height: 5.4rem;
+          margin-top: 1.1rem;
+          margin-left: 2.2rem;
+          margin-right: 5.4rem;
+          @include breakpoint(medium down) {
+            margin-right: 3.6rem;
+            margin-top: 1.4em;
+          }
+          @include breakpoint(small down) {
+            height: 4.4rem;
+            margin-top: 0.7rem;
+            margin-right: 1.8rem;
+          }
+        }
+      } // end shield logo
+      #main-menu {
+        > nav > ul, > ul {
+          position: static;
+          justify-content: flex-end;
+          > li {
+            box-sizing: border-box;
+            &.menu-item--active-trail > a, &.active > a, > a.is-active, &.open > a {
+              background-color: transparent;
+              border-bottom: .8rem solid $primary-color-3;
+              @include breakpoint(medium down) {
+                border-bottom: 0 none;
+              }
+            }
+            &:hover > a, &:focus > a, > a:hover, > a:focus {
+              border-bottom: .8rem solid $primary-color-3;
+              background-color: $neutral-color-6;
+              @include breakpoint(medium down) {
+                border-bottom: 0 none;
+              }
+            }
+            > a {
+              height: 8.0rem;
+              border-width: .8rem 0;
+              border-style: solid;
+              text-align: center;
+              border-color: transparent;
+              text-decoration: none;
+
+              @include breakpoint(medium down) {
+                border-color: $neutral-color-5;
+                border-style: solid;
+                border-width: 0 0 0 .4rem;
+                font-size: 3.2rem;
+                height: auto;
+                text-align: left;
+              }
+            } // end > a
+            @include breakpoint(medium down) {
+              width: 100%;
+              display: block;
+            }
+            @include breakpoint(medium down) {
+              &[role="menuitem"] {
+                max-width: 32.0rem;
+              }
+              + li {
+                margin-top: 1.5rem;
+              }
+              &#utility-menu {
+                margin-top: 4.0rem;
+                ul.menu {
+                  background-color: $neutral-color-2;
+                  justify-content: center;
+                  li {
+                    display: flex;
+                    a {
+                      color: white;
+                      font-size: 1.5rem;
+                    }
+                  }
+                }//end ul.menu
+              }// end &utility-menu
+            } // end @include
+          } // end li
+          li {
+            margin-left: 0;
+            > a {
+              font-size: 1.8rem; //nav breaks (@ 19px) onto 2 line 1296px and 1302px
+              color: $neutral-color-2;
+              font-weight: 600;
+              font-family: $primary-font;
+              vertical-align: middle;
+
+              @media (min-width: 1220px) and (max-width: 1295px) {
+                font-size: 1.6rem;
+              }
+              @media (min-width: 1034px) and (max-width: 1219px) {
+                font-size: 1.6rem;
+                padding-left: .9rem;
+                padding-right: .9rem;
+              }
+              @media (min-width: 1014px) and (max-width: 1033px) {
+                font-size: 1.6rem;
+                padding-left: .7rem;
+                padding-right: .7rem;
+              }
+            }
+          }
+        } // end ul
+        @include breakpoint(medium down) {
+
+          height: 90vh; // For Scrolling on Tablet/Mobile
+          overflow: auto; // For Scrolling on Tablet/Mobile
+          background-color: white;
+          padding: 4.0rem 6.2rem;
+          @include breakpoint(small down) {
+            padding: 3.0rem 2.0rem 6.0rem 2.0rem;
+          }
+          > ul {
+            &.menu {
+              display: block;
+            }
+          }
+          .utility-menu {
+            height: auto;
+            background-color: transparent;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            ul {
+              flex-flow: column;
+              align-items: stretch;
+            }
+            ul.menu {
+              margin-top: 3.0rem;
+            }
+            li {
+              display: block;
+              + li {
+                margin-top: 1.0rem;
+              }
+              a {
+                justify-content: center;
+              }
+            }
+            > #block-utilitymenu-2 > ul {
+              display: block;
+            }
+            @include breakpoint(small down) {
+              margin-top: 3.0rem;
+              position: relative;
+              width: 100%;
+              li + li {
+                margin-top: .2rem;
+              }
+            }
+          }
+        } // end @ include
+      } // end main menu
+      #search-toggler {
+        position: static;
+      }
+      li.search {
+        &.is-active > a {
+          background-color: $neutral-color-5;
+          color: #666666;
+          &:before {
+            content: '\e805';
+          }
+        }
+        > a {
+          text-decoration: none;
+          height: 6.0rem;
+          width: 5.0rem;
+          background-color: $neutral-color-6;
+          border-width: 0 .1rem .1rem .1rem !important;
+          border-style: solid;
+          border-color: $neutral-color-5;
+          display: flex;
+          position: relative;
+          font-size: .1rem;
+          color: transparent;
+          justify-content: center;
+          @include breakpoint(medium up) {
+            width: 5rem;
+          }
+          @include breakpoint(large up) {
+            height: 8rem;
+            width: 8rem;
+          }
+          &:before {
+            text-indent: 0;
+            content: '\e806';
+            position: absolute;
+            font-size: 2.5rem;
+            font-family: $icon-font;
+            speak: none;
+            display: inline-block;
+            text-align: center;
+            font-variant: normal;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #18161F;
+            align-self: center;
+            @include breakpoint(medium up) {
+              font-size: 2rem;
+            }
+          }
+          &:hover,
+          &:focus {
+            border-bottom-width: 0 !important;
+            background-color: $neutral-color-6;
+          }
+        }
+      } // end li.search
+      #calendar-icon {
+        width: 8.0rem;
+        height: 8.0rem;
+        position: relative;
+        display: block;
+        background: $neutral-color-6;
+        border: .1rem solid $neutral-color-5;
+        border-top: 0;
+        overflow: hidden; // prevent off-screen text from scrolling the page.
+        li {
+          margin-left: 0;
+          a {
+            margin-left: -.1rem; // overlap border on #calendar-icon.
+            text-indent: 9999px;
+            width: 8.0rem;
+            height: 8.0rem;
+            position: relative;
+            display: block;
+            border-bottom: 8px solid transparent;
+            &:before {
+              color: $neutral-color-2;
+              text-indent: 0;
+              content: '\f133';
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              margin-left: -1.1rem;
+              margin-top: -1.1rem;
+              font-size: 2.2rem;
+              font-family: $icon-font;
+              speak: none;
+              display: inline-block;
+              text-align: center;
+              font-variant: normal;
+              text-transform: none;
+              line-height: 1.8rem;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+            }
+            &:hover,
+            &:focus {
+              border-bottom: 0;
+              background-color: $neutral-color-5;
+              color: #666666;
+              border-bottom: .8rem solid $primary-color-3 !important;
+            }
+          } // end a
+        } // end li
+
+        @include breakpoint(medium down) {
+          display: none;
+        }
+
+        @media (max-width: 1024px) {
+          width: 8.0rem;
+          height: 8.0rem;
+          display: inline-block;
+          color: #666666;
+          text-align: center;
+          background-color: $neutral-color-6;
+          border-width: 0 1px 1px 1px !important;
+          border-style: solid;
+          border-color: $neutral-color-5;
+        }
+        @media (max-width: 600px) {
+          width: 6.0rem;
+          height: 6.0rem;
+          li a {
+            width: 6.0rem;
+            height: 6.0rem;
+          }
+        }
+      }
+      // MEGA NAV
+      .is-dropdown-submenu-parent.mega-menu {
+        position: static;
+      }
+      > .row.expanded {
+        width: 100%;
+        max-width: 135.6rem;
+        height: 100%;
+        > .columns.shrink + .columns {
+          padding-right: 0;
+          height: 100%;
+        }
+        > .columns.shrink:last-child {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        @include breakpoint(medium down) { //was large
+          #main-menu {
+            //top: 48px;
+            //@include breakpoint(medium down) {
+            //}
+            position: absolute;
+            top: 6.0rem;
+            left: 0;
+            width: 100%;
+            padding-top: 3.2rem;
+            box-shadow: 0 .8rem .9rem 0 rgba(0, 0, 0, 0.2);
+            display: none;
+            .menu {
+              width: 100%;
+            }
+            > ul {
+              @include breakpoint(small down) {
+                padding-left: 3.0rem;
+              }
+              > li > a {
+                padding-left: 3.0rem;
+              }
+              &.align-right {
+                justify-content: center;
+                @include breakpoint(medium down) {
+                  justify-content: left;
+                }
+              }
+            } // end ul
+          } // end #main-menu media query
+          .columns.shrink {
+            padding-right: 0;
+            #search-toggler {
+              float: left;
+              width: auto;
+              > li > a {
+                @media (max-width: 600px) {
+                  height: 6.0rem;
+                  width: 5.0rem;
+                }
+              }
+            }
+            #unit-main-menu-toggler {
+              float: right;
+              position: relative;
+              button {
+                cursor: pointer;
+                height: 6.0rem;
+                width: 6.0rem;
+                background-color: $neutral-color-6;
+                border-bottom: .1rem solid $neutral-color-5;
+                @include breakpoint(medium up) {
+                  width: 8rem;
+                }
+                @include breakpoint(large up) {
+                  height: 8rem;
+                  width: 8.0rem;
+                }
+                &:hover,
+                &:focus {
+                  background-color: $neutral-color-6;
+                }
+                @media (max-width: 600px) {
+                  height: 6.0rem;
+                  width: 6.0rem;
+                }
+                display: inline-block;
+                &.icon-du-cust-menu,
+                &.du-icon-cust-menu {
+                  font-size: 2.5rem;
+                  color: #18161F;
+                  background: $neutral-color-6;
+                  &:before {
+                    line-height: auto;
+                    margin-left: 0;
+                    margin-right: 0;
+                  }
+                }
+                &.open.icon-du-cust-menu,
+                &.open.du-icon-cust-menu {
+                  background-color: $neutral-color-6;
+                  &:before {
+                    content: "\e805";
+                    color: #666666;
+                  }
+                }
+              } // end button
+            } // end #main-menu-toggler
+          } // end .column.shrink
+        } // end @include
+      } // end > .row-expanded
+    } // end #main-menu-wrap
+    .is-stuck {  //on page scroll
+      .top-bar {
+        border-bottom: none;
+      }
+      #main-menu-wrap {
+        height: 6.0rem;
+        > .row.expanded {
+          a.logo {
+            height: 6rem;
+            > span {
+              > img:first-child { //New DU Logo
+                margin-top: .5rem;
+                @include breakpoint(small down) {
+                  width: 16rem;
+                }
+                @media (max-width: 600px) {
+                  margin-top: .5rem;
+                  width: 16rem;
+                }
+                @include breakpoint(large up) {
+                  height: 5.1rem;
+                }
+                + img { //Signature
+                  @include breakpoint(medium down) {
+                    width: 12.0rem;
+                    margin-top: 1.2rem;
+                  }
+                  @include breakpoint(large up) {
+                    width: 12rem;
+                    margin-top: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+          #alt-logo {
+            padding-bottom: 0;
+            &.mobile {
+              display: block;
+            }
+            &.desktop {
+              display: none;
+            }
+            img {
+              height: 6.0rem;
+            }
+          }
+          .shield-logo {
+            img {
+              height: 4.4rem;
+              margin-top: 0.7rem;
+              margin-right: 1.8rem;
+            }
+          }
+          #main-menu ul,
+          #search-toggler {
+            > li > a {
+              @include breakpoint(large) {
+                font-size: 1.6rem;
+                height: 6.0rem;
+              }
+            }
+          }
+          #calendar-icon,
+          #calendar-icon li  a {
+            //width: 60px;
+            height: 6.0rem;
+          }
+          #search-toggler > li > a {
+            width: 6.0rem;
+            height: 6.0rem;
+          }
+          #main-menu {
+            //@include breakpoint(large down) {
+            //	top: 28px;
+            //}
+            @include breakpoint(medium down) {
+              top: 6.0rem;
+              padding-top: 5.0rem;
+            }
+          }
+          #calendar-icon > a > img {
+            height: 6.0rem;
+          }
+          .columns.shrink {
+            #main-menu-toggler {
+              @include breakpoint(medium down) { // was large
+                button {
+                  height: 6.0rem;
+                  width: 6.0rem;
+                }
+              }
+            }
+          }
+        } // end row.expanded
+      } // end #main-menu-wrap
+      box-shadow: 0 .2rem .7rem 0 rgba(0, 0, 0, 0.3);
+    } // end is stuck
+
+    // Search Input
+    .top-bar .search {
+      .is-dropdown-submenu {
+        left: 0 !important; // force override foundation dropdown styling
+        right: 0 !important;
+        top: auto !important;
+        position: absolute;
+        border: 0 none;
+        box-shadow: 0 .8rem .9rem 0 rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.9);
+
+        > li > .row {
+          margin-left: auto;
+          margin-right: auto;
+          padding-top: 3.9rem;
+          padding-bottom: 3.9rem;
+        }
+      }
+      .search-box {
+        padding-left: 2.0rem;
+        padding-right: 2.0rem;
+        label {
+          > input[type="text"] {
+            font-size: 3.6rem;
+          }
+        }
+      }
+    } // .top-bar .search
+    .top-bar {
+      display: block;
+    }
+    ul#search-toggler {
+      li {
+        margin-left: 0;
+      }
+    }
+  } // end global .header
+} // end screen
+
+body:not(.unit-site) .sticky-container {  // this moves nav up and over the hero on the core site
+  position: relative;
+  width: 100%;
+  // top: 4.8rem;  // height of utility menu
+}
+body.micro .sticky-container {
+  top: 0; // fix for micro-site top nav (no utility)
+}
+body:not(.unit-site) .utility-menu {
+  position: relative;
+  // top: -4.8rem;  // todo: figure out why this value is needed
+  right: 0;
+}

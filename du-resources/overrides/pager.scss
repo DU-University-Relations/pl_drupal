@@ -1,0 +1,63 @@
+.pager {
+  margin: 1.2rem auto;
+  margin-bottom: 6.0rem;
+  .visually-hidden {
+    // These styles were taking from Drupal core.
+    position: absolute !important;
+    clip: rect(.1rem, .1rem, .1rem, .1rem);
+    overflow: hidden;
+    height: .1rem;
+    width: .1rem;
+    word-wrap: normal;
+  }
+  .pager__items {
+    list-style-type: none;
+  }
+  .pager__item {
+    list-style-type: none;
+    display: inline;
+    float: left;
+    margin: 0 .7rem;
+    a {
+      color: $neutral-color-2;
+      @include breakpoint(medium up) {
+        padding: 0 .7rem;
+      }
+    }
+    a:link {
+      text-decoration: none;
+    }
+    a:hover {
+      padding-bottom: .8rem;
+      border-bottom: .3rem solid $neutral-color-2;
+    }
+  }
+  .pager__item--previous,
+  .pager__item--next {
+    a:hover {
+      border-bottom: none;
+      .next,
+      .previous {
+        border: .2rem solid $neutral-color-8;
+      }
+    }
+  }
+  .pager__item--previous {
+    margin-left: 0;
+  }
+  .is-active a {
+    color: $secondary-color-6;
+    padding-bottom: .8rem;
+    border-bottom: .3rem solid $secondary-color-6;
+  }
+  ul li:before {
+    content: none !important;
+  }
+  .previous,
+  .next {
+    font-size: 2.2rem;
+    color: $neutral-color-8;
+    padding: .8rem .4rem;
+    border: .2rem solid $neutral-color-5;
+  }
+}

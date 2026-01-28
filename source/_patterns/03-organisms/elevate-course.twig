@@ -1,0 +1,111 @@
+<article id="main-content" role="main" class="full-elevate-course">
+    <div class="row">
+        <div class="columns large-offset-4 large-8 pull-up page-title-band">
+            {% block page_title %}
+                {% include "@atoms/headline.twig" with {'title' : title|raw, 'type' : 'h1'} %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-12 large-12">
+            <p>
+                <a class="sub-menu__back-link course-back-link">
+                    <span class="icon-du-left-arrow" aria-hidden="true"></span>
+                    back
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-12 large-8">
+            {% if instancecode %}
+                {% if course_instance %}
+                    <div class="elevate-course-cart">
+                        <a id="elevate-cart-btn" class="btn" href="{{ course_instance['link'] }}" style="{{ course_instance['cart']['button'] }}">ADD TO CART</a>
+                        <a id="elevate-cart-show-cart-btn" class="btn" href="#utility-elevate-cart-popup" aria-controls="#elevate-cart-popup" style="{{ course_instance['cart']['button'] }}">VIEW CART AND CHECKOUT</a><span id="elevate-cart-btn-msg"></span>
+                        <p id="elevate-cart-waitlist" style="{{ course_instance['cart']['waitlist'] }}">Waitlist only!</p>
+                        <p id="elevate-cart-full" style="{{ course_instance['cart']['full'] }}"><strong>Course is Full</strong><br />Please contact us for more information.</p>
+                        <p id="elevate-cart-closed" style="{{ course_instance['cart']['closed'] }}">Registration for this course is closed.<p>
+                    </div>
+                    <div class="elevate-course-details">
+                        <h4>Course Details</h4>
+                        <ul>
+                            {% for detail_label, detail in course_instance['details'] %}
+                                <li id="elevate-detail-{{ detail_label|replace({' ':'-'})|lower }}">
+                                    <strong>{{ detail_label }}:</strong> <span>{{ detail }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="elevate-summary">
+                        {% if course_instance['summary'] %}
+                            {{ course_instance['summary']|raw }}
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <p>Something went wrong. Please go back and try again.</p>
+                {% endif %}
+            {% else %}
+                <p class="elevate-no-instance">There are several courses available and a specific instance was not specified. Please choose from the following.</p>
+                <ul>
+                    {% for item in node.field_course_instance %}
+                        <li><a class="elevate-instance-option" href="{{ path('entity.node.canonical', {'node': node.id}) }}?instancecode={{ item.entity.field_elevate_instance_id.value }}">
+                            {{ item.entity.field_title.value }} ({{ item.entity.field_elevate_code.value }})</a>
+                            {{ item.entity.field_start_date.value|date("m/d/Y") }}{% if item.entity.field_end_date %} - {{ item.entity.field_end_date.value|date("m/d/Y") }}{% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="columns small-12 large-3 large-offset-1">
+            {% if program_description %}
+                <div class="elevate-program-description elevate-info">
+                    {{ program_description|raw }}
+                </div>
+            {% else %}
+                {% if elevate_contact %}
+                    <div class="elevate-contact elevate-info">
+                        <h4 class="elevate-info-title">Contact Us</h4>
+                        {{ elevate_contact|raw }}
+                    </div>
+                {% endif %}
+                {% if elevate_links %}
+                    <div class="elevate-quick-links elevate-info">
+                        <h4 class="elevate-info-title">Quick Links</h4>
+                        {{ elevate_links|raw }}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    {% if course_instance['tutorials'] %}
+        <div class="row elevate-sessions">
+            <h4 class="elevate-sessions-label">Sessions</h4>
+            <div class="table-scroll">
+                <div class="table-scroll__wrapper">
+                    <table><tbody>
+                        <tr>
+                            <th>Days of the Week</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Time</th>
+                            {% if show_venue_column %}<th>Venue</th>{% endif %}
+                            {% if show_instructor_column %}<th>Instructor</th>{% endif %}
+                        </tr>
+                        {# Sort by the Start time converted to m/d/Y and if they are the same, sort by the time. #}
+                        {% for tutorial in course_instance['tutorials']|sort((a, b) => a.start|date("m/d/Y") == b.start|date("m/d/Y") ? a.time <=> b.time : a.start|date("m/d/Y") <=> b.start|date("m/d/Y")) %}
+                            <tr>
+                                <td>{{ tutorial['days'] }}</td>
+                                <td>{{ tutorial['start'] }}</td>
+                                <td>{{ tutorial['end'] }}</td>
+                                <td>{{ tutorial['time'] }}</td>
+                                {% if show_venue_column %}<td>{{ tutorial['venue'] }}</td>{% endif %}
+                                {% if show_instructor_column %}<td>{{ tutorial['instructor'] }}</td>{% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</article>

@@ -1,0 +1,138 @@
+// Slider background
+.du-content-gallery-modal-form {
+  @include breakpoint(medium up) {
+    background: transparent;
+    padding: 0 5.4rem;
+  }
+}
+
+.slick-slider-wrapper {
+  width: 100% !important;
+  @include breakpoint(small up) {
+    width: 100% !important;
+  }
+  @include breakpoint(medium up) {
+    width: 76.8rem !important;
+  }
+  @include breakpoint(large up) {
+    width: 90rem !important;
+  }
+  &.ui-widget-content {
+    border: .1rem solid transparent;
+    background: transparent;
+  }
+}
+
+.slick-slider-wrapper .ui-dialog-titlebar {
+  background: none;
+  border: 0 solid transparent;
+  font-size: 2.4rem;
+  font-family: $headline-font;
+  background: $neutral-color-9;
+  padding: 0.9rem 3.6rem;
+  border-radius: .3rem .3rem 0 0;
+  padding-bottom: 0;
+  @include breakpoint(medium up) {
+    margin: 0 5.4rem;
+  }
+}
+
+.slick-slider-wrapper .ui-dialog-content {
+  padding: 0 1.8rem;
+  background: $neutral-color-9;
+  @include breakpoint(medium up) {
+    padding: 0;
+    background: transparent;
+  }
+}
+
+.slick-slider-wrapper #slick-ticker {
+  background: $neutral-color-9;
+  @include breakpoint(medium up) {
+    padding: 0 3.6rem;
+  }
+}
+
+// Arrows
+.slick-slider-wrapper .slick__arrow {
+  top: 19%;
+  @media(min-width:400px) {
+    top: 23%;
+  }
+  @media(min-width:500px) {
+    top: 27%;
+  }
+  @media(min-width:600px) {
+    top: 30%;
+  }
+  @media(min-width:700px) {
+    top: 33%;
+  }
+  @include breakpoint(medium up) {
+    top: 30%;
+  }
+  @include breakpoint(large up) {
+    top: 33%;
+  }
+}
+.slick-prev {
+  @include breakpoint(medium up) {
+    left: -4.5rem;
+  }
+}
+
+.slick-next {
+  @include breakpoint(medium up) {
+    right: -4.5rem;
+  }
+}
+
+.slick-prev,
+.slick-next {
+  &:hover {
+    &::before {
+      color: $neutral-color-8;
+    }
+  }
+  .hide-text {
+    height: .1rem;
+    width: .1rem;
+    display: block;
+  }
+}
+.slick-next:before,
+.slick-prev:before {
+  font-family: $icon-font;
+  color: $neutral-color-9;
+  font-size: 2.7rem;
+}
+
+.slick-next:before {
+  content: '\e821';
+}
+
+.slick-prev:before {
+  content: '\e820';
+}
+
+//Close button
+.slick-slider-wrapper .ui-button{
+  background-image: transparent;
+  border: .1re, solid transparent;
+  background-color: transparent;
+  margin: -2rem 0 0 0;
+}
+
+.ui-widget-overlay {
+  background: rgba(0,0,0,0.75);
+  opacity: 1;
+}
+
+.ui-dialog .ui-dialog-title {
+  min-height: 8.5rem;
+  padding-top: 1.2rem;
+}
+
+ul.slick-dots li {
+  list-style: none;
+}

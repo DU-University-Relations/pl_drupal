@@ -1,0 +1,16 @@
+.unit-site {
+  .close-panel { //--close search-- button // see app.js  mobile and tablet exit the search by toggling the main menu
+    display: none;
+    @include breakpoint(large up) {
+      display: initial;
+      position: absolute;
+      top: 1.6rem;
+      right: 1.6rem;
+      font-size: 3.2rem;
+      cursor: pointer;
+      transition: none !important;
+      color: #868686;
+      &:hover { color: $neutral-color-3; }
+    }
+  }
+}

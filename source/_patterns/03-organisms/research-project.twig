@@ -1,0 +1,184 @@
+<article{{ attributes.addClass("research-project") }} id="main-content" role="main">
+    <div class="row">
+        <div class="columns large-offset-4 large-8 pull-up page-title-band">
+            {% block page_title %}
+                {% include "@atoms/headline.twig" with {'title' : "This is the Page Title", 'type' : 'h1'} %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-12 large-3 pull-up sidebar">
+            <p>
+                <a href="{{ back_to_parent.link }}" class="sub-menu__back-link" target="{{ back_to_parent.target }}">
+                    <span class="icon-du-left-arrow" aria-hidden="true"></span> {{ back_to_parent.title }}
+                </a>
+            </p>
+            <div class="social-media add-this">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            </div>
+            {% if faculty_member_list %}
+              <div class="author">
+              <p class="title"><strong>Author{% if faculty_member_list|length > 1 %}(s){% endif %}:</strong></p>
+              {% block faculty_member %}
+                {% for faculty_member in faculty_member_list %}
+                  <p>{{ faculty_member }}</p>
+                {% endfor %}
+              {% endblock %}
+              </div>
+            {% elseif project.faculty %}
+              <div class="author">
+                <p class="title"><strong>Author(s):</strong></p>
+                <p>{{ project.faculty }}</p>
+              </div>
+            {% endif %}
+            {% if project.sidebar.pis %}
+                <div class="pis">
+                    <p class="title"><strong>PIs:</strong></p>
+                    {{ project.sidebar.pis }}
+                </div>
+            {% endif %}
+            {% if project.sidebar.co_pis %}
+                <div class="co-pis">
+                    <p class="title">CO-PIs:</p>
+                    {{ project.sidebar.co_pis }}
+                </div>
+            {% endif %}
+            {% if project.sidebar.co_investigators %}
+                <div class="co-investigators">
+                    <p class="title">CO-Investigator(s):</p>
+                    {{ project.sidebar.co_investigators }}
+                </div>
+            {% endif %}
+            {% if project.sidebar.partners_url %}
+                <div class="research-project-partners">
+                    <p class="title">Community Partners:</p>
+                    {% block community_partners %}
+                        {% for partner in partners %}
+                            <p class="community-partner">{{ partner }}</p>
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            {% endif %}
+            {% if project.sidebar.funding %}
+                <div class="funding">
+                    <p class="title">Funding Sources:</p>
+                    {{ project.sidebar.funding }}
+                </div>
+            {% endif %}
+            {% if project.sidebar.publications %}
+                <div class="publications">
+                    <p class="title">Publications:</p>
+                    {{ project.sidebar.publications }}
+                </div>
+            {% endif %}
+            {% if research_type_list %}
+                <div class="research-type">
+                    <p class="title">Research Type:</p>
+                        {% block research_type_taxonomy %}
+                            <p class="items">
+                                {% for research_type in research_type_list %}
+                                    {% if loop.last %}
+                                        {{ node.field_research_type_proj.entity.label }}
+                                    {% else %}
+                                        {{ node.field_research_type_proj.entity.label }},
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        {% endblock %}
+                    </h6>
+                </div>
+            {% endif %}
+            {% if research_classification_list %}
+                <div class="research-classification">
+                    <p class="title">Research Classification:</p>
+                    {% block research_classification_taxonomy %}
+                        <p class="items">
+                            {% for research_classification in research_classification_list %}
+                                {% if loop.last %}
+                                    {{ node.field_classification_proj.entity.label }}
+                                {% else %}
+                                    {{ node.field_classification_proj.entity.label }},
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    {% endblock %}
+                </div>
+            {% endif %}
+            {% if content.field_res_proj_unit_name %}
+                <div>
+                    <p class="title">Unit:</p>
+                    {% if content.field_res_proj_unit_url %}
+                    <p class="items"><a href="{{ content.field_res_proj_unit_url }}">{{ content.field_res_proj_unit_name }}</a></p>
+                    {% else %}
+                    <p class="items">{{ content.field_res_proj_unit_name }}</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if research_interest_list %}
+                <div class="research-interest">
+                    <p class="title">Research Interest:</p>
+                    {% block research_interest_taxonomy %}
+                        <p class="items">
+                            {% for i, value in research_interest_list %}
+                                {% if loop.last %}
+                                    <a href="/research-project-listing?id={{ node.field_research_interest_proj[i].target_id }}">{{ node.field_research_interest_proj[i].entity.label }}</a>
+                                {% else %}
+                                    <a href="/research-project-listing?id={{ node.field_research_interest_proj[i].target_id }}">{{ node.field_research_interest_proj[i].entity.label}}</a>,
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="columns small-12 large-8 large-offset-1 project-info">
+            <div class="content" data-equalizer-watch="row">
+                {% if project.lab_url %}
+                    <h6 class="research-project-lab">
+                        <a href="{{ project.lab_url }}"
+                                {% if project.lab_url_alt_text %}
+                                    title="{{ project.lab_url_alt_text }}"
+                                {% endif %}
+                                {% if project.lab_url_target %}
+                                    target="{{ project.lab_url_target|e('html_attr') }}"
+                                {% endif %}
+                                {% if project.lab_url_onclick %}
+                            onclick="{{ project.lab_url_onclick|e('html_attr') }}"
+                                {% endif %}>{{ project.lab_url_text }}
+                        </a>
+                    </h6>
+                {% endif %}
+                {% if custom.research_project_date != '' %}
+                    <h6 class="research-project-date">{{ project_date }}</h6>
+                {% endif %}
+                {% if project.feature_image %}
+                    <div class="research-project-image">{{ project.feature_image }}</div>
+                {% endif %}
+                {% if project.feature_video %}
+                    <div class="research-project-video">{{ project.feature_video }}</div>
+                {% endif %}
+                {% if project.primary_question %}
+                    <div class"research-primary-question">
+                        <h3>{{ project.primary_question }}</h3>
+                    </div>
+                {% endif %}
+                {% if project.abstract %}
+                    <div class="research-project-abstract">{{ project.abstract }}</div>
+                {% endif %}
+                {% if project.text %}
+                    <div class="research-project-text">{{ project.text }}</div>
+                {% endif %}
+                {% if project.results_outcome %}
+                  <div class="research-project-text">{{ project.results_outcome }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+  {% include "@organisms/research-project-related-section.twig" %}
+
+</article>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ff759bdd589ba5"></script>

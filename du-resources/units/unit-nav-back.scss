@@ -1,0 +1,47 @@
+.unit-site {  //gold <back for mobile breadcrumb site hierarchy menu
+  .back-to-main {
+    display: block;
+    margin: 0 auto;
+    height: 5.0rem;
+    line-height: 6.0rem;
+    background: white;
+    color: $secondary-color-3;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    @include breakpoint(large up) {
+      display: none;
+    }
+  }
+  .back-to-main-wrapper {
+    margin: .5rem auto 0;
+    padding: 0 0 0 1.5rem;
+    position: relative;
+    .icon-du-down-dir {
+      &:before {
+        position: absolute;
+        content: '\e822';
+        display: block;
+        font-family: "fontello";
+        font-size: 1.6rem;
+        transform: rotate(90deg);
+        top: 50%;
+        margin-top: -.8rem;
+        left: -.3rem;
+      }
+    }
+  }
+  // gold button for utility menu
+  .unit-utility-menu {
+    .btn-gold {
+      background-color: $secondary-color-2;
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: $secondary-color-1;
+        color: white;
+      }
+    }
+  }
+}

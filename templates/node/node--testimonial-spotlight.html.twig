@@ -1,0 +1,69 @@
+{% embed "@organisms/testimonial-spotlight.twig" %}
+    {% if content.cta %}
+        {% set cta = content.cta %}
+    {% endif %}
+
+    {% if content.type %}
+        {% set type = content.type %}
+    {% endif %}
+
+    {% if content.full_name %}
+        {% set full_name = content.full_name %}
+    {% endif %}
+
+    {% if content.field_attribution %}
+      {% set cite_caption = content.field_attribution|field_value %}
+    {% endif %}
+
+    {% if content.copy %}
+        {% set feature_video_quote = content.featured_video %}
+        {% set blockquote = {
+            "text": content.field_copy
+        } %}
+    {% endif %}
+
+    {% if content.field_youtube_video|field_value %}
+        {% set feature_video_quote = true %}
+        {% set is_youtube = true %}
+        {% set youtube_embed = content.field_youtube_video|field_value %}
+    {% else %}
+        {% if content.mp4_url or content.ogg_url %}
+            {% set feature_video_quote = true %}
+            {% set video_upload = {
+                "ogg_url": content.ogg_url,
+                "mp4_url": content.mp4_url,
+                "poster_url": content.image.src
+            }%}
+            {% set play_label = "Play" %}
+        {% else %}
+            {% if content.image %}
+                {% set feature_video_quote = true %}
+                {% set is_image = true %}
+                {% set image = {
+                    "src": file_url(content.field_media_image|field_target_entity.uri.value),
+                    "alt_text": content.field_media_image|field_raw('alt'),
+                    }
+                %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if content.testimonial_mode %}
+        {%  set tmode = content.testimonial_mode %}
+    {% endif %}
+
+    {% if content.blockquote_class %}
+        {% set blockquote_class = content.blockquote_class %}
+    {% endif %}
+
+    {% set play_pause_icons = [
+        {
+            "icon_name": "play-circled2"
+        },
+        {
+            "icon_name": "pause-circled"
+        }
+    ] %}
+
+    {% set new_page = content.field_open_in_new_tab.0['#markup'] %}
+{% endembed %}

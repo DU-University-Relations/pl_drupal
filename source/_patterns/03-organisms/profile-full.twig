@@ -1,0 +1,546 @@
+<article id="main-content" role="main" class="profile-page">
+    <div class="row">
+        <div class="columns small-12 large-12">
+            <p>
+                <a class="sub-menu__back-link profile-back-link">
+                    <span class="icon-du-left-arrow" aria-hidden="true"></span>
+                    back
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="profile-background top-info">
+        <div class="row profile-background">
+            <div class="columns large-12">
+                <div class="row">
+                    <div class="columns small-12 medium-3 large-3">
+                        <div class="row">
+                            <div class="columns medium-10 large-10 large-offset-1 profile-photo">
+                                {% if expert_url and is_expert.0['#markup'] == 'Yes' and has_expertise %}
+                                    {{ expert_url }}
+                                {% else %}
+                                    {{ content.field_profile_photo }}
+                                {% endif %}
+                            </div>
+                            {% if is_expert.0['#markup'] == 'Yes' and has_expertise %}
+                                <div class="columns large-10 large-offset-1">
+                                    <span class="icon-du-bank span-arrow-down"></span>
+                                </div>
+                                <div class="profile-expert columns large-10 large-offset-1">
+                                    <strong>Expert Profile:</strong>
+                                    This faculty member is an expert in their field of study.
+                                    {{ expert_full_url }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="columns large-9 no-background">
+                        <div class="row">
+                            <div class="columns large-11 large-offset-1">
+                                <h1>
+                                    {% if preferred_name %}
+                                        {{ preferred_name }}
+                                    {% elseif display_name %}
+                                        {{ display_name }}
+                                    {% else %}
+                                        {{ full_name }}
+                                    {% endif %}
+
+                                </h1>
+
+                                {% if job_title %}
+                                    <h2>
+                                        {{ job_title }}
+                                    </h2>
+                                {% endif %}
+                                {% if additional_title %}
+                                    <h2>
+                                        {{ additional_title }}
+                                    </h2>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="columns small-12 medium-12 large-6 large-offset-1">
+                                <ul class="profile-tags">
+
+                                    <li>
+                                        {% if profile_type %}
+                                            {{ profile_type }}
+                                        {% endif %}
+
+                                        {% if profile_appointment %}
+                                            / {{ profile_appointment }}
+                                        {% endif %}
+
+                                        {% if study_type %}
+                                            / {{ study_type }}
+                                        {% endif %}
+
+                                        {% if expect_grad_year %}
+                                            / {{ expect_grad_year }}
+                                        {% endif %}
+                                    </li>
+
+                                    {% if counsoler_region and counselor_region_count == 1 %}
+                                        <li>Colorado Territory: {{ counsoler_region }}</li>
+                                    {% elseif counsoler_region and counselor_region_count > 1 %}
+                                        <li>Colorado Territories: {{ counsoler_region }}</li>
+                                    {% endif %}
+
+                                    {% if counselor_state and counselor_state_count > 0 %}
+                                        <li>States/Regions: {{ counselor_state }}</li>
+                                    {% endif %}
+
+                                    {% if advisor %}
+                                        <li>{{ advisor }}</li>
+                                    {% endif %}
+
+                                    {% if content.field_profile_unit_affiliation and not content.field_profile_unit_affiliation['#weight'] %}
+                                        {% for aff in content.field_profile_unit_affiliation %}
+                                            {% if aff['url'] is empty %}
+                                              <li>{{ aff['dept'] }}</li>
+                                            {% else %}
+                                              <li><a href="{{ aff['url'] }}">{{ aff['dept'] }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="columns small-12 medium-12 large-5 profile-links">
+                                {% if email %}
+                                    <p>
+                                        <span class="icon-du-mail-alt"></span>
+                                        <a href="mailto:{{ email }}" title="Contact via Email">{{ email }}</a>
+                                    </p>
+                                {% endif %}
+
+                                {% if phone_prim %}
+                                    <p>
+                                        <span class="icon-du-phone"></span>
+                                        <a href="tel:{{ phone_prim }}">{{ phone_prim }}</a> <span
+                                                class="phone-desc">({{ phone_primary }})</span>
+                                    </p>
+                                {% endif %}
+
+                                {% if phone_sec %}
+                                    <p>
+                                        <span class="icon-du-phone"></span>
+                                        <a href="tel:{{ phone_sec }}">{{ phone_sec }}</a> <span class="phone-desc">({{ phone_second }})</span>
+                                    </p>
+                                {% endif %}
+
+                                {% if portfolio_web %}
+                                    <p>
+                                        <span class="icon-du-link-ext-alt"></span>
+                                        {{ portfolio_web }}
+                                    </p>
+                                {% endif %}
+
+                                {% if portfolio_pers %}
+                                    <p>
+                                        <span class="icon-du-link-ext-alt"></span>
+                                        {{ portfolio_pers }}
+                                    </p>
+                                {% endif %}
+
+                                {% if group_web %}
+                                    <p>
+                                        <span class="icon-du-link-ext-alt"></span>
+                                        {{ group_web }}
+                                    </p>
+                                {% endif %}
+
+                                {% if location %}
+                                    <p class="profile-location">
+                                        <span class="icon-du-location"></span>
+                                    <span class="info-profile-loc">{{ location }}</span>
+                                    </p>
+                                {% endif %}
+
+                                {% if facebook %}
+                                    {{ facebook }}
+                                {% endif %}
+
+                                {% if instagram %}
+                                  {{ instagram|raw }}
+                                {% endif %}
+
+                                {% if linkedin %}
+                                    {{ linkedin }}
+                                {% endif %}
+
+                                {% if twitter %}
+                                  {{ twitter|raw }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- BEGIN Sub Navigation -->
+
+            <div class="sub-menu-wrap profile-sub-section">
+{#                {% if hide_research_tab == false or hide_pub_tab == false or hide_perf_tab == false or hide_news_tab == false or hide_awards_tab == false %}#}
+{#                    <p id="sub-menu-toggler" data-responsive-toggle="sub-menu" data-hide-for="large" style="display: none;">#}
+{#                        <a href="#" data-toggle="data-toggle">Explore this Section</a>#}
+{#                    </p>#}
+{#                {% endif %}#}
+                <nav id="sub-menu" class="sub-menu--horizontal profile-tabs" aria-label="sub-navigation" data-role="facets">
+                    <ul class="" data-tabs id="profile-tabs">
+                        <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title is-active">
+                            <a href="#background">
+                                {% if background_tab is not empty %}
+                                    {{ background_tab }}
+                                {% else %}
+                                    Background
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% if hide_research_tab == null %}
+                            <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title">
+                                <a href="#research">
+                                    {% if research_tab is not empty %}
+                                        {{ research_tab }}
+                                    {% else %}
+                                        Research
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if hide_pub_tab == false %}
+                            <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title">
+                                <a href="#publications">
+                                    {% if publications_tab is not empty %}
+                                        {{ publications_tab }}
+                                    {% else %}
+                                        Publications
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if hide_perf_tab == false %}
+                            <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title">
+                                <a href="#perf-presentation">
+                                    {% if performances_tab is not empty %}
+                                        {{ performances_tab }}
+                                    {% else %}
+                                        Performances &amp; Presentations
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if hide_news_tab == false %}
+                            {% if news is not empty %}
+                            <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title">
+                                <a href="#news">
+                                    {% if news_tab is not empty %}
+                                        {{ news_tab }}
+                                    {% else %}
+                                        News
+                                    {% endif %}
+                                </a>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+                        {% if hide_awards_tab == false %}
+                            <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title">
+                                <a href="#awards">
+                                    {% if awards_tab is not empty %}
+                                        {{ awards_tab }}
+                                    {% else %}
+                                        Awards
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if hide_custom_tab == false %}
+                            <li style="flex-basis: {{ tab_flex }}%;" class="tabs-title">
+                                <a href="#custom">
+                                    {% if content.field_custom_tab_title|render %}
+                                        {{ content.field_custom_tab_title }}
+                                    {% else %}
+                                        Custom
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        <!-- END Sub Navigation -->
+
+        <div class="tabs-content" data-tabs-content="profile-tabs">
+            <div class="tabs-panel is-active" id="background">
+                <div class="row">
+                    {% if cv_file and cv is empty %}
+                      <div class="columns medium-3 large-3">
+                        <div class="row">
+                          <div class="columns large-10">
+                            <div class="link-download">
+                              <a href="{{ cv_file }}"{% if cv_title %} title="{{ cv_title }}"{% endif %}
+                                 target="{{ cv_target }}" download>
+                                {% if cv_label %}
+                                  {{ cv_label }}
+                                {% else %}
+                                  Download CV
+                                {% endif %}
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if cv %}
+                    <div class="columns medium-3 large-3">
+                            <div class="row">
+                                <div class="columns large-10">
+                                    <div class="link-download">
+                                        <a href="{{ cv }}"{% if cv_title %} title="{{ cv_title }}"{% endif %}
+                                            target="{{ cv_target }}">
+                                            {% if cv_label %}
+                                                {{ cv_label }}
+                                            {% else %}
+                                                Download CV
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    {% endif %}
+                    <div class="columns large-9 align-center">
+                        {% if what_i_do|render %}
+                            <h3>What I do</h3>
+                            {{ what_i_do|render }}
+                        {% endif %}
+
+                        {% if content.field_prof_concentration_link[0] %}
+                            <h3>Concentrations</h3>
+                            <ul>
+                                {% for key, item in content.field_prof_concentration_link if key|first != '#' %}
+                                    <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        {% if content.field_specializations|render %}
+                            <h3>Specialization(s)</h3>
+                            <p>{{ content.field_specializations }}</p>
+                        {% endif %}
+
+
+                        {% if content.field_profile_professional_bio|render %}
+                            {% if profile_type|lower == 'Counselor' %}
+                                <h3>More About Me</h3>
+                            {% else %}
+                                <h3>Professional Biography</h3>
+                            {% endif %}
+                            {{ content.field_profile_professional_bio }}
+                        {% endif %}
+
+                        {% if content.field_profile_degrees|render %}
+                            <h3>Degree(s)</h3>
+                            {{ content.field_profile_degrees }}
+                        {% endif %}
+
+                        {% if content.field_profile_licensure_accr|render %}
+                            <h3>Licensure / Accreditations</h3>
+                            {{ content.field_profile_licensure_accr }}
+                        {% endif %}
+
+                        {% if content.field_profile_pro_affiliations|render %}
+                            <h3>Professional Affiliations</h3>
+                            {{ content.field_profile_pro_affiliations }}
+                        {% endif %}
+
+                        {% if content.field_profile_job_history|render %}
+                            <h3>Job History</h3>
+                            {{ content.field_profile_job_history }}
+                        {% endif %}
+
+                        {% if media_sources|render %}
+                            <h3>Media Sources</h3>
+                            {{ media_sources }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% if hide_research_tab == null %}
+                <div class="tabs-panel" id="research">
+                    <div class="row">
+                        <div class="columns large-9 align-center">
+                            {% if content.field_profile_research|render %}
+                                <h3>Research</h3>
+                                {{ content.field_profile_research }}
+                            {% endif %}
+
+                            {% if content.field_profile_research_interests|render %}
+                                <h4>Areas of Research</h4>
+                                <p>{{ content.field_profile_research_interests }}</p>
+                            {% endif %}
+
+                            {% if content.field_profile_areas_research|render %}
+                                <h4>Research Project Interests</h4>
+                                <p>{{ content.field_profile_areas_research }}</p>
+                            {% endif %}
+
+                            {% if content.field_profile_grants|render %}
+                                <h4>Key Projects</h4>
+                                {{ content.field_profile_grants }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if hide_pub_tab == false %}
+                <div class="tabs-panel" id="publications">
+                    <div class="row">
+                        {% if pub_link %}
+                        <div class="columns large-3">
+                                <div class="row">
+                                    <div class="columns large-10">
+                                        <div class="link-download">
+                                            <a href="{{ pub_link }}" target="{{ pub_target }}"
+                                            {% if pub_title %} title="{{ pub_title }}"{% endif %}>
+                                                {% if pub_label %}
+                                                    {{ pub_label }}
+                                                {% else %}
+                                                    Publications
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        {% endif %}
+                        <div class="columns large-9 align-center">
+                            {% if content.field_featured_publications_list|render %}
+                                <h3>Featured Publications</h3>
+                                {{ content.field_featured_publications_list }}
+                            {% elseif content.field_profile_feat_publications|render %}
+                                <h3>Featured Publications</h3>
+                                {{ content.field_profile_feat_publications }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if hide_perf_tab == false %}
+                <div class="tabs-panel" id="perf-presentation">
+                    <div class="row">
+                        <div class="columns large-9 align-center">
+                            {% if content.field_profile_performances_list|render %}
+                                <h3>Performances</h3>
+                                {{ content.field_profile_performances_list }}
+                            {% elseif content.field_profile_performances|render %}
+                                <h3>Performances</h3>
+                                {{ content.field_profile_performances }}
+                            {% endif %}
+
+                            {% if content.field_profile_presentations_list|render %}
+                                <h3>Presentations</h3>
+                                {{ content.field_profile_presentations_list }}
+                            {% elseif content.field_profile_presentations|render %}
+                                <h3>Presentations</h3>
+                                {{ content.field_profile_presentations }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if hide_news_tab == false %}
+              {% if news is not empty %}
+                <div class="tabs-panel" id="news">
+                    <h3>
+                        News Articles
+                    </h3>
+                    <div class="filter-container-inner"></div>
+                        {% for row in news|batch(2) %}
+                            <div class="row expanded">
+                                {% for item in row %}
+                                    <div class="columns large-6">
+                                        <div class="views-row">
+                                            <article class="article teaser">
+                                                <div class="row">
+                                                    {{ item.image }}
+                                                    <div class="columns article-info">
+                                                        <div class="row article-date">
+                                                            <time datetime="{{ item.pub_date.attr }}">{{ item.pub_date.date }}</time>
+                                                        </div>
+                                                        <div class="row">
+                                                            <h5>
+                                                                <a href="{{ item.node_link }}"
+                                                                   hreflang="en">{{ item.title }}</a>
+                                                            </h5>
+                                                        </div>
+                                                        <div>
+                                                            {{ item.teaser }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                </div>
+              {% endif %}
+            {% endif %}
+
+            {% if hide_awards_tab == false %}
+                <div class="tabs-panel" id="awards">
+                    <div class="row">
+                        <div class="columns large-9 align-center">
+                            {% if content.field_profile_awards|render %}
+                                <h3>Awards</h3>
+                                {{ content.field_profile_awards }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if hide_custom_tab == false %}
+                <div class="tabs-panel" id="custom">
+                    <div class="row">
+                        <div class="columns large-9 align-center">
+                            {% if content.field_custom_tab_text|render %}
+                                <h3>{{ content.field_custom_tab_title }}</h3>
+                                {{ content.field_custom_tab_text }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ location }}"
+        },
+        "email": "{{ email }}",
+        "jobTitle": "{{ job_title }}",
+        "name": "{{ full_name }}",
+        "telephone": "{{ phone_primary }}",
+        "url": "{{ url }}"
+        }
+    </script>
+</article>

@@ -1,0 +1,26 @@
+<div class="table-scroll">
+	<div class="table-scroll__wrapper">
+		<table{% if full-width %} class="table--full-width"{% endif %}>
+			{% if thead %}
+				<thead>
+					<tr>
+						{% for th in thead.table-cells %}
+							<th>{{ th.text }}</th>
+						{% endfor %}
+					</tr>
+				</thead>
+			{% endif %}
+			{% if tbody %}
+				<tbody>
+					{% for tr in tbody %}
+                        <tr>
+							{% for content in tr %}
+								<td>{{ content.text }}</td>
+							{% endfor %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			{% endif %}
+		</table>
+	</div>
+</div>

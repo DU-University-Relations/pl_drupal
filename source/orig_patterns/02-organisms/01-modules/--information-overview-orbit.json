@@ -1,0 +1,38 @@
+{
+  "quick_facts": [
+    {
+       "statistic": {
+              "title" : "$12345",
+              "type": "h2"
+          },
+        "caption": {
+          "styleModifier": "caption",
+
+          "caption_title": "<p><strong>U.S. News & World Report ranks DU among the nation's top 100 universities</strong></p>",
+          "link": {
+              "captionLink": "Learn more",
+              "captionURL": "http://google.com"
+          },
+          "citation": {
+              "citationText": "<p class=\"citation\">Citation</p>" 
+            }
+        }
+      },
+      {
+        "alt_text": "An Image",
+        "src": "http://placehold.it/360x200",
+        "caption": {
+        "styleModifier": "caption",
+        "caption_title": "<p><strong>11:1 Student_Faculty Ratio</strong></p>",
+        "caption_subtitle": "<p>A small student_to_faculty ratio means that you'll form close relationships with your professors.</p>",
+            "link": {
+                "captionLink": "Learn more",
+                "captionURL": "http://google.com"
+            },
+            "citation": {
+                "citationText": "<p class=\"citation\">Citation</p>" 
+            }
+        }
+    }
+    ]
+}

@@ -1,0 +1,59 @@
+#audience-menu {
+	padding-left: 10.0rem;
+	padding-right: 10.0rem;
+	padding-top: 4.8rem;
+	.columns {
+		margin-bottom: 1.6rem;
+		@include breakpoint(small down) {
+			margin-bottom: .7rem;
+		}
+		.bg-img-btn .content {
+			background-color: rgba(0,0,0,0.5);
+			font-size: 2.2rem;
+			&,
+			p {
+				line-height: 1.2;
+			}
+			&:hover,
+			&:focus {
+				background-color: rgba(0,0,0,0.75);
+			}
+		}
+	}
+	.row + .row {
+		margin-top: 1.5rem;
+	}
+	@include breakpoint(large down) {
+		padding-left: 7.7rem;
+		padding-right: 5.6rem;
+	}
+	@include breakpoint(small down) {
+		padding-left: 2.9rem;
+		padding-right: 3.1rem;
+		.bg-img-btn {
+		    margin-top: 0;
+		}
+	}
+}// end #audience-menu
+.is-off-canvas-open header #top-bar-sticky-wrap {
+	max-width: none;
+}
+@include breakpoint(large down) {
+	.off-canvas.position-right {
+	    width: 57.1rem;
+	    transform: translateX(571px);
+	    @include breakpoint(small down) {
+		    width: 28.6rem;
+		    transform: translateX(286px);
+	    }
+	}
+	.off-canvas.is-open {
+    	transform: translate(0, 0);
+    }
+    .position-right.is-open ~ .off-canvas-content {
+    	transform: translateX(-57.1rem);
+	    @include breakpoint(small down) {
+    		transform: translateX(-28.6rem);
+    	}
+	}
+}// end @include

@@ -1,0 +1,18 @@
+<div class="columns small-12 medium-4">
+    <div class="stories-module__story">
+        <div class="content" data-equalizer-watch="row">
+            {% block story %}
+                {{ story.src }}
+                {% include "@atoms/headline.twig" with story %}
+                {% include "@atoms/paragraph.twig" with story %}
+            {% endblock %}
+        </div>
+        <div class="story-cta">
+            {% block button %}
+                {% if(story.button.title) %}
+                    <p>{% include "@atoms/button.twig" with story.button %}</p>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+</div>

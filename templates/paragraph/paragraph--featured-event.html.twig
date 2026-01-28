@@ -1,0 +1,7 @@
+{% embed "@organisms/featured-events.twig" %}
+    {% set calendar_link = content.field_featured_event_cal_link|field_value %}
+    {% set slide_count = content.field_featured_event_slides|field_value|length %}
+    {% block slides %}
+        {{ content.field_featured_event_slides|field_value }}
+    {% endblock %}
+{% endembed %}

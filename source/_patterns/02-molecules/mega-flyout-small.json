@@ -1,0 +1,17 @@
+{
+  "headline": "Feature Headline Here",
+  "image": "<img src=\"/public/images/mega-nav-img-academics.jpg\" alt=\"Academics Img Desc\"/>",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis vehicula neque nec faucibus. Quisque vel tortor eget dui maximus porta. Sed eu cursus nisi. Praesent porta, tellus sed venenatis.",
+  "button": "<a role=\"button\" href=\"#\" class=\"btn   \" title=\"Academics Img Desc\">View Details</a>",
+  "links": [
+    "<a href=\"#\">Academics Overview</a>",
+    "<a href=\"#\">Academic Programs and this is most likely two lines</a>",
+    "<a href=\"#\">Living &amp; Learning Communities</a>",
+    "<a href=\"#\">Global Engagement and Study Abroad</a>",
+    "<a href=\"#\">More Second Level Academics</a>",
+    "<a href=\"#\">Libraries</a>",
+    "<a href=\"#\">Academic Resources</a>",
+    "<a href=\"#\">More Second Level Academics</a>",
+    "<a href=\"#\">More Second Level Academics</a>"
+  ]
+}

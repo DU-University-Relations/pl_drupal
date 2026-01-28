@@ -1,0 +1,51 @@
+{
+  "three_col_header": {
+    "title": "Contact Single",
+    "type": "h3",
+    "cssClass": "btm-divider"
+  },
+  "API_enabled": true,
+  "color_theme": "teal",
+	"img_url": "/_duresources/foundation/images/contact_single_module_bg_img_bw.jpg",
+	"type": "h2",
+  "src": "http://placehold.it/386x151",
+  "alt_text": "image text",
+	"contact_id": 870313908,
+  "title": "Office of Undergraduate Admissions",
+  "type": "h3",
+  "cssClass": "btm-divider",
+  "excerpt": "Lorem ipsum dolor sit amet, consectetur",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+  "phone": "1(303) 871_2000",
+  "email": "unit@du.edu",
+  "fax": "",
+  "url": "www.du.edu",
+  "address": {
+    "address1": "2197 S. University Blvd.",
+    "address2": "",
+    "city": "Denver",
+    "state": "Colorado",
+    "postalcode": "80208"
+  },
+  "social": {
+    "facebook": "http://www.facebook.com/uofdenver",
+    "twitter": "http://www.twitter.com/uofdenver",
+    "instagram": "http://www.instagram.com/uofdenver/",
+    "linkedin": "https://www.linkedin.com/grp/home?gid=35250",
+    "snapchat": "https://www.snapchat.com/add/uofdenver/",
+    "youtube": "http://www.youtube.com/uofdenver"
+  },
+  "building": {
+    "name": "University Hall",
+    "longitude": "_104.961896",
+    "latitude": "39.676617"
+  },
+  "hours": [
+    {
+      "text": "M _ F 8am _ 4:30pm"
+    },
+    {
+      "text": "T _ Th 10am _ 5:30pm"
+    }
+  ]
+}

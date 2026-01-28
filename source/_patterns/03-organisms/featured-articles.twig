@@ -1,0 +1,20 @@
+{% if header %}
+    <div class="row">
+        <div class="columns small-12">
+            {% include "@atoms/headline.twig" with header %}
+        </div>
+    </div>
+{% endif %}
+<div class="featured-articles-module">
+    <div class="row">
+        <div class="columns small-12">
+            <ul class="featured-article-slider">
+                {% block articles %}
+                    {% for article in articles %}
+                    {% include "@molecules/featured-article.twig" with article %}
+                    {% endfor %}
+                {% endblock %}
+            </ul>
+        </div>
+    </div>
+</div>

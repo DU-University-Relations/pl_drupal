@@ -1,0 +1,25 @@
+<div class="unit-generic-flyout" id="{{ flyout_id }}" >
+    <div class="unit-generic-flyout-wrapper">
+        {% block flyout_content %}
+            <h1 class="show-for-sr">Apply</h1>
+            <div class="row align-spaced">
+                <div class="columns small-12 medium-5 ">
+                    <h2>Section Heading</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur alit, sed do eiusmod tempor incididunt ut labore et.</p>
+                    <div class="flyout-button">
+                        {% include "@atoms/button.twig" with {"title": "Button Action Text", "styleModifier": "display-block"} %}
+                    </div>
+                </div>
+                <div class="columns small-12 medium-5 ">
+                    <h2>Email Directory</h2>
+                    <p>To find email contact information for a DU student or employee, search our directory.</p>
+                    <div class="flyout-button">
+                        {% include "@atoms/button.twig" with {"title": "DU Directory", "styleModifier": "display-block"} %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    {% include "@atoms/_unit-nav-close.twig" with {controls: "#" ~ flyout_id} %}
+    {% include "@atoms/_unit-nav-back.twig" with {controls: "#" ~ flyout_id} %}
+</div>

@@ -1,0 +1,20 @@
+{% embed "@organisms/stories.twig" %}
+
+    {% set stories = content.field_story_item|field_value %}
+    {% if stories|length < 3 %}
+        {% set layout = 'two_col' %}
+    {% else %}
+        {% set layout = 'three_col' %}
+    {% endif %}
+    {% set col_header = {
+        "title": content.field_heading|field_value,
+        "type": "h3",
+        "cssClass": "btm-divider"
+    } %}
+    {% block stories %}
+        {% for story in stories %}
+            {{ story }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

@@ -1,0 +1,13 @@
+{% set menu = content.field_menu_reference_tab_menu.0['#options'].entity.id %}
+
+<div class="row tab-menu-component">
+    <div class="columns small-12">
+      <div class="tab-menu-wrap">
+        <nav id="tab-menu" aria-label="sub-navigation">
+          {% if menu %}
+            {{ drupal_menu(menu) }}
+          {% endif %}
+        </nav>
+      </div>
+    </div>
+</div>

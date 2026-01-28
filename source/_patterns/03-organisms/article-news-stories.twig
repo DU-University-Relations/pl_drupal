@@ -1,0 +1,15 @@
+<div class="row news-stories-listing {{ orientation }}-listing {{ layout }}">
+  {% if row %}
+    <div class="columns">
+        <div class="{{ row }}">
+      {% endif %}
+            {% block news_stories %}
+                {% for article in articles %}
+                    {{ article }}
+                {% endfor %}
+            {% endblock %}
+      {% if row %}
+        </div>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,9 @@
+<div class="has-gray-band">
+    <div class="row">
+        {% block ctas %}
+            {% for button in buttons %}
+                {% include "@molecules/big-btn.twig" with button %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

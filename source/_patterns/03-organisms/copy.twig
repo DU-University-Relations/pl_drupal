@@ -1,0 +1,49 @@
+<div class="copy-module{% if image and (not full) %} copy-module--image{% endif %}{% if alt and (not full) %} copy-module--image-alt{% endif %}">
+    <div class="row expanded">
+        <div class="columns">
+            <div class="row">
+                {% if image and (content.field_copy_style|field_raw.value != 'full') and (image_placement == 'image-left' or content.field_copy_image_placement|render is empty) %}
+                    <div class="columns small-12{% if not alt %} large-6{% endif %}{% if alt %} large-9{% endif %}">
+                        {% if not alt %}
+                            {{ copy_image }}
+                        {% elseif alt %}
+                            <div class="copy_image_narrow">
+                                {{ copy_image_narrow }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% elseif image and (content.field_copy_style|field_raw.value != 'full') and (image_placement == 'image-right') %}
+                    <div class="columns small-12{% if not alt %} large-6 large-offset-6{% endif %}{% if alt %} large-9 large-offset-3{% endif %} image-right">
+                        {% if not alt %}
+                            {{ copy_image }}
+                        {% elseif alt %}
+                            <div class="copy_image_narrow">
+                                {{ copy_image_narrow }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                <div class="columns small-12
+                    {% if (not image) and (not full) %} medium-12 large-8 large-offset-4{% endif %}
+                    {% if full %} medium-12 large-12 large-offset-12{% endif %}
+                    {% if image and (not full) %}
+                        {% if not alt %} large-6{% endif %}
+                        {% if alt %} large-3{% endif %}
+                    {% endif %}">
+                    <div class="content {% if image_placement %}{{ image_placement }}{% endif %}">
+                        {% if header %}
+                            <h3 class="btm-divider">{{ header|raw }}</h3>
+                        {% endif %}
+                        {% if subhead %}
+                            <h4>{{ subhead|raw }}</h4>
+                        {% endif %}
+                        {% if body_text %}
+                            {{ body_text }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

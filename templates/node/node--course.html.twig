@@ -1,0 +1,66 @@
+{% embed "@organisms/course.twig" %}
+	{% set banner_title = label %}
+	{% set marketing_title = content.field_marketing_course_title|field_value %}
+
+    {% if marketing_title %}
+        {% set title = marketing_title %}
+    {% else %}
+        {% set title = banner_title %}
+    {% endif %}
+
+	{% set banner_desc = content.field_banner_course_desc|field_value %}
+	{% set marketing_desc = content.field_marketing_course_desc|field_value %}
+
+    {% if marketing_desc %}
+        {% set course_desc = marketing_desc %}
+    {% else %}
+        {% set course_desc = banner_desc %}
+    {% endif %}
+
+    {% set schema_banner_desc = content.field_banner_course_desc.0['#text']|escape %}
+    {% set schema_marketing_desc = content.field_marketing_course_desc.0['#text']|escape %}
+
+    {% if schema_marketing_desc %}
+        {% set schema_course_desc = schema_marketing_desc %}
+    {% else %}
+        {% set schema_course_desc = schema_banner_desc %}
+    {% endif %}
+
+    {% set subject_code = content.field_subject_code|field_value %}
+    {% set course_number = content.field_course_number|field_value %}
+
+	{% if content.field_course_info_title_1|field_value is not empty %}
+		{% set additional_info_col_css = 'medium-8' %}
+	{% else %}
+		{% set additional_info_col_css = '' %}
+	{% endif %}
+
+    {% set course_info_1 =  {
+        "image": file_url(content.field_course_info_icon_1|field_target_entity.uri.value),
+		"alt_text": "icon",
+		"title": content.field_course_info_title_1|field_value,
+		"text": content.field_course_info_text_1|field_value
+    } %}
+
+    {% set course_info_2 =  {
+        "image": file_url(content.field_course_info_icon_2|field_target_entity.uri.value),
+		"alt_text": "icon",
+		"title": content.field_course_info_title_2|field_value,
+		"text": content.field_course_info_text_2|field_value
+    } %}
+
+    {% set course_info_3 =  {
+        "image": file_url(content.field_course_info_icon_3|field_target_entity.uri.value),
+		"alt_text": "icon",
+		"title": content.field_course_info_title_3|field_value,
+		"text": content.field_course_info_text_3|field_value
+    } %}
+
+    {% set course_info_4 =  {
+        "image": file_url(content.field_course_info_icon_4|field_target_entity.uri.value),
+		"alt_text": "icon",
+		"title": content.field_course_info_title_4|field_value,
+		"text": content.field_course_info_text_4|field_value
+    } %}
+
+{% endembed %}

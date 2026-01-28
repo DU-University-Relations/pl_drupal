@@ -1,0 +1,35 @@
+<li class="{{ is_active }} mega-menu">
+    <a href="{{ content.parent_url }}"
+    {% if content.parent_url.options.attributes.target %}target="{{ content.parent_url.options.attributes.target }}"{% endif %}
+    {% if content.parent_url.options.attributes.rel %}rel="{{ content.parent_url.options.attributes.rel }}"{% endif %}
+    {% if content.parent_url.options.attributes.class %}class="{{ content.parent_url.options.attributes.class }}"{% endif %}
+    {% if content.parent_url.options.attributes.title %}title="{{ content.parent_url.options.attributes.title }}"{% endif %}
+    {% if content.parent_url.options.attributes['data-toggle'] %}data-toggle="{{ content.parent_url.options.attributes['data-toggle'] }}"{% endif %}
+    >{{ content.parent_title }}</a>
+
+    {% if not parent_only %}
+
+        {% set headline = content.field_nav_headline|field_value %}
+        {% set image = content.field_nav_image|field_value %}
+        {% set description = content.field_nav_description|field_value %}
+        {% set button = content.field_nav_button|field_value %}
+        {% set links = [] %}
+        {% for item in content.menu %}
+            {% set links = links|merge([link(item.title, item.url)]) %}
+        {% endfor %}
+
+        {% if flyout_style == 'small' %}
+            {% embed "@molecules/mega-flyout-small.twig" %}
+            {% endembed %}
+        {% endif %}
+        {% if flyout_style == 'large' %}
+            {% embed "@molecules/mega-flyout-large.twig" %}
+            {% endembed %}
+        {% endif %}
+        {% if flyout_style == 'dropdown' %}
+            {% embed "@molecules/mega-flyout-dropdown.twig" %}
+            {% endembed %}
+        {% endif %}
+
+    {% endif %}
+</li>

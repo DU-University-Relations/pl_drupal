@@ -1,0 +1,72 @@
+/* Modal Styles */
+.reveal {
+  &.full {
+    background-color: rgba(255,255,255,1);
+    button.close-button {
+      color: #18161f;
+      font-size: 5.4rem;
+    }
+    .modal_cta_utility {
+      h2 {
+        font-size: 6.6rem;
+        line-height: 6.6rem;
+        font-weight: 100;
+        margin-bottom: 1.8rem;
+        @include breakpoint(large down) {
+          margin-bottom: 0.9rem;
+          font-size: 5.5rem;
+          line-height: 5.5rem;
+        }
+        @include breakpoint(small down) {
+          font-size: 3.3rem;
+          line-height: 3.8rem;
+        }
+        @media screen and (max-width: 380px) {
+          font-size: 2.5rem;
+        }
+      }
+      h4 {  font-weight: bold  }
+      h6 {  color: $neutral-color-3;  }
+      p {  margin-bottom: 1em;  }
+      .btn {
+        font-size: 1.9rem;
+        text-align: center;
+        display: block;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        line-height: 2.1rem;
+        margin-bottom: 1.8rem;
+
+        @include breakpoint(large down) {
+          font-size: 1.7rem;
+          line-height: 1.9rem;
+        }
+        &:hover,
+        &:focus {
+          cursor: pointer;
+        }
+      }
+    }// end .modal_cta_utility
+  }
+  &.modal_wrapper {
+    height: 100%;
+  }
+}
+
+#feedback_floater {
+  border: 0;
+  position: fixed;
+  bottom: 0;
+  left: 2.0rem;
+  z-index: 999;
+  display: block;
+  background-color: $accent-color-2c;
+  -webkit-box-shadow: 0 0 .5rem .3rem rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 .5rem .3rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 .5rem .3rem rgba(0, 0, 0, 0.4);
+
+  &:hover, &:focus {
+    background-color: $accent-color-2b;
+  }
+}

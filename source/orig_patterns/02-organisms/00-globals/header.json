@@ -1,0 +1,133 @@
+{
+  "header": {
+    "title": "This is a title",
+    "logo_images": [
+      {
+        "alt_text": "Logo",
+        "src": "http://placehold.it/225x84"
+      }
+    ],
+    "hero_image": {
+      "alt_text": "Hero Image",
+      "src": "http://placehold.it/1356x538"
+    }
+  },
+  "main_menu": {
+    "menu_items": [
+      {
+        "title": "Admission & Aid"
+      },
+      {
+        "title": "Academics",
+        "is_active": true,
+        "mega_menu": {
+          "src": "/_duresources/foundation/images/mega_nav_img_academics.jpg",
+          "alt_text": "Academics Img Desc",
+          "content": {
+            "type": "h2",
+            "title": "Feature Headline Here",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis vehicula neque nec faucibus. Quisque vel tortor eget dui maximus porta. Sed eu cursus nisi. Praesent porta, tellus sed venenatis.",
+            "button": {
+              "title": "View Details",
+              "type": ""
+            }
+          },
+          "is_two_col": true,
+          "sub_menu_items": [
+            {
+              "title": "Academics Overview"
+            },
+            {
+              "title": "Academic Programs and this is most likely two lines"
+            },
+            {
+              "title": "Living & Learning Communities"
+            },
+            {
+              "title": "Global Engagement and Study Abroad"
+            },
+            {
+              "title": "More Second Level Academics"
+            },
+            {
+              "title": "Libraries"
+            },
+            {
+              "title": "Academic Resources"
+            },
+            {
+              "title": "More Second Level Academics"
+            },
+            {
+              "title": "More Second Level Academics"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Research"
+      },
+      {
+        "title": "Campus Life",
+        "mega_menu": {
+          "alt_layout": true,
+          "src": "/_duresources/foundation/images/mega_nav_img_campus_life.jpg",
+          "alt_text": "Campus Life Img Desc",
+          "content": {
+            "type": "h2",
+            "title": "Feature Headline Here",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis vehicula neque nec faucibus. Quisque vel tortor eget dui maximus porta. Sed eu cursus nisi. Praesent porta, tellus sed venenatis.",
+            "button": {
+              "title": "View Details",
+              "type": ""
+            }
+          },
+          "is_two_col": true,
+          "sub_menu_items": [
+            {
+              "title": "Libraries"
+            },
+            {
+              "title": "Campus Life Resources"
+            },
+            {
+              "title": "More Second Level Campus Life"
+            },
+            {
+              "title": "More Second Level Campus Life"
+            }
+          ]
+        }
+      },
+      {
+        "title": "News"
+      },
+      {
+        "title": "Calendar"
+      },
+      {
+        "title": "About"
+      }
+    ]
+  },
+  "utility_menu": {
+    "show_for_small": false,
+    "menu_items": [
+      {
+        "title": "Request Info"
+      },
+      {
+        "title": "Give"
+      },
+      {
+        "title": "Visit"
+      },
+      {
+        "title": "Apply"
+      }
+    ],
+    "hide_info_for": true
+  }
+}
+
+

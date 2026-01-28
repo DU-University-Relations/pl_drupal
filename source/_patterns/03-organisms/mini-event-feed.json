@@ -1,0 +1,33 @@
+{
+  "title": "Custom Event Headline",
+  "see_more_link": "<a href='' class='see-more-events'>See More Events</a>",
+  "events": [
+    {
+      "cols_3": true,
+      "url": "#",
+      "date": "November 4",
+      "title": "From God to Mammon: The Deep Theology of Contemporary Neo_Liberalism",
+      "start_time": "8:00pm",
+      "end_time": "7:00pm",
+      "location": "Mary Reed, Room 103"
+    },
+    {
+      "cols_3": true,
+      "url": "#",
+      "date": "November 4 – November 7",
+      "title": "Another Event Headline That Breaks Into Two Lines",
+      "start_time": "8:00pm",
+      "end_time": "7:00pm",
+      "location": "Mary Reed, Room 103"
+    },
+    {
+      "cols_3": true,
+      "url": "#",
+      "date": "November 6",
+      "title": "From God to Mammon: The Deep Theology of Contemporary Neo_Liberalism",
+      "start_time": "8:00pm",
+      "end_time": "7:00pm",
+      "location": "Mary Reed, Room 103"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<div class="show-hide-toggle">
+    <a href="#">
+        <span class="show-for-sr">Show / Hide Content Below</span>
+        {% if show_hide_icons %}
+            {% include "@atoms/_du-icon.twig" with show_hide_icons %}
+        {% endif %}
+    </a>
+</div>

@@ -1,0 +1,802 @@
+  // to make changes to this file
+  // uncomment the document
+  // make updates and copy the document into
+  // https://www.sassmeister.com/
+  // copy output into the ../../dest/core-inline.css
+  // Make sure you comment back out this entire document
+  // to prevent it from going to the main dest stylesheet
+
+
+
+  // body {background: black;}
+
+  body:not(.du-home) {
+  div.off-canvas-wrap { background: #fefefe; }
+  }
+
+
+  //alert
+  body.du-home .du-alert ~ .off-canvas-content header.core-inline-site {
+  //  height: calc(38vw) !important;
+  }
+
+  body.du-home .du-alert[style*="display: none"] ~ .off-canvas-content header.core-inline-site {
+  //  height: calc(39vw + 60px)!important;
+  }
+
+  @media screen and (max-width: 1200px) {
+  body:not(.unit-site).du-home .du-alert ~ .off-canvas-content header.core-inline-site {
+  //  min-height: 430px !important;
+  }
+  }
+  //end alert
+
+
+
+  body:not(.unit-site) header .sticky-container {
+  position: relative !important;
+  }
+
+
+  //hero
+  body:not(.unit-site).du-home header.core-inline-site {
+  //  height: calc(39vw + 60px);
+  height: auto;
+  }
+
+
+  body.du-home header .hero-media img {
+  //  margin-top: 60px;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1110px) {
+  body:not(.unit-site).du-home header.core-inline-site  {
+    min-height: 0;
+  }
+  }
+
+
+  //caption
+  @media screen and (max-width: 1144px) {
+    .du-home header.core-inline-site #hero-media__caption {
+      //padding-top: 75px;
+      h1 {
+        font-size: 65px;
+      }
+    }
+  }
+
+
+  @media screen and (min-width: 1124px) and (max-width: 1180px) {
+  .du-home header.core-inline-site #hero-media__caption {
+    h1 {
+      font-size: 60px;
+      margin-top: 20px;
+    }
+  }
+  }
+
+  @media screen and (max-width: 768px) {
+  .du-home header.core-inline-site #hero-media__caption {
+    h1 {
+      font-size: 48px;
+    }
+  }
+  }
+
+  @media screen and (max-width: 500px) {
+  .du-home header.core-inline-site #hero-media__caption {
+    h1 {
+      font-size: 36px;
+    }
+  }
+  }
+
+  @media screen and (max-width: 575px) {
+  body:not(.unit-site).du-home header.core-inline-site {
+  //  min-height: 455px;
+  }
+  }
+
+
+  .off-canvas-wrap {  // gains specificity
+
+  //hero image
+  header .hero-media {
+    img {
+      -webkit-user-drag: none;
+    }
+  }
+
+  //turn off height transitions to prevent jumping
+  header.header #top-bar-sticky-wrap, .header #top-bar-sticky-wrap {
+    transition: height 0s ease 0s;
+    * {
+      transition: height 0s ease 0s;
+    }
+  }
+
+  .utility-menu {
+    width: 100%;
+    background-color: black;
+    transition: height 0s ease 0s;
+
+    // 'university of denver' home link wrap to keep responsively fixed above shield logo
+    .home-anchor-wrap {
+      position: absolute;
+      top: 9px;
+      left: 0;
+      right: 0;
+
+      @media screen and (max-width: 1024px)  {
+        margin-left: 55px;
+        margin-right: 55px;
+        &.expanded {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      // 'university of denver' home link
+      #homeAnchor {
+        color: white;
+        text-decoration: none;
+        font-family: "BreveText",TimesNewRoman,Times New Roman,Times,Georgia,serif;
+        font-weight: 700;
+        font-size: 0.9em;
+        user-select: none;
+        padding: 5px 8px;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  } //end utility menu
+
+  //main du logo, now one image and needs to be separated from Unit sites
+  #main-menu-wrap a.logo span img:first-of-type {
+    width: 4rem;
+    -webkit-user-drag: none;
+    transition: all 0.1s ease;
+
+    @include breakpoint(small down) {
+      width: 20.5rem !important;
+      transform: scale(1.05);
+    }
+
+    @include breakpoint(medium down) {
+      width: 20.5rem !important;
+      transform: scale(1.05);
+    }
+
+    @include breakpoint(large up) {
+      width: 20.5rem !important;
+      transform: scale(1.1);
+    }
+  }
+
+  .header #main-menu-wrap .row  {
+    @media screen and (min-width: 766px) and (max-width: 1024px) {
+      position: absolute;
+    }
+  }
+
+  //site identity text
+  @media screen and (max-width: 1357px) {
+    .utility-menu .home-anchor-wrap {
+      max-width: none; //reset .row max-width below this width
+    }
+  }
+
+  .header #main-menu-wrap a.logo.inline-site {
+    margin-left: 1rem;
+    width: 23rem;
+    z-index: 5;
+    @media screen and (max-width: 768px) { //@include breakpoint(small down) {
+      margin-left: 1.8rem;
+      width: auto;
+    }
+
+    @include breakpoint(large up) {
+      margin-left: 3.8rem;
+      width: 30rem;
+    }
+  }
+
+
+  @media screen and (min-width: 1301px) and (max-width: 1357px) {
+    .utility-menu .home-anchor-wrap #homeAnchor {
+      padding: 3px 38px;
+    }
+  }
+
+  @media screen and (min-width: 1250px) and (max-width: 1300px) {
+    .utility-menu .home-anchor-wrap #homeAnchor {
+      padding: 3px 30px;
+    }
+  }
+
+  @media screen and (min-width: 1201px) and (max-width: 1251px) {
+    .utility-menu .home-anchor-wrap #homeAnchor {
+      padding: 3px 38px;
+    }
+  }
+
+  @media screen and (min-width: 1025px) and (max-width: 1200px ) {
+    .utility-menu .home-anchor-wrap #homeAnchor {
+      padding: 3px 53px;
+    }
+  }
+
+  @media screen and (min-width: 770px) and (max-width: 1024px ) {
+    .utility-menu .home-anchor-wrap #homeAnchor {
+      padding: 3px 1px;
+    }
+  }
+
+  @media screen and (max-width: 769px ) {
+    .utility-menu .home-anchor-wrap #homeAnchor {
+      padding: 3px 1px;
+    }
+  }
+
+
+  .header #main-menu-wrap a.logo.inline-site .site-identity {
+    display: flex;
+    align-items: flex-start;
+    margin-top: -0.5rem;
+    flex-direction: column;
+    @media screen and (max-width: 430px) {
+      margin-left: 8px;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) { //@include breakpoint(small down) {
+    .header #main-menu-wrap a.logo.inline-site .site-prefix {
+      font-size: 12px;
+    }
+    .header #main-menu-wrap a.logo.inline-site .site-name {
+      font-size: 21px;
+    }
+  }
+
+
+  @media screen and (max-width: 430px) { //@include breakpoint(small down) {
+    .header #main-menu-wrap a.logo.inline-site .site-prefix {
+      font-size: 13px;
+      letter-spacing: -0.1pt;
+    }
+    .header #main-menu-wrap a.logo.inline-site .site-name {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 330px) { //@include breakpoint(small down) {
+    .header #main-menu-wrap a.logo.inline-site .site-prefix {
+      font-size: 12px;
+    }
+    .header #main-menu-wrap a.logo.inline-site .site-name {
+      font-size: 14px;
+    }
+  }
+
+  .header #main-menu-wrap a.logo.inline-site .site-name {
+    font-size: 1.3rem;
+    white-space: normal;
+    word-wrap: normal;
+    @media screen and (min-width: 320px) and (max-width: 650px) {
+      width: 16rem;
+    }
+    @include breakpoint(medium up) {
+      font-size: 1.9rem;
+      width: 21.5rem;
+      white-space: break-spaces;
+    }
+    @include breakpoint(xlarge up) {
+      font-size: 2.3rem;
+      width: 23.5rem;
+    }
+  }
+
+
+  //top right utility menu links
+  #utility-menu nav > ul li.audience-menu {
+
+    @media screen and (min-width: 1300px) {
+      margin-right: 2vw;
+    }
+    @media screen and (min-width: 1400px) {
+      margin-right: 5vw;
+    }
+    @media screen and (min-width: 1450px) {
+      margin-right: 6vw;
+    }
+    @media screen and (min-width: 1500px) {
+      margin-right: 7vw;
+    }
+    @media screen and (min-width: 1550px) {
+      margin-right: 8vw;
+    }
+    @media screen and (min-width: 1600px) {
+      margin-right: 9vw;
+    }
+    @media screen and (min-width: 1650px) {
+      margin-right: 10vw;
+    }
+    @media screen and (min-width: 1700px) {
+      margin-right: 11.5vw;
+    }
+    @media screen and (min-width: 1750px) {
+      margin-right: 12.5vw;
+    }
+    @media screen and (min-width: 1800px) {
+      margin-right: 14.5vw;
+    }
+    @media screen and (min-width: 1900px) and (max-width: 1999px) {
+      margin-right: 16.5vw;
+    }
+    @media screen and (min-width: 2000px) {
+      padding-right: calc(4vw + 80px);
+    }
+    @media screen and (min-width: 2500px) {
+      padding-right: calc(6vw + 80px);
+    }
+
+  }
+
+
+  header {
+    #main-menu-wrap {
+      @media screen and (max-width: 768px) { //@include breakpoint(small down) {
+        height: 60px;
+      }
+    }
+
+    //rules for scrolling for hamburger and search
+    #top-bar-sticky-wrap {
+
+      //ON PAGE TOP
+      &.is-anchored.is-at-top { // on page scroll to top
+
+        // #main-menu-wrap li.search > a { //search
+        //   height: 60px;
+        //   width: 60px;
+        //   // margin: 7.5px 5px;
+        //   @media screen and (max-width: 768px) { //@include breakpoint(small down) {
+        //     margin: 0;
+        //     transition: all 0s;
+        //   }
+        // }
+
+        // #main-menu-wrap > .row.expanded .columns.shrink #main-menu-toggler button { //hamburger
+        //   height: 60px;
+        //   width: 60px;
+        //   margin: 7.5px 5px;
+
+        //   @media screen and (max-width: 768px) { //@include breakpoint(small down) {
+        //     width: 55px;
+        //     margin: 0;
+        //   }
+        // }
+
+        //if there is not prefix
+        #main-menu-wrap a.logo.inline-site .site-identity span:nth-child(1).site-name {
+        //  margin-top: 15px;
+        }
+
+      } // end on page at top
+
+      //ON SCROLL
+      &.is-stuck { //on page scroll
+
+        #main-menu-wrap li.search > a  { //search
+          margin: 0;
+        }
+
+        // #main-menu-wrap > .row.expanded .columns.shrink #main-menu-toggler button { //hamburger
+        //   margin: 0;
+        // }
+
+        //if there is not prefix
+        #main-menu-wrap a.logo.inline-site .site-identity span:nth-child(1).site-name {
+        //  margin-top: 5px;
+        }
+
+        @media screen and (min-width: 768px) {
+
+          #main-menu-wrap a.logo.inline-site {
+            .site-identity {
+            //  margin-top: 11px;
+            }
+            .site-prefix {
+              font-size: 12px
+            }
+
+            .site-name {
+              font-size: 18px;
+            }
+
+          }
+
+        } //end 768 media query
+
+      } //end on scroll
+
+    } //end top sticky
+  } //end header
+
+  //
+  //search and hamburger icon override for top-bar-main-menu
+  //
+
+  ul#search-toggler {
+    background-color: rgba(254, 254, 254, 0); //transparent
+  }
+
+  .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #search-toggler > li > a { //search
+    background-color: transparent;
+    border: none;
+    width: 5rem;
+    @include breakpoint(medium up) {
+      width: 6rem;
+    }
+    @include breakpoint(large up) {
+      border-left: .1rem solid $neutral-color-5;
+      width: 8rem;
+    }
+    &:hover {
+      background-color: #FEFEFE; //$neutral-color-9;
+      // color: #8C2332; //$primary-color-6 !important;
+    }
+    &:focus {
+      outline: none;
+      background-color:  #FEFEFE; //$neutral-color-9;
+    }
+
+    @media screen and (max-width: 1024px) { //@include breakpoint(medium down) {
+      transition: all 0s;
+    }
+    @media screen and (max-width: 375px) {
+      width: 45px;
+    }
+    &:before {
+      font-size: 2.2rem;
+    }
+
+  } //end search
+
+
+  //search dropdown
+  // .header .top-bar .search .is-dropdown-submenu {
+  //   background-color:  #FEFEFE; //$neutral-color-9;
+  // }
+
+  //hamburger and search container
+  // .header #main-menu-wrap > .row.expanded > .columns.shrink:last-child {
+  //   padding-right: 15px;
+
+  //   @media screen and (max-width: 1024px) { //@include breakpoint(medium down) {
+  //     padding-right: 35px;
+  //   }
+  //   @media screen and (max-width: 768px) { //@include breakpoint(small down) {
+  //     padding-right: 25px;
+  //   }
+  //   @media screen and (max-width: 375px) {
+  //     padding-right: 0;
+  //   }
+  // }
+
+  //search icon tablet
+  // .header #main-menu-wrap li.search > a:before {
+  //   @media screen and (max-width: 768px) { //@include breakpoint(medium down) {
+  //     font-size: 1.4em;
+  //   }
+  // }
+
+  //mobile hamburger
+  .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #main-menu-toggler button {
+    background-color: rgba(254, 254, 254, 0); //transparent
+    // color: #18171E !important; //$neutral-color-2 !important;
+    // border-bottom: none;
+    // transition: all 0s;
+    width: 5rem;
+    @include breakpoint(large up) {
+      width: 8rem;
+    }
+
+    &:hover {
+      background-color: #FEFEFE; //$neutral-color-9;
+      // color: #8C2332; //$primary-color-6 !important;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: #FEFEFE; //$neutral-color-9;
+    }
+    &.icon-du-cust-menu {
+      font-size: 2.8rem;
+      @include breakpoint(medium up) {
+        font-size: 2.5rem;
+      }
+    }
+
+    // @media screen and (max-width: 375px) {
+    //   width: 45px;
+    // }
+  } //end hamburger
+
+
+  //hamburger tablet
+  // .icon-du-cust-menu:before {
+  //   @media screen and (max-width: 768px) { //@include breakpoint(medium down) {
+  //     font-size: 1.3em;
+  //   }
+  // }
+
+  }//end wrap for specificity
+
+
+  //CWC
+  .colorado-womens-college {
+  .header #main-menu-wrap a.logo.inline-site .site-identity {
+    @media screen and (max-width: 767px) {
+      margin-top: 14px;
+    }
+  }
+
+  }
+
+  .du-home:not(.unit-site) .colorado-womens-college .hero-media__caption {
+  padding-top: 0;
+  }
+
+  body.du-home .colorado-womens-college header .hero-media img {
+  margin-top: 0;
+  }
+
+  .du-home .colorado-womens-college header .hero-media {
+  position: initial;
+  }
+  .du-home .colorado-womens-college header .hero-media {
+  height: initial;
+  min-height: initial;
+  }
+
+  .colorado-womens-college header:before, .colorado-womens-college header:after  {
+  display: none;
+  }
+
+  @media screen and (max-width: 1270px) {
+  .du-home .colorado-womens-college header.core-inline-site #hero-media__caption{
+    padding-top: 0;
+  }
+  }
+
+  @media screen and (max-width: 1024px) {
+  body:not(.unit-site) .colorado-womens-college header .hero-media>img  {
+    margin-top: 0;
+    width:  100%;
+    margin-left: 0;
+
+  }
+  }
+
+  @media screen and (max-width: 840px) {
+  body:not(.unit-site) .colorado-womens-college  header .hero-media>img  {
+    width:  100%;
+    margin-left: 0;
+  }
+  }
+
+  @media screen and (max-width: 440px) {
+  body:not(.unit-site) .colorado-womens-college  header .hero-media>img  {
+    width:  125%;
+    margin-left: -12.5%;
+  }
+  }
+
+  @media screen and (max-width: 1200px) {
+  body:not(.unit-site).du-home .colorado-womens-college  header {
+    height: initial;
+    min-height: initial;
+  }
+  }
+
+  body:not(.unit-site) .colorado-womens-college  #hero-media__caption {
+  position: absolute;
+  top: 195px;
+  }
+
+  @media screen and (max-width: 800px) {
+  body:not(.unit-site) .colorado-womens-college  #hero-media__caption {
+    top: 150px;
+  }
+  }
+
+  @media screen and (min-width: 1500px) {
+  body:not(.unit-site) .colorado-womens-college  #hero-media__caption {
+    top: 350px;
+  }
+  }
+
+  @media screen and (max-width: 640px) {
+  body:not(.unit-site) .off-canvas-content:not(.utility-page) .colorado-womens-college header .hero-media {
+    margin-bottom: 0;
+  }
+  }
+
+  @media screen and (max-width: 499px) {
+  .du-home .colorado-womens-college  .du-home__section-1  {
+    margin-top: 0;
+  }
+  }
+
+  //cwc alert --
+
+  @media screen and (max-width: 1200px) {
+  body:not(.unit-site).du-home .du-alert ~ .off-canvas-content.colorado-womens-college header.core-inline-site {
+    min-height: initial !important;
+    height: initial !important;
+  }
+  }
+  body.du-home .du-alert[style*="display: none"]~.off-canvas-content.colorado-womens-college header.core-inline-site {
+  height: initial !important;
+  }
+
+  .du-home .colorado-womens-college {
+  .hero-media {
+    > video {
+      width: 100%;
+      opacity: 1;
+      visibility: visible;
+      @media (min-width: 1200px) and (max-width: 1488px) {
+        width: 100%;
+        margin-left: 0;
+        height: initial;
+        left: 0;
+      }
+      @media (min-width: 1120px) and (max-width: 1199px) {
+        min-width: 100%;
+        width: 100%;
+        position: static;
+        margin-left: 0;
+        height: initial;
+      }
+      @media (min-width: 1024px) and (max-width: 1119px) {
+        width: 100%;
+        margin-left: 0;
+        height: initial;
+        left: 0;
+        position: relative;
+        min-height: 0;
+        min-width: 0;
+      }
+    }
+  }
+  }
+
+  body.du-home header {
+  height: initial !important;
+  }
+
+  body.du-home .du-alert ~ .off-canvas-content.colorado-womens-college header.core-inline-site {
+  height: initial !important;
+  }
+  body:not(.unit-site).du-home .colorado-womens-college header.core-inline-site {
+  height: initial !important;
+  }
+  body:not(.unit-site).du-home .colorado-womens-college header {
+  height: initial !important;
+  }
+
+  @media screen and (max-width: 64em) {
+    .off-canvas-wrap #main-menu-wrap a.logo img:first-of-type  {
+      width: 4rem;
+      transform: scale(1.35);
+    }
+
+    #main-menu-wrap a.logo .newman-center-logo img:first-of-type  {
+      width: 100% !important;
+      transform: scale(1);
+    }
+  }
+
+  @media screen and (min-width: 64em) {
+    .off-canvas-wrap #main-menu-wrap a.logo img:first-of-type {
+      width: 5rem;
+      transform: scale(1.35);
+    }
+
+    #main-menu-wrap a.logo .newman-center-logo img:first-of-type  {
+      width: 100%;
+      transform: scale(1);
+    }
+  }
+
+  @media screen and (max-width: 47.99875em) {
+    .unit-nav-group #top-bar-sticky-wrap.is-stuck #main-menu-wrap .logo img {
+      max-width: 2.6rem;
+      transform: scale(1.35);
+    }
+
+    #main-menu-wrap a.logo .newman-center-logo img:first-of-type  {
+      max-width: 100%;
+      transform: scale(1);
+    }
+  }
+
+  @media screen and (min-width: 64em) {
+    #main-menu-wrap a.logo img:first-of-type  {
+      width: 5rem;
+    }
+
+    #main-menu-wrap a.logo .newman-center-logo img:first-of-type  {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+// Kennedy Mountain Campus custom inline menu styling.
+.kennedy-mountain-campus .header .utility-menu {
+  width: 100%;
+  background-color: white;
+  transition: height 0s ease 0s;
+
+  .home-anchor-wrap {
+    position: absolute;
+    top: 9px;
+    left: 0;
+    right: 0;
+
+    @media screen and (max-width: 1024px)  {
+      margin-left: 55px;
+      margin-right: 55px;
+      &.expanded {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    #homeAnchor {
+      color: black;
+      text-decoration: none;
+      font-family: "BreveText",TimesNewRoman,Times New Roman,Times,Georgia,serif;
+      font-weight: 700;
+      font-size: 0.9em;
+      user-select: none;
+      padding: 5px 8px;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .menu {
+    li {
+      margin-left: 0;
+      a {
+        background-color: white;
+        color: $secondary-color-2;
+      }
+    }
+  }
+}

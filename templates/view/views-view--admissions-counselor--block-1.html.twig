@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+    set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'resource',
+    'generic-listing'
+]
+%}
+{% set filter_id = 'profile-list-filters-test' %}
+{% set result_label = view.exposed_data.field_counselor_student_type_value|title|replace({'_': " ", 'Us': "US"}) %}
+
+<div{{ attributes.addClass(classes) }} id="profile-list-counselors">
+    <div class="admissions-counselor-filters">
+        {% if exposed %}
+                {% block filter_form %}
+                    {{ exposed }}
+                {% endblock %}
+        {% endif %}
+    </div>
+
+    <div class="resource-listing row">
+        {% if rows|length > 0 %}
+            <h3>{{ result_label }} Counselor List:</h3>
+        {% endif %}
+        {{ rows }}
+        {% if empty %}
+            <div class="no-results-found">
+                {{ empty }}
+            </div>
+        {% endif %}
+    </div>
+    {{ pager }}
+</div>

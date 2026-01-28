@@ -1,0 +1,91 @@
+.unit-site {
+  .unit-resources-for {
+    position: relative;
+    display: none;
+    max-height: 75vh;
+    overflow: auto;
+    background: #fff;
+    @include breakpoint(large up) {
+      background: #e7e7e7;
+      box-shadow: inset 0 .1rem .3rem rgba(0,0,0,0.2);
+    }
+    &.expanded { display: block; }
+    .unit-resources-for-wrapper {
+      overflow: hidden; // poor mans clearfix
+      position: relative;
+      max-width: $grid-row-width;
+      padding: 2.0rem 3.0rem 2.0rem;
+      margin: 0 auto;
+      box-shadow: inset 0 .1rem .3rem rgba(0,0,0,0.2);
+      @include breakpoint(medium up) {
+        padding: 2.0rem 6.0rem 2.0rem;
+      }
+      @include breakpoint(large up) {
+        box-shadow: none;
+        padding: 1.5rem 5.4rem;
+        max-width: 83.0rem;
+      }
+    }
+
+    @include breakpoint(medium down) {
+      position: absolute;
+      z-index: 2;
+      top: 12.0rem;
+      width: 100%;
+      box-shadow: 0 -5.0rem 5.0rem 5.0rem rgba(0,0,0,0.3);
+      .unit-header .is-stuck & {
+        top: 6.0rem;
+      }
+      .unit-resources-for-wrapper {
+        padding-bottom: 4.0rem;
+      }
+    }
+    @include breakpoint(small down) {
+      top: 8.7rem;
+    }
+    ul {
+      // border-top: 8px solid $neutral-color-4;
+      list-style: none;
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      column-count: 2;
+      li {
+        /* autoprefixer: off */
+        -webkit-column-break-inside: avoid; /* Chrome, Safari */
+        page-break-inside: avoid;           /* Theoretically FF 20+ */
+        break-inside: avoid-column;         /* IE 11 */
+      }
+
+      @include breakpoint (medium down) {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+      }
+    }
+    li {
+      margin-left: 0;
+    }
+    li a {
+      display: block;
+      color: $neutral-color-2;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 2.2rem 2.8rem 2.0rem 0 ;
+      border-bottom: .2rem solid $neutral-color-4;
+      @include breakpoint(large up) {
+        padding: 2.2rem 2.8rem;
+      }
+      &:hover, &:focus {
+        color: $primary-color-3;
+        background: $neutral-color-4;
+      }
+      &.off-site:after {
+        font-family: $icon-font;
+        content: "\00A0" "\00A0" "\f14c";
+      }
+      &.current-site {
+        border-left: .8rem solid $primary-color-3;
+      }
+    }
+  } //end .unit-resources-for
+}// end .unit-site

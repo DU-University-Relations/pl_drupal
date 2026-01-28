@@ -1,0 +1,21 @@
+<div class="dropdown-video-module__container">
+    {% for item in slides %}
+    <div class="dropdown-video-module">
+        <div class="dropdown-video-module__wrapper">
+            <figure>
+                {% include "@atoms/image.twig" with item %}
+                {{ item.videoStart|raw }}
+                <div id="dropdownVideo">
+                    <iframe src="{{ item.videoUrl|raw }}{{ item.videoUrl|raw }}{{ item.videoUrl|raw }}"></iframe>
+                </div>
+                {{ item.videoStart|raw }}
+            </figure>
+        </div>
+        <a href="#" class="btn dropdown-video-module__toggle">
+            <span class="dropdown-video-module__toggle__open">{{ item.cta|raw }}</span>
+            <span class="dropdown-video-module__toggle__hide">Close Video</span>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="reveal dropdown-video-module__modal" id="dropdown-video-module__modal" data-reveal aria-hidden="hidden"></div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="columns small-12 {{ deadline_data_css }}">
+		<div class="application-cards__description">
+		{% include "@atoms/headline.twig" with application_card_info %}
+			{{ application_card_info.body_text }}
+		</div>
+	</div>
+	{% if application_card_info.deadline_text %}
+	<div class="columns">
+		<div class="application-cards__deadline">
+			<p>{{ application_card_info.deadline_text }}</p>
+			{% if application_card_info.deadline_date is not empty %}
+				<hr>
+				<div class="application-cards__deadline-date">
+				<p>{{ application_card_info.deadline_date }}</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+	{% endif %}
+</div>
+<div class="application-cards-module application-cards-module-overlay" data-equalizer="cards-module__content" style="background-image: url('{{ application_card_info.img_url }}')">
+  <div class="row">
+	{% block cards %}
+		{% for card in cards %}
+			{% include "@molecules/application-card.twig" with card %}
+		{% endfor %}
+	{% endblock %}
+  </div>
+</div>

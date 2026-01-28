@@ -1,0 +1,1254 @@
+<?php
+
+/**
+ * @file
+ * Theme specific functionality.
+ */
+
+use Drupal\block\Entity\Block;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\views\Views;
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function pl_drupal_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $suggestions[] = 'page__' . $node->bundle();
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function pl_drupal_preprocess_html(&$variables) {
+  $settings = \Drupal::config('du_profiles.settings');
+  if (!empty($settings->get('profile_background_tab_text'))) {
+    $variables['background_tab'] = $settings->get('profile_background_tab_text');
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ *
+ * Allow border around fieldsets by adding .fieldset class per Foundation's expectations.
+ */
+function pl_drupal_preprocess_fieldset(&$variables) {
+  if ($variables['element']['#type'] == 'fieldset') {
+    $variables['attributes']['class'][] = 'fieldset';
+  }
+}
+
+/**
+ * Implements template_preprocess_field().
+ */
+function pl_drupal_preprocess_field(&$vars) {
+  // Since we're not using QuickEdit (we're using PL templates instead),
+  // we need to disable any quickedit attribute from rendering so that
+  // Javascript doesn't load and produce errors (since most of the divs
+  // are empty or do not contain any valid data.
+  if (!empty($vars['attributes']['data-quickedit-field-id'])) {
+    unset($vars['attributes']['data-quickedit-field-id']);
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ *
+ * Allow our theme 'btn' class to apply to form submit buttons.
+ */
+function pl_drupal_preprocess_input__submit(&$variables) {
+  $variables['attributes']['class'][] = 'btn';
+}
+
+/**
+ * Implements template_preprocess().
+ */
+function pl_drupal_preprocess(&$variables, $hook, $info) {
+  /*
+   * Get related stories, rendered in 'related snippets' view mode for the related stories paragraph type.
+   */
+  if ($info['template'] == 'paragraph--related-stories') {
+    $tids = $variables['paragraph']->get('field_content_tags_ref')->getValue();
+    if ($tids) {
+      foreach ($tids as $tid) {
+        $tags[] = $tid['target_id'];
+      }
+      $results = views_get_view_result('stories', 'block_1', implode(',', $tags));
+      $view_mode = 'related_snippet';
+      foreach ($results as $result) {
+        $node = Node::load($result->nid);
+        $story = \Drupal::entityTypeManager()
+          ->getViewBuilder('node')
+          ->view($node, $view_mode);
+        $stories[] = render($story);
+      }
+      $variables['related_stories'] = $stories;
+    }
+  }
+
+  /*
+   * Get automated 'stories' (Article Content Type), rendered in 'automated snippet' view mode for the related stories 2 paragraph type.
+   */
+  if ($info['template'] == 'paragraph--related-stories-2') {
+    $tids = $variables['paragraph']->get('field_content_tags_ref')->getValue();
+    if ($tids) {
+      foreach ($tids as $tid) {
+        $tags[] = $tid['target_id'];
+      }
+      $results = views_get_view_result('stories', 'block_2', implode(',', $tags));
+      $view_mode = 'automated_snippet';
+      foreach ($results as $result) {
+        $node = Node::load($result->nid);
+        $story = \Drupal::entityTypeManager()
+          ->getViewBuilder('node')
+          ->view($node, $view_mode);
+        $stories[] = render($story);
+      }
+      $variables['related_stories'] = $stories;
+    }
+  }
+
+  // Get Profile List Page Location url for See All Faculty & Staff
+  // link when pulling the key faculty & students paragraph type.
+  if ($info['template'] == 'paragraph--key-faculty-and-students') {
+    $settings = \Drupal::config('du_profiles.settings');
+    if (!empty($settings->get('profile_list_location'))) {
+      $profile_list_node = Node::load($settings->get('profile_list_location'));
+      if (!empty($profile_list_node)) {
+        $id = ['node' => $profile_list_node->id()];
+        $url = Url::fromRoute("entity.node.canonical", $id, ['absolute' => TRUE])->toString();
+        $variables['profile_list_location_url'] = $url;
+      }
+    }
+  }
+
+  // Provide view output for the elevate paragraph.
+  if ($info['template'] == 'paragraph--elevate-courses' || $info['template'] == 'paragraph--elevate-courses-filter') {
+    $args = [];
+
+    // Program taxonomy.
+    $tids = $variables['paragraph']->get('field_programs')->getValue();
+    if ($tids) {
+      $args[] = implode(',', array_column($tids, 'target_id'));
+    }
+    else {
+      $args[] = 'all';
+    }
+
+    // Node ID include.
+    $nids = $variables['paragraph']->get('field_node_inclusion_filter')->getValue();
+    if ($nids) {
+      $args[] = implode(',', array_column($nids, 'target_id'));
+    }
+    else {
+      $args[] = 'all';
+    }
+
+    // Node ID exclude.
+    $nids = $variables['paragraph']->get('field_node_exclusion_filter')->getValue();
+    if ($nids) {
+      $args[] = implode(',', array_column($nids, 'target_id'));
+    }
+    else {
+      $args[] = 'all';
+    }
+
+    // Course Code.
+    $course_code = $variables['paragraph']->get('field_course_code_filter')->value;
+    $args[] = $course_code ?: 'all';
+
+    // Instance Code.
+    $instance_code = $variables['paragraph']->get('field_instance_code_filter')->value;
+    $args[] = $instance_code ?: 'all';
+
+    if ($info['template'] == 'paragraph--elevate-courses') {
+      // Elevate Format.
+      $tids = $variables['paragraph']->get('field_elevate_format_filter')->getValue();
+      if ($tids) {
+        $args[] = implode(',', array_column($tids, 'target_id'));
+      }
+      else {
+        $args[] = 'all';
+      }
+
+      // Elevate Level.
+      $tids = $variables['paragraph']->get('field_elevate_level_filter')->getValue();
+      if ($tids) {
+        $args[] = implode(',', array_column($tids, 'target_id'));
+      }
+      else {
+        $args[] = 'all';
+      }
+
+      // Elevate Topic.
+      $tids = $variables['paragraph']->get('field_elevate_topic_filter')->getValue();
+      if ($tids) {
+        $args[] = implode(',', array_column($tids, 'target_id'));
+      }
+      else {
+        $args[] = 'all';
+      }
+    }
+    elseif ($info['template'] == 'paragraph--elevate-courses-filter') {
+      $args[] = $variables['paragraph']->get('field_hide_elevate_search')->value;
+      $args[] = $variables['paragraph']->get('field_hide_elevate_topic')->value;
+      $args[] = $variables['paragraph']->get('field_hide_elevate_format')->value;
+      $args[] = $variables['paragraph']->get('field_hide_elevate_type')->value;
+      $args[] = $variables['paragraph']->get('field_hide_elevate_programs')->value;
+      $args[] = $variables['paragraph']->get('field_hide_program_labels')->value;
+    }
+
+    $block = $info['template'] == 'paragraph--elevate-courses' ? 'block_1' : 'block_2';
+
+    $view = Views::getView('elevate_courses');
+    $render_array = $view->buildRenderable($block, $args);
+    $variables['elevate_courses'] = $render_array;
+  }
+
+  // Provide view output for the policy state.
+  if ($info['template'] == 'paragraph--policy') {
+    $args = [];
+
+    // Policy taxonomy.
+    $tids = $variables['paragraph']->get('field_policy_state')->getValue();
+    if ($tids) {
+      $args[] = implode(',', array_column($tids, 'target_id'));
+    }
+    else {
+      $args[] = 'all';
+    }
+
+    $view = Views::getView('policy');
+    $render_array = $view->buildRenderable('block_1', $args);
+    $variables['policy'] = $render_array;
+  }
+
+  // Provide view output for the training state (ORSP).
+  if ($info['template'] == 'paragraph--training-orsp') {
+    $args = [];
+
+    // Policy taxonomy.
+    $tids = $variables['paragraph']->get('field_training_state')->getValue();
+    if ($tids) {
+      $args[] = implode(',', array_column($tids, 'target_id'));
+    }
+    else {
+      $args[] = 'all';
+    }
+
+    $view = Views::getView('orsp_training');
+    $render_array = $view->buildRenderable('block_1', $args);
+    $variables['training'] = $render_array;
+  }
+
+  // Provide view output for the Find an Expert View.
+  if ($info['template'] == 'paragraph--find-an-expert') {
+    $args = [];
+
+    $view = Views::getView('find_an_expert');
+    $render_array = $view->buildRenderable('block_1', $args);
+    $variables['experts'] = $render_array;
+  }
+
+  // Provide view output for the Handbook View.
+  if ($info['template'] == 'paragraph--handbook') {
+    $args = [];
+
+    $view = Views::getView('handbook');
+    $render_array = $view->buildRenderable('block_1', $args);
+    $variables['handbook'] = $render_array;
+  }
+
+  // Provide tuition calculator.
+  if ($info['template'] == 'paragraph--tuition-calculator') {
+    if (\Drupal::moduleHandler()->moduleExists('du_tuition_calculator')) {
+      $form = \Drupal::formBuilder()->getForm('Drupal\du_tuition_calculator\Form\Calculator');
+      $variables['tuition_calculator'] = $form;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_field().
+ */
+function pl_drupal_preprocess_views_view_field(&$variables) {
+  $view = $variables['view'];
+  $field = $variables['field'];
+  if ($view->id() === 'elevate_courses' && $field->field === 'field_course_program' && !empty($variables['view']->args[10])) {
+    $variables['output'] = '';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function pl_drupal_preprocess_page(&$variables) {
+  global $base_url;
+
+  // Determine if this node is part of an inline unit.
+  $inline_unit = FALSE;
+  if (\Drupal::moduleHandler()->moduleExists('du_inline_unit')) {
+    if (!empty($variables['node']) && $variables['node'] instanceof NodeInterface) {
+      $inline_unit = du_inline_unit_get_inline_unit($variables['node']);
+      if (!empty($inline_unit) && !empty($inline_unit->field_menu->entity)) {
+        // Determine if the current site is "core".
+        $settings = \Drupal::config('du_unit_site_config.settings');
+        if (empty($settings->get('unit_site_term'))) {
+          $variables['#attached']['library'][] = 'pl_drupal/core-inline';
+        }
+      }
+    }
+  }
+
+  // Remove default social media bar if override block is present.
+  if (isset($variables['page']['footer']['socialmediabar'])) {
+    unset($variables['page']['footer']['defaultsocialmedia']);
+  }
+
+  // Remove default footer CTAs if override block is present.
+  if (isset($variables['page']['footer']['footerctas'])) {
+    unset($variables['page']['footer']['defaultfooterctas']);
+  }
+
+  // Load the logo.
+  $theme = \Drupal::theme()->getActiveTheme();
+  $variables['logo_url'] = '/';
+  $variables['logo_image'] = $base_url . '/' . $theme->getPath() . '/images/svg/university-of-denver-du-logo-main.svg';
+  $variables['logo_image_unit'] = $base_url . '/' . $theme->getPath() . '/images/svg/university-of-denver-du-logo-unit.svg';
+
+  // Default to 0 for show resources for menu.
+  $variables['hide_resources_for_menu'] = 0;
+
+  // If an inline unit has a different logo, use that.
+  $logo_fid = $logo_alt = NULL;
+  $variables['menu_item_count'] = 1;
+  if (!empty($inline_unit)) {
+    $variables['inline_site'] = TRUE;
+    $variables['logo_url'] = $inline_unit->field_home_page->entity->path->alias;
+
+    $logo = $inline_unit->field_inline_unit_logo->first();
+    if (!empty($logo)) {
+      $logo_value = $logo->getValue();
+      $logo_fid = $logo_value['target_id'] ?? NULL;
+      $logo_alt = $logo_value['alt'] ?? '';
+    }
+
+    // Set the site prefix and name.
+    $variables['site_prefix'] = $inline_unit->field_site_prefix->value;
+    $variables['site_name'] = $inline_unit->field_site_name->value;
+
+    if (!empty($logo_fid)) {
+      $logo = File::load($logo_fid);
+      $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('unit_header_logo');
+      if ($style) {
+        $variables['logo_image'] = $style->buildUrl($logo->getFileUri());
+      }
+    }
+
+    // Get inline unit hide_resources_for_menu value.
+    if (isset($inline_unit->field_hide_resources_for_menu)) {
+      $variables['hide_resources_for_menu'] = $inline_unit->field_hide_resources_for_menu->value;
+    }
+
+    // Get menu item count.
+    $menu = $inline_unit->field_menu->entity->id();
+    $menu_tree = \Drupal::menuTree();
+    $menu_parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu);
+    $menu_tree_elements = $menu_tree->load($menu, $menu_parameters);
+    $variables['menu_item_count'] = count($menu_tree_elements);
+  }
+  else {
+    // If not Inline site, get this Unit hide resources for menu value.
+    $settings = \Drupal::config('du_unit_site_config.settings');
+    if ($settings->get('unit_hide_resources_for_menu') !== "NULL" and !empty($settings->get('unit_hide_resources_for_menu'))) {
+      $variables['hide_resources_for_menu'] = $settings->get('unit_hide_resources_for_menu');
+    }
+  }
+
+  // Reset static value for this function variable to
+  // this site hide resources for menu value.
+  drupal_static_reset('_pl_drupal_resources_for_menu_get_value');
+  _pl_drupal_resources_for_menu_get_value($variables['hide_resources_for_menu']);
+
+  if (isset($variables['node']) && is_object($variables['node'])) {
+    $node_type = $variables['node']->bundle();
+
+    // Setup hero paragraph values from node that will be used in page template header area.
+    if (isset($variables['node']->field_hero_media_header)) {
+      $hero_paragraph = $variables['node']->field_hero_media_header->entity;
+      if ($hero_paragraph) {
+        if ($hero_paragraph->getType() == 'experiential_story') {
+          $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+          $build = $view_builder->view($hero_paragraph, 'full');
+          $variables['experiential_story'] = render($build);
+        }
+        else {
+          if (!empty($hero_paragraph->get('field_image_type'))) {
+            $image_type = $hero_paragraph->get('field_image_type')->value;
+            $variables['image_type'] = $image_type;
+          }
+          if (!empty($hero_paragraph->get('field_hero_image')->entity)) {
+            $image = $hero_paragraph->get('field_hero_image')->entity;
+            $variables['hero_url'] = $image->get('uri')->getString();
+            $image_value = $hero_paragraph->get('field_hero_image')->first()->getValue();
+            $variables['hero_alt'] = $image_value['alt'];
+          }
+          else {
+            $variables['hero_alt'] = 'hero image';
+          }
+
+          if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
+            $video = $hero_paragraph->get('field_hero_video')->entity;
+            $variables['hero_video_url'] = file_create_url($video->get('uri')
+              ->getString());
+          }
+
+          if ($node_type == 'home_page') {
+            $variables['is_home'] = TRUE;
+            $variables['headline']['type'] = 'h1';
+            $variables['headline']['title'] = $hero_paragraph->get('field_hero_caption')->value;
+          }
+          else {
+            $variables['hero_caption'] = $hero_paragraph->get('field_hero_caption')->value;
+          }
+          $variables['hero_headline'] = $hero_paragraph->get('field_headline')->value;
+          $variables['hero_subhead'] = $hero_paragraph->get('field_subhead')->value;
+          $variables['hero_embed'] = $hero_paragraph->get('field_hero_embed')->value;
+        }
+      }
+    }
+    if (isset($node_type) && $node_type == 'article') {
+      $variables['hide_hero'] = TRUE;
+    }
+    if (isset($node_type) && $node_type == 'local_program') {
+      $variables['headline']['type'] = 'h1';
+    }
+    if (isset($node_type) && $node_type == 'academic_program') {
+      $variables['headline']['type'] = 'h1';
+      // For Academic Program, if field_page_title is set, use that as the headline title.
+      if (!empty($variables['node']->get('field_page_title')->value)) {
+        $variables['headline']['title'] = $variables['node']->get('field_page_title')->value;
+      }
+    }
+    if (isset($node_type) && $node_type == 'utility_page') {
+      // Utility Page uses the hero paragraph and field hero media header so add this boolean to trigger adding utility-page class for hero header.
+      $variables['is_utility_page'] = TRUE;
+      $variables['utility_page_hero_css'] = 'utility-page';
+      // Utility Pages don't use hero caption as far as design spec, reset to blank.
+      $variables['hero_caption'] = '';
+
+      if (isset($variables['node']->field_hide_social_media_region) && $variables['node']->get('field_hide_social_media_region')->value) {
+        // Remove footer Social Media Bar if this functionality and field is set and is true for removing it from display.
+        unset($variables['page']['footer']['socialmediabar']);
+        unset($variables['page']['footer']['defaultsocialmedia']);
+      }
+    }
+    if (isset($variables['node']->field_hide_footer_cta_region) && $variables['node']->get('field_hide_footer_cta_region')->value) {
+      // Remove Footer CTA Bar if this functionality and field is set and is true for removing it from display.
+      unset($variables['page']['footer']['defaultfooterctas']);
+      unset($variables['page']['footer']['footerctas']);
+    }
+  }
+
+  // Fix for Preview Link (on Core) - Passing in Custom Node Fields.
+  if (empty($variables['node']) || !isset($variables['node'])) {
+    if (isset($variables['page'])) {
+      if (isset($variables['page']['#cache'])) {
+        if (isset($variables['page']['#cache']['contexts'])) {
+          $context_arr = $variables['page']['#cache']['contexts'];
+          for ($i = 0; $i < count($context_arr); $i++) {
+            if ($context_arr[$i] == "preview_link_route") {
+              $routeParameters = \Drupal::routeMatch()->getParameters();
+              if ($routeParameters->count() > 0) {
+                // We use the first parameter as dynamic indicator for the entity type to load (node,user,commerce_product, ...)
+                $entityTypeIndicator = \Drupal::routeMatch()
+                  ->getParameters()
+                  ->keys()[0];
+                $entity = \Drupal::routeMatch()
+                  ->getParameter($entityTypeIndicator);
+                if (is_object($entity) && $entity instanceof ContentEntityInterface) {
+                  if (($entity->hasField('field_hero_media_header') && !empty($entity->get('field_hero_media_header'))) || ($entity->hasField('field_program_hero_image') && !empty($entity->get('field_program_hero_image')))) {
+                    if ($entity->hasField('field_hero_media_header')) {
+                      $hero_paragraph = $entity->get('field_hero_media_header')->entity;
+                    }
+                    else {
+                      $hero_paragraph = NULL;
+                    }
+                    if ($entity->hasField('field_program_hero_image')) {
+                      $hero_program_field = $entity->get('field_program_hero_image')->entity;
+                    }
+                    else {
+                      $hero_program_field = NULL;
+                    }
+                    if ($hero_paragraph) {
+                      if (!empty($hero_paragraph->get('field_hero_image')->entity)) {
+                        $image = $hero_paragraph->get('field_hero_image')->entity;
+                        $variables['hero_url'] = $image->get('uri')
+                          ->getString();
+                        $image_value = $hero_paragraph->get('field_hero_image')
+                          ->first()
+                          ->getValue();
+                        $variables['hero_alt'] = $image_value['alt'];
+                      }
+                      else {
+                        $variables['hero_alt'] = 'hero image';
+                      }
+                      if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
+                        $video = $hero_paragraph->get('field_hero_video')->entity;
+                        $variables['hero_video_url'] = file_create_url($video->get('uri')
+                          ->getString());
+                      }
+                      if ($hero_paragraph->hasField('field_unit_hero_link')) {
+                        if (!empty($hero_paragraph->get('field_unit_hero_link')->first())) {
+                          $variables['hero_link'][0]['href'] = $hero_paragraph->get('field_unit_hero_link')
+                            ->first()
+                            ->getUrl();
+                        }
+                      }
+                    }
+                    elseif (!empty($hero_program_field)) {
+                      $variables['hero_url'] = $hero_program_field->get('uri')->getString();
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // If on the main site, use the utilitymenu block. If on an inline site and
+  // there is another utility block specified, then use that.
+  $block_id = 'utilitymenu';
+  $block_id2 = 'utilitymenu_2';
+  if (!empty($inline_unit) && !empty($inline_unit->field_utility_block->entity)) {
+    $block_id = $block_id2 = $inline_unit->field_utility_block->entity->id();
+  }
+
+  // Rendering unique utility menu for desktop.
+  $block = Block::load($block_id);
+  if (!empty($block)) {
+    $block_content = \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($block);
+    $variables['utility_menu_desktop'] = ['#markup' => \Drupal::service('renderer')->render($block_content)];
+  }
+
+  // Rendering unique utility menu for mobile.
+  $block = Block::load($block_id2);
+  if (!empty($block)) {
+    $block_content = \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($block);
+    $variables['utility_menu_mobile'] = ['#markup' => \Drupal::service('renderer')->render($block_content)];
+  }
+
+  if (\Drupal::moduleHandler()->moduleExists('du_elevate_display')) {
+    $elevate_display_config = \Drupal::config('du_elevate_display.settings');
+    if ($elevate_display_config->get('enable_menu_checkout')) {
+      $variables['du_elevate_display_enabled'] = TRUE;
+      $variables['#attached']['library'][] = 'du_elevate_display/du_elevate_display_checkout';
+      $elevate_config = \Drupal::config('du_elevate.settings');
+      $variables['#attached']['drupalSettings']['du_elevate_display']['du_elevate_displayJS_checkout'] = [
+        'courses_list' => $elevate_display_config->get('courses_list'),
+        'api_url' => $elevate_config->get('api_url'),
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function pl_drupal_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $bundle = $paragraph->bundle();
+
+  if ($bundle == 'application_card') {
+    // Skip if du_academic_programs isn't enabled.
+    if (!\Drupal::moduleHandler()->moduleExists('du_academic_programs')) {
+      return;
+    }
+
+    // Override the link for admission steps to the most recent admission steps
+    // node.
+    $url = $paragraph->field_app_info_card_link->first()->getValue()['uri'] ?? '';
+    if (strpos($url, 'admission-steps') !== FALSE) {
+      // Loop through parent entities until we get to the academic program node.
+      $academic_program = $paragraph->getParentEntity();
+      while ($academic_program instanceof ParagraphInterface) {
+        $academic_program = $academic_program->getParentEntity();
+      }
+
+      if ($academic_program instanceof NodeInterface) {
+        $admission_steps = _du_academic_programs_get_admission_steps($academic_program);
+      }
+      if (!empty($admission_steps)) {
+        $variables['content']['field_app_info_card_link'][0]['#url'] = Url::fromUri('internal:/node/' . $admission_steps->id());
+      }
+    }
+  }
+  elseif ($bundle == 'application_information') {
+    // Skip if du_academic_programs isn't enabled.
+    if (!\Drupal::moduleHandler()->moduleExists('du_academic_programs')) {
+      return;
+    }
+
+    $academic_program = $paragraph->getParentEntity();
+    $admission_steps = _du_academic_programs_get_admission_steps($academic_program);
+
+    // If the admission steps is found, set the deadline to the closest deadline
+    // that hasn't passed.
+    if (!empty($admission_steps)) {
+      $year = explode('-', $admission_steps->field_academic_year->value);
+      if (is_numeric($year[0]) && is_numeric($year[1])) {
+        $fields = [
+          'field_fall_regular_deadline' => 'Fall ' . $year[0] . ' Final Deadline',
+          'field_fall_priority_deadline' => 'Fall ' . $year[0] . ' Priority Deadline',
+          'field_fall_priority_deadline_2' => 'Fall ' . $year[0] . ' Priority Deadline 2',
+          'field_fall_priority_deadline_3' => 'Fall ' . $year[0] . ' Priority Deadline 3',
+          'field_fall_priority_deadline_4' => 'Fall ' . $year[0] . ' Priority Deadline 4',
+          'field_fall_priority_deadline_5' => 'Fall ' . $year[0] . ' Priority Deadline 5',
+          'field_winter_regular_deadline' => 'Winter ' . $year[1] . ' Final Deadline',
+          'field_winter_priority_deadline' => 'Winter ' . $year[0] . ' Priority Deadline',
+          'field_spring_regular_deadline' => 'Spring ' . $year[1] . ' Final Deadline',
+          'field_spring_priority_deadline_1' => 'Spring ' . $year[0] . ' Priority Deadline',
+          'field_spring_priority_deadline_2' => 'Spring ' . $year[0] . ' Priority Deadline 2',
+          'field_spring_priority_deadline_3' => 'Spring ' . $year[0] . ' Priority Deadline 3',
+          'field_summer_regular_deadline' => 'Summer ' . $year[1] . ' Final Deadline',
+          'field_summer_priority_dealine' => 'Summer ' . $year[0] . ' Priority Deadline',
+          'field_summer_priority_deadline_2' => 'Summer ' . $year[0] . ' Priority Deadline 2',
+          'field_summer_priority_deadline_3' => 'Summer ' . $year[0] . ' Priority Deadline 3',
+        ];
+        $now = new DrupalDateTime();
+        $nearest_deadline = NULL;
+        $nearest_name = NULL;
+        foreach ($fields as $field => $name) {
+          $date = $admission_steps->{$field}->value;
+          if (!empty($date)) {
+            $date = new DrupalDateTime($date);
+            if ($date->getTimestamp() + 86400 > $now->getTimestamp()) {
+              if (!isset($nearest_deadline) || $date->getTimestamp() < $nearest_deadline->getTimestamp()) {
+                $nearest_deadline = $date;
+                $nearest_text = $name;
+              }
+            }
+          }
+        }
+
+        // If a nearest deadline was found, display that deadline.
+        if (isset($nearest_deadline)) {
+          $variables['content']['field_deadline_text'][0]['#context']['value'] = $nearest_text;
+          $variables['content']['field_deadline_date'][0]['#text'] = $nearest_deadline->format('M j, Y');
+        }
+      }
+    }
+  }
+  elseif ($bundle == 'homepage_section_copy') {
+    $variables['headline_type'] = 'h2';
+    $node = $paragraph->getParentEntity();
+    if (!empty($node) && !empty($node->field_hero_media_header)) {
+      $hero_media_header = $node->field_hero_media_header->entity;
+      if (!empty($hero_media_header)) {
+        $variables['headline_type'] = !empty($hero_media_header->field_hero_caption->value) ? 'h2' : 'h1';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__BUNDLE().
+ */
+function pl_drupal_preprocess_paragraph__news_carousel_item(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $title = '';
+  $description = '';
+  if (!empty($paragraph->field_link->uri) && strpos($paragraph->field_link->uri, 'entity:') !== FALSE) {
+    $params = Url::fromUri('internal:' . str_replace('entity:', '/', $paragraph->field_link->uri))->getRouteParameters();
+    $entity_type = key($params);
+    $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
+    if ($entity_type === 'node' && $entity->bundle() === 'article') {
+      $title = strip_tags($entity->title->value);
+      $description = strip_tags($entity->field_article_teaser->value);
+    }
+  }
+  $variables['title'] = $title;
+  $variables['description'] = $description;
+}
+
+/**
+ * Implements hook_preprocess_node() for NODE document templates.
+ */
+function pl_drupal_preprocess_node(&$variables) {
+
+  /*
+   * Here we're adding a 'page' region (subnav) to the node template
+   *
+   */
+  // Retrieve view mode.
+  $view_mode = $variables['view_mode'];
+  // Array of allowed view modes (for performance so as to not execute on unneeded nodes)
+  $allowed_view_modes = ['full'];
+  // If view mode is in allowed view modes list, pass to THEME_add_regions_to_node()
+  if (in_array($view_mode, $allowed_view_modes)) {
+
+    // Allowed regions (for performance so as to not execute for unneeded region)
+    $allowed_regions = ['subnav'];
+    pl_drupal_add_regions_to_node($allowed_regions, $variables);
+  }
+
+  $settings = \Drupal::config('du_profiles.settings');
+  if (!empty($settings->get('profiles_background_tab_text'))) {
+    $variables['background_tab'] = $settings->get('profiles_background_tab_text')->getValue();
+  }
+
+  // Grabing feature image from article for schema.
+  if ($variables['node']->bundle() == 'article') {
+    $node = $variables['node'];
+    $paragraph = $node->field_page_overview->entity ?? NULL;
+    if (!empty($paragraph)) {
+      $nested_paragraph = $paragraph->field_feature_media->entity ?? NULL;
+      if (!empty($nested_paragraph)) {
+        $feature_media_image = $nested_paragraph->field_feature_media_image ?? NULL;
+        if (!empty($feature_media_image)) {
+          $image = $feature_media_image->first()->entity;
+          if (!empty($image)) {
+            $image = $image->getFileUri();
+            $absolute_path = file_create_url($image);
+            $variables['feature_image'] = $absolute_path;
+          }
+        }
+      }
+    }
+  }
+
+  // Make unit taxonomy unit name and url available to research projects:
+  if ($variables['node']->bundle() == "research_project" && $view_mode == "full") {
+    $variables['#attached']['library'][] = 'pl_drupal/research-project';
+    $unit_affiliation_url = NULL;
+    $unit_affiliation_name = NULL;
+    $res_proj_unit = $variables['node']->field_res_proj_unit->entity;
+    if (!is_null($res_proj_unit)) {
+      $unit_id = $res_proj_unit->get('tid')->value;
+      $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($unit_id);
+      if (!empty($term_obj->field_unit_url) && isset($term_obj->field_unit_url) && !is_null($term_obj->field_unit_url->uri)) {
+        $unit_affiliation_url = $term_obj->field_unit_url->uri;
+        $unit_affiliation_name = $term_obj->name->value;
+      }
+    }
+    $variables['content']['field_res_proj_unit_url'] = $unit_affiliation_url;
+    $variables['content']['field_res_proj_unit_name'] = $unit_affiliation_name;
+  }
+
+  if ($variables['node']->bundle() == "profile" && $view_mode == "full") {
+    $variables['#attached']['library'][] = 'pl_drupal/profile';
+
+    // Name of vocab for unit affiliation in profiles.
+    $vid = "unit";
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    $unit_affiliation_arr = [];
+    if (count($variables['node']->field_profile_unit_affiliation) > 1) {
+      $nodes = $variables['node']->field_profile_unit_affiliation;
+      foreach ($nodes as $node) {
+        $nid = $node->entity->get('tid')->value;
+        foreach ($terms as $term) {
+          if ($nid === $term->tid) {
+            $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid);
+            if (!empty($term_obj->field_unit_url) && isset($term_obj->field_unit_url) && !is_null($term_obj->field_unit_url->uri)) {
+              $unit_affiliation_arr[] = $term_obj->field_unit_url->uri;
+            }
+            else {
+              $unit_affiliation_arr[] = NULL;
+            }
+          }
+        }
+      }
+      for ($i = 0; $i < count($variables['content']['field_profile_unit_affiliation']); $i++) {
+        $new_arr = [];
+        $new_arr['dept'] = $variables['content']['field_profile_unit_affiliation'][$i];
+        $new_arr['url'] = $unit_affiliation_arr[$i];
+        $variables['content']['field_profile_unit_affiliation'][$i] = $new_arr;
+      }
+    }
+    else {
+      if (!is_null($variables['node']->field_profile_unit_affiliation->entity)) {
+        $node = $variables['node']->field_profile_unit_affiliation->entity->get('tid')->value;
+        foreach ($terms as $term) {
+          if ($node === $term->tid) {
+            $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid);
+            if (!empty($term_obj->field_unit_url) && isset($term_obj->field_unit_url) && !is_null($term_obj->field_unit_url->uri)) {
+              $unit_affiliation_arr[] = $term_obj->field_unit_url->uri;
+            }
+            else {
+              $unit_affiliation_arr[] = NULL;
+            }
+          }
+        }
+        for ($i = 0; $i < count($variables['content']['field_profile_unit_affiliation']); $i++) {
+          $new_arr = [];
+          $new_arr['dept'] = $variables['content']['field_profile_unit_affiliation'][$i];
+          $new_arr['url'] = $unit_affiliation_arr[$i];
+          $variables['content']['field_profile_unit_affiliation'][$i] = $new_arr;
+        }
+      }
+    }
+
+    // Hide custom tab if no content is provided.
+    if (empty($variables['node']->field_custom_tab_title->value) && empty($variables['node']->field_custom_tab_text->value)) {
+      $variables['hide_custom_tab'] = TRUE;
+    }
+
+    // Render HTML for "What I do" field.
+    $variables['what_i_do'] = ['#markup' => ''];
+    if (!empty($variables['node']->field_profile_what_i_do->value)) {
+      $variables['what_i_do'] = ['#markup' => $variables['node']->field_profile_what_i_do->value];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_region().
+ */
+function pl_drupal_preprocess_region(&$variables) {
+  if ($variables['region'] == 'mega_nav') {
+    // Determine if this node is part of an inline unit.
+    if (\Drupal::moduleHandler()->moduleExists('du_inline_unit')) {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      if (isset($node) && $node instanceof NodeInterface) {
+        $inline_unit = du_inline_unit_get_inline_unit($node);
+        if (!empty($inline_unit) && !empty($inline_unit->field_menu->entity)) {
+          // Render the inline unit menu to overwrite the main menu.
+          $menu = $inline_unit->field_menu->entity->id();
+          $block_manager = \Drupal::service('plugin.manager.block');
+          $plugin_block = $block_manager->createInstance('system_menu_block:' . $menu);
+          $plugin_block->setConfigurationValue('label_display', 0);
+          $plugin_block->setConfigurationValue('level', 1);
+          $plugin_block->setConfigurationValue('depth', 2);
+          $plugin_block->setConfigurationValue('expand_all_items', 1);
+          $render = $plugin_block->build();
+          if (!empty($render['#items'])) {
+            $render['#theme'] = 'menu__inline_unit';
+            foreach ($render['#items'] as &$item) {
+              $item['menu_level'] = 0;
+              if (!empty($item['below'])) {
+                foreach ($item['below'] as &$subitem) {
+                  $subitem['menu_level'] = 1;
+                }
+              }
+            }
+            $variables['content'] = Markup::create('<nav role="navigation" aria-labelledby="block-pl-drupal-main-menu-menu" id="block-pl-drupal-main-menu" class="contextual-region" data-block-plugin-id="system_menu_block:main">' . \Drupal::service('renderer')->renderRoot($render) . '</nav>');
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * THEME_add_regions_to_node.
+ */
+function pl_drupal_add_regions_to_node($allowed_regions, &$variables) {
+  // Retrieve active theme.
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+
+  // Retrieve theme regions.
+  $available_regions = system_region_list($theme, 'REGIONS_ALL');
+
+  // Validate allowed regions with available regions.
+  $regions = array_intersect(array_keys($available_regions), $allowed_regions);
+
+  // For each region.
+  foreach ($regions as $key => $region) {
+
+    // Load region blocks.
+    $blocks = \Drupal::entityTypeManager()->getStorage('block')->loadByProperties([
+      'theme' => $theme,
+      'region' => $region,
+    ]);
+    // Sort.
+    uasort($blocks, 'Drupal\block\Entity\Block::sort');
+    // Capture viewable blocks and their settings to $build.
+    $build = [];
+    foreach ($blocks as $key => $block) {
+      if ($block->access('view')) {
+        $build[$key] = \Drupal::entityTypeManager()->getViewBuilder($block->getEntityTypeId())->view($block, 'block');
+      }
+    }
+    // Add build to region.
+    $variables[$region] = $build;
+  }
+
+  // Getting values of profile tab fields on Basic site settings.
+  $settings = \Drupal::config('du_profiles.settings');
+  if (!empty($settings->get('profile_background_tab_text'))) {
+    $variables['background_tab'] = $settings->get('profile_background_tab_text');
+  }
+  if (!empty($settings->get('profile_research_tab_text'))) {
+    $variables['research_tab'] = $settings->get('profile_research_tab_text');
+  }
+  if (!empty($settings->get('profile_publications_tab_text'))) {
+    $variables['publications_tab'] = $settings->get('profile_publications_tab_text');
+  }
+  if (!empty($settings->get('profile_performances_tab_text'))) {
+    $variables['performances_tab'] = $settings->get('profile_performances_tab_text');
+  }
+  if (!empty($settings->get('profile_news_tab_text'))) {
+    $variables['news_tab'] = $settings->get('profile_news_tab_text');
+  }
+  if (!empty($settings->get('profile_awards_tab_text'))) {
+    $variables['awards_tab'] = $settings->get('profile_awards_tab_text');
+  }
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ */
+function pl_drupal_theme_suggestions_menu_alter(array &$suggestions, array &$variables) {
+  $key = '';
+  $module_handler = \Drupal::moduleHandler();
+  if ($module_handler->moduleExists('du_inline_unit') && !empty($variables['menu_name'])) {
+    // Check if this menu is an inline unit utility menu.
+    $plugin_id = 'system_menu_block:' . $variables['menu_name'];
+    if (du_inline_unit_is_inline_unit_utility_block($plugin_id)) {
+      $block_manager = \Drupal::service('plugin.manager.block');
+      $plugin_block = $block_manager->createInstance($plugin_id);
+
+      // If the menu is in a utility block for an inline unit, then suggest
+      // using the same template that the regular utility menu uses.
+      if ($plugin_block->getPluginId() == $plugin_id) {
+        $key = $variables['menu_name'];
+        $suggestions[] = 'menu__utility_menu';
+      }
+    }
+  }
+
+  // Get and Set resource for menu display show/hide value.
+  $variables['utility_resource_for_menu_display'] = _pl_drupal_resources_for_menu_get_value();
+
+  // Add custom flyout text for utility menu.
+  if ($variables['menu_name'] === 'utility-menu' || $variables['menu_name'] === $key) {
+    $config = \Drupal::service('config.factory')->getEditable('du_site.settings');
+    $menu_name = $config->get($variables['menu_name']);
+    $variables['flyout_menu_title'] = $menu_name ? $menu_name : "Resources For";
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ */
+function pl_drupal_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $bundle = $variables['elements']['content']['#block_content']->bundle();
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $bundle);
+  }
+}
+
+/**
+ * Implements hook_theme_form_FORM_ID_alter().
+ */
+function pl_drupal_form_comment_form_alter(&$form, &$form_state) {
+  $form['author']['homepage']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pl_drupal_form_views_exposed_form_alter(&$form, FormStateInterface &$form_state) {
+
+  if ($form['#id'] == 'views-exposed-form-admissions-counselor-block-1') {
+    // Ensure that no region filtering is on if not filtering by Colorado, and
+    // that no state filtering is on if not filtering by US.
+    $input = $form_state->getUserInput();
+    $input_changed = FALSE;
+    if ($input['field_counselor_student_type_value'] != 'colorado_high_school_student') {
+      $input['field_counselor_region_target_id'] = 'All';
+      $input_changed = TRUE;
+    }
+    elseif ($input['field_counselor_student_type_value'] != 'us_High_school_student') {
+      $input['field_counselor_state_target_id'] = 'All';
+      $input_changed = TRUE;
+    }
+
+    if ($input_changed) {
+      $form_state->setUserInput($input);
+    }
+
+    $form['field_counselor_region_target_id']['#states'] = [
+      'visible' => [
+        'input[name="field_counselor_student_type_value"]' => ['value' => 'colorado_high_school_student'],
+      ],
+    ];
+
+    $form['field_counselor_state_target_id']['#states'] = [
+      'visible' => [
+        'input[name="field_counselor_student_type_value"]' => ['value' => 'us_High_school_student'],
+      ],
+    ];
+
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function pl_drupal_preprocess_menu(&$variables) {
+  if (!empty($variables['items'])) {
+    $current_path = \Drupal::request()->getRequestUri();
+
+    // If we're on an inline unit menu, then process the tree like the main menu
+    // does through menu_item_extras.
+    $module_handler = \Drupal::moduleHandler();
+    if (
+      $module_handler->moduleExists('du_inline_unit')
+      && $module_handler->moduleExists('menu_item_extras')
+    ) {
+      if (
+        !empty($variables['menu_name'])
+        && du_inline_unit_is_inline_unit_menu($variables['menu_name'])
+      ) {
+        $variables['items'] = \Drupal::service('menu_item_extras.menu_link_tree_handler')
+          ->processMenuLinkTree($variables['items'], $variables['menu_name']);
+      }
+    }
+
+    foreach ($variables['items'] as &$item) {
+      if ($item['in_active_trail']) {
+        if ($item['url']->toString() == $current_path) {
+          $item['is_active'] = TRUE;
+        }
+        elseif (count($item['below'])) {
+          _pl_drupal_menu_process_submenu($item['below'], $current_path);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Set active class for sub-menus recursively so we can use it in li's.
+ */
+function _pl_drupal_menu_process_submenu(&$submenu, $current_path) {
+  foreach ($submenu as &$item) {
+    if ($item['in_active_trail']) {
+      if ($item['url']->toString() == $current_path) {
+        $item['is_active'] = TRUE;
+      }
+      elseif (count($item['below'])) {
+        _pl_drupal_menu_process_submenu($item['below'], $current_path);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function pl_drupal_preprocess_views_view_unformatted(&$vars) {
+  $view = $vars['view'];
+  if ($view->id() == 'du_in_the_news') {
+    $settings = \Drupal::config('du_in_the_news.settings');
+    if (!empty($settings->get('du_in_the_news_list_location'))) {
+      $du_in_the_news_list_node = Node::load($settings->get('du_in_the_news_list_location'));
+      if (!empty($du_in_the_news_list_node)) {
+        $id = ['node' => $du_in_the_news_list_node->id()];
+        $url = Url::fromRoute("entity.node.canonical", $id, ['absolute' => TRUE])
+          ->toString();
+        $vars['du_in_the_news_list_location'] = $url;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function pl_drupal_theme_suggestions_menu_link_content_alter(array &$suggestions, array $variables) {
+  if (\Drupal::moduleHandler()->moduleExists('du_inline_unit')) {
+    if (!empty($variables['elements']['title']['#bundle'])) {
+      if (du_inline_unit_is_inline_unit_menu($variables['elements']['title']['#bundle'])) {
+        $suggestions[] = 'menu_link_content__inline_unit';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_pager().
+ */
+function pl_drupal_preprocess_pager(array &$variables) {
+  // @see globals.api.php
+  global $pager_total;
+  $element = $variables['pager']['#element'];
+  // Get the max page number for the current pager.
+  $variables['pager_max'] = !empty($pager_total) ? $pager_total[$element] : NULL;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pl_drupal_preprocess_bibcite_citation(&$variables) {
+  // Move markup to children for bibcite references.
+  // Attributes created by Citeproc, such as italics styles,
+  // are stripped in #markup. Moving to #children as a workaround.
+  // Issue created: https://www.drupal.org/project/bibcite/issues/3065463#comment-13168324.
+  $variables['content']['#children'] = $variables['content']['#markup'];
+  unset($variables['content']['#markup']);
+}
+
+/**
+ * Function to get and set a drupal static variable. Default value is 0 if no value passed in.
+ *
+ * @param int $value
+ *   The value of to set for the variable.
+ *
+ * @return mixed
+ *   Return the value of the drupal static variable resources_for_show_hide_value.
+ */
+function _pl_drupal_resources_for_menu_get_value($value = 0) {
+  $resources_for_show_hide_value = &drupal_static(__FUNCTION__);
+  if (!isset($resources_for_show_hide_value)) {
+    $resources_for_show_hide_value = $value;
+  }
+
+  return $resources_for_show_hide_value;
+}
+
+/**
+ * Implements hook_preprocess_preview_link().
+ */
+function pl_drupal_preprocess_preview_link(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!empty($node)) {
+    $days = \Drupal::config('preview_link.settings')->get('expiry_days');
+    $days_in_seconds = $days * 86400;
+    $timestamp = \Drupal::database()->query('select generated_timestamp from preview_link where entity_id = ?', [$node->id()])->fetchCol();
+    if (!empty($timestamp[0])) {
+      $expiration = $timestamp[0] + $days_in_seconds;
+      $date = new DrupalDateTime();
+      $date->setTimestamp($expiration);
+      $variables['expiration'] = $date->format('M j h:ia');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function pl_drupal_preprocess_menu__utility_menu(&$variables) {
+  $module_handler = \Drupal::moduleHandler();
+  if ($module_handler->moduleExists('du_elevate_display')) {
+    $elevate_display_config = \Drupal::config('du_elevate_display.settings');
+    if ($elevate_display_config->get('enable_menu_checkout')) {
+      $variables['du_elevate_display_active'] = TRUE;
+      $variables['du_elevate_display_course_list'] = $elevate_display_config->get('courses_list');
+      $elevate_config = \Drupal::config('du_elevate.settings');
+      $variables['du_elevate_display_api_url'] = $elevate_config->get('api_url');
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK() for contact form suggestion.
+ */
+function pl_drupal_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form__' . $variables['element']['#form_id'];
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function pl_drupal_form_system_theme_settings_alter(&$form, &$form_state) {
+  // Add a dropdown for selecting the subtheme.
+  $form['css_style_selection'] = [
+    '#type' => 'select',
+    '#title' => t('Select CSS Style Mode'),
+    '#options' => [
+      'default' => t('Default'),
+      'sparkle' => t('Sparkle'),
+      'beta' => t('Beta'),
+    ],
+    '#default_value' => theme_get_setting('css_style_selection'),
+    '#description' => t('Select the CSS style for this site.'),
+  ];
+  // add an additional submit handler
+  $form['#submit'][] = 'pl_drupal_form_submit';
+}
+
+/**
+ * Custom submit handler
+ */
+ function pl_drupal_form_submit(){
+  // @TODO - this really only needs to run if css_style_selection changes
+  drupal_flush_all_caches();
+  \Drupal::messenger()->addStatus(t('Cache has been cleared. Everyone should now see the front end theme using the version of the CSS you selected.'));
+ }
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function pl_drupal_library_info_alter(&$libraries, $extension) {
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  if ($default_theme === 'pl_drupal' && isset($libraries['core']['css']['theme'])) {
+    // $libraries['core']['css']['theme'] key starts = 'dest/style.css',
+    // but can be reset to 'dest/sparkle.css' or 'https://cdn.du.edu/css/style-www.css'
+
+    $css_style = \Drupal::config('pl_drupal.settings')->get('css_style_selection') ?: 'default';
+
+    //we don't care what it was previously set to
+    // try to unset all 3 of the potential options if they exist
+
+    if (isset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/style.css'])) {
+      unset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/style.css']);
+    }
+    if (isset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/sparkle.css'])) {
+      unset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/sparkle.css']);
+    }
+    if (isset($libraries['core']['css']['theme']['https://cdn.du.edu/css/style-www.css'])) {
+      unset($libraries['core']['css']['theme']['https://cdn.du.edu/css/style-www.css']);
+    }
+
+    switch($css_style) {
+      case 'sparkle':
+        $new_path_key = '/themes/custom/pl_drupal/dest/sparkle.css';
+        break;
+      case 'beta':
+        $new_path_key = 'https://cdn.du.edu/css/style-www.css';
+        break;
+      default:
+       $new_path_key = '/themes/custom/pl_drupal/dest/style.css';
+    }
+
+    // there is a lot more we could be doing here, but this is enough for the MVP
+    $css_options = array('preprocess' => 1);
+
+    $libraries['core']['css']['theme'][$new_path_key] = $css_options;
+
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function pl_drupal_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+  $css_style = \Drupal::config('pl_drupal.settings')->get('css_style_selection');
+  // wrap this in default theme check so it doesn't file when unit or micro are being used
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  if ($default_theme === 'pl_drupal') {
+      if ($css_style == 'sparkle' || $css_style == 'beta') {
+        unset($css['themes/custom/pl_drupal/dest/style.css']);
+      }
+  }
+}

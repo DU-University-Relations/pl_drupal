@@ -1,0 +1,20 @@
+{#//Content width with graphic  i.e. 75%#}
+<div class="quick-fact-module__content {% if statistic %} statistic {% endif %} row">
+    {% if item.url is not empty %}<a href="{{ item.url }}" title="{{ item.alt_text }}" target="{{ item.target }}">{% endif %}
+    {% if image %}
+        <div id="factImage" class="left">{{ image }}</div>
+    {% endif %}
+    {% if caption or headline or citation %}
+        <div class="caption small-12 medium-7 columns fact-standard">
+            <h3>
+                {% if headline %}<span class="headline">{{ headline }}</span>
+                {% endif %}
+                {% if caption %}<span class="caption">{{ caption }}</span>
+                {% endif %}
+                {% if citation %}<span class="citation">{{ citation }}</span>
+                {% endif %}
+            </h3>
+        </div>
+    {% endif %}
+    {% if item.url is not empty %}</a>{% endif %}
+</div>

@@ -1,0 +1,15 @@
+<div class="row expanded">
+    <div class="columns">
+        <div class="row">
+          {% if hide_title != 'On' %}
+            <div class="columns small-12">
+              <h3 class="btm-divider">{{ title }}</h3>
+            </div>
+          {% endif %}
+            <div class="columns small-12">
+                {{ body }}
+                {{ page }}
+            </div>
+        </div>
+    </div>
+</div>

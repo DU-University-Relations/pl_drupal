@@ -1,0 +1,18 @@
+{% if title %}
+    <strong>{{ title }}</strong>
+{% endif %}
+
+{% if description %}
+    {{ description }}
+{% endif %}
+
+{% if date or location %}
+    <ul>
+        {% if date %}
+            <li>{{ date }}</li>
+        {% endif %}
+        {% if location %}
+            <li>{{ location }}</li>
+        {% endif %}
+    </ul>
+{% endif %}

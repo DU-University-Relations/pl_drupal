@@ -1,0 +1,16 @@
+
+{% set item = {
+    "url": content.field_icon_link_link.0['#url'],
+    "target": content.field_icon_link_link.0['#options']['attributes']['target'],
+    "alt_text": content.field_icon_link_link.0['#options']['attributes']['title'],
+    "onclick": content.field_icon_link_link.0['#options']['attributes']['onClick'],
+    "icon_class" : content.field_du_icon|field_value
+
+} %}
+
+<a href="{{ item.url }}" {% if item.alt_text %}title="{{ item.alt_text|e('html_attr') }}"{% endif %}
+        {% if item.target %}target="{{ item.target|e('html_attr') }}"{% endif %}
+        {% if item.onclick %}onclick="{{ item.onclick|e('html_attr') }}"{% endif %}>
+    <span class="icon-du-{{ item.icon_class }}" aria-hidden="true"></span>
+    <span class="show-for-sr">{{ item.title }}"</span>
+</a>

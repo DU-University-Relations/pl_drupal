@@ -1,0 +1,367 @@
+header {
+	&.unit-header {
+		.hero-media {
+			top: 10.0rem;
+		}
+	}
+	.hero-media {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		overflow: hidden;
+		user-select: none;
+		> * {
+			width: 100%;
+			height: auto;
+		}
+		> video + picture,
+		> video + img {
+			position: absolute !important;
+			top: 0;
+			z-index: -1;
+			left: 0;
+		}
+		img {
+			object-fit: cover;
+			width: 100%;
+			@include breakpoint(large up) {
+				height: auto;
+			}
+		}
+		> video {
+			visibility: hidden;
+			opacity: 0;
+			transition: all 0.3s ease;
+			&.hero-video--visible {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+		.utility-page & {
+			img {
+				width: 100%;
+			}
+		}
+		// hero embed
+		&.hero-embed-wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			.hero-embed {
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+		&.hero-image-empty {
+			.hero-embed {
+				position: relative;
+			}
+		}
+		.du-home & {
+			&.hero-embed-wrapper,
+			&.hero-image-empty {
+				.hero-embed {
+					position: absolute;
+				}
+			}
+		}
+	}
+  .hero-media__caption {
+    position: absolute;
+    width: 100%;
+    bottom: 2.0rem;
+    top: inherit !important;
+    @include breakpoint(medium up) {
+      bottom: 7.0rem;
+    }
+    @include breakpoint(large up) {
+      bottom: 8.0rem;
+    }
+    @include breakpoint(xlarge up) {
+      bottom: 14.0rem;
+    }
+    .columns {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .hero-media__caption__text {
+      transition: background-color 1s ease;
+      position: relative;
+      float: right;
+      right: 0;
+      left: unset;
+      background-color: rgba(24, 23, 30, 0.6);
+      width: 28.3rem;
+      > a {
+        text-decoration: none;
+        display: block;
+				padding: .9rem 5.6rem 1rem 1.6rem;
+        &:hover,
+        &:focus {
+          background-color: rgba(24, 23, 30, 0.8);
+          p {
+            opacity: 1;
+          }
+        }
+      }
+      p {
+        color: #fff;
+        opacity: 0.5;
+        margin-bottom: 0;
+        font-size: 1.6rem;
+        line-height: 2.0rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .hero-media__caption__toggler {
+        position: absolute;
+        bottom: .8rem;
+        right: 1.1rem;
+        .icon-du-minus,
+        .du-icon-minus {
+          display: none;
+        }
+        [class*="icon-du"],
+        [class*="du-icon"] {
+          font-size: 2.4rem;
+          color: white;
+        }
+      }
+    }
+    &.caption-expanded {
+      @include breakpoint(medium down) {
+        width: auto;
+        left: 2.0rem;
+      }
+      .hero-media__caption__text {
+        background-color: rgba(24, 23, 30, 0.9);
+        width: auto;
+        left: 0;
+        margin-left: -5.4rem;
+        @include breakpoint(large down) {
+          margin-left: 2.0rem;
+        }
+        @include breakpoint(medium down) {
+          margin-left: 0;
+        }
+        p {
+          opacity: 1;
+          white-space: normal;
+        }
+      }
+      .hero-media__caption__toggler {
+        .icon-du-plus,
+        .du-icon-plus {
+          display: none;
+        }
+        .icon-du-minus,
+        .du-icon-minus {
+          display: block;
+        }
+      }
+    }
+  }
+
+	.hero-media__caption {
+		a {
+			display: inline-block;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: $neutral-color-6;
+			font-size: 1.8rem;
+			font-weight: bold;
+			border: .2rem solid $neutral-color-6;
+			padding: 1.0rem 3.0rem;
+			background: rgba($neutral-color-1, .2);
+			letter-spacing: .05rem;
+			&:hover {
+				background: $neutral-color-6;
+				color: $neutral-color-3;
+			}
+		}
+		&.content-bottom {
+			a {
+				@include breakpoint(large up) {
+					margin-left: 5rem;
+				}
+			}
+		}
+	}
+
+	.hero-items .label {
+		background-color: transparent;
+		font-size: 1.2rem;
+		margin-bottom: 0;
+		@include breakpoint(medium up) {
+			font-size: 1.7rem;
+		}
+	}
+	.hero-title {
+		line-height: 8.1rem;
+		font-family: $breve-display;
+		height: 100%;
+		width: 100%;
+			padding: 0 1.0rem 5.0rem 1.0rem;
+		@include breakpoint(medium up) {
+			width: 70.0rem;
+			padding-bottom: 10.0rem;
+		}
+		h3 {
+			color: white;
+			font-weight: normal;
+			margin-bottom: 0;
+			font-size: 2.2rem;
+		}
+		h1, h2 {
+			color: white;
+			font-weight: bold;
+			font-size: 5.4rem;
+			@include breakpoint(medium up) {
+				font-size: 7.8rem;
+			}
+		}
+	}
+} //end header
+
+// below rules control fixed hero that scale/ slide  since nav overlaps ---not .unit-site
+@media screen and (max-width: 1024px) {
+	body:not(.unit-site) {
+		header .hero-media > img {
+			max-width: initial; //reset this value  todo : remove this source value
+		}
+		.utility-page header .hero-media > img {
+			width: 100%;
+			margin-left: inherit;
+		}
+	}
+}
+
+@media screen and (max-width: 840px) {
+	.utility-page header .hero-media > img {
+		width: 100%;
+		margin-left: inherit;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	// corrects header overlaying Alert.
+	body.path-admission-aid .off-canvas-content:not(.utility-page) header .hero-media {
+		margin-bottom: 0;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.utility-page header .hero-media > img {
+		width: 100%;
+		margin-left: inherit;
+	}
+}
+
+@media only screen  //  phone only landscapes
+and (min-device-width: 375px)
+and (max-device-width: 767px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+	body:not(.unit-site) header .hero-media {
+		margin-bottom: 0;
+		> img {
+			width: 150%;
+			margin-left: -50%;
+			@-moz-document url-prefix() {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media only screen  //  ipad only landscape
+and (device-width: 1024px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+	body:not(.unit-site) header .hero-media	> img {
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+//Only for unit pages with H2 in caption container
+@media screen and (max-width: 775px) {
+	.unit-site.du-home {
+		header #hero-media__caption {
+			h1, h2 {
+				font-size: 3.8rem;
+				line-height: 4.1rem;
+				padding-left: 1.0rem;
+			}
+		}
+	}
+}
+@media screen and (max-width: 515px) {
+	.unit-site.du-home {
+		header #hero-media__caption {
+			h1, h2 {
+				top: calc(5vw + 105px);
+				font-size: 3.0rem;
+				line-height: 3.3rem;
+				letter-spacing: 0.15pt;
+			}
+		}
+	}
+}
+
+//UTILITY PAGES
+
+// core
+.utility-page header {
+	.hero-media {
+		display: none;
+		@include breakpoint(medium up) {
+			display: block;
+		}
+	}
+}
+
+// unit sites
+.unit-site .off-canvas-content.utility-page .hero-media img {
+	@include breakpoint(small down) {
+		margin-top: 0;
+	}
+}
+
+.unit-site .utility-page header {
+	@include breakpoint(small down) {
+		min-height:  initial;
+	}
+	@media screen and (max-width: 420px ){
+		min-height:  initial;
+	}
+}
+
+// Hero headline
+.hero-headline-wrapper {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	top: 50%;
+	@include breakpoint(medium up) {
+		margin-top: -50px;
+	}
+
+	.hero-headline {
+		@extend h1;
+		color: white;
+		font-family: "BreveDisplay", sans-serif;
+	}
+	.hero-subhead {
+		@extend h2;
+		color: white;
+	}
+}

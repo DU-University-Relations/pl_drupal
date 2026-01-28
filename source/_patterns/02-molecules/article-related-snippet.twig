@@ -1,0 +1,12 @@
+<div class="columns small-12 medium-6 slide snippet-related-article">
+    <div class="related-stories-module__story">
+        <div class="related-stories-image">{{ thumbnail }}</div>
+        <div class="related-stories-module__story__content">
+          <a href="{{ url }}" aria-description="Read the full article here">
+			<h4>{{ title|render }}</h4>
+            <p>{{ body|render|striptags|raw|slice(0, 250) ~ '...' }}</p>
+            <p class="read-more">Learn More</p>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="columns elevate-cards-item">
+    <div class="elevate-cards-holder">
+        <a class="elevate-cards-content" href="{{ node_link|striptags|trim }}?instancecode={{ instance_id|striptags|trim }}">
+            <div class="elevate-cards-title">
+                <h2>{{ instance_title }}</h2>
+                {% if course_program is not empty %}
+                    <div>{{ course_program }}</div>
+                {% endif %}
+            </div>
+            <div class="elevate-cards-middle">
+                {% if instance_summary is not empty %}
+                    {{ instance_summary|striptags|trim|truncate(120, '...')}}{% if instance_summary|striptags|trim|length > 120 %}...{% endif %}
+                {% elseif course_summary is not empty %}
+                    {{ course_summary|striptags|trim|truncate(120, '...')}}{% if course_summary|striptags|trim|length > 120 %}...{% endif %}
+                {% endif %}
+            </div>
+            <div class="elevate-cards-bottom">
+                ${% if instance_fee|striptags|trim is not empty %}{{ instance_fee }}{% else %}0.00{% endif %}
+                {% if instance_start|striptags|trim is not empty %}<span class="course-date">Starts {{ instance_start }}</span>{% endif %}
+            </div>
+        </a>
+    </div>
+</div>

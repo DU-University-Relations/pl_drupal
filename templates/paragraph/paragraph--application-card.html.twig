@@ -1,0 +1,19 @@
+{% embed "@molecules/application-card.twig" %}
+    {% set  card =  {
+        "image": content.field_app_info_card_icon,
+		"alt_text": "icon",
+        "link": {
+            "title": content.field_app_info_card_link|field_raw('title'),
+			"type": "h4",
+			"cssClass": "",
+			"href": content.field_app_info_card_link.0['#url'],
+            "target": content.field_app_info_card_link.0['#options']['attributes']['target'],
+			"rel": content.field_app_info_card_link.0['#options']['attributes']['rel'],
+            "alt_text": content.field_app_info_card_link.0['#options']['attributes']['title'],
+            "onclick": content.field_app_info_card_link.0['#options']['attributes']['onClick']
+        }
+    } %}
+    {% block card_content %}
+        {{ content.field_paragraph_ref|field_value }}
+    {% endblock %}
+{% endembed %}

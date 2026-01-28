@@ -1,0 +1,24 @@
+{% if (col_header.title and layout == "three_col") %}
+    <div class="row">
+        <div class="columns">
+            {% include "@atoms/headline.twig" with col_header %}
+        </div>
+    </div>
+{% endif %}
+<div class="cards-module buffer-on-inner-row{% if layout == "two_col" %} two-up{% endif %}" data-equalizer="cards-module__content" data-equalize-on="medium">
+    {# Add the alignment assigned by the user to the row #}
+    <div class="row {{ alignment }}-card-alignment">
+        {% if layout == "two_col" %}
+            <div class="columns small-12 medium-12 large-4">
+                <div class="cards-module__content" data-equalizer-watch="cards-module__content">
+                    {% include "@atoms/headline.twig" with col_header %}
+                </div>
+            </div>
+        {% endif %}
+        {% block cards %}
+            {% for card in cards %}
+                {% include "@molecules/card.twig" with card %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

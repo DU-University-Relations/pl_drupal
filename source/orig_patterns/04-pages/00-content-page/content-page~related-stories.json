@@ -1,0 +1,55 @@
+{
+	"related_stories_module": [
+		{
+			"header": {
+				"title": "Related Stories Module",
+				"type": "h3",
+				"cssClass": "btm-divider buffer-top"
+			},
+	    	"related_stories": [
+		        {
+		            "src": "/_duresources/foundation/images/related_stories_img1.jpg",
+		            "alt_text": "alt text for related story image",
+		            "title": "10 Must_Eats in Denver",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat fringilla enim, vel varius elit auctor eu. In et molestie ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat fringilla enim, vel varius elit auctor eu. In et molestie ante.",
+		            "read_more": "Read More"
+		        },
+		        {
+		            "src": "/_duresources/foundation/images/related_stories_img2.jpg",
+		            "alt_text": "alt text for related story image",
+		            "title": "Denver Museum of Art",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat fringilla enim, vel varius elit auctor eu. In et molestie ante.",
+		            "read_more": "Read More"
+		        }
+		    ]
+		},
+		{
+			"specific_id": "completelydifferentId",
+			"header": {
+				"title": "Related Stories Module 2",
+				"type": "h3",
+				"cssClass": "btm-divider buffer-top"
+			},
+	    	"related_stories": [
+		        {
+		            "src": "/_duresources/foundation/images/related_stories_img1.jpg",
+		            "alt_text": "alt text for related story image",
+		            "title": "10 Must_Eats in Denver",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat fringilla enim, vel varius elit auctor eu. In et molestie ante.",
+		            "read_more": "Read More"
+		        },
+		        {
+		            "src": "/_duresources/foundation/images/related_stories_img2.jpg",
+		            "alt_text": "alt text for related story image",
+		            "title": "Denver Museum of Art",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat fringilla enim, vel varius elit auctor eu. In et molestie ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat fringilla enim, vel varius elit auctor eu. In et molestie ante.",
+		            "read_more": "Read More"
+		        }
+		    ]
+		}
+	]
+}

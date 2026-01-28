@@ -1,0 +1,38 @@
+{
+  "buttons": [
+    {
+      "button": {
+        "size_class": "medium-4",
+        "url": "#",
+        "onclick": "",
+        "cssClass": "bg-img-btn",
+        "title": "Button w/ Bg Img"
+      },
+      "image": {
+        "alt_text": "Big Btn Alt",
+        "src": "http://placehold.it/388x235"
+      },
+      "icon": {
+        "alt_text": "icon",
+        "src": "http://placehold.it/75x80/eeeeee/888888"
+      }
+    },
+    {
+      "button": {
+        "size_class": "medium-4",
+        "url": "#",
+        "onclick": "",
+        "cssClass": "bg-img-btn",
+        "title": "Button w/ Bg Img"
+      },
+      "image": {
+        "alt_text": "Big Btn Alt",
+        "src": "http://placehold.it/388x235"
+      },
+      "icon": {
+        "alt_text": "icon",
+        "src": "http://placehold.it/75x80/eeeeee/888888"
+      }
+    }
+  ]
+}

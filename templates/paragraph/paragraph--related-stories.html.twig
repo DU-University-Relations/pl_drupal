@@ -1,0 +1,14 @@
+{% embed "@organisms/related-stories.twig" %}
+    {% if (content.field_heading|field_raw('value')) %}
+        {% set  header = {
+            "title": content.field_heading|field_raw('value'),
+            "type": "h3",
+            "cssClass": "btm-divider"
+        } %}
+    {% endif %}
+    {% block stories %}
+        {% for story in related_stories %}
+            {{ story }}
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,6 @@
+{% embed "@organisms/wide-carousel-slide.twig" %}
+    {% set image = content.field_hvc_slide_image|field_value %}
+    {% set video = content.field_hvc_slide_video|field_value %}
+    {% set caption = content.field_hvc_slide_caption|field_value %}
+    {% set alt_layout = style %}
+{% endembed %}

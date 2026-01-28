@@ -1,0 +1,251 @@
+.activity-card { // Activity Card Content Style
+  margin: 6rem 0 6rem;
+  .activity-card-content__holder {
+    padding-bottom: 6rem;
+    @include breakpoint(large up) {
+      padding-bottom: 0;
+    }
+    .activity-date {
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .cards-module__buttons {
+      max-width: 26rem;
+      margin-left: auto;
+      margin-right: auto;
+      @include breakpoint(medium up) {
+        max-width: 100%;
+        // margin-left: auto;
+        // margin-right: auto;
+        ul li {
+          margin-left: 0;
+        }
+      }
+      ul {
+        margin-left: 0;
+        li {
+          padding-left: 0;
+          &:before {
+            display: none;
+          }
+          a {
+            padding: 1.5rem 2.2rem;
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+            font-family: $cta-font;
+            text-decoration: none;
+            display: block;
+            color: white;
+            text-align: center;
+            background-color: #ac9147;
+            @include breakpoint(medium up) {
+              text-align: left;
+            }
+            @include breakpoint(large up) {
+              font-size: 2rem;
+              line-height: 2.2rem;
+            }
+            &:hover,
+            &:focus {
+              background-color: $secondary-color-2;
+            }
+          }
+          + li {
+            margin-top: 1.5rem;
+          }
+          &.requirements {
+            a {
+              background-color: transparent;
+              padding-left: 1.5rem;
+              &:hover,
+              &:focus {
+                background-color: #ac9147;
+              }
+            }
+          }
+        } //end li
+      } //end ul
+
+    } //end .cards-module__buttons
+  }
+}// end .activity card content type
+
+.activity-card-list {
+  .card-list-item {
+    .cards-list__holder {
+      .cards-list__content {
+        p.academic-card {
+          color: $neutral-color-9;
+        }
+        .cards-list-module__title {
+          h2.cards-list-title {
+            color: $neutral-color-9;
+            margin-bottom: 3rem;
+            hyphens: auto;
+            @include breakpoint(large up) {
+              hyphens: initial;
+            }
+          }
+        }
+        .card-list-bottom {
+          color: $neutral-color-9 !important;
+          .activity-date {
+            margin-right: 5rem;
+          }
+        }
+        .activity-date {
+          margin-right: 4.5rem;
+          @include breakpoint(large up) {
+            margin-right: 3rem;
+          }
+
+        }
+      }
+      .cards-list__content:hover { //hover on card container
+          cursor: pointer;
+          border-color: initial; //remove border color
+          transition: border 0s; // reset border transition
+          .cards-list-module__title h2.cards-list-title {
+            color: $neutral-color-9;
+          }
+          .more-button { // plus/ minus button
+            border-color: #b1b1b1; //circle
+            span {
+              color: #b1b1b1;
+            }
+          }
+      }
+      .cards-list__content.event-card-color {
+        border-top: .6rem solid $accent-color-2b;
+        background-color: $accent-color-2b;
+        &:hover {
+          border-top: .6rem solid $link-accessibility-color-teal-dark;
+          background-color: $link-accessibility-color-teal-dark;
+        }
+      }
+      .cards-list__content.initiative-card-color {
+        border-top: .6rem solid $secondary-color-2;
+        background-color: $secondary-color-2;
+        &:hover {
+          border-top: .6rem solid $link-accessibility-color-gold-dark;
+          background-color: $link-accessibility-color-gold-dark;
+        }
+      }
+      .cards-list__content.update-card-color {
+        border-top: .6rem solid $accent-color-4a;
+        background-color: $accent-color-4a;
+        &:hover {
+          border-top: .6rem solid $neutral-color-3;
+          background-color: $neutral-color-3;
+        }
+      }
+      .flyout {
+        .flyout-content__holder {
+          .activity-date {
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            @include breakpoint(medium up) {
+              text-align: left;
+            }
+          }
+        }// end  .flyout-content__holder
+      } //end .flyout
+    }// end .cards-list__holder
+  } //end .card-list-item
+  .card-list-item.card-list-item--open {
+    .cards-list__holder {
+      .cards-list__content {
+        .more-button {
+          border-color: #b1b1b1 !important;
+          span {
+            color: #b1b1b1 !important;
+          }
+        }
+      }
+    }
+    .cards-list__content.event-card-color {
+      border-top: .6rem solid $link-accessibility-color-teal-dark !important;
+      background-color: $link-accessibility-color-teal-dark !important;
+    }
+    .cards-list__content.initiative-card-color {
+      border-top: .6rem solid $link-accessibility-color-gold-dark !important;
+      background-color: $link-accessibility-color-gold-dark !important;
+    }
+    .cards-list__content.update-card-color {
+      border-top: .6rem solid $neutral-color-3 !important;
+      background-color: $neutral-color-3 !important;
+    }
+  }
+}// end .activity-card-list
+
+.activity-card-list-view { //main component wrapper
+  .pager__items {   //page number indicators container
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.no-activity-card-result-found {
+  width: 100%;
+  text-align: center;
+  padding: 4rem 4rem 12rem 4rem;
+}
+
+.activity-card-list-filter {
+  .activity-card-list-filter-dropdown {
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: initial; // display the dropdown filters
+    .form-item {
+      label {
+        display: none;
+      }
+    }
+  }
+  .activity-card-list-filter-submit {
+    & > div {
+      input {
+        margin: 0 auto;
+        display: block;
+        float: none;
+        text-transform: uppercase;
+        @include breakpoint(medium up) {
+          padding-right: 10rem;
+          padding-left: 10rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .activity-card-list-filter-search {
+    width: 100%;
+    display: initial;
+    label {
+      display: none;
+    }
+    .search-box {
+      padding-left: 1rem;
+      max-width: 52rem;
+      input {
+        border-width: 0 0 .4rem 0;
+        padding-bottom: .2rem;
+        padding-right: 5rem;
+        border-color: $neutral-color-4;
+        box-shadow: none;
+        margin-bottom: 0;
+        height: auto;
+        font-size: 1.8rem;
+        @include breakpoint(medium up) {
+          font-size: 2.4rem;
+        }
+        @include breakpoint(large up) {
+          font-size: 3rem;
+        }
+      }
+    }
+  }// end .activity-card-list-filter-search
+}

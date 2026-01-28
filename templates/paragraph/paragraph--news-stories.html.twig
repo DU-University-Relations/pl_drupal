@@ -1,0 +1,30 @@
+{% embed "@organisms/article-news-stories.twig" %}
+
+    {% set articles = content.field_news_stories_ref|field_value %}
+    {% if articles|length < 3 %}
+        {% set layout = 'two_col' %}
+    {% else %}
+        {% set layout = 'three_col' %}
+    {% endif %}
+    {% set article_header = {
+            "title": "Stories",
+            "type":"h3",
+            "cssClass": "btm-divider"
+        }
+    %}
+
+    {% set orientation = 'horizontal' %}
+    {% set orientation = content.field_news_stories_vertical_list|field_value %}
+
+    {% set row = 'row' %}
+    {% if orientation[0]['#markup'] == 'vertical' %}
+        {% set row = '' %}
+    {% endif %}
+
+    {% block news_stories %}
+        {% for article in articles %}
+            {{ article }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

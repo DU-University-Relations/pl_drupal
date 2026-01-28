@@ -1,0 +1,15 @@
+{% if cols %}
+    <div class="three-col-quick-stats">
+        <div class="row">
+            <div id="{{ specific_id }}" class="row" style="background-image: url('{{ src }}');">
+                {% for cols_item in cols %}
+
+                    <div class="columns small-12 medium-4 three-col-facts__item">
+                        {{ cols_item }}
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

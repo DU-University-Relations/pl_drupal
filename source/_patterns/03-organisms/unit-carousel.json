@@ -1,0 +1,17 @@
+{
+  "slide_count": 3,
+  "slides": [
+    {
+      "image": "<img src=\"/images/unit-carousel-image.png\" alt=\"Carousel Image 1\">",
+      "caption": "<p>Vibrant and lively yet peaceful, our campus is a great place to enrich your mind and body. It's a place of many facets: exciting and busy, but welcoming and serene.</p>"
+    },
+    {
+      "image": "<img src=\"/images/unit-carousel-image.png\" alt=\"Carousel Image 1\">",
+      "caption": "<p>Maecenas placerat neque nunc, at varius neque vehicula vel. Proin eu tristique lectus. Nunc vestibulum augue eu dictum ullamcorper. Nam ut justo dignissim, venenatis nibh eu, luctus erat. Aenean justo eros.</p>"
+    },
+    {
+      "image": "<img src=\"/images/unit-carousel-image.png\" alt=\"Carousel Image 1\">",
+      "caption": "<p>Anaca tinisek turari nuli re senelal irofe; nesobar rela fahi rol ecan enos. Ra mif lerinif.</p>"
+    }
+  ]
+}

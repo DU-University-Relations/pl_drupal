@@ -1,0 +1,9 @@
+<div class="cards-list-module activity-card-list">
+    <div class="row js-filter-cards">
+        {% block activitycardlist %}
+            {% for row in rows %}
+                {% include "@molecules/activity-card-list-item.twig" with row.content %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

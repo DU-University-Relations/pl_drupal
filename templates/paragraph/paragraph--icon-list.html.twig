@@ -1,0 +1,7 @@
+{% embed "@molecules/icon-list.twig" %}
+    {% block items %}
+        {% for item in content.field_icon_list_items|field_value %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

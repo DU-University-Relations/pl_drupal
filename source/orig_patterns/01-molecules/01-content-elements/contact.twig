@@ -1,0 +1,54 @@
+<div class="columns">
+    <div class="contacts-module__content" data-equalizer-watch="contacts-module__content">
+        {% include "@atoms/headline.twig" with contact %}
+        <div class="contacts-module__hidden-on-small">
+            {% include "@atoms/paragraph.twig" with contact %}
+            <ul class="contact-list">
+                {% if contact.email %}
+                    <li>
+                        <div class="contact-list__media"><span class="icon-du-mail-alt" aria-hidden="true"></span></div>
+                        <a href="mailto:{ contact.email }}">{{ contact.email }}</a></li>
+                {% endif %}
+                {% if contact.phone %}
+                    <li class="show-for-small-only">
+                        <div class="contact-list__media"><span class="icon-du-phone" aria-hidden="true"></span></div>
+                        <a href="tel:{{ phone }}">{{ phone }}</a></li>
+                    <li class="hide-for-small-only non-link">
+                        <div class="contact-list__media"><span class="icon-du-phone" aria-hidden="true"></span>
+                        </div> {{ contact.phone }}</li>
+                {% endif %}
+                {% if contact.fax %}
+                    <li class="show-for-small-only">
+                        <div class="contact-list__media"><span class="icon-du-fax" aria-hidden="true"></span></div>
+                        <a href="fax:{{ contact.fax }}">{{ contact.fax }}</a></li>
+                    <li class="hide-for-small-only non-link">
+                        <div class="contact-list__media"><span class="icon-du-fax" aria-hidden="true"></span>
+                        </div> {{ contact.fax }}</li>
+                {% endif %}
+                {% if contact.url %}
+                    <li>
+                        <div class="contact-list__media"><span class="icon-du-link-ext-alt" aria-hidden="true"></span>
+                        </div>
+                        <a href="{{ contact.url }}">{{ contact.url }}</a></li>
+                {% endif %}
+                {% if contact.building %}
+                    <li>
+                        <div class="contact-list__media"><span class="icon-du-location" aria-hidden="true"></span></div>
+                        {% if contact.address %}
+                            {% if contact.address1 %}
+                                <a href="https://www.google.com/maps/place/{{ contact.address1 }}+{{ contact.city }}+{{ contact.state }}+{{ contact.postalcode }}"
+                                   target="_blank">{{ contact.name }}</a>
+                            {% endif %}
+                            {% if not contact.address1 %}
+                                {{ contact.name }}
+                            {% endif %}
+                        {% endif %}
+                        {% if not contact.address %}
+                            {{ name }}
+                        {% endif %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

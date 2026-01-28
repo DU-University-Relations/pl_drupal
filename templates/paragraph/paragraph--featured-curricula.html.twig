@@ -1,0 +1,10 @@
+{% embed "@organisms/featured-curricula.twig" %}
+
+	{% set title = content.field_featured_curricula_heading|field_value %}
+
+	{% set curriculums = content.field_featured_curricula_ref|field_value %}
+
+	{% block curriculums %}
+		{{ content.field_featured_curricula_ref|field_value }}
+	{% endblock %}
+{% endembed %}

@@ -1,0 +1,210 @@
+
+	.primary-font {
+		font-family: $primary-font;
+	}
+	.accent-font {
+		font-family: $accent-font;
+	}
+	.headline-font {
+		font-family: $headline-font;
+	}
+	.cta-font {
+		font-family: $cta-font;
+	}
+	.example-code {
+		font-family: "Lucida Console", Monaco, monospace;
+	}
+	.fw-300 {
+		font-weight: 300;
+	}
+	.fw-500 {
+		font-weight: 500;
+	}
+	.fw-600 {
+		font-weight: 600;
+	}
+	.fw-700 {
+		font-weight: 700;
+	}
+	.fw-800 {
+		font-weight: 800;
+	}
+
+	// COLORS
+	.primary-color-1 {
+		color: $primary-color-1;
+	}
+	.primary-color-1-bg {
+		background-color: $primary-color-1;
+	}
+	.primary-color-2 {
+		color: $primary-color-2;
+	}
+	.primary-color-2-bg {
+		background-color: $primary-color-2;
+	}
+	.primary-color-3 {
+		color: $primary-color-3;
+	}
+	.primary-color-3-bg {
+		background-color: $primary-color-3;
+	}
+	.primary-color-4 {
+		color: $primary-color-4;
+	}
+	.primary-color-4-bg {
+		background-color: $primary-color-4;
+	}
+	.primary-color-5 {
+		color: $primary-color-5;
+	}
+	.primary-color-5-bg {
+		background-color: $primary-color-5;
+	}
+	.secondary-color-1 {
+		color: $secondary-color-1;
+	}
+	.secondary-color-1-bg {
+		background-color: $secondary-color-1;
+	}
+	.secondary-color-2 {
+		color: $secondary-color-2;
+	}
+	.secondary-color-2-bg {
+		background-color: $secondary-color-2;
+	}
+	.secondary-color-3 {
+		color: $secondary-color-3;
+	}
+	.secondary-color-3-bg {
+		background-color: $secondary-color-3;
+	}
+	.secondary-color-4 {
+		color: $secondary-color-4;
+	}
+	.secondary-color-4-bg {
+		background-color: $secondary-color-4;
+	}
+	.secondary-color-5 {
+		color: $secondary-color-5;
+	}
+	.secondary-color-5-bg {
+		background-color: $secondary-color-5;
+	}
+	.neutral-color-1 {
+		color: $neutral-color-1;
+	}
+	.neutral-color-1-bg {
+		background-color: $neutral-color-1;
+	}
+	.neutral-color-2 {
+		color: $neutral-color-2;
+	}
+	.neutral-color-2-bg {
+		background-color: $neutral-color-2;
+	}
+	.neutral-color-3 {
+		color: $neutral-color-3;
+	}
+	.neutral-color-3-bg {
+		background-color: $neutral-color-3;
+	}
+	.neutral-color-4 {
+		color: $neutral-color-4;
+	}
+	.neutral-color-4-bg {
+		background-color: $neutral-color-4;
+	}
+	.neutral-color-5 {
+		color: $neutral-color-5;
+	}
+	.neutral-color-5-bg {
+		background-color: $neutral-color-5;
+	}
+	.neutral-color-6 {
+		color: $neutral-color-6;
+	}
+	.neutral-color-6-bg {
+		background-color: $neutral-color-6;
+	}
+	.accent-color-1a {
+		color: $accent-color-1a;
+	}
+	.accent-color-1a-bg {
+		background-color: $accent-color-1a;
+	}
+	.accent-color-1b {
+		color: $accent-color-1b;
+	}
+	.accent-color-1b-bg {
+		background-color: $accent-color-1b;
+	}
+	.accent-color-1c {
+		color: $accent-color-1c;
+	}
+	.accent-color-1c-bg {
+		background-color: $accent-color-1c;
+	}
+	.accent-color-2a {
+		color: $accent-color-2a;
+	}
+	.accent-color-2a-bg {
+		background-color: $accent-color-2a;
+	}
+	.accent-color-2b {
+		color: $accent-color-2b;
+	}
+	.accent-color-2b-bg {
+		background-color: $accent-color-2b;
+	}
+	.accent-color-2c {
+		color: $accent-color-2b;
+	}
+	.accent-color-2c-bg {
+		background-color: $accent-color-2b;
+	}
+	.accent-color-3a {
+		color: $accent-color-3a;
+	}
+	.accent-color-3a-bg {
+		background-color: $accent-color-3a;
+	}
+	.accent-color-3b {
+		color: $accent-color-3b;
+	}
+	.accent-color-3b-bg {
+		background-color: $accent-color-3b;
+	}
+	.accent-color-3c {
+		color: $accent-color-3c;
+	}
+	.accent-color-3c-bg {
+		background-color: $accent-color-3c;
+	}
+
+	.color-palette {
+		ul {
+			margin-left: 0;
+			li {
+				&:before {
+					display: none;
+				}
+				border: .1rem solid $neutral-color-4;
+				padding: .5rem;
+				display: inline-block;
+				margin-bottom: 3.6rem;
+				margin-left: 1.8rem;
+				font-size: 1.6rem;
+				font-family: "Lucida Console", Monaco, monospace;
+				> span {
+					display: block;
+					height: 5.0rem;
+					margin-bottom: 1.0rem;
+				}
+				strong {
+					font-family: $headline-font;
+					font-size: 1.8rem;
+				}
+			}
+		}
+	}

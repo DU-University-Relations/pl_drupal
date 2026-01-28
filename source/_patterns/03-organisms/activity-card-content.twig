@@ -1,0 +1,44 @@
+<article{{ attributes }} id="main-content" role="main" >
+	<div class="row">
+        <div class="columns large-offset-2 large-8 pull-up page-title-band">
+            {% block page_title %}
+                {% include "@atoms/headline.twig" with {'title' : title, 'type' : 'h1'} %}
+            {% endblock %}
+        </div>
+	</div>
+  <div class="row">
+    <div class="columns">
+	    <div class="activity-card">
+		    <div class="activity-card-content__holder row">
+          <div class="columns small-12 medium-8">
+            <div class="more-description" align="center">
+              {% if host_by %}
+                <h2>
+                  {{ host_by|raw }}
+                </h2>
+              {% endif %}
+              {% include "@atoms/headline.twig" with activity_type_headline %}
+            </div>
+            <div class="more-description">
+              {% include "@atoms/headline.twig" with flyout_headline %}
+              {{ description }}
+              {% if start_date %}
+                <div class="activity-date">
+                  {{ start_date|raw }}
+                  {%  if end_date %} - {{ end_date|raw }} {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="columns small-12 medium-4 cards-module__buttons">
+            <ul>
+              {% for cta in content.field_cta_links|field_value %}
+                <li>{{ cta }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

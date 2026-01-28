@@ -1,0 +1,31 @@
+{% embed "@organisms/copy.twig" %}
+    {% if(content.field_copy_style|field_raw.value == 'narrow') %}
+        {% set alt = 'true' %}
+    {% endif %}
+    {% if(content.field_copy_style|field_raw.value == 'full') %}
+        {% set full = 'true' %}
+    {% endif %}
+    {% set header = content.field_heading|field_value %}
+    {% set subhead =   content.field_subhead|field_value %}
+    {% if(content.field_copy_image|field_value is not empty) %}
+        {% set image =  {
+            "src": content.field_copy_image,
+            "alt_text":content.field_copy_image|field_raw('alt')
+        } %}
+        {% set copy_image = {
+            '#type': 'responsive_image',
+            '#responsive_image_style_id': 'copy_image',
+            '#uri': content.field_copy_image|field_target_entity.uri.value,
+            '#attributes': { 'alt': content.field_copy_image|field_raw('alt') },
+        } %}
+        {% set copy_image_narrow = {
+            '#type': 'responsive_image',
+            '#responsive_image_style_id': 'copy_image_narrow',
+            '#uri': content.field_copy_image|field_target_entity.uri.value,
+            '#attributes': { 'alt': content.field_copy_image|field_raw('alt') },
+        } %}
+    {% endif %}
+
+    {% set body_text = content.field_paragraph_ref|field_value %}
+    {% set image_placement = content.field_copy_image_placement|field_raw.value %}
+{% endembed %}

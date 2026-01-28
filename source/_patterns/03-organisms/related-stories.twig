@@ -1,0 +1,17 @@
+{% if header %}
+    <div class="row">
+        <div class="columns small-12">
+            {% include "@atoms/headline.twig" with header %}
+        </div>
+    </div>
+{% endif %}
+
+<div class="related-stories-module{% if buffer_top %} buffer-top{% endif %} buffer-on-inner-row" id="{% if not specific_id %}uniqueRelatedStoriesID{% endif %}{% if specific_id %}{{ specific_id }}{% endif %}">
+    <div class="row slider-container">
+        {% block stories %}
+            {% for story in related_stories %}
+                {% include "@molecules/related-story.twig" with story %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

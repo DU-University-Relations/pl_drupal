@@ -1,0 +1,6 @@
+{% embed "@atoms/profile-performances.twig" %}
+    {% set date = content.field_profile_date|field_value %}
+    {% set title = content.field_profile_title|field_value %}
+    {% set description = content.field_profile_description|field_value %}
+    {% set location = content.field_profile_location|field_value %}
+{% endembed %}

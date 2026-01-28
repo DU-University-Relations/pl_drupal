@@ -1,0 +1,42 @@
+<div class="slick-slide">
+  <div class="news-item">
+    {% if publication %}
+      <div class="news-item__publication">{{ publication }}</div>
+    {% endif %}
+    <div class="news-item__group">
+      {% if image and youtube_id %}
+        <div class="news-item__group__video">
+          <youtube-embed videoid="{{ youtube_id }}" video-image="{{ file_url(image) }}"></youtube-embed>
+        </div>
+      {% elseif youtube_id and not image %}
+        <div class="news-item__group__video">
+          <youtube-embed videoid="{{ youtube_id }}"></youtube-embed>
+        </div>
+      {% elseif image and not youtube_id %}
+        <div class="news-item__group__image">
+          <img src="{{ file_url(image) }}" />
+        </div>
+      {% endif %}
+      {% if (title or description or link) %}
+        <div class="news-item__group__info">
+          {% if title %}
+            <div class="news-item__group__info__title">{{ title }}</div>
+          {% endif %}
+          {% if description %}
+            <div class="news-item__group__info__description">{{ description }}</div>
+          {% endif %}
+          {% if link %}
+            <div class="news-item__group__info__link">
+              <a href="{{ link }}" aria-label="Read more">
+                <span>Read more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                </svg>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

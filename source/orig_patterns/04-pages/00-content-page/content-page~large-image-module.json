@@ -1,0 +1,38 @@
+{
+	"large_image_module": {
+	    "slideshow_prev": {
+	        "icon_name": "cust_left_arrow"
+	    },
+	    "slides": [
+	        {
+	            "src": "/_duresources/foundation/images/large_image_module.jpg",
+	            "alt_text": "This is a slide image",
+	            "caption": "<p>Vibrant and lively yet peaceful, our campus is a great place to enrich your mind and body. It’s a place of many facets: exciting and busy, but welcoming and serene. </p>",
+	            "is_active": true
+	        },
+	        {
+	            "src": "/_duresources/foundation/images/large_image_module2.jpg",
+	            "alt_text": "This is a slide image",
+	            "caption": "<p>This is caption 2.</p>"
+	        },
+	        {
+	            "src": "/_duresources/foundation/images/large_image_module3.jpg",
+	            "alt_text": "This is a slide image",
+	            "caption": "<p>This is caption 3.</p>"
+	        },
+	        {
+	            "src": "/_duresources/foundation/images/large_image_module4.jpg",
+	            "alt_text": "This is a slide image",
+	            "caption": "<p>This is caption 4.</p>"
+	        },
+	        {
+	            "src": "/_duresources/foundation/images/large_image_module5.jpg",
+	            "alt_text": "This is a slide image",
+	            "caption": "<p>This is caption 5.</p>"
+	        }
+	    ],
+	    "slideshow_next": {
+	        "icon_name": "cust_right_arrow"
+	    }
+	}
+}

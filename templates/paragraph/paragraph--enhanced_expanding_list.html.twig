@@ -1,0 +1,61 @@
+{% embed "@organisms/enhanced-expanding-list.twig" %}
+    {% set col_header = {
+        "title": content.field_heading|field_value,
+        "type": "h3",
+        "cssClass": "btm-divider"
+    } %}
+
+    {% set expanding_list = [] %}
+    {% if content.field_enhanced_exp_list_item|field_target_entity[1] %}
+        {% for field in content.field_enhanced_exp_list_item|field_target_entity %}
+            {% set expanding_list = expanding_list|merge({(loop.index0) :
+                {
+                    'title_headline': field.field_title_headline.value,
+                    'title': field.field_title.value,
+                    'subtitle': field.field_subtitle.value,
+                    'summary': field.field_summary.value,
+                    'text':
+                    {
+                        '#type' : 'processed_text',
+                        '#text' : field.field_body_text.value,
+                        '#format' : field.field_body_text.format
+                    },
+                    "button": {
+                        "title": field.field_link.title,
+                        "type": "",
+                        "url": field.field_link.get(0).getUrl().toString(),
+                        "target": field.field_link.0.options.attributes.target,
+                        "alt_text": field.field_link.0.options.attributes.title,
+                        "onclick": field.field_link.0.options.attributes.onClick,
+                    }
+                }
+            }) %}
+        {% endfor %}
+    {% elseif content.field_enhanced_exp_list_item|field_target_entity %}
+        {% set field = content.field_enhanced_exp_list_item|field_target_entity %}
+        {% set expanding_list = expanding_list|merge({(loop.index0) :
+            {
+                'title_headline': field.field_title_headline.value,
+                'title': field.field_title.value,
+                'subtitle': field.field_subtitle.value,
+                'summary': field.field_summary.value,
+                'text':
+                {
+                    '#type' : 'processed_text',
+                    '#text' : field.field_body_text.value,
+                    '#format' : field.field_body_text.format
+                },
+                "button": {
+                    "title": field.field_link.title,
+                    "type": "",
+                    "url": field.field_link.get(0).getUrl().toString(),
+                    "target": field.field_link.0.options.attributes.target,
+                    "alt_text": field.field_link.0.options.attributes.title,
+                    "onclick": field.field_link.0.options.attributes.onClick,
+                }
+            }
+        }) %}
+    {% endif %}
+{% endembed %}
+
+

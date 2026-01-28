@@ -1,0 +1,26 @@
+{
+	"header": {
+		"logo_images": [
+	      {
+	        "alt_text": "Logo",
+	        "src": "/_duresources/foundation/images/logo.png"
+	      },
+	      {
+	        "alt_text": "Logo Text",
+	        "src": "/_duresources/foundation/images/logo_text.png"
+	      }
+	    ],
+		"hero_image": {
+			"alt_text": "Hero Image",
+			"src": "/_duresources/foundation/images/hero_image.jpg"
+		}
+	},
+	"two_col_inputs": false,
+	"label": "Label Text",
+	"options": false,
+	"radios_and_checkboxes": false,
+	"success_message": true,
+	"footer": {
+		"hide_big_btn_row": true
+	}
+}

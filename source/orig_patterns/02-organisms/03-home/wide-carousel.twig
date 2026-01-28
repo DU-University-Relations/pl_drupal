@@ -1,0 +1,33 @@
+<div class="wide-carousel__wrapper row{% if alt_layout %} wide-carousel__wrapper--alt{% endif %}">
+	<div class="columns small-12{% if not alt_layout %} medium-offset-7{% endif %} medium-5">
+		{% if headline %}
+			{% include "@atoms/headline.twig" %}
+		{% endif %}
+	</div>
+	<div class="wide-carousel columns small-12">
+		<div id="{{ wide_carousel_id }}" class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="data-orbit" data-auto-play="true" data-use-m-u-i="false" data-timer-delay="10000" data-pause-on-hover="false">
+			<div class="orbit-container">
+				{% if slides %}
+					<div class="orbit-slide{% if is_active %} is-active{% endif %}">
+						<div class="row expanded">
+							<div class="columns order-1 medium-order-2 small-12">
+								<div class="wide-carousel__media-wrapper">
+									{% include "@atoms/video.twig" %}
+									{% include "@atoms/image.twig" %}
+								</div>
+							</div>
+							<div class="columns order-2 medium-order-1 small-12 wide-carousel__content medium-6{% if not alt_layout %} medium-offset-1{% endif %}{% if alt_layout %} medium-offset-5{% endif %}">
+								{% include "@atoms/paragraph.twig" %}
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<nav class="orbit-bullets hide-for-large">
+				<button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span></button>
+				<button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+				<button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+			</nav>
+		</div>
+	</div>
+</div>

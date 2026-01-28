@@ -1,0 +1,8 @@
+<div class="row image-with-caption{% if float == "1" %} align-{{ alignment }}{% endif %}">
+    <div class="column">
+        <figure class="display-table{% if float == "0" %} align-{{ alignment }}{% endif %}">
+            {{ image }}
+            <figcaption class="truncate">{{ caption }}</figcaption>
+        </figure>
+    </div>
+</div>

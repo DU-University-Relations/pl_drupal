@@ -1,0 +1,7 @@
+<a{% if cssClass %} class="{{ cssClass }}"{% endif %}{% if new_window %} target="_blank"{% endif %}
+  href="{% if not href %}#{% endif %}{% if href %}{{ href }}{% endif %}"
+  {% if alt_text %}title="{{ alt_text|e('html_attr') }}"{% endif %}
+  {% if onclick %}onclick="{{ onclick|e('html_attr') }}"{% endif %}
+  {% if datatoggle %}data-toggle="{{ datatoggle|e('html_attr') }}"{% endif %}
+  {% if target %}target="{{ target|e('html_attr') }}"{% endif %}
+>{{ title }}</a>

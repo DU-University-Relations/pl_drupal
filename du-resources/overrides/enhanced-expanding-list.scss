@@ -1,0 +1,140 @@
+#enhanced-expanding-list-container, #school-list-container {
+  margin-top: .1rem;
+  margin-bottom: 3.5rem;
+  @include breakpoint(medium up) {
+    margin-bottom: 7.5rem;
+  }
+  ul.accordion {
+    width: 100%;
+    .accordion-item {
+      &.is-active {
+        a.accordion-title {
+        background-color: #fff;
+          &:before {
+            font-family: $icon-font;
+            content: "\e808";
+            color: white;
+            background-color: $secondary-color-2;
+            position:absolute;
+            line-height: 2.7rem;
+            width: 3.0rem;
+            height: 3.0rem;
+            text-align: center;
+            border: .1rem solid $secondary-color-2;
+            font-size: 2.3rem;
+          }
+        } // end a.accordion-title
+      } // end &.is -active
+      a.accordion-title {
+        background-color: transparent;
+        color: $neutral-color-2;
+        padding-right: 1.8rem;
+        &:hover,
+        &:focus {
+          color: $neutral-color-2;
+          background-color: transparent;
+        }
+        &:before {
+          font-family: $icon-font;
+          content: "\e809";
+          color: $secondary-color-2;
+          top: 35%;
+          position: absolute;
+          line-height: 2.7rem;
+          text-align: center;
+          width: 3.0rem;
+          height: 3.0rem;
+          border: .1rem solid $secondary-color-2;
+          transition: background-color 0.5s ease;
+          font-size: 2.3rem;
+          border-radius: 1.6rem;
+          -moz-border-radius: 1.6rem;
+          -webkit-border-radius: 1.6rem;
+          @include breakpoint(medium down) {
+            top: 5.0rem;
+          }
+        }
+        &.gold {
+          &:before {
+            color: white;
+            background-color: $secondary-color-2;
+          }
+        }
+        h3 p {
+          font-size: inherit;
+          margin-bottom: inherit;
+          line-height: inherit;
+        }
+      }// end a.accordion-title
+      .accordion-content {
+        background-color: #fff;
+        padding-top: 0;
+        @include breakpoint(medium up) {
+          padding-top: 1.8rem;
+        }
+        .cta {
+          display:block;
+          text-align: center;
+          @include breakpoint(medium up) {
+            text-align: left;
+          }
+          a.btn {
+            display: inline-block;
+            margin-top: .5rem;
+            text-align: center;
+            p {
+              margin-bottom: inherit;
+            }
+          }
+        }
+      }
+      .expanding-item, .school {
+        border-top: .1rem solid $neutral-color-4;
+        padding-top: 4%;
+      }
+      .expanding-item-title, .school-name {
+        @include breakpoint(small down) {
+          padding-right: 4.0rem;
+        }
+      }
+      h4 {
+        color: $accent-color-2b;
+        font-family: "BreveText", sans-serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 2.4rem;
+        @media screen and (min-width: 767px) and (max-width:1023px){
+          font-size: 2.2rem;
+        }
+      }
+      .subtitle {
+        border-left: .3rem solid $accent-color-2b;
+        padding-left: 3rem;
+        display: none;
+        @include breakpoint(medium up) {
+          display: block;
+        }
+        p {
+        font-weight: normal;
+        }
+      }
+      p {
+        font-size:1.8rem;
+        &.title-headline, &.division {
+          color: #000;
+          font-family: "BreveSans", sans-serif;
+          font-weight: 600;
+          margin-bottom: 0.7rem;
+          font-size: 1.7rem;
+          @include breakpoint(medium up) {
+            font-size: 2.4rem;
+          }
+        }
+      } // end p
+    } // end .accordion-item
+    &:last-child {
+      border-bottom: .1rem solid $neutral-color-4;
+      padding-bottom: 4%;
+    }
+  } //end ul.accordian
+}// end #enhanced-expanding-list-container

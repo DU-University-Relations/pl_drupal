@@ -1,0 +1,27 @@
+{
+	"list": {
+		"styleModifier": "contact_list",
+		"items": [
+			{
+				"title": "<div class=\"contact_list__media\"><span class=\"icon_du_mail_alt\" aria_hidden=\"true\"></span></div>",
+        "fact_text": "<p><a href=\"emailto:unit@du.edu\">unit@du.edu</a></p>"
+			},
+			{
+				"title": "<div class=\"contact_list__media\"><span class=\"icon_du_phone\" aria_hidden=\"true\"></span></div>",
+        "fact_text": "<p><a href=\"tel:\">1(303) 871_2000</a></p>"
+			},
+			{
+				"title": "<div class=\"contact_list__media\"><span class=\"icon_du_fax\" aria_hidden=\"true\"></span></div>",
+        "fact_text": "<p><a href=\"fax:\">1(303) 871_2000</a></p>"
+			},
+			{
+				"title": "<div class=\"contact_list__media\"><span class=\"icon_du_link_ext_alt\" aria_hidden=\"true\"></span></div>",
+        "fact_text": "<p><a href=\"#\">www.du.edu</a></p>"
+			},
+			{
+				"title": "<div class=\"contact_list__media\"><span class=\"icon_du_location\" aria_hidden=\"true\"></span></div>",
+        "fact_text": "<p><a href=\"#\" target=\"_blank\">University Hall</a></p>"
+			}
+		]
+	}
+}

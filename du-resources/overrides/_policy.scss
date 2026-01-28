@@ -1,0 +1,113 @@
+// Policy View.
+.policy {
+  header {
+    padding-top: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #18171e;
+    margin-bottom: 2rem;
+    span {
+      color: $primary-color-3;
+      font-size: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+  .views-exposed-form {
+    display: flex;
+    .js-form-item {
+      width: calc( 33% - 2rem );
+      margin: 0 1rem 2rem;
+      label {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-family: "BreveSans", sans-serif;
+        margin-bottom: .3rem;
+      }
+    }
+    input[type="text"] {
+      height: 3.3rem;
+    }
+  }
+
+  table {
+    thead {
+      th {
+        padding: 1.5rem 1rem;
+        line-height: 1.2;
+        &.is-active {
+          background: $neutral-color-2;
+        }
+        &.views-field-field-policy-document {
+          width: 20rem;
+        }
+        &.views-field-field-policy-document.is-active {
+          width: 20rem;
+        }
+        a {
+          color: $white;
+          display: flex;
+          &:hover {
+            text-decoration: none;
+          }
+          .tablesort {
+            margin-left: auto;
+            &--asc {
+              background-image: url(../images/twistie-down.svg);
+            }
+            &--desc {
+              background-image: url(../images/twistie-up.svg);
+            }
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 1.5rem 1rem;
+          line-height: 1;
+          .file {
+            font-weight: 600;
+            a {
+              color: $accent-color-2c;
+            }
+          }
+          .file-size {
+            display: none;
+          }
+          &.views-field-field-policy-document {
+            a {
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Policy Page.
+.policy-content-page {
+  // Policy page only has one field for now; the Document.
+  div:first-of-type {
+    max-width: 120rem;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-bottom: 10rem;
+
+    div:first-child {
+      font-weight: 800;
+      text-decoration: underline;
+      margin-bottom: 2rem;
+      font-size: 3rem;
+    }
+
+    a {
+      font-size: 3rem;
+    }
+  }
+}

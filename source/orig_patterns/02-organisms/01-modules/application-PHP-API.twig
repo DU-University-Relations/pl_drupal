@@ -1,0 +1,657 @@
+{% if API_enabled %}
+<?
+    
+    @require_once($_SERVER['DOCUMENT_ROOT'] . '/_duresources/foundation/php/ClassLoader.php');
+    $college = $_GET['college_code'];
+    $degree = $_GET['degrees'];
+    $admissionSteps = new DU\API\Modules\AdmissionSteps($college, $degree);
+    $applyUrl = 'https://gradadmissions.du.edu/apply/?sys:field:inq_source=';
+    //var_dump($admissionSteps);
+    
+    $data = $admissionSteps->GetData();
+    $options= [];
+    $admission = [];
+             
+    $title = $_GET['title'];
+    $concentration = $_GET['concentration'];
+    $year = $_GET['year'];
+    
+    //var_dump("title is", $title);
+    for($i=0; $i < count($data); ++$i){
+        global $admission;
+        global $title;
+        //var_dump($i);
+        $program = $data[$i];
+        //var_dump(array_keys($data[$i]));
+        //var_dump($i, $program["majorWebDesc"]);
+        if($program["majorWebDesc"] == $title){
+            array_push($options, $data[$i]); 
+        }
+    }
+    var_dump("options", $options); 
+    
+    if((count($options)/2) > 1){
+        $concentrations = "true";
+        $shortList = [];
+        for($i=0; $i < count($options); ++$i){
+            
+            $name = $options[$i]["concDesc"];
+            if(in_array($name, $shortList)){
+                } else {
+                array_push($shortList, $name);
+            }
+            }
+        var_dump("shortlist = ", $shortList);
+    } else { 
+        $concentrations = "false";
+    }
+   
+
+    
+    if($concentration!=NULL){
+        var_dump("$concentration url has something", $concentration);
+        for($i=0; $i < count($options); ++$i){
+            $program = $options[$i];
+            //var_dump($program["concDesc"]);
+            if($program["concDesc"]!==$concentration){
+                unset($options[$i]);
+            }
+
+        }
+    } 
+    
+    $availableYears = 0;
+    $available2017 = "";
+    $available2018 = "";
+    for($i=0; $i < count($options); ++$i){
+        $program = $options[$i];
+        if($program["deadlineSummerRegular"]!=NULL ||$program["deadlineFallRegular"]!=NULL || $program["deadlineWinterRegular"]!=NULL||$program["deadlineSpringRegular"]!=NULL) {
+            $availableYears = $availableYears+1;
+                
+          }
+        }
+        var_dump("Available Years! ", $availableYears);
+        if($year) {
+            if($program["academicYear"]==$year){
+                array_push($admission, $program);
+            }
+        } else {
+            for($i=0; $i < count($availableYears); ++$i){
+              if($program["academicYear"]=="2017-2018"){
+                  array_push($admission, $program);
+                  $available2017 = "yes";
+              }
+          } 
+        }
+          if(count($admission)==0){
+             for($i=0; $i < count($availableYears); ++$i){
+              if($program["academicYear"]=="2018-2019"){
+                  array_push($admission, $program);
+                  $available2018 = "yes";
+              }
+          }
+    }  
+
+    var_dump("Admission!", $admission);
+    
+    
+    if(count($admission)==1){
+        $admission = $admission[0];
+    } else { 
+        //var_dump("more than one admission option still available");
+        $showModal = "true";
+    }
+    //var_dump("Admission -", $admission);
+    $programName = $program["majorDesc"]."-".$program["concDesc"];
+    $applyUrl = $applyUrl.$programName;
+    $applyUrl = str_replace(' ', '', $applyUrl);
+?>
+{% endif %}
+
+{% if not API_enabled %}
+    {% include "@organisms/admission-steps.twig" %}
+{% endif %}
+
+{% if API_enabled %}
+
+<div class="admission-steps">
+	<div class="row">
+		<div class="columns small-12 large-8 large-offset-4">
+				<h2><?=$admission["majorDesc"];?> <? if($concentration!=NULL || $admission["concDesc"]!=null) {?><span class="concentrationName"> - <?=$admission["concDesc"]; ?> </span><? } ?> - <?=$admission["degree"]; ?></h2>
+		</div>
+	</div>
+	<div class="admission-steps__nav row align-middle" data-tabs="data-tabs" id="example-tabs">
+	  {% if steps_nav_items %}
+	  	<div class="columns tabs-title small-12 medium-4{% if first %} large-offset-2 is-active{% endif %}{% if not last_step %} large-3{% endif %}{% if last_step %} large-2{% endif %}">
+	  		<a href="#{{ steps_id }}" aria-selected="true">
+	  			<span class="admission-steps__circle">{{ step_number }}</span> {{ title|raw }}
+	  		</a>
+	  	</div>
+	  {% endif %}
+	  <div class="columns medium-2 show-for-large"><a href="javascript:window.print();" class="admission-steps__print">Print Steps</a></div>
+	</div>
+	<div class="tabs-content" data-tabs-content="example-tabs">
+	  {% if steps_content %}
+          {% if conditional %}
+              <div class="tabs-panel{% if is_active %} is-active{% endif %}" id="{{ steps_content_id }}">
+                {% if print_section_title %}
+                    <h3 class="admission-steps__section-name show-for-sr">{{ title }}</h3>
+                {% endif %}
+                <div class="row collapse">
+                  <div class="large-3 columns show-for-large">
+                    <ul class="tabs vertical" id="example-vert-tabs" data-tabs="data-tabs">
+                      {% if sub_nav_items %}
+                          {% if deadlines %}
+                              <li class="tabs-title is-active"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                          {% endif %}
+                          {% if prerequisites %}
+                                <? if ($admission["prereqDesc"]) { ?>
+                                    <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                                <? } ?>
+                          {% endif %}
+                          {% if letters %}
+                                <? if ($admission["lorDesc"]) { ?>
+                                    <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                                <? } ?>
+                          {% endif %}
+                          {% if otherReqs %}
+                                <? if ($admission["otherReqsDesc"]) { ?>
+                                    <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                                <? } ?>
+                          {% endif %}
+                          {% if tests %}
+                                <? if ($admission["scoresGREDesc"]) { ?>
+                                    <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                                <? } ?>
+                          {% endif %}
+                          {% if eca %}
+                            <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                          {% endif %}
+                          {% if essays %}
+                            <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                          {% endif %}
+                          {% if application %}
+                            <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                          {% endif %}
+                          {% if transcripts %}
+                            <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                          {% endif %}
+                      {% endif %}
+                    </ul>
+                  </div>
+                  <div class="small-12 large-9 columns">
+                    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+
+                      {% if sub_steps_panels %}
+                            {% if concentrations %}
+                              {% if panel_toggle %}
+                                <? if ($concentrations == "true" && $concentration==NULL) { ?>
+                                    
+                                    <!--div class="reveal" id="concModal" data-reveal="true" data-options="closeOnClick:false;closeOnEsc:false;"-->   
+                                    <div class="reveal" id="concModal" data-reveal="true" >  
+                                        <bold>Please confirm your concentration</bold>
+                                        <ul>
+                                            <? if($concentrations=="true" ) { ?>
+                                                <? for($i=0; $i < count($shortList); ++$i){ ?>
+                                                    <li><a class="select-concentration" name="<?=$shortList[$i];?>" > <?=$shortList[$i]; ?> </a></li>
+                                                <? } ?>
+                                            <? } ?>
+                                        </ul>
+                                    </div>
+                                <? } ?>
+                               {% endif %}
+                            {% endif %}
+                            {% if deadlines %}
+                                {% if panel_toggle %}
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                {% endif %}
+                            {% endif %}
+                            {% if prerequisites %}
+                                {% if panel_toggle %}
+                                <? if ($admission["prereqDesc"]) { ?>
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                <? } ?>
+                                {% endif %}
+                            {% endif %}
+                            {% if eca %}
+                                {% if panel_toggle %}
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if letters %}
+                                {% if panel_toggle %}
+                                <? if ($admission["lorDesc"]) { ?>
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                <? } ?>
+                                {% endif %}
+                            {% endif %}
+                            {% if otherReqs %}
+                                {% if panel_toggle %}
+                                <? if ($admission["otherReqsDesc"]) { ?>
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                <? } ?>
+                                {% endif %}
+                            {% endif %}
+                            {% if tests %}
+                                {% if panel_toggle %}
+                                <? if ($admission["scoresGREDesc"]) { ?>
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                <? } ?>
+                                {% endif %}
+                            {% endif %}
+                            {% if transcripts %}
+                                {% if panel_toggle %}
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                {% endif %}
+                            {% endif %}
+                            {% if application %}
+                                {% if panel_toggle %}
+                                    <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                                {% endif %}
+                            {% endif %}
+                            {% if essays %}
+                              {% if panel_toggle %}
+                                <p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></p>
+                               {% endif %}
+                            {% endif %}
+						    <div class="tabs-panel sub-step-content{% if sub_panel_is_active %} is-active{% endif %}" id="{{ sub_steps_panel_id }}" data-toggler=".is-active">
+							{% if headline %}
+								{% include "@atoms/headline.twig" %}
+							{% endif %}
+                            {% if deadlines %}
+                                <h4 class="hide-for-large">Select your term</h4>
+                                <div class="row columns">
+                                    <div class="large-6 columns"><p class="academicYear">For the <?=$admission["academicYear"]; ?> academic year</p></div>
+                                    
+                                    <? if($admission["academicYear"]=="2017-2018" && $academicYear >1) { ?> 
+                                        <div class="large-6 columns"><p class="academicYear"><a class="selectYear" name="2018-2019">See 2018-2019 requirements instead</a> </div><? } ?>
+                                    <? if($admission["academicYear"]=="2018-2019") { ?> <div class="large-6 columns"><p class="academicYear"><a class="selectYear" name="2017-2018">See 2017-2018 requirements instead</a> </div><? } ?>
+                                </div>
+                                <div id="deadlines" class="row columns"> 
+                                    <? if ($admission["academicYear"]=="2018-2019" && $admission["deadlineSummerRegular"] == NULL && $admission["deadlineFallRegular"] == NULL && $admission["deadlineWinterRegular"] == NULL && $admission["deadlineSpringRegular"] == NULL) { ?>
+                                            <p>Information for these terms is not available yet.</p>
+                                    <? } ?>
+                                    <? if ($admission["offeredFall"] == "yes" || $admission["offeredFall"] == "Yes") { ?>
+                <div id="deadlinesFall" class="medium-12 columns">
+                  <h6>Fall Deadlines</h6>
+                  <div class="medium-12 columns">
+                    <ul>
+                      <? if ($admission["deadlineFallPriority"] && $admission["deadlineFallPriority2"]) { ?>
+
+                      <li>
+                        <p>
+                        <bold>Priority Deadline 1:</bold>
+                        <?=$admission["deadlineFallPriority"]; ?>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                      <bold>Priority Deadline 2:</bold>
+                      <?=$admission["deadlineFallPriority2"]; ?>
+                    </p>
+                  </li>
+					<? if($admission["deadlineFallPriority3"]){?>
+					  <li>
+                        <p>
+                        <bold>Priority Deadline 3:</bold>
+                        <?=$admission["deadlineFallPriority3"]; ?>
+                        </p>
+                      </li>
+
+                    <?}?>
+					<? if($admission["deadlineFallPriority4"]){?>
+					  <li>
+                        <p>
+                        <bold>Priority Deadline 4:</bold>
+                        <?=$admission["deadlineFallPriority4"]; ?>
+                        </p>
+                      </li>
+
+                    <?}?>
+                  <? } ?>
+                  <? if ($admission["deadlineFallPriority"] && isset($admission["deadlineFallPriority2"])==false) { ?>
+
+                  <li>
+                    <p>
+                    <bold>Priority Deadline:</bold>
+                    <?=$admission["deadlineFallPriority"]; ?>
+                  </p>
+                </li>
+                <? } ?>
+
+                <li>
+                  <p>
+                  <bold>Regular Deadline:</bold>
+                  <?=$admission["deadlineFallRegular"]; ?>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <? } ?>
+
+        <? if ($admission["offeredWinter"] == "yes" || $admission["offeredWinter"] == "Yes") { ?>
+        <div id="deadlinesWinter" class="medium-12 columns">
+          <h6>Winter Deadlines</h6>
+          <div class="medium-12 columns">
+            <ul>
+              <? if ($admission["deadlineWinterPriority1"]) { ?>
+
+              <li>
+                <p>
+                <bold>Priority Deadline:</bold>
+                <?=$admission["deadlineWinterPriority1"]; ?>
+              </p>
+            </li>
+            <? } ?>
+            <li>
+              <p>
+              <bold>Regular Deadline</bold>
+              <?=$admission["deadlineWinterRegular"]; ?>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <? } ?>
+
+    <? if ($admission["offeredSpring"] == "yes" || $admission["offeredSpring"] == "Yes") { ?>
+    <div id="deadlinesSpring" class="medium-12 columns">
+      <h6>Spring Deadlines</h6>
+      <div class="medium-12 columns">
+        <ul>
+          <? if ($admission["deadlineSpringPriority"] && $admission["deadlineSpringPriority2"]) { ?>
+
+                      <li>
+                        <p>
+                        <bold>Priority Deadline 1:</bold>
+                        <?=$admission["deadlineSpringPriority"]; ?>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                      <bold>Priority Deadline 2:</bold>
+                      <?=$admission["deadlineSpringPriority2"]; ?>
+                    </p>
+                  </li>
+					<? if($admission["deadlineSpringPriority3"]){?>
+					  <li>
+                        <p>
+                        <bold>Priority Deadline 3:</bold>
+                        <?=$admission["deadlineSpringPriority3"]; ?>
+                        </p>
+                      </li>
+
+                    <?}?>
+					<? if($admission["deadlineSpringPriority4"]){?>
+					  <li>
+                        <p>
+                        <bold>Priority Deadline 4:</bold>
+                        <?=$admission["deadlineSpringPriority4"]; ?>
+                        </p>
+                      </li>
+
+                    <?}?>
+                  <? } ?>
+                  <? if ($admission["deadlineSpringPriority"] && isset($admission["deadlineSpringPriority2"])==false) { ?>
+
+                  <li>
+                    <p>
+                    <bold>Priority Deadline:</bold>
+                    <?=$admission["deadlineSpringPriority"]; ?>
+                  </p>
+                </li>
+                <? } ?>
+
+                <li>
+                  <p>
+                  <bold>Regular Deadline:</bold>
+                  <?=$admission["deadlineSpringRegular"]; ?>
+                </p>
+              </li>
+    </ul>
+  </div>
+</div>
+
+<? } ?>
+		<? if ($admission["offeredSummer"] == "yes" || $admission["offeredSummer"] == "Yes") { ?>
+                          <div id="deadlinesSummer" class="medium-12 columns">
+                            <h6>Summer Deadlines</h6>
+                            <div class="medium-12 columns">
+                              <ul>
+                                <? if ($admission["deadlineSummerPriority"] && isset($admission["deadlineSummerPriority2"])==false) { ?>
+
+                                <li>
+                                  <p>
+                                  <bold>Priority Deadline:</bold>
+                                  <?=$admission["deadlineFallPriority"]; ?>
+                                </p>
+                              </li>
+                              <? } ?>
+
+
+                              <? if ($admission["deadlineSummerPriority"] && $admission["deadlineSummerPriority2"]) { ?>
+
+                              <li>
+                                <p>
+                                <bold>Priority Deadline 1:</bold>
+                                <?=$admission["deadlineSummerPriority"]; ?>
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                              <bold>Priority Deadline 2:</bold>
+                              <?=$admission["deadlineSummerPriority2"]; ?>
+                            </p>
+                          </li>
+                          <? if ($admission["deadlineSummerPriority3"]) { ?>
+                          <li>
+                            <p>
+                            <bold>Priority Deadline 3:</bold>
+                            <?=$admission["deadlineSummerPriority3"]; ?>
+                          </p>
+                        </li>
+                        <? } ?>
+                        <? } ?>
+                        <li>
+                          <p>
+                          <bold>Regular Deadline:</bold>
+                          <?=$admission["deadlineSummerRegular"]; ?>
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+               
+            
+                <? } ?>
+                <div>
+                  <p><strong>Priority Deadline:</strong> Applications will be considered after the priority deadline provided space is available.</p>
+                 <p><strong>Final Submission Deadline: </strong>Applicants cannot submit applications after the final submission deadline.</p>
+                </div>
+                </div>
+                            
+                            {% endif %}
+                            {% if international %}
+                                <p>
+Per Student & Exchange Visitor Program (SEVP) regulation, international applicants must meet all standards for admission before an I-20 or DS-2019 is issued, [per U.S. Federal Register: 8 CFR § 214.3(k)] or is academically eligible for admission and is admitted [per 22 C.F.R. §62]. Read the <a href=\"http://bulletin.du.edu/graduate/admission-and-enrollment-policies/additional-standards-for-international-applicants\" target=\"_blank\">Additional Standards For International Applicants</a> policy for more details.</p>
+                            {% endif %}
+                            {% if prerequisites %}
+                                <? if ($admission["prereq"]=="Yes") { ?>
+                                    <p><?=$admission["prereqDesc"];?></p>
+                                <? } ?>
+                            {% endif %}
+                            {% if essays %}
+                                <? if ($admission["essay"]=="Yes") { ?>
+                                    <h6>Essay Instructions </h6><p><?=$admission["essayDesc"]?></p>
+                                <? } ?>
+                                <? if ($admission["personalStatement"]=="Yes") { ?>
+                                    <h6>Personal Statement Instructions </h6><p><?=$admission["personalStatementDesc"]?></p>
+                                <? } ?>
+                                <? if ($admission["diversityStatement"]=="Yes") { ?>
+                                    <h6>Diversity Statement Instructions </h6><p><?=$admission["diversityStatementDesc"]?></p>
+                                <? } ?>
+                                <? if ($admission["writingSample"]=="Yes") { ?>
+                                    <h6>Writing Sample Instructions </h6><p><?=$admission["writingSampleDesc"]?></p>
+                                <? } ?>
+                            {% endif %}
+                            {% if letters %}
+                                <? if ($admission["lor"]=="Yes") { ?>
+                                    <p><?=$admission["lorDesc"]?></p>
+                                <? } ?>
+                            {% endif %}
+                            {% if otherReqs %}
+                             <? if ($admission["degreePlan"]=="Yes") { ?>
+                                    <h6>Degree Plan Instructions </h6><p><?=$admission["degreePlanDesc"]?></p>
+                                <? } ?>
+                             <? if ($admission["portfolio"]=="Yes") { ?>
+                                    <h6>Portfolio Instructions </h6><p><?=$admission["portfolioDesc"]?></p>
+                                <? } ?>
+                             <? if ($admission["resume"]=="Yes") { ?>
+                                    <h6>Resume Instructions </h6><p><?=$admission["resumeDesc"]?></p>
+                                <? } ?>
+                             <? if ($admission["otherReqs"]=="Yes") { ?>
+                                    <h6>Additional requirements for this program: </h6><p><?=$admission["otherReqsDesc"]?></p>
+                            <? } ?>
+                            {% endif %}
+                            {% if eca %}
+                                <p>Official scores from the Test of English as a Foreign Language (TOEFL), or International English Language Testing System (IELTS) or Cambridge English: Advanced (CAE) are required of all graduate applicants, regardless of citizenship status, whose native language is not English or who have been educated in countries where English is not the native language. The minimum TOEFL/IELTS/CAE test score requirements for the degree program you selected above are:</p>
+                                <ul>
+                                    <li><p>Minimum TOEFL Score: 
+                                        <? if ($admission["scoresTOEFLIBTMin"]=="Yes") { ?>
+                                            (Internet-based test) <?=$admission["scoresTOEFLIBT"]?><?=$admission["scoresTOEFLIBTDesc"]?>
+                                        <? } ?>
+                                        <? if ($admission["scoresTOEFLPaperMin"]=="Yes") { ?>
+                                         or (paper-based test) <?=$admission["scoresTOEFLPaper"]?><?=$admission["scoresTOEFLPaperDesc"]?>
+                                        <? } ?>
+                                        </p> 
+                                </li>
+                                <li><p>Minimum IELTS Score: 
+                                        <? if ($admission["scoresIELTSMin"]=="Yes") { ?>
+                                            <?=$admission["scoresIELTS"]?><?=$admission["scoresIELTSDesc"]?>
+                                        <? } ?>
+                                        </p> 
+                                </li>
+                                <? if ($admission["cambridgeMinScore"]!="No") { ?>
+                                    <li>
+                                        <p>Minimum Cambridge Language Assessment Score:
+                                            <?=$admission["cambridgeScoreDesc"]?>
+                                        </p>
+                                    </li>
+                                <? } ?>
+                                </ul>
+                            <p><strong>English Conditional Admission Offered: </strong><?=$admission["ecaDesc"]?></p>
+                             <ul>
+                                <li>Read the <a href=\"http://bulletin.du.edu/graduate/admission-and-enrollment-policies/additional-standards-for-non-native-english-speakers/english-language-proficiency-ielts-toefl/\" target=\"_blank\">English Language Proficiency</a> policy for more details.</li>
+                                <li>Read the <a href=\"http://bulletin.du.edu/graduate/admission-and-enrollment-policies/additional-standards-for-non-native-english-speakers/english-conditional-admission-eca/\" target=\"_blank\">English Conditional Admission (ECA) </a> policy for more details.</li>
+                                <li>Read the <a href=\"http://bulletin.du.edu/graduate/admission-and-enrollment-policies/additional-standards-for-non-native-english-speakers/required-tests-for-gta-eligbility/\" target=\"_blank\">Required Tests for GTA Eligibility</a> policy for more details.</li>
+                            </ul>
+                            {% endif %}
+
+                            
+                            
+                            {% if transcripts %}
+                            <p>Be sure to submit your official transcripts before your application deadline. You'll need to submit one transcript from each post-secondary institution you've attended. We can only accept hard copy transcripts.</p>
+
+<p>As it can take some time for transcript requests to be processed and mailed out, we recommend you begin this process two months before your application deadline.</p>
+                            {% endif %}
+                            {% if application %}
+                                <p>We accept online applications for admission to our university. You should include all your online materials in your application, including resumes, writing samples and statements. The writers of your letters of recommmendation should submit their letters through our online system.</p>
+
+                                <p>Our program can only consider your application for admission if our Office of Graduate Studies has received all your online materials and supplemental materials by our application deadline. </p>
+
+                                <? if ($admission["applicationFee"]=="Yes") { ?>
+                                    <p><strong>Application Fee: </strong><?=$admission["applicationFeeDesc"]?></p>
+                            <? } ?>
+                              <? if ($admission["applicationFee"]=="No") { ?>
+                                    <p><bold>No application fee</bold></p>
+                                <? } ?>
+                            {% endif %}
+                            {% if tests %}
+                                <? if ($admission["scoresGRE"]=="Yes" || $admission["scoresGRE"]=="yes") { ?>
+                                    <p><bold>GRE:</bold><?=$admission["scoresGREDesc"]?>
+                                <? if ($admission["scoresGRETotal"]=="Yes" || $admission["scoresGRETotal"]=="yes") { ?>
+                                    The minimum overall score for the GRE is <?=$admission["scoresGREMinTotal"]?>
+                                <? } ?>
+                                <? if ($admission["scoresGREVerbal"]=="Yes" || $admission["scoresGREVerbal"]=="yes") { ?>
+                                    The minimum verbal score for the GRE is <?=$admission["scoresGREMinVerbal"]?>
+                                <? } ?>
+                                <? if ($admission["scoresGREQuantitative"]=="Yes" || $admission["scoresGREQuantitative"]=="yes") { ?>
+                                    The minimum quantitative score for the GRE is <?=$admission["scoresGREMinQuantitative"]?>
+                                <? } ?>
+                                <? if ($admission["scoresGREWritten"]=="Yes" || $admission["scoresGREWritten"]=="yes") { ?>
+                                    The minimum written score for the GRE is <?=$admission["scoresGREMinWritten"]?>
+                                <? } ?>
+                                </p>
+                                <? } ?>
+                                <? if ($admission["scoresGRESubject"]=="Yes" || $admission["scoresGRESubject"]=="yes") { ?>
+                                <p><bold>GRE Subject</bold><? $admission["scoresGRESubjectDesct"]; ?>                                  </p>
+                                <? } ?>
+                                <? if ($admission["scoresGMAT"]=="Yes" || $admission["scoresGMAT"]=="yes") { ?>
+                                <p><bold>GMAT</bold><? $admission["scoresGMATDesc"]; ?>                                  </p>
+                                <? } ?>
+                                 
+                            {% endif %}
+						</div>
+					{% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {% endif %}
+          {% if not conditional %}
+              <div class="tabs-panel{% if is_active %} is-active{% endif %}" id="{{ steps_content_id }}">
+                {% if print_section_title %}
+                    <h3 class="admission-steps__section-name show-for-sr">{{ title }}</h3>
+                {% endif %}
+                <div class="row collapse">
+                  <div class="large-3 columns show-for-large">
+                    <ul class="tabs vertical" id="example-vert-tabs" data-tabs="data-tabs">
+                      {% if sub_nav_items %}
+                        <li class="tabs-title{% if sub_nav_is_active %} is-active{% endif %}"><a href="#{{ sub_steps_panel_id }}" aria-selected="true">{{ title }}</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                  <div class="small-12 large-9 columns">
+                    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+                       {% if sub_steps_panels %}
+						{% if panel_toggle %}
+					    	<p class="sub-step-content__toggle hide-for-large" data-tabs="data-tabs"><a data-toggle="{{ sub_steps_panel_id }}" aria-selected="true" >{{ title }}</a></p>
+					    {% endif %}
+						<div class="tabs-panel sub-step-content{% if sub_panel_is_active %} is-active{% endif %}" id="{{ sub_steps_panel_id }}" data-toggler=".is-active">
+							{% if headline %}
+								{% include "@atoms/headline.twig" %}
+							{% endif %}
+                            {% if status %}
+                            <p>Visit <a href="http://gradadmissions.du.edu" target="_blank">gradadmissions.du.edu</a> to check your application status. We'll send you your login after you've completed your application.</p>
+                            {% endif %}
+                            {% if aid %}
+                            <p>Applicants should complete their Free Application for Federal Student Aid (FAFSA) by February 15. Visit the <a href="http://du.edu/financialaid" target="_blank">Office of Financial Aid</a> for additional information.</p>
+                            {% endif %}
+                            {% if enrollment %}
+                            <p>Please confirm your enrollment by your deposit deadline. You may also defer your enrollment for up to one year. If you decline your offer of admission, we'll ask that you reapply to your program of choice during future admission periods.</p>
+
+<p>If you're admitted, you'll need to submit a tuition deposit to confirm your enrollment in the program. We'll apply this toward your first tuition payment. You can find your deposit amount and deadline in your letter of acceptance into our program.</p>
+                            {% endif %}
+                        
+                            
+						</div>
+					{% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {% endif %}
+	  {% endif %}
+	</div>
+</div>
+<div>
+<a role="button" id="apply" href=<?=$applyUrl;?> class="btn   ">
+	 Apply Now 
+</a></div>
+
+{% endif %}
+

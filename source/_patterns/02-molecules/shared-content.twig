@@ -1,0 +1,16 @@
+<div class="shared-content buffer-on-inner-row">
+    {% block shared %}
+        {% if shared.show == 1 %}
+            <div class="row">
+                <div class="columns shared-content-header">
+                    {% include "@atoms/headline.twig" with { 'title' : label, 'type' : 'h3', 'cssClass': 'shared-content-title' } %}
+                </div>
+            </div>
+        {% endif %}
+            <div class="row">
+                <div class="columns shared-content-text">
+                    {% include "@atoms/paragraph.twig" with { 'text' : text } %}
+                </div>
+            </div>
+    {% endblock %}
+</div>

@@ -1,0 +1,268 @@
+#main-content.profile-page {
+  padding-top: 3.0rem;
+  h1 { //name
+    padding-bottom: 0;
+    margin-top: 1.0rem;
+    margin-bottom: 1.5rem;
+    font-size: 3.6rem;
+    @include breakpoint(medium up) {
+      margin-top: 0;
+      font-size: 5.0rem;
+    }
+    @include breakpoint(large up) {
+      font-size: 5.6rem;
+    }
+
+    &:after { //remove black underline
+      width: 0;
+      height: 0;
+      background: none;
+    }
+  }
+
+  .profile-background {
+    background: #f4f4f4;
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2.6rem;
+    }
+    @include breakpoint(small up){
+      font-size: 2.2rem;
+    }
+  }
+  .no-background {
+    background: white;
+  }
+  .profile-photo img {
+    margin-top: -2.0rem;
+  }
+  .top-info {
+    margin-top: 3.0rem;
+    @include breakpoint(medium only) {
+      margin-bottom: 2.0rem;
+    }
+  }
+  .sub-menu-wrap {
+    margin-top: 3.0rem;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    left: 0;
+    border-top: .2rem solid $neutral-color-5;
+    border-bottom: .2rem solid $neutral-color-5;
+    .profile-tabs {
+      margin-top: 0;
+    }
+  }
+  #sub-menu {
+    .tabs-title {
+      &.is-active {
+        border-bottom: .6rem solid $primary-color-3;
+        a {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .phone-desc {
+    color: #ccc;
+  }
+
+  ul.profile-tags {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      list-style: none;
+      padding: 2.0rem 0;
+      border-bottom: solid .1rem #f4f4f4;
+      margin-left: -1.0rem;
+      text-indent: 0;
+      padding-left: 2.5rem;
+      @include breakpoint(medium up) {
+        padding-left: 1.0rem;
+      }
+      &:first-child {
+        border-top: solid .1rem #f4f4f4;
+      }
+      &:before {
+        background: none;
+      }
+    }
+  }
+
+  .profile-expert {
+    font-size: 1.6rem;
+    margin-top: -1.0rem;
+  }
+
+  .profile-links {
+    padding: 2.0rem;
+    max-width: 100%;
+    @include breakpoint(medium up) {
+      padding: 0;
+    }
+    @include breakpoint(large up) {
+      max-width: 37.66667%;
+    }
+  }
+
+  .profile-links a {
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .profile-links p {
+    margin-bottom: 0.9rem;
+  }
+  .profile-location {
+    display: flex;
+    flex-direction: row;
+    .info-profile-loc {
+      padding-left: .5rem;
+    }
+  }
+
+  .icon-du-twitter,
+  .icon-du-facebook,
+  .icon-du-linkedin,
+  .icon-du-instagram {
+    display: inline-block;
+    border-radius: 50%;
+    padding: 0.9rem 1.1rem;
+    background: $link-accessibility-color-gold-light;
+    margin-right: 1.0rem;
+    height: 5.2rem;
+    width: 5.2rem;
+    &:before {
+      color: white;
+    }
+  }
+
+  a.profile-social-link {
+    text-decoration: none;
+  }
+
+  .tabs-content {
+    border-right: none;
+    border-left: none;
+    padding: 1.0rem;
+    width: 100%;
+    min-height: 27.5rem;
+    margin-top: 13.0rem;
+    margin-bottom: 2.5rem;
+  }
+  .tabs-panel {
+    padding: 0;
+    h4 { margin-top: 1.0rem; }
+  }
+
+  .link-download {
+    a {
+      color: #b9a067;
+      background: $neutral-color-6;
+      border-left: solid .6rem #b8a15d;
+      padding: 2.0rem;
+      width: 100%;
+      text-decoration: none;
+      display: block;
+      font-weight: 600;
+    }
+  }
+
+  .span-arrow-down {
+    width: 3.2rem;
+    height: 3.2rem;
+    top: -3.4rem;
+    background: #0f637a;
+    padding: 1.0rem;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: .9rem .9rem 0;
+      border-color: #0f637a transparent;
+      display: block;
+      width: 0;
+      z-index: 1;
+      top: 4.2rem;
+      left: 1.4rem;
+    }
+    &:before {
+      color: white;
+    }
+  }
+}
+
+.btm-divider.profile-list-headline{
+  margin-bottom: 1.0rem;
+  @include breakpoint(medium down) {
+    margin-left: 2.0rem;
+    margin-right: 2.0rem;
+  }
+}
+
+#profile-list,
+#profile-list-counselors {
+  .views-row {
+    width: 100%;
+    @include breakpoint(medium up) {
+      width: 50%;
+    }
+  }
+  .resource-listing {
+    margin-bottom: 3.6rem;
+    width: 100%;
+  }
+  .pager__items {
+    display: flex;
+    justify-content: center;
+  }
+  .profile-list-info {
+    h4 {
+      color: $accent-color-2b;
+      font-weight: 700;
+      font-family: $headline-font;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    .appointment {
+      font-family: $accent-font;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .job-title {
+      p {
+        line-height: 1.8rem;
+      }
+    }
+  }
+  .article.teaser {
+    max-height: 100%;
+    .row {
+      min-height: 18.7rem;
+    }
+  }
+}
+
+#profile-list-counselors {
+  .views-row { // disabled to show as full width on mobile-
+    width: 100%;
+    @include breakpoint(medium up) {
+      width: 50%;
+      display: flex;
+    }
+  }
+  .article.teaser.counselor {
+    max-height: 100%;
+  }
+}

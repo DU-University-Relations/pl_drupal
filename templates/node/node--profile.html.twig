@@ -1,0 +1,116 @@
+{% if view_mode == "full" %}
+    {% embed "@organisms/profile-full.twig" %}
+        {% set title = node.getTitle %}
+        {% set full_name = content.field_profile_first_name.0['#context'].value ~ ' ' ~ content.field_profile_last_name.0['#context'].value %}
+        {% set preferred_name = content.field_preferred_name|field_value %}
+        {% set content = content %}
+        {% set display_name = content.field_profile_display_name|field_value %}
+        {% set profile_type = content.field_profile_type %}
+        {% set profile_appointment = content.field_profile_appointment %}
+        {% set is_expert = content.field_profile_expert|field_value %}
+        {% set has_expertise = content.has_expertise %}
+        {% set job_title = content.field_profile_job_title|field_value %}
+        {% set additional_title = content.field_profile_additional_title|field_value %}
+
+        {% set study_type = content.field_profile_study_type|field_value %}
+        {% set advisor = content.field_profile_advisor|field_value %}
+        {% set expect_grad_year = content.field_profile_expected_grad_year|field_value %}
+
+        {% set phone_primary = content.field_profile_primary_phone|field_value %}
+        {% set phone_prim = content.field_profile_phone_number_ext|field_value %}
+
+        {% set phone_second = content.field_profile_sec_phone_num|field_value %}
+        {% set phone_sec = content.field_profile_sec_phone_number|field_value %}
+
+        {% if content.field_profile_expert_link %}
+            {% set expert_link = {
+                'url': node.field_profile_expert_link.0.url,
+                'title': node.field_profile_expert_link.0.title,
+                'icon': {
+                    icon_name: 'bank',
+                    bold: true
+                }
+            } %}
+        {% endif %}
+        {% set email = content.field_profile_email|field_value %}
+
+        {% set portfolio_web = content.field_profile_portfolio_website|field_value %}
+        {% set portfolio_pers = content.field_profile_portfolio_personal|field_value %}
+        {% set group_web = content.field_profile_group_website|field_value %}
+
+        {% set location = content.field_profile_office_address|field_value %}
+
+        {% set facebook = content.field_profile_facebook %}
+        {% set instagram = content.field_profile_instagram %}
+        {% set linkedin = content.field_profile_linkedin %}
+        {% set twitter = content.field_profile_twitter_feed %}
+
+        {% set hide_awards_tab = content.field_profile_hide_awards_tab %}
+        {% set hide_news_tab = content.field_profile_hide_news_tab %}
+        {% set hide_perf_tab = content.field_profile_hide_perf_tab %}
+        {% set hide_pub_tab = content.field_profile_hide_pub_tab %}
+        {% set hide_research_tab = content.field_profile_hide_research_tab %}
+        {% set tab_flex = content.tab_flex %}
+
+        {% set cv = content.field_profile_cv.0['#url'] %}
+        {% if content.field_cv_file['#items'].entity.uri.value is not empty %}
+          {% set cv_file = file_url(content.field_cv_file['#items'].entity.uri.value) %}
+        {% endif %}
+        {% set news = content.news_content %}
+        {% set newsroom_url = content.newsroom_link %}
+        {% set newsroom_url_title = content.newsroom_link_title %}
+        {% set cv_label = content.field_profile_cv.0['#title'] %}
+        {% set cv_title = content.field_profile_cv.0['#options']['attributes']['title'] %}
+        {% set cv_target = content.field_profile_cv.0['#options']['attributes']['target'] %}
+
+        {% set pub_link = content.field_profile_publications_link.0['#url'] %}
+        {% set pub_label = content.field_profile_publications_link.0['#title'] %}
+        {% set pub_title = content.field_profile_publications_link.0['#options']['attributes']['title'] %}
+        {% set pub_target = content.field_profile_publications_link.0['#options']['attributes']['target'] %}
+        {% set media_sources = content.field_profile_media_sources %}
+        {% set expert_url = content.expert_url %}
+        {% set expert_full_url = content.expert_full_url %}
+        {% set counsoler_region = content.field_counselor_region %}
+        {% set counselor_region_count = content.counselor_region_count %}
+        {% set counselor_state = content.field_counselor_state %}
+        {% set counselor_state_count = content.counselor_state_count %}
+    {% endembed %}
+{% endif %}
+
+{% if view_mode == "related" %}
+
+    {% embed "@molecules/key-faculty-profile.twig" %}
+        {% set display =  {
+            "type": "h4",
+            "full_name": node.label,
+            "display_name": content.field_profile_display_name|field_value,
+            "first_name": content.field_profile_first_name|field_value,
+            "last_name": content.field_profile_last_name|field_value,
+            "appointment": content.field_profile_appointment,
+            "image": content.field_profile_photo|field_value,
+            "job_title": content.field_profile_job_title|field_value,
+            }
+        %}
+
+        {% set node_link = path('entity.node.canonical', {'node': node.id}) %}
+
+    {% endembed %}
+{% endif %}
+
+{% if view_mode == "teaser" %}
+    {% embed "@molecules/profile-teaser.twig" %}
+        {% set display = {
+            "type": "h4",
+            "full_name": node.label,
+            "first_name": content.field_profile_first_name|field_value,
+            "last_name": content.field_profile_last_name|field_value,
+            "job_title": content.field_profile_job_title|field_value,
+            "additional_title": content.field_profile_additional_title|field_value,
+            "appointment": content.field_profile_appointment,
+            "image": content.field_profile_photo|field_value,
+            "email": content.field_profile_email|field_value,
+            "phone_primary": content.field_profile_primary_phone|field_value,
+            "phone_prim": content.field_profile_phone_number_ext|field_value
+        }%}
+    {% endembed %}
+{% endif %}

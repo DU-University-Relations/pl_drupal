@@ -1,0 +1,371 @@
+body.unit-site .hero-background {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: $unit-accent-color-teal;
+  margin-left: 0;
+  width: 100%;
+}
+body.unit-site.unit-theme-teal .hero-background {
+  background-color: $unit-accent-color-teal;
+}
+body.unit-site.unit-theme-purple .hero-background {
+  background-color: $unit-accent-color-purple;
+}
+body.unit-site.unit-theme-green .hero-background {
+  background-color: $unit-accent-color-green;
+}
+body.unit-site.unit-theme-gold .hero-background {
+  background-color: $unit-accent-color-gold;
+}
+body.unit-site.unit-theme-red .hero-background {
+  background-color: $unit-accent-color-red;
+}
+body.unit-site.unit-theme-grey .hero-background {
+  background-color: $unit-accent-color-grey;
+}
+body .hero-overlay {
+  opacity: 0.75;
+}
+
+.unit-site.du-home header .hero-media,
+.unit-site header .hero-media {
+  position: relative;
+}
+
+.unit-header {
+  .unit-hero-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+    > video + picture,
+    > video + img {
+      position: absolute !important;
+      top: 0;
+      z-index: -1;
+    }
+    > video {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 1s ease;
+      &.hero-video--visible {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    @include breakpoint(large) {
+      display: flex;
+      align-items: center;
+      /*> video + img {
+        display: none;
+      }*/
+    }
+  }
+  .hero-media__caption {
+    position: absolute;
+    width: 100%;
+    bottom: 2.0rem;
+    top: inherit !important;
+    @include breakpoint(medium up) {
+      bottom: 7.0rem;
+    }
+    @include breakpoint(large up) {
+      bottom: 8.0rem;
+    }
+    @include breakpoint(xlarge up) {
+      bottom: 14.0rem;
+    }
+    .columns {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .hero-media__caption__text {
+      transition: background-color 1s ease;
+      position: relative;
+      float: right;
+      right: 0;
+      left: unset;
+      background-color: rgba(24, 23, 30, 0.6);
+      width: 28.3rem;
+      > a {
+        text-decoration: none;
+        display: block;
+				padding: .9rem 5.6rem 1rem 1.6rem;
+        &:hover,
+        &:focus {
+          background-color: rgba(24, 23, 30, 0.8);
+          p {
+            opacity: 1;
+          }
+        }
+      }
+      p {
+        color: #fff;
+        opacity: 0.5;
+        margin-bottom: 0;
+        font-size: 1.6rem;
+        line-height: 2.0rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .hero-media__caption__toggler {
+        position: absolute;
+        bottom: .8rem;
+        right: 1.1rem;
+        .icon-du-minus,
+        .du-icon-minus {
+          display: none;
+        }
+        [class*="icon-du"],
+        [class*="du-icon"] {
+          font-size: 2.4rem;
+          color: white;
+        }
+      }
+    }
+    &.caption-expanded {
+      @include breakpoint(medium down) {
+        width: auto;
+        left: 2.0rem;
+      }
+      .hero-media__caption__text {
+        background-color: rgba(24, 23, 30, 0.9);
+        width: auto;
+        left: 0;
+        margin-left: -5.4rem;
+        @include breakpoint(large down) {
+          margin-left: 2.0rem;
+        }
+        @include breakpoint(medium down) {
+          margin-left: 0;
+        }
+        p {
+          opacity: 1;
+          white-space: normal;
+        }
+      }
+      .hero-media__caption__toggler {
+        .icon-du-plus,
+        .du-icon-plus {
+          display: none;
+        }
+        .icon-du-minus,
+        .du-icon-minus {
+          display: block;
+        }
+      }
+    }
+  }
+} // end header
+
+.unit-site header.unit-header .hero-media {
+  top: 0;
+  width: 100%;
+}
+@media (max-width: 72rem ) {
+  #main-content > .row:first-child > .pull-up {  // this pops up the first text content into the hero for 'card' effect
+    margin-top: 0;
+  }
+}
+
+// Hero variation button styles
+.unit-site.du-home header .hero-media__caption.content-bottom {
+  h1, h2 {
+    flex: 1 1;
+    font-family: $headline-font !important;
+    font-size: 5.0rem;
+    line-height: 1;
+    @extend .btm-divider;
+    @include breakpoint(large up) {
+      margin-bottom: 0;
+    }
+    &:after {
+      height: 1.0rem;
+      background: $neutral-color-6;
+    }
+  }
+}
+
+.unit-site.du-home header .hero-media__caption.content-center {
+  h1, h2 {
+    text-align: center;
+    font-family: $headline-font !important;
+  }
+}
+.unit-site .hero-media__caption {
+  a {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $neutral-color-6;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border: .2rem solid $neutral-color-6;
+    padding: 1.0rem 3.0rem;
+    background: rgba($neutral-color-1, .2);
+    letter-spacing: .05rem;
+    &:hover {
+      background: $neutral-color-6;
+      color: $neutral-color-3;
+    }
+  }
+  &.content-bottom {
+    a {
+      @include breakpoint(large up) {
+        margin-left: 5rem;
+      }
+    }
+  }
+}
+
+// Content center layout
+.unit-site .unit-header .hero-media__caption.content-center {
+  height: 100%;
+  bottom: 0;
+  display: flex;
+}
+
+.unit-site .hero-media__caption.content-center .columns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// Content bottom layout
+.unit-site  .hero-media__caption.content-bottom .columns {
+  @include breakpoint(large up) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+// Content card layout
+.unit-site .content-card.hero-media {
+  padding-top: 5.0rem;
+  padding-bottom: 10.0rem;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: $unit-accent-color-teal;
+    z-index: -1;
+    margin-top: -5.0rem;
+  }
+}
+.unit-site.unit-theme-teal .content-card.hero-media {
+  &:before {
+    background-color: $unit-accent-color-teal;
+  }
+}
+.unit-site.unit-theme-purple .content-card.hero-media {
+  &:before {
+    background-color: $unit-accent-color-purple;
+  }
+}
+.unit-site.unit-theme-green .content-card.hero-media {
+  &:before {
+    background-color: $unit-accent-color-green;
+  }
+}
+.unit-site.unit-theme-gold .content-card.hero-media {
+  &:before {
+    background-color: $unit-accent-color-gold;
+  }
+}
+.unit-site.unit-theme-red .content-card.hero-media {
+  &:before {
+    background-color: $unit-accent-color-red;
+  }
+}
+.unit-site.unit-theme-grey .content-card.hero-media {
+  &:before {
+    background-color: $unit-accent-color-grey;
+  }
+}
+
+.unit-site .unit-header.content-card .content-wrapper {  //content card hero display option
+  background: $neutral-color-6;
+  padding: 3.0rem;
+  @include breakpoint(large up) {
+    top: 6.0rem;
+    left: -20.0rem;
+    position: relative;
+    margin-right: -20.0rem;
+    margin-bottom: 5.0rem;
+  }
+}
+
+.unit-site .unit-header.content-card .content-wrapper {
+  h1, h2 {
+    @extend .btm-divider;
+  }
+}
+.unit-site .unit-header.content-card .content-wrapper a {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $secondary-color-2;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: .2rem solid $secondary-color-2;
+  padding: 1.0rem 3.0rem;
+  letter-spacing: .05rem;
+  &:hover {
+    background: $secondary-color-2;
+    color: $neutral-color-6;
+  }
+}
+
+// Local program
+.unit-site .hero-title {
+  line-height: 8.1rem;
+  font-family: $breve-display;
+  padding-top: 10.0rem;
+  padding-bottom: 0;
+  height: 100%;
+  width: 90%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -45%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  h3 {
+    color: white;
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 2.2rem;
+  }
+  h1, h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 6vw;
+    margin-bottom: 5.0rem;
+    @include breakpoint(small down) {
+      font-size: 8vw;
+      margin-bottom: 12.0rem;
+      line-height: 1.1;
+    }
+    @media screen and (max-width: 40em) {
+      font-size: 6vw;
+    }
+    @media screen and (min-width: 1800px) {
+      font-size: 4vw;
+      margin-bottom: -2.0rem;
+    }
+  }
+}

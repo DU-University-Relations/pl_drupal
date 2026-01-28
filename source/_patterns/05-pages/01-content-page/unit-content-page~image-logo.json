@@ -1,0 +1,8 @@
+{
+  "image_logo": "<img src=\"/images/logo-placeholder.png\" alt=\"Logo\">",
+  "page_name": "Content Page",
+  "hide_hero": true,
+  "hero_image": {},
+  "show_content": {
+  }
+}

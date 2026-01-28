@@ -1,0 +1,6 @@
+<div class="row feature-media{% if feature_media_caption %} feature-media-caption-margin{% endif %}">
+  {{ feature_media }}
+  {% if feature_media_caption %}
+    <span class="caption">{{ feature_media_caption }}</span>
+  {% endif %}
+</div>

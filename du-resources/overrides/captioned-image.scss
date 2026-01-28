@@ -1,0 +1,66 @@
+@media screen {
+	.img-wrapper {
+		position: relative;
+		margin-bottom: 2.4rem;
+		img {
+			width: 100%;
+		}
+		.img-wrapper__content {
+			overflow: hidden;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: 1rem 1.3rem;
+			color: white;
+			background-color: rgba(24,23,30, 0.85);
+			font-size: 1.6rem;
+			padding: .7rem 6rem 1.2rem 1.7rem;
+			> *:first-child {
+				opacity: 1;
+			}
+			&.truncated {
+				cursor: pointer;
+				background-color: rgba(24, 23, 30, 0.6);
+				transition: background-color 0.5s ease;
+				&:after {
+					content: "\e809";
+					font-family: $icon-font;
+					position: absolute;
+					right: 1.8rem;
+					bottom: .6rem;
+					font-size: 2.4rem;
+					opacity: 0.5;
+				}
+				&:hover,
+				&:focus {
+					background-color: rgba(24,23,30, 0.85);
+					> *:first-child,
+					&:after {
+						opacity: 1;
+					}
+				}
+				> *:first-child {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					opacity: 0.5;
+				}
+				&.expanded {
+					background-color: rgba(24,23,30, 0.85);
+					> *:first-child {
+						white-space: normal;
+						opacity: 1;
+					}
+					&:after {
+						content: "\e808";
+						opacity: 1;
+					}
+				}
+			}
+			p:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}//end .img-wrapper
+} //end @screen

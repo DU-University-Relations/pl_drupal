@@ -1,0 +1,10 @@
+{
+    "show_hide_icons": [
+        {
+            "icon_name": "plus"
+        },
+        {
+            "icon_name": "minus"
+        }
+    ]
+}

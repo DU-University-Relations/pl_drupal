@@ -1,0 +1,5 @@
+{% set catch_cache = content.field_carousel_image|render %}
+{% embed "@molecules/slide.twig" %}
+    {% set slide_image = content.field_carousel_image %}
+    {% set caption = content.field_carousel_caption|field_value %}
+{% endembed %}

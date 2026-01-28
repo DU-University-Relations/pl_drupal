@@ -1,0 +1,11 @@
+{% set data_category = custom.tags %}
+<div class="events-listing__item {{ data_category }}">
+    {% embed "@molecules/event-card.twig" %}
+        {% set date = custom.start_date %}
+        {% set start_time = custom.start_time %}
+        {% set end_time = custom.end_time %}
+        {% set location = custom.location %}
+        {% set title = fields.title.content %}
+        {% set url = custom.url %}
+    {% endembed %}
+</div>

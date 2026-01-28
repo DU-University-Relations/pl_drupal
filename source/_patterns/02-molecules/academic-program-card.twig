@@ -1,0 +1,85 @@
+<div class="columns ap-item card-list-item
+     {% for degree in degree_classes %}{% if loop.index0 > 0 %}{{ " " }}{% endif %}{{ "filter-" }}{{ degree }}{% endfor %}
+    "
+     data-filter-name="{{description|e('html_attr')}}"
+     data-filter-school="{{ code }}"
+        {#
+{{^ API-enabled }}filter-major-{{{major}}} filter-minor-{{{minor}}} filter-dual-{{{dual}}}{{/ API-enabled }}
+{{# API-enabled }}<?=$program['filterClasses'];?>{{/ API-enabled }}"
+     data-filter-name="{{^ API-enabled }}{{ description }}{{/ API-enabled }}
+{{# API-enabled }}<?=htmlentities($program['title']);?>{{/ API-enabled }}" data-filter-school="{{{collegeCode}}}"#} >
+    <div class="cards-list__holder">
+        <div class="cards-list__content">
+            <p class="academic-card">{{title}}</p>
+            <div class="cards-list-module__title">
+                <h2 class="cards-list-title">
+                    {{ description }}
+                </h2>
+            </div>
+            <div class="card-list-bottom">
+                {% for degree in degrees %}{% if loop.index0 > 0 %}{{ ", " }}{% endif %}{{ degree }}{% endfor %}
+                {#
+                {{^ API-enabled }}
+                {{ degrees }}
+                {{/ API-enabled }}{{# API-enabled }}
+                <? if(is_array($program['degrees'])){
+                        $displayDegrees = implode(', ', $program['degrees']);
+                        }
+                        $displayDegrees = str_replace("CRTG", "Certificate", $displayDegrees);
+                        $displayDegrees = str_replace("CERT", "Certificate", $displayDegrees);
+                        $displayDegrees = str_replace("CPUB", "Certificate", $displayDegrees);
+                    ?>
+                <?=$displayDegrees;?>
+
+                <? if($program['degrees']!=NULL && $program['minor']=="Y") {?>, Minor <? } ?>
+                <? if($program['degrees']==NULL && $program['minor']=="Y") {?>Minor <? } ?>
+                {{/ API-enabled }}
+                #}
+            </div>
+            <div class="more-button"><span class="icon-du-plus"></span></div>
+        </div>
+        <!-- flyout-->
+        <div class="flyout">
+            <div class="flyout-content__holder row">
+                <div class="columns small-12 medium-8">
+                    <div class="more-description">
+                        {% include "@atoms/headline.twig" with card_flyout_headline %}
+                        {{ description1 }}
+                        {{ description2 }}
+
+                        {% if concentrations %}
+                            {% include "@atoms/headline.twig" with {'title': 'Available Concentrations', 'type': 'h4', 'cssClass':''} %}
+                            {{ concentrations }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="columns small-12 medium-4 cards-module__buttons">
+                    {% block ctas %}
+                        <ul>
+                            <li><a href="#">Admissions Requirements</a></li>
+                            {% for button in buttons %}
+                                <li><a href="#">{{button.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endblock %}
+                    {#
+                    <ul>
+
+                        {{# API-enabled }}
+                        <? if ($program['degrees'][0] !== 'Juris Doctor') {
+                                if ($program['collegeCode']!= "DC" && $program['degrees'][0] != "Certificate" && $program['title']!= "Accountancy" || $program['title']!= "Marketing" || $program['title']!= "Management" || $program['title']!= "Finance" || $program['title']!= "Business Information and Analytics"){
+                                ?>
+                        <li><a href="<?=$program['requirementsLink']['url'];?>"><?=$program["requirementsLink"]["caption"];?></a></li>
+                        <? }} ?>
+
+                        <?=$program["ctas"];?>
+
+                        {{/ API-enabled }}
+
+                    </ul>
+                    #}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

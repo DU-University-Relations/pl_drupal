@@ -1,0 +1,21 @@
+{
+  "title": "Communications Studies",
+  "collegeCode": "AHSS",
+  "description": "\"Nursing Program Markdown\"\n",
+  "description2": "\"Additional Info\" \n",
+  "degrees": [
+    "BA",
+    "MA",
+    "PhD"
+  ],
+  "level": "UG",
+  "major": "N",
+  "minor": "N",
+  "dual": "N,",
+  "adultEducation": "N,",
+  "financialAid": "N,",
+  "tags": [
+    "biology",
+    "communication"
+  ]
+}

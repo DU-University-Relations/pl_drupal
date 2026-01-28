@@ -1,0 +1,27 @@
+{
+  "logo": "<img src=\"/images/logo_shield_unit.png\" alt=\"Logo\">",
+  "nav": {
+    "navigation_items": [
+      {
+        "title": "Departments\n&amp; Programs",
+        "flyout": "dropdown"
+      },
+      {
+        "title": "Research",
+        "flyout": "small"
+      },
+      {
+        "title": "Community",
+        "flyout": "none"
+      },
+      {
+        "title": "News &amp;\nEvents",
+        "flyout": "large"
+      },
+      {
+        "title": "About\nNSM",
+        "flyout": "none"
+      }
+    ]
+  }
+}

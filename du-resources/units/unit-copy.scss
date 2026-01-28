@@ -1,0 +1,16 @@
+.unit-site {
+  .copy-module {
+    &.copy-module--image {
+		margin-bottom: 4.0rem;
+	}
+  }
+}
+
+.du-home.unit-site { // unit homepages where first header is an h3
+  #main-content .content > h3:first-of-type {
+    margin-top: 2.0rem;
+    @include breakpoint(large up) {
+      margin-top: 0;
+    }
+  }
+}

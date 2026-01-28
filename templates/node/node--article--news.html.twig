@@ -1,0 +1,145 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{% embed  "@organisms/article-news.twig" %}
+{# This node twig is used by several variants and so some fields that may seem redundant may not be #}
+
+    {% block page_title %}
+        {% include "@atoms/headline.twig" with {'title' : label, 'type' : 'h1'} %}
+    {% endblock %}
+    {% set title = node.label %}
+    {% set id = node.id %}
+
+    {% set author_list = content.field_article_byline_author|field_value %}
+    {% set author_title = "Author(s)" %}
+    {% block article_author_list %}
+        {% for article_author in author_list %}
+            {{ article_author }}
+        {% endfor %}
+    {% endblock %}
+
+    {% set subhead = {"title": content.field_article_subhead|field_value, "type": "h2"} %}
+    {% block page_subtitle %}
+        {% include "@atoms/headline.twig" with subhead %}
+    {% endblock %}
+
+    {% set teaser = content.field_article_teaser|field_value %}
+
+    {% set article_medium_image = content.field_article_medium_sized_image|field_value %}
+
+    {% set article_media = content.field_article_feature_media|field_value %}
+    {% block article_media_list %}
+        {% for media in article_media %}
+            {{ media }}
+        {% endfor %}
+    {% endblock %}
+
+    {% set title_path = path('entity.node.canonical', { 'node' : id}) %}
+
+    {% set article_categories = content.field_article_category|field_value %}
+
+    {% set article_category_location_link = article_category_location %}
+    {% if article_category_location_link is empty %}
+        {% set article_category_location_link = '/news/category/' %}
+    {% endif %}
+
+    {% block article_category %}
+        <div class="news-category">
+            {% for category in article_categories %}
+                {% set category_title = category['#title'] %}
+                {% set category_tid = category['#options'].entity.id %}
+                {% set category_link = article_category_location_link ~ category_title | replace({' ': '-'}) | lower %}
+
+                {% if loop.last %}
+                    <a href="{{ category_link }}">{{ category_title }}</a>
+                {% else %}
+                    <a href="{{ category_link }}">{{ category_title }}</a>,
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+    {% set article_type = content.field_article_type|field_value %}
+    {% set publish_date = content.field_article_publish_date|field_value %}
+
+    {% set overview = content.field_page_overview %}
+    {% set article_content = content.field_page_content %}
+    {% set comment = content.field_article_comment %}
+    {% set related_list = content.field_article_related|field_value %}
+    {% set related_title = {'title' : "Related Articles", 'type' : 'h2', 'cssClass' : 'btm-divider'} %}
+    {% if content.field_back_link_text|render|trim is not empty %}
+      {% set back_to_parent = {"link": article_list_location, "title": content.field_back_link_text|field_value } %}
+    {% else %}
+      {% set back_to_parent = {"link": article_list_location, "title": "Back to Article Listing" } %}
+    {% endif %}
+{% endembed %}

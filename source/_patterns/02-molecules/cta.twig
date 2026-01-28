@@ -1,0 +1,24 @@
+
+<div class="cta-module{% if style == 'large' %} cta-module--large cta-module--{{ color_theme }}{% endif %}
+{% if style != 'large' %} cta-module--overlay-{{ color_theme }} buffer-on-inner-row{% endif %}
+{% if remove_btm_margin %} cta-module--remove-btm-margin{% endif %}">
+
+	{% if style == 'large' %}
+		{{ imagestyle_large }}
+	{% else %}
+		{{ imagestyle_small }}
+	{% endif %}
+
+	<div class="row">
+		<div class="columns small-12{% if style == 'large' %} medium-8 medium-offset-2{% endif %}">
+			<div class="content">
+				{% include "@atoms/headline.twig" with cta_content %}
+				{% include "@atoms/paragraph.twig"  with cta_content %}
+				{% if cta_content.button.url %}
+					<p class="btn-wrap">{% include "@atoms/button.twig" with cta_content.button %}</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+

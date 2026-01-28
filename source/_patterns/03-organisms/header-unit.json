@@ -1,0 +1,19 @@
+{
+  "logo": "<img src=\"/images/logo_shield_unit.png\" alt=\"Logo\">",
+  "site_prefix": "Division of",
+  "site_name": "Natural Science & Mathematics",
+  "site_links": [
+    "<a href=\"#\" class=\"off-site\">University of Denver</a>",
+    "<a href=\"#\" class=\"off-site\">Division of Natural Sciences &amp; Mathematics</a>",
+    "<a href=\"#\" class=\"\">Department of Biology</a>"
+  ],
+  "resource_links": [
+    "<a href=\"#\">Undergraduate Students</a>",
+    "<a href=\"#\">Prospective Students</a>",
+    "<a href=\"#\">Alumni</a>",
+    "<a href=\"#\">Graduate Students</a>",
+    "<a href=\"#\">Faculty &amp; Staff</a>"
+  ],
+  "hide_hero": true,
+  "hero_media": {}
+}

@@ -1,0 +1,18 @@
+
+
+
+
+{% embed "@organisms/social-media-bar.twig" %}
+    {% set data = {
+        "header" : content.field_heading|field_value,
+        "view_all" : content.field_social_page_link|field_raw('title'),
+        "social_page_url" : content.field_social_page_link.0['#url'],
+    } %}
+
+    {% set links = content.field_social_media_link|field_value %}
+    {% block links %}
+        {% for link in links %}
+            <li>{{ link }}</li>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

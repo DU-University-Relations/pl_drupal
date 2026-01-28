@@ -1,0 +1,32 @@
+{% if catastrophic_alert %}
+	<header role="banner">
+		<div class="row">
+			<div class="columns small-12 medium-12 large-4">
+				{% if logo_images %}
+	    			{% include "atoms-image" %}
+	    		{% endif %}
+			</div>
+			<div class="columns small-12 medium-12 large-8">
+				{% if headers %}
+					{% include "atoms-headline" %}
+				{% endif %}
+			</div>
+		</div>
+	</header>
+	<article id="main-content" role="main">
+		<div class="row">
+			<div class="columns small-12 medium-12 large-8 large-order-2">
+				{{ text|raw }}
+			</div>
+			<aside class="columns small-12 medium-12 large-4 large-order-1">
+				{% if sidebar_sections %}
+					{% include "atoms-headline" %}
+					{% if sub_sections %}
+						{% include "atoms-headline" %}
+						{{ text|raw }}
+					{% endif %}
+				{% endif %}
+			</aside>
+		</div>
+	</article>
+{% endif %}

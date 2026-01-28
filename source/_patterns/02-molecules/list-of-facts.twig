@@ -1,0 +1,11 @@
+<div class="quick-fact-module__content {% if item.statistic %} statistic {% endif %}">
+
+    {% if items %}
+        <ul class="list-of-facts">
+            {% for item in items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>

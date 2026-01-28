@@ -1,0 +1,31 @@
+<div class="hero-media">
+	{% if hero_video %}
+		{% include "@atoms/video.twig" with hero_video %}
+	{% endif %}
+	{% if hero_image %}
+		{% include "@atoms/image.twig" with hero_image %}
+	{% endif %}
+</div>
+{% if not hide_hero_caption %}
+<div class="hero-media__caption" id="hero-media__caption"{% if not is_home %} data-toggler=".caption-expanded"{% endif %}>
+	<div class="row">
+		{% if not is_home %}
+			<div class="columns small-12 large-offset-4 large-8">
+				<div class="hero-media__caption__text">
+					<a data-toggle="hero-media__caption">
+						<p>Vibrant and lively yet peaceful, our campus is a great place to enrich your mind and body. It’s a place of many facets: exciting and busy, but welcoming and serene.</p>
+						<p class="hero-media__caption__toggler"><span class="show-for-sr">Toggle Caption</span><span class="icon-du-plus"></span><span class="icon-du-minus"></span></p>
+					</a>
+				</div>
+			</div>
+		{% endif %}
+		{% if is_home %}
+			<div class="columns small-12">
+				{% if headline %}
+					{% include "@atoms/headline.twig" with headline %}
+				{% endif %}
+			</div>
+		{% endif %}
+	</div>
+</div>
+{% endif %}

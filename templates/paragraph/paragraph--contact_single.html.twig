@@ -1,0 +1,11 @@
+{% embed "@organisms/contacts-single-container.twig" %}
+
+    {% set contacts = content.field_single_contact_ref|field_value %}
+
+    {% block contacts %}
+        {% for contact in contacts %}
+            {{ contact }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

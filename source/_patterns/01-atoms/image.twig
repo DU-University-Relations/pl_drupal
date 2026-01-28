@@ -1,0 +1,12 @@
+{% if has_wrapper %}
+<div class="img-wrapper">
+{% endif %}
+	<img src="{{ src|raw }}" alt="{{ alt_text|raw }}" class="{% if homeCssClass %}{{ homeCssClass }}{% endif %} {% if cssClass %}{{ cssClass }}{% endif %}"/>
+	{% if has_content %}
+		<div class="img-wrapper__content">
+			{{ has_content.text|raw }}
+		</div>
+	{% endif %}
+{% if has_wrapper %}
+</div>
+{% endif %}

@@ -1,0 +1,40 @@
+{
+  "tabs": [
+    {
+      "title": "Web",
+      "href": "#",
+      "active": true
+    },
+    {
+      "title": "Events",
+      "href": "#",
+      "active": false
+    },
+    {
+      "title": "News",
+      "href": "#",
+      "active": false
+    }
+  ],
+  "start": 1,
+  "offset": 20,
+  "total": 1,
+  "keywords": "test",
+  "results": {
+    "hasResults": true,
+    "getKeyMatch": [
+      {
+        "getUrl": "http://morgridge.du.edu/",
+        "getDescription": "The Morgridge College of Education is home to an array of education oriented graduate degree programs",
+        "url": "http://morgridge.du.edu/"
+      }
+    ],
+    "getResults": [
+      {
+        "absoluteUrl": "https://specialcollections.du.edu/islandora/object/codu%3A84271",
+        "title": "Special Collections @ DU",
+        "snippet": "<b>...</b> Collections @ DU. Home; Advanced Search; Login. You are here. Islandora Repository. Center on Human Rights <b>Education</b>. <b>...</b>"
+      }
+    ]
+  }
+}

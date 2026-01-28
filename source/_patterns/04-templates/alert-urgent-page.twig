@@ -1,0 +1,30 @@
+{% block alert %}
+    {% include "@organisms/alert.twig" %}
+{% endblock %}
+{% block audience_nav %}
+    {% include "@organisms/push-menu.twig" %}
+{% endblock %}
+<div class="{{ page_class }}" id="off-canvas-content" data-off-canvas-content>
+    <div class="content-top">
+        {# Universal admin tools like local task tabs, messages, etc can go here. #}
+        {% block content_top %}
+        {% endblock %}
+    </div>
+    {% block page_head %}
+        {% embed "@organisms/header.twig" %}
+            {% block mega_nav %}
+                {% include "@molecules/mega-nav.twig" %}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+    {% block content %}
+        {% include "@organisms/node.twig" %}
+        {% include "@organisms/cards.twig" %}
+    {% endblock %}
+    {% block footer %}
+        {% include "@organisms/footer.twig" %}
+    {% endblock %}
+    <span id="du-loader" aria-hidden="true">
+        <span class="icon-du-spin3 animate-spin"></span>
+    </span>
+</div>

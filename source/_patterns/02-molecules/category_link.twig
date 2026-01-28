@@ -1,0 +1,16 @@
+<a
+    href="{{ url|raw }}"
+    title="{{ alt_text }}"
+    title="{{ alt_text|e('html_attr') }}"
+    {% if target %}target="{{ target|e('html_attr') }}"{% endif %}
+    {% if onclick %}onclick="{{ onclick|e('html_attr') }}"{% endif %}
+>
+    <div>
+        {% if icon %}
+            <div class="category-link-icon">
+                {{ icon }}
+            </div>
+        {% endif %}
+        <span>{{ title|raw }}</span>
+    </div>
+</a>

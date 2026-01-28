@@ -1,0 +1,319 @@
+.card-list-item {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    @media(max-width:480px) {
+        margin-bottom: .9rem;
+    }
+}
+.cards-list__holder {
+    position: relative;
+    &:after {
+        content: '';
+        display: inline-block;
+        border-bottom: 2.8rem solid #fff;
+        border-left: 2.8rem solid transparent;
+        border-right: 2.8rem solid transparent;
+        position: absolute;
+        bottom: -4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .card-list-item--open &:after,
+    &.fading:after {
+        opacity: 1;
+    }
+    .card-list-item--open &.fading:after {
+        opacity: 0;
+    }
+    .cards-list__content {
+        min-height: 32rem;
+        background-color: #ffffff;
+        position: relative;
+        border-top: .6rem solid $accent-color-2b;
+        transition: border 0.3s ease;
+        padding: 1.1rem 1.7rem 1.7rem;
+        margin-bottom: 1.7rem;
+        @media(max-width: 480px) {
+        min-height: 16.5rem;
+        }
+        .ap-letter &,
+        .ap-school & {
+            border-top: 6px solid #C3C3C3;
+            background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+            h2 {
+                font-size: 12.0rem;
+                line-height: 13.2rem;
+                font-weight: 800;
+                color: #b0b0b0;
+            }
+        }
+        .ap-letter & h2 {
+            margin-top: -1.4rem;
+            margin-left: .8rem;
+        }
+        .ap-school & h2 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .card-list-item--open & {
+            border-color: $primary-color-3;
+        }
+        p.academic-card {
+            font-size: 1.6rem;
+            font-family: $primary-font;
+            color: $neutral-color-3;
+            line-height: 2rem;
+            border-bottom: .1rem solid #efefef;
+            padding-bottom: .1remx;
+        }
+        .cards-list-module__title {
+            h2.cards-list-title {
+                font-family: $headline-font;
+                font-size: 2.6rem;
+                line-height: 3.4rem;
+                font-weight: 800;
+                transition: color 0.3s ease;
+                .card-list-item--open & {
+                    color: $primary-color-3;
+                }
+            }
+        }
+        .card-list-bottom {
+            position: absolute;
+            bottom: 2rem;
+            left: 1.7rem;
+            font-size: 1.6rem;
+            @media(max-width:480px) {
+                position: relative;
+                bottom: 0;
+                left: 0;
+            }
+        }
+        .more-button {
+            border: .2rem solid #b1b1b1;
+            position: absolute;
+            width: 3rem;
+            height: 3rem;
+            line-height: 2.5rem;
+            bottom: 1.7rem;
+            right: 1.7rem;
+            cursor: pointer;
+            transition: border 0.3s ease;
+            font-size: 2.5rem;
+            border-radius: 1.6rem;
+            text-align: center;
+            .card-list-item--open & {
+                border-color: $primary-color-3;
+            }
+            span {
+                color: #b1b1b1;
+                font-weight: 800;
+                transition: color 0.3s ease;
+                .card-list-item--open & {
+                    color: $primary-color-3;
+                }
+                &:before {
+                    width: auto;
+                }
+            }
+        }
+        .columns &:hover {
+            cursor: pointer;
+            border-color: $primary-color-3;
+            .cards-list-module__title h2.cards-list-title {
+                color: $primary-color-3;
+            }
+            .more-button {
+                border-color: $primary-color-3;
+                span {
+                color: $primary-color-3;
+                }
+            }
+        }
+    }
+    .flyout {
+        box-sizing: border-box;
+        display: none;
+        position: absolute;
+        background: white;
+        z-index: 2; // changed 1000 to 2, to stay under sticky header.
+        left: 0;
+        float: left;
+        right: 0;
+        top: 34rem;
+        margin: 2rem 0 0 0;
+        border-bottom: .6rem solid $primary-color-3;
+        @media(max-width:480px) {
+            position: relative;
+            top: 0;
+        }
+        .flyout-content__holder {
+            padding: 2.5rem 2rem;
+            margin-left: 0;
+            margin-right: 0;
+            position: relative;
+            @include breakpoint(medium up) {
+                padding: 4rem;
+            }
+            .cards-module__buttons {
+                margin-top: .5rem;
+                max-width: 26rem;
+                margin-left: auto;
+                margin-right: auto;
+                @include breakpoint(medium up) {
+                    margin-top: 3.8rem;
+                    max-width: 100%;
+                }
+                ul {
+                    margin-left: 0;
+                    li {
+                        padding-left: 0;
+                        margin-left: 0;
+                        @include breakpoint(medium up) {
+                            margin-left: 1.5rem;
+                        }
+                        &:before {
+                            display: none;
+                        }
+                        a {
+                            padding: 1.5rem 2.2rem;
+                            font-size: 1.6rem;
+                            line-height: 1.8rem;
+                            font-family: $cta-font;
+                            text-decoration: none;
+                            display: block;
+                            color: white;
+                            text-align: center;
+                            background-color: #ac9147;
+                            @include breakpoint(medium up) {
+                                text-align: left;
+                            }
+                            @include breakpoint(large up) {
+                                font-size: 2rem;
+                                line-height: 2.2rem;
+                            }
+                            &:hover,
+                            &:focus {
+                                background-color: $secondary-color-2;
+                            }
+                        }
+                        + li {
+                            margin-top: 1.5rem;
+                        }
+                        &.requirements {
+                            a {
+                                background-color: transparent;
+                                padding-left: 1.5rem;
+                                &:hover,
+                                &:focus {
+                                    background-color: #ac9147;
+                                }
+                            }
+                        }
+                    } //end li
+                } //end ul
+            } //end .cards-module__buttons
+            h3 {
+                font-size: 2.4rem;
+            }
+            h4 {
+                font-size: 2.2rem;
+                margin-top: 2.5rem;
+            }
+            @include breakpoint(large) {
+                > .columns:first-child {
+                    padding-right: 2rem;
+                    + .columns {
+                        padding-left: 2rem;
+                    }
+                }
+            }
+        }
+        .card-list-item--open & {
+            width: calc(100% - 1.6rem);
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.cards-list-module {
+    background: #f4f4f4;
+    margin-top: 7.2rem;
+    margin-bottom: 6rem;
+    @include breakpoint(small down) {
+        margin-bottom: 3.8rem;
+    }
+    > .row {
+        margin-top: 7.2rem;
+        padding-bottom: 3rem;
+        position: relative;
+        top: -3rem;
+        padding-left: .9rem;
+        padding-right: .9rem;
+        @media (min-width: 480px) {
+            padding-left: 1.8rem;
+            padding-right: 1.8rem;
+        }
+        @include breakpoint(large up) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        > .columns {
+            /*flex-basis: 25%;*/
+            width: 25%;
+            float: left;
+            flex: auto;
+            @include breakpoint(medium down) {
+                /*flex-basis: 33.33%;*/
+                width: 32%;
+            }
+            @media (max-width: 915px) {
+                /*flex-basis: 33.33%;*/
+                width: 31%;
+            }
+            @media (max-width: 650px) {
+                //flex-basis: 33.33%;
+                width: 47%;
+            }
+            @media (max-width: 650px) {
+                //flex-basis: 33.33%;
+                width: 46%;
+            }
+            @media (max-width: 480px) {
+                //flex-basis: 33.33%;
+                width: 95%;
+            }
+        }
+    }
+}
+
+//below is for fix to du.edu/admission-aid/financial-aid-scholarships/undergraduate-financial-aid/price-and-affordability
+@include breakpoint(small) {
+    .cards-module ~ div.row.two-column-copy > div > h4 {
+        font-weight: 700;
+        font-size: 2rem;
+        color: $neutral-color-3;
+    }
+}
+@include breakpoint(medium) {
+    .cards-module ~ div.row.two-column-copy > div > h4 {
+        font-size: 1.8rem;
+    }
+}
+@include breakpoint(large) {
+    .cards-module ~ div.row.two-column-copy > div > h4 {
+        font-size: 2.2rem;
+    }
+}
+
+@media print {
+    #main-menu, footer {
+        display: none;
+    }
+}

@@ -1,0 +1,32 @@
+{% if header.title %}
+<div class="row two-column-news-header">
+    <div class="columns">
+        {% include "@atoms/headline.twig" with header %}
+    </div>
+</div>
+{% endif %}
+
+
+
+<div class="row xxxlarge-collapse large-uncollapse two-column-news">
+    <div class="columns small-12 {% if '1' in content.field_news_column_type[0] %}medium-6{% else %}medium-8{% endif %}">
+        {% block column_1 %}
+            {{ column1_content }}
+        {% endblock %}
+    {% if view_all_stories_url %}
+        <div class="show-for-medium view-all-stories">
+            <p><a href="{{ view_all_stories_url }}">{{ view_all_stories_text }}</a></p>
+        </div>
+    {% endif %}
+    </div>
+    <div class="columns small-12 {% if '1' in content.field_news_column_type[0] %}medium-6{% else %}medium-4{% endif %}">
+        {% block column_2 %}
+            {{ column2_content }}
+        {% endblock %}
+    </div>
+    {% if view_all_stories_url %}
+      <div class="show-for-small-only view-all-stories">
+          <p><a href="{{ view_all_stories_url }}">{{ view_all_stories_text }}</a></p>
+      </div>
+    {% endif %}
+</div>

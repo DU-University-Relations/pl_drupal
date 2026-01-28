@@ -1,0 +1,120 @@
+{% embed "@organisms/research-project.twig" %}
+
+    {% if content.field_back_link_text|render|trim is not empty %}
+      {% set back_to_parent = {"link": research_project_list_location, "target": "/research-project-listing","title": content.field_back_link_text|field_value } %}
+    {% else %}
+      {% set back_to_parent = {"link": research_project_list_location, "target": "/research-project-listing", "title": "Back to Research Projects" } %}
+    {% endif %}
+
+    {% set  project =  {
+        "type": "h2",
+        "title": node.label,
+        "lab_url": content.field_lab_proj.0['#url'],
+        "lab_url_text": content.field_lab_proj.0['#title'],
+        "lab_url_target": content.field_lab_proj.0['#options']['attributes']['target'],
+        "lab_url_alt_text": content.field_lab_proj.0['#options']['attributes']['title'],
+        "lab_url_onclick": content.field_lab_proj.0['#options']['attributes']['onClick'],
+        "faculty": content.field_faculty_proj|field_value,
+        "feature_image": content.field_feature_image_res_proj|field_value,
+        "feature_video": content.field_feature_video_proj|field_value,
+        "primary_question": content.field_prime_question_proj|field_value,
+        "abstract": content.field_abstract_proj|field_value,
+        "text": content.field_description_proj|field_value,
+        "results_outcome": content.field_results_outcome_proj|field_value,
+        "sidebar": {
+            "back_to_parent": back_to_parent,
+            "pis": content.field_pis_proj|field_value,
+            "co_pis": content.field_co_pis_proj|field_value,
+            "co_investigators": content.field_co_investigators_proj|field_value,
+            "partners_url": content.field_partners_proj.0['#url'],
+            "partners_url_text": content.field_partners_proj.0['#title'],
+            "partners_url_target": content.field_partners_proj.0['#options']['attributes']['target'],
+            "partners_url_alt_text": content.field_partners_proj.0['#options']['attributes']['title'],
+            "partners_url_onclick": content.field_partners_proj.0['#options']['attributes']['onClick'],
+            "funding": content.field_funding_sources_proj|field_value,
+            "publications": content.field_publications_proj|field_value,
+            "unit_url": content.field_res_proj_unit_url,
+            "unit_name": content.field_res_proj_unit_name
+        },
+        "related": {
+            "header": {
+                "cssClass": "btm-divider",
+                "type" : "h2",
+                "title": "Related Materials"
+            }
+        }
+      }
+    %}
+
+    {# research_project_date is set with preprocessing to see if empty #}
+    {% if custom.research_project_date != '' %}
+        {% set project_date = node.field_date_proj.0.value|date('F d, Y') %}
+    {% endif %}
+
+    {% block page_title %}
+        {% include "@atoms/headline.twig" with {'title' : label, 'type' : 'h1'} %}
+    {% endblock %}
+
+    {% set faculty_member_list = content.field_faculty_proj_member|field_value %}
+    {% block faculty_member %}
+      {% for faculty_member in faculty_member_list %}
+        <p>{{ faculty_member }}</p>
+      {% endfor %}
+    {% endblock %}
+
+    {% set partners = content.field_partners_proj|field_value %}
+    {% if project.partners_url %}
+        {% block community_partners %}
+            {% for partner in partners %}
+                <p class="community-partner">{{ partner }}</p>
+            {% endfor %}
+        {% endblock %}
+    {% endif %}
+
+    {% set research_type_list = content.field_research_type_proj|field_value %}
+    {% block research_type_taxonomy %}
+        <p class="items">
+            {% for research_type in research_type_list %}
+                {% if loop.last %}
+                    {{ node.field_research_type_proj.entity.label }}
+                {% else %}
+                    {{ node.field_research_type_proj.entity.label }},
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% endblock %}
+
+    {% set research_classification_list = content.field_classification_proj|field_value %}
+    {% block research_classification_taxonomy %}
+        <p class="items">
+            {% for research_classification in research_classification_list %}
+                {% if loop.last %}
+                    {{ node.field_classification_proj.entity.label }}
+                {% else %}
+                    {{ node.field_classification_proj.entity.label }},
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% endblock %}
+
+    {% set research_interest_list = content.field_research_interest_proj|field_value %}
+    {% if research_project_list_location is not empty %}
+      {% set research_project_list_page = research_project_list_location %}
+    {% else %}
+      {% set research_project_list_page = "/research-project-listing" %}
+    {% endif %}
+    {% block research_interest_taxonomy %}
+        <p class="items">
+            {% for i, value in research_interest_list %}
+                {% if loop.last %}
+                    <a href="{{ research_project_list_page }}?field_research_interest_proj_target_id={{ node.field_research_interest_proj[i].target_id }}">{{ node.field_research_interest_proj[i].entity.label }}</a>
+                {% else %}
+                    <a href="{{ research_project_list_page }}?field_research_interest_proj_target_id={{ node.field_research_interest_proj[i].target_id }}">{{ node.field_research_interest_proj[i].entity.label}}</a>,
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% endblock %}
+
+  {% set related_material_list = content.field_res_proj_related_materials|field_value %}
+
+{% endembed %}

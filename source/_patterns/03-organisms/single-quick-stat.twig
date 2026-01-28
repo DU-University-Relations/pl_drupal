@@ -1,0 +1,39 @@
+{% if view_mode == 'graphic_desc' or view_mode == 'default' or view_mode == '3-col' %}
+<div class="information-overview-module buffer-on-inner-row" >
+    <div class="row">
+        <div class="small-12 medium-12 columns fact type-1">
+            {% include "@molecules/feature-fact-desc.twig" with item %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if view_mode == 'full_headline' %}
+    <div class="information-overview-module buffer-on-inner-row" >
+        <div class="row">
+            <div class="small-12 medium-12 columns fact type-2">
+                {% include "@molecules/feature-full-headline.twig" with item %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if view_mode == 'text_headline' %}
+<div class="information-overview-module buffer-on-inner-row small-12 medium-8 large-offset-4 medium-offset-4 text-headline" >
+    <div class="row">
+        <div class="small-12 medium-12 columns fact type-3">
+            {% include "@molecules/feature-fact-headline.twig" with item %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if view_mode == 'content_graphic_desc' %}
+<div class="information-overview-module buffer-on-inner-row small-12 medium-8 large-offset-4 medium-offset-4 quick-stat-standard" >
+    <div class="row">
+        <div class="small-12 medium-12 columns fact type-4">
+            {% include "@molecules/feature-fact-standard.twig" with item %}
+        </div>
+    </div>
+</div>
+{% endif %}

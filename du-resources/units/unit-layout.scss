@@ -1,0 +1,38 @@
+.unit-site {
+  header {
+    height: initial;//  this height px value needs to be changed in breakpoint.scss
+    position: relative; // this is needed for the down arrow below hero
+    z-index: 7;
+  }
+  .unit-nav-group.no-hero {
+    position: relative;
+  }
+  .du-home header.content-card {
+    margin-top: 5.8rem;
+    @include breakpoint(medium up) {
+      margin-top: 15.8rem;
+    }
+  }
+}
+.unit-site.du-home {
+  header {
+    height: 39vw;  // on the unit homepage we want to keep the hero above the fold
+  }
+}
+
+.unit-site.du-home { // content card hero option
+  header.content-card {
+    height: initial;  // on the unit homepage we want to keep the hero above the fold
+    .content-wrapper a:nth-of-type(2) {
+      margin-top: 2.5rem;
+    }
+  }
+}
+
+//For the homepage  --remove the padding on the article element and add it to the footer CTA
+// if the footer CTA dont exist we dont want the extra padding below the article
+.du-home.unit-site #main-content { padding-bottom: 0; }
+// 3 footer cta
+.du-home.unit-site .has-gray-band {
+  margin-top: 15.0rem;
+}

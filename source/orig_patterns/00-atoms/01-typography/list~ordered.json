@@ -1,0 +1,16 @@
+{
+	"list": {
+		"type": "ol",
+		"items": [
+			{
+				"title": "First list item"
+			},
+			{
+				"title": "Second list item"
+			},
+			{
+				"title": "Third list item"
+			}
+		]
+	}
+}

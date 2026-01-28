@@ -1,0 +1,28 @@
+<li class="featured-articles__slide{% if loop.index == 1 %} is-active{% endif %}">
+  {% if link %}
+    <a href="{{ link.href|raw }}" title="{{ link.title|raw|e('html_attr') }}" {% if link.onclick %}onclick="{{ link.onclick|raw|e('html_attr') }}"{% endif %} {% if link.target %}target="{{ link.target|e('html_attr') }}"{% endif %}>
+  {% endif %}
+    <div class="row">
+      <div class="columns small-12 medium-12 large-6">
+        {% block image %}
+            {% include "@atoms/image.twig" with image %}
+        {% endblock %}
+      </div>
+      <div class="columns small-12 medium-12 large-6">
+        <div class="featured-articles__content">
+          {% if category %}
+              <p class="featured-articles__category">{{ category }}</p>
+          {% endif %}
+          {% block headline %}
+            {% include "@atoms/headline.twig" with { "title": headline.title, "type": headline.type, "cssClass": headline.cssClass } %}
+          {% endblock %}
+          {% block paragraph %}
+              {% include "@atoms/paragraph.twig" with { "text": teaser } %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  {% if link %}
+    </a>
+  {% endif %}
+</li>

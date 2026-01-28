@@ -1,0 +1,17 @@
+{% embed "@organisms/carousel.twig" %}
+
+    {% set slides = content.field_carousel_slides|field_value %}
+    {% set slideshow_prev = { "icon_name": "left-open" } %}
+    {% set slideshow_next = { "icon_name": "right-open" } %}
+    {% set title = content.field_carousel_title|field_value %}
+    {# slide_animation = "" is for sliding transition (default) #}
+    {# slide_animation = "animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;" for transition to be fade in/out #}
+    {% set slide_animation = "" %}
+
+    {% block slides %}
+        {% for slide in slides %}
+            {{ slide }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

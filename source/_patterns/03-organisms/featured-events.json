@@ -1,0 +1,97 @@
+{
+	"slide_count": 4,
+	"slides": [
+		{
+			"src": "http://placehold.it/590x374",
+			"alt_text": "placeholder",
+			"date": "June 4 – June 7",
+			"headline": {
+				"title": "From God to Mammon: The Deep Theology of Contemporary Neo_Liberalism",
+				"type": "h4"
+			},
+			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+			"details": [
+				{
+					"icon_name": "clock",
+					"detail_text": "8:00pm – 7:00pm"
+				},
+				{
+					"icon_name": "location",
+					"detail_text": "Mary Reed, Room 103"
+				}
+			],
+			"button": {
+				"title": "View Details"
+			}
+		},
+		{
+			"src": "http://placehold.it/590x374",
+			"alt_text": "placeholder",
+			"date": "June 4 – June 7",
+			"headline": {
+				"title": "2 From God to Mammon: The Deep Theology of Contemporary Neo_Liberalism",
+				"type": "h4"
+			},
+			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+			"details": [
+				{
+					"icon_name": "clock",
+					"detail_text": "8:00pm – 7:00pm"
+				},
+				{
+					"icon_name": "location",
+					"detail_text": "Mary Reed, Room 103"
+				}
+			],
+			"button": {
+				"title": "View Details"
+			}
+		},
+		{
+			"src": "http://placehold.it/590x374",
+			"alt_text": "placeholder",
+			"date": "June 4 – June 7",
+			"headline": {
+				"title": "3 From God to Mammon: The Deep Theology of Contemporary Neo_Liberalism",
+				"type": "h4"
+			},
+			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+			"details": [
+				{
+					"icon_name": "clock",
+					"detail_text": "8:00pm – 7:00pm"
+				},
+				{
+					"icon_name": "location",
+					"detail_text": "Mary Reed, Room 103"
+				}
+			],
+			"button": {
+				"title": "View Details"
+			}
+		},
+		{
+			"src": "http://placehold.it/590x374",
+			"alt_text": "placeholder",
+			"date": "June 4 – June 7",
+			"headline": {
+				"title": "4 From God to Mammon: The Deep Theology of Contemporary Neo_Liberalism",
+				"type": "h4"
+			},
+			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+			"details": [
+				{
+					"icon_name": "clock",
+					"detail_text": "8:00pm – 7:00pm"
+				},
+				{
+					"icon_name": "location",
+					"detail_text": "Mary Reed, Room 103"
+				}
+			],
+			"button": {
+				"title": "View Details"
+			}
+		}
+	]
+}

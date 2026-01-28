@@ -1,0 +1,109 @@
+// ORSP Training View
+.training {
+  header {
+    padding-top: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #18171e;
+    margin-bottom: 2rem;
+    span {
+      color: $primary-color-3;
+      font-size: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+  .views-exposed-form {
+    display: flex;
+    .js-form-item {
+      width: calc( 50% - 2rem );
+      margin: 0 1rem 2rem;
+      label {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-family: "BreveSans", sans-serif;
+        margin-bottom: .3rem;
+      }
+    }
+    input[type="text"] {
+      height: 3.3rem;
+    }
+  }
+
+  table {
+    thead {
+      th {
+        padding: 1.5rem 1rem;
+        line-height: 1.2;
+        &.is-active {
+          background: $neutral-color-2;
+        }
+        a {
+          color: $white;
+          display: flex;
+          &:hover {
+            text-decoration: none;
+          }
+          .tablesort {
+            margin-left: auto;
+            &--asc {
+              background-image: url(../images/twistie-down.svg);
+            }
+            &--desc {
+              background-image: url(../images/twistie-up.svg);
+            }
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 1.5rem 1rem;
+          line-height: 1;
+          .file {
+            font-weight: 600;
+            a {
+              color: $accent-color-2c;
+            }
+          }
+          .file-size {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ORSP Training Content Landing Page
+.training-content-page {
+  width: 70%;
+  max-width: 120rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+
+  div {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .back-to-training-page {
+    button {
+      background-color: #18171e;
+      text-transform: uppercase;
+      font-family: "BreveSans", sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: white;
+      padding: 1.7rem;
+      cursor: pointer;
+
+      &:hover {
+        color: #18171e;
+        background-color: white;
+        border-color: black;
+      }
+    }
+  }
+}

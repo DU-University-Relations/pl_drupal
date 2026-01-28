@@ -1,0 +1,12 @@
+{
+  "headline": "Feature Headline Here",
+  "image": "<img src=\"/public/images/mega-nav-img-campus-life.jpg\" alt=\"Campus Life Img Desc\"/>",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis vehicula neque nec faucibus. Quisque vel tortor eget dui maximus porta. Sed eu cursus nisi. Praesent porta, tellus sed venenatis.",
+  "button": "<a role=\"button\" href=\"#\" class=\"btn   \" title=\"Campus Life Img Desc\">View Details</a>",
+  "links": [
+    "<a href=\"#\">Libraries</a>",
+    "<a href=\"#\">Campus Life Resources</a>",
+    "<a href=\"#\">More Second Level Campus Life</a>",
+    "<a href=\"#\">More Second Level Campus Life</a>"
+  ]
+}

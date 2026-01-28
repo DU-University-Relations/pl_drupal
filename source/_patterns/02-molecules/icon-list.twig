@@ -1,0 +1,7 @@
+ <ul class="icon-list {% if '1' in content.field_icon_list_items_small[0] %}small-list{% endif %}">
+     {% block items %}
+         {% for item in items %}
+             <li>{% include "@atoms/icon-list-item.twig" with item %}</li>
+         {% endfor %}
+     {% endblock %}
+ </ul>

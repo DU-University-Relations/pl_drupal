@@ -1,0 +1,95 @@
+<article{{ attributes }} id="main-content" role="main" >
+	<div class="row">
+        <div class="columns large-offset-2 large-8 pull-up page-title-band">
+            {% block page_title %}
+                {% include "@atoms/headline.twig" with {'title' : title, 'type' : 'h1'} %}
+            {% endblock %}
+        </div>
+	</div>
+  <div class="row">
+    <div class="columns">
+	    <div class="scholarship">
+		    <div class="scholarship-content__holder row">
+          <div class="columns small-12 medium-8">
+            <div class="more-description">
+              {{ description }}
+              {% if kind %}
+                <div class="scholarship-kind">
+                  {{ kind|raw }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="columns small-12 medium-4 rightside-info">
+            <ul>
+              {% if gpa %}
+              <li><span class="inline-label">Minimum GPA:</span> {{ gpa }}
+              </li>
+              {% endif %}
+
+              {% if class_level %}
+              <li><span>Class Level:</span>
+                {% for item in class_level %}
+                  {% if loop.last %}
+                     {{ item['#markup'] }}
+                  {% else %}
+                    {{ item['#markup'] }},
+                  {% endif %}
+                {% endfor %}
+              </li>
+              {% endif %}
+
+              {% if home_state %}
+              <li><span>Home State:</span>
+                {% for item in home_state %}
+                  {% if loop.last %}
+                     {{ item['#title'] }}
+                  {% else %}
+                    {{ item['#title'] }},
+                  {% endif %}
+                {% endfor %}
+              </li>
+              {% endif %}
+
+              {% if school %}
+              <li><span>School/College:</span>
+                {% for item in school %}
+                  {% if loop.last %}
+                     {{ item['#title'] }}
+                  {% else %}
+                    {{ item['#title'] }},
+                  {% endif %}
+                {% endfor %}
+              </li>
+              {% endif %}
+
+              {% if major %}
+              <li><span>Major:</span>
+                {% for item in major %}
+                  {% if loop.last %}
+                     {{ item['#title'] }}
+                  {% else %}
+                    {{ item['#title'] }},
+                  {% endif %}
+                {% endfor %}
+              </li>
+              {% endif %}
+
+              {% if population %}
+              <li><span>Population(s):</span>
+                {% for item in population %}
+                  {% if loop.last %}
+                     {{ item['#markup'] }}
+                  {% else %}
+                    {{ item['#markup'] }},
+                  {% endif %}
+                {% endfor %}
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

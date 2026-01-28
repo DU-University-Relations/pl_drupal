@@ -1,0 +1,9 @@
+{% if contacts %}
+    {% block contacts %}
+        {% for contact in contacts %}
+            {% include "@molecules/contact-single.twig" with contact %}
+        {% endfor %}
+    {% endblock %}
+{% endif %}
+
+

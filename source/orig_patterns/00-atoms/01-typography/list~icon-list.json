@@ -1,0 +1,16 @@
+{
+	"list": {
+		"styleModifier": "icon_list",
+		"items": [
+			{
+				"title": "<div class=\"icon_list__media\"><img src=\"http://placehold.it/60x60\" alt=\"alt text for icon\"></div><p><strong>Headline or Title Here Lorem Ipsum Dolor</strong></p><p>Potential description proin commodo interdum ante, vulputate tempus dolor sagittis.</p><p><a href=\"#\">Link Text Goes Here</a></p>"
+			},
+			{
+				"title": "<div class=\"icon_list__media\"><span class=\"icon_du_cust_clipboard\" aria_hidden=\"true\"></span></div><p><strong>Headline or Title Here Lorem Ipsum Dolor</strong></p><p><a href=\"#\">Link Text Goes Here</a></p>"
+			},
+			{
+				"title": "<div class=\"icon_list__media\"><span class=\"icon_du_cust_clipboard\" aria_hidden=\"true\"></span></div><p><strong>Headline or Title Here Lorem Ipsum Dolor</strong></p><p><a href=\"#\">Link Text Goes Here</a></p>"
+			}
+		]
+	}
+}

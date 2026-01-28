@@ -1,0 +1,142 @@
+.footer-site-level {
+  background-color: $unit-accent-color-teal;
+  color: #ffffff;
+  padding: 5.5rem 0;
+  & > div {  // container
+    max-width: $grid-row-width;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    @include breakpoint(large up) {
+      margin: auto;
+    }
+
+    .footer-site-level-logo {
+      margin-bottom: 4.0rem;
+      user-select: none;
+      text-align: center;
+      width: 100%;
+      @include breakpoint(medium up) {
+        padding-left: 15%;
+      }
+      @include breakpoint(large up) {
+        padding-left: 10%;
+      }
+      img {
+        max-width: 30.0rem;
+      }
+    }
+    .footer-site-level-social {
+      font-size: 1.4rem;
+      margin-left: 2.6rem;
+      margin-top: 1.8rem;
+      @include breakpoint(medium up) {
+        margin-left: 11.5rem;
+      }
+      @include breakpoint(large up) {
+        margin-left: 5.0rem;
+        margin-top: 0;
+      }
+      p {
+        padding-left: 0;
+        margin-bottom: 1.0rem;
+        line-height: 1.6rem;
+      }
+      .social-media {
+        margin: auto;
+        & > div a {
+          font-size: 2.3rem;
+          color: #ffffff;
+        }
+        & > div a:hover {
+          color: #C7DADF;
+          transition: 0.3s;
+          transition-delay: 0s;
+        }
+      }
+    }
+    .footer-site-level-links {
+      .footer-links {
+        text-align: left;
+        a {
+          color: white;
+          display: block;
+          text-decoration: none;
+          margin-top: .6rem;
+          margin-left: 0;
+          padding-left: 3.6rem;
+          @include breakpoint(medium up) {
+            padding-left: 17.5rem;
+          }
+          @include breakpoint(large up) {
+            padding-left: 9.0rem;
+          }
+        }
+        a:hover { text-decoration: underline; }
+        a:first-of-type {
+          margin-top: 1.2rem;
+        }
+      }
+    }
+    .footer-site-level-address {
+      margin-left: 5.7rem;
+      margin-top: 1.6rem;
+      max-width: 21.7rem;
+      @include breakpoint(medium up) {
+        margin-left: 15.3rem;
+      }
+      span {
+        position: absolute;
+        margin-left: -3.5rem;
+        font-size: 2.4rem;
+        margin-top: -3.4rem;
+        a {
+          font-size: 1.6rem;
+        }
+      }
+      p {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+        line-height: 2.0rem;
+      }
+    }
+    .footer-site-level-info {
+      margin-left: 2.0rem;
+      @include breakpoint(medium up) {
+        margin-left: 11.6rem;
+      }
+      & > div {
+        margin-top: 0.45rem;
+
+        span {
+          font-size: 2.4rem;
+        }
+
+        span.icon-du-mail-alt {
+          font-size: 1.8rem;
+          padding-right: .5rem;
+          padding-left: .3rem;
+        }
+
+        p {
+          font-size: 1.6rem;
+          margin-bottom: 0;
+          margin-left: 2.0rem;
+          @include breakpoint(medium up) {
+            margin-left: 1.0rem;
+          }
+        }
+        a, a label {
+          color: #ffffff;
+          text-decoration: none;
+          font-size: 1.6rem;
+          margin-top: .5rem;
+          cursor: pointer;
+          &:hover {
+            color: #ffffff;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  } // end container
+}// end .footer-site-level

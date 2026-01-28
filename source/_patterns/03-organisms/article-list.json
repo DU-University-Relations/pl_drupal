@@ -1,0 +1,13 @@
+{
+  "rows": [{
+    "thumbnail_image": "<img src=\"http://placehold.it/75x80\" />",
+    "teaser": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit dolor",
+    "publish_date": "May 4, 2018",
+    "title": "<a href=\"/\">Test Title</a>"
+  }, {
+    "thumbnail_image": "<img src=\"http://placehold.it/75x80\" />",
+    "teaser": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit dolor",
+    "publish_date": "May 4, 2018",
+    "title": "<a href=\"/\">Test Title</a>"
+  }]
+}

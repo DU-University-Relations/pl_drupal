@@ -1,0 +1,43 @@
+<div class="columns fc-item">
+	<div class="course-info-card__holder">
+
+		<div class="course-info-card__content curricula-card">
+
+			<span class="icon-du-minus"> </span>
+			<span class="icon-du-plus"> </span>
+
+			<p class="course-code-number">{{ curricula_type }}</p>
+			<div class="course-info-card__course-title">
+				<h2 class="course-title">
+					{{ curricula_title }}
+				</h2>
+			</div>
+		</div>
+		<!-- flyout-->
+		<div class="featured-course-flyout">
+			<div class="flyout-content__holder row">
+				<div class="columns small-12 {{ additional_info_col_css }}">
+					<div class="more-description">
+						{% include "@atoms/headline.twig" with {'title': 'About this Course', 'type': 'h3', 'cssClass':''} %}
+						{{ curricula_desc }}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Course",
+  "name": "{{ title }}",
+  "description": "{{ course_desc }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "University of Denver",
+    "sameAs": "https://www.du.edu/"
+  }
+}
+</script>
+

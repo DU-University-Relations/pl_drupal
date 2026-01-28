@@ -1,0 +1,13 @@
+{% embed "@organisms/event.twig" %}
+	{% set time_place = content.field_event_time_place|field_value %}
+	{% set title = label %}
+	{% set description = content.field_event_description|field_value %}
+	{% set ical = ical_button %}
+	{% set event_list_location = event_list_location %}
+  {% set audience_category = content.field_event_audience|field_value %}
+
+	{% set schema_title = label.0['#context'].value %}
+	{% set schema_start_time = content.field_event_time_place.0['#paragraph'].fields.field_event_time_start_date.value %}
+	{% set schema_end_time = content.field_event_time_place.0['#paragraph'].fields.field_event_time_end_date.value %}
+	{% set schema_description = content.field_event_description.0['#text']|escape %}
+{% endembed %}

@@ -1,0 +1,30 @@
+{
+  "title": "Culture and Politics of Central America",
+  "subject_code": "ABRD",
+  "course_number": "3500",
+  "course_desc": "This five credit hour program highlights the political, educational and cultural aspects of Costa Rica and other Central American countries.",
+  "course_info_1": {
+        "image": "http://placehold.it/75x80/eeeeee/888888",
+		"alt_text": "icon",
+		"title": "CREDIT HOURS",
+		"text": "3"
+    },
+  "course_info_2": {
+        "image": "http://placehold.it/75x80/eeeeee/888888",
+		"alt_text": "icon",
+		"title": "AVG CLASS SIZE",
+		"text": "19"
+    },
+  "course_info_3": {
+        "image": "http://placehold.it/75x80/eeeeee/888888",
+		"alt_text": "icon",
+		"title": "CLASS TYPE",
+		"text": "LAB"
+    },
+  "course_info_4": {
+        "image": "http://placehold.it/75x80/eeeeee/888888",
+		"alt_text": "icon",
+		"title": "OTHER STAT",
+		"text": "XXX"
+    }
+}

@@ -1,0 +1,203 @@
+.featured-articles-module {
+  margin-bottom: 7rem;
+  > .row {
+    margin-left: 0;
+    margin-right: 0;
+    @include breakpoint(medium up) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    > .columns {
+      padding-left: 0;
+      padding-right: 0;
+      @include breakpoint(medium up) {
+        padding-right: 4.2rem;
+        padding-left: 4.4rem;
+      }
+    }
+  }
+	margin-bottom: 14.0rem;
+  position: relative;
+  @include breakpoint(medium) {
+		margin-bottom: 10.0rem;
+		> .row {
+			max-width: 127.0rem;
+			overflow: hidden;
+
+			> .columns {
+				padding-right: 4.2rem;
+				padding-left: 4.4rem;
+			}
+		}
+		.orbit-container {
+			overflow: visible;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1199px) {
+		> .row {
+			max-width: 96%;
+		}
+	}
+	&:before {
+		content: "";
+		left: 0;
+		right: 0;
+		width: 100%;
+		background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+		z-index: -1;
+		position: absolute;
+		bottom: 5.2rem;
+		top: 20.0rem;
+  }
+
+  .slick-slider {
+    position: relative;
+  }
+
+  // Slider
+  .slick-track li {
+    margin-left: 0;
+    &:before {
+      display: none;
+    }
+  }
+
+  // Slick dots
+  ul.slick-dots {
+    display: flex;
+    justify-content: center;
+    li {
+      margin-left: .8rem;
+      &:before {
+        display: none;
+      }
+      [type="button"] {
+        height: 1.3rem;
+        width: 1.3rem;
+        background: $neutral-color-8;
+        border-radius: 50%;
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+        &:hover {
+          background: $primary-color-3;
+        }
+      }
+      &.slick-active {
+        [type="button"] {
+          background: $primary-color-3;
+        }
+      }
+    }
+  }
+
+  // Slick arrows
+  .slick-arrow {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -6.3rem;
+    &:before {
+      color: #81796f;
+      font-size: 3.1rem;
+      display: none;
+      @include breakpoint(medium up) {
+        display: block;
+      }
+    }
+  }
+
+  .slick-prev {
+    left: -2.8rem;
+  }
+  .slick-prev:before {
+    content: '\e801';
+  }
+
+  .slick-next {
+    right: -2.8rem;
+  }
+  .slick-next:before {
+    content: '\e800';
+  }
+
+  // Slick slide content styles
+	.featured-articles__slide {
+    @include breakpoint(large) {
+      .row {
+        .columns:first-child {
+          padding-right: 0;
+        }
+        .columns:last-child {
+          padding-left: 0;
+        }
+      }
+    }
+    a {
+      color: $body-font-color;
+      text-decoration: none;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 60.0rem;
+      max-height: 40.0rem;
+    }
+
+    .featured-articles__content {
+      background-color: white;
+      position: relative;
+      margin-left: 0;
+      margin-top: 0;
+      padding: 2.3rem 2.0rem 3.1rem;
+      @include breakpoint(medium up) {
+        margin-top: -8.7rem;
+        margin-left: 7.2rem;
+      }
+      @include breakpoint(large up) {
+        margin: 0 0 3.5rem 0;
+        padding: 0 1.0rem 1.0rem 10.0rem;
+      }
+
+      .featured-articles__category {
+        font-size: 1.7rem;
+        font-weight: $global-weight-medium;
+        color: $dark-gray;
+        margin-bottom: 0;
+        text-align: center;
+        + h3 {
+          margin-top: .5rem;
+          line-height: 1;
+        }
+      }
+      h3 {
+        font-size: 2.2rem;
+        line-height: 2.8rem;
+        font-weight: $global-weight-normal;
+        margin-bottom: 2.7rem;
+        text-align: center;
+        @include breakpoint(medium up) {
+          font-size: 4.0rem;
+          line-height: inherit;
+        }
+        + p {
+          display: none;
+          @include breakpoint(medium up) {
+            display: block;
+          }
+        }
+        &.btm-divider:after {
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%)
+        }
+      }// end h3
+      p {
+        font-family: $accent-font;
+        font-size: 1.6rem;
+        line-height: 2.9em;
+      }
+    }// end .featured-articles__content
+	} // end .featured-articles__slide
+}// end .featured-articles-module

@@ -1,0 +1,19 @@
+{% embed "@organisms/article-top-news-story.twig" %}
+
+    {% set articles = content.field_top_news_story_ref|field_value %}
+    {% set image_position = content.field_top_news_image_position|field_value %}
+
+    {% set article_header = {
+            "title": "Stories",
+            "type":"h3",
+            "cssClass": "btm-divider"
+        }
+    %}
+
+    {% block news_stories %}
+        {% for article in articles %}
+            {{ article }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

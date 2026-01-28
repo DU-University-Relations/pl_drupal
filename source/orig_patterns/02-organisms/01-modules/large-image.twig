@@ -1,0 +1,37 @@
+<div class="large-image-module__container">
+    <div class="orbit large-image-module" role="region" aria-label="Large Image Module" data-auto-play="false" data-orbit>
+        <div class="large-image-module__wrapper">
+            {% if slideshow_prev %}
+                <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>{% include "@atoms/_du-icon.twig" %}</button>
+            {% endif %}
+            <ul class="orbit-container">
+                {% for slides_item in slides %}
+                    <li class="{% if is_active %}is-active {% endif %}orbit-slide">
+                        <figure>
+                            {% include "@atoms/image.twig" %}
+                            <figcaption class="orbit-caption">
+                                <div class="row">
+                                    <div class="columns">
+                                        {{ caption|raw }}
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if slideshow_next %}
+                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>{% include "@atoms/_du-icon.twig" %}</button>
+            {% endif %}
+        </div>
+        <nav class="orbit-bullets show-for-small-only">
+            <!-- NOTE: add bullets based on # of rows/slides in table transformation  -->
+          <button class="is-active" data-slide="0"><span class="show-for-sr">Slide 1</span></button>
+          <button data-slide="1"><span class="show-for-sr">Slide 2</span></button>
+          <button data-slide="2"><span class="show-for-sr">Slide 3</span></button>
+          <button data-slide="3"><span class="show-for-sr">Slide 4</span></button>
+        </nav>
+        <a href="#" class="btn large-image-module__toggle"><span class="large-image-module__toggle__open">View Slideshow</span><span class="large-image-module__toggle__hide">Hide Slideshow</span></a>
+    </div>
+    <div class="reveal large-image-module__modal" id="large-image-module__modal" data-reveal aria-hidden="hidden"></div>
+</div>

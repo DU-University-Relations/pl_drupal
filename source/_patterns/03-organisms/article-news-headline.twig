@@ -1,0 +1,49 @@
+<article class="row top-news-story news-story {{ article_unique_id }} teaser">
+    {% if article_feature_media %}
+        <div class="columns small-12 medium-11 news-image">
+            <a href="{{ title_path }}" class="news-image-link">
+                {% block article_media_items %}
+                    {% for media in article_feature_media %}
+                        {{ media }}
+                    {% endfor %}
+                {% endblock %}
+                <div class="news-image-overlay">
+                    <p>READ STORY</p>
+                </div>
+            </a>
+        </div>
+    {% endif %}
+    <div class="columns small-12 medium-11 news-info">
+        <div class="news-article-container">
+            {% if publish_date %}
+                <div class="news-date">
+                    {{ publish_date }}
+                </div>
+            {% endif %}
+
+            {% if article_categories %}
+                {% block article_category %}
+                    <div class="news-category">
+                        {% for category in article_categories %}
+                            {% set category_title = category['#title'] %}
+                            {% set category_tid = category['#options'].entity.id %}
+                            {% set category_link = 'news/category/' ~ category_title | replace({' ': '-'}) | lower %}
+
+                            {% if loop.last %}
+                                <a href="{{ category_link }}">{{ category_title }}</a>
+                            {% else %}
+                                <a href="{{ category_link }}">{{ category_title }}</a>,
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+            <div class="news-title">
+                <h3><a href="{{ title_path }}">{{ title }}</a></h3>
+            </div>
+            {% if teaser %}
+                <div class="news-article-teaser">{{ teaser }}</div>
+            {% endif %}
+        </div>
+    </div>
+</article>

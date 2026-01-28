@@ -1,0 +1,12 @@
+<div class="columns small-12 medium-6 slide">
+	<div class="related-stories-module__story">
+		<div class="related-stories-image">{{ story.src }}</div>
+		<div class="related-stories-module__story__content">
+			<a href="{{ story.story_url }}" target="{{ story.link_target|raw|e('html_attr') }}" title="{{ story.link_title|raw|e('html_attr') }}" onClick="{{ story.link_onclick|raw|e('html_attr') }}">
+				{% include "@atoms/headline.twig" with story %}
+				{{ story.text|raw }}
+				<p class="read-more">{{ story.read_more|raw }}</p>
+			</a>
+		</div>
+	</div>
+</div>

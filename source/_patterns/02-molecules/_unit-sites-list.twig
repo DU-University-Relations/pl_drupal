@@ -1,0 +1,11 @@
+<div class="unit-sites-list" id="utility-sites-list" aria-expanded="false">
+    <div class="unit-sites-list-wrapper">
+        {% include "@atoms/_unit-nav-back.twig" with {controls: "#sites-list"} %}
+        <ul>
+            {% for link in site_links %}
+                <li>{{ link }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {# {% include "@atoms/_unit-nav-close.twig" with {controls: "#sites-list"} %} #}
+</div>

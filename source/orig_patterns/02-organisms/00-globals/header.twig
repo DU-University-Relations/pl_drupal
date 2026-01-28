@@ -1,0 +1,48 @@
+
+<header role="banner">
+    {% include "@organisms/_hero-media.twig" with header %}
+    {% include "@molecules/_utility-menu.twig" with utility_menu %}
+    <div data-sticky-container>
+        <div id="top-bar-sticky-wrap" class="sticky" data-sticky data-top-anchor="utility-menu:bottom" data-sticky-on="small" data-margin-top="0">
+            <div class="top-bar">
+                <nav id="main-menu-wrap">
+                    <div class="row expanded">
+                        <div class="columns shrink">
+                            <a href="#" class="logo">
+					        		<span>
+                                        {% include "@atoms/image.twig" with header.logo_images[0] %}
+						        	</span>
+                            </a>
+                        </div>
+                        <div class="columns">
+                            {% include "@organisms/main-menu.twig" %}
+                        </div>
+                        <div class="columns shrink">
+                            <ul id="search-toggler" class="dropdown menu" data-dropdown-menu data-options="clickOpen: true; closeOnClickInside: false; closeOnClick: true; disableHover: true;">
+                                <li class="search mega-menu">
+                                    <a href="#">Search</a>
+                                    <ul id="search" class="menu">
+                                        <li>
+                                            <div class="row">
+                                                <div class="columns">
+                                                    {% include "@atoms/search-box.twig" %}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            {% if menu_item_count > 0 %}
+                                <div id="main-menu-toggler" class="align-right" data-responsive-toggle="main-menu" data-hide-for="large">
+                                    <button class="icon-du-cust-menu" type="button" data-toggle="main-menu">
+                                        <span class="show-for-sr">Toggle Menu</span></button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+

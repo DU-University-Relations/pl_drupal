@@ -1,0 +1,17 @@
+<div class="columns small-12 {{ button.size_class }}">
+    <a href="{{ button.url }}" class="{{ button.cssClass }}" onclick="{{ button.onclick }}" data-toggle="{{ button.data_toggle }}"
+       {% if button.target %}target="{{ button.target|e('html_attr') }}"{% endif %}
+            {% if button.altTitle %}title="{{ button.altTitle }}"{% endif %}>
+        {% block image %}
+            {% include "@atoms/image.twig" with image %}
+        {% endblock %}
+        <div class="content">
+            {% block icon %}
+                {% if icon %}
+                    {% include "@atoms/image.twig" with icon %}
+                {% endif %}
+            {% endblock %}
+            <p>{{ button.title }}</p>
+        </div>
+    </a>
+</div>

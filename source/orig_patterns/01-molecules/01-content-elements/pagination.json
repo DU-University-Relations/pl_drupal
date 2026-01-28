@@ -1,0 +1,9 @@
+{
+	"hidden": false,
+    "previous": {
+      "icon_name": "left_arrow"
+    },
+    "next": {
+      "icon_name": "right_arrow"
+    }
+}

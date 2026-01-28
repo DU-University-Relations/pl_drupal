@@ -1,0 +1,105 @@
+.three-col-facts {
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 100% auto;
+	padding-top: 10.3%;
+	@include breakpoint(medium down) {
+		#main-content &.row {
+			margin-left: 2.4rem;
+    		margin-right: 2.4rem;
+    		@include breakpoint(small down) {
+    			margin-left: 0;
+    			margin-right: 0;
+    		}
+    	}
+	}
+	@include breakpoint(small down) {
+		background-image: none !important;
+		padding-top: 0;
+		//background-size: 426px auto;
+	}
+	@include breakpoint(medium) {
+		padding-bottom: 19%;
+		+ .row,
+		+ .du-home__quotes__wrapper {
+			margin-top: 6.0rem;
+		}
+	}
+	@media (min-width: 1600px) {
+		padding-bottom: 23.5rem;
+	}
+	.du-home #main-content &.row {
+		margin-top: 6.0rem;
+		@include breakpoint(small down) {
+			margin-top: 3.3rem;
+		}
+	}
+	.show-for-small-only {
+		position: absolute;
+		width: 100%;
+		left: 0;
+	}
+	.three-col-facts__img {
+		&.is-stuck {
+			z-index: 0;
+		}
+	}
+	> .three-col-facts__item {
+		position: relative;
+		z-index: 1;
+		p {
+			color: #08657d;
+			font-weight: 300;
+			font-size: 4.3rem;
+			line-height: 5.9rem;
+			text-align: center;
+			@include breakpoint(large) {
+				max-width: 30.0rem;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			@include breakpoint(large down) {
+				max-width: 22.3rem; // locking proportion to font size
+				margin: 0 auto 6.0rem;
+                font-size: 3.2rem;
+                line-height: 4.4rem;
+			}
+			&,
+			.du-home #main-content & {
+				font-family: $headline-font;
+			}
+			strong {
+				font-size: 9.5rem;
+				line-height: 9.5rem;
+				color: #0072bc;
+				font-weight: bold;
+				display: block;
+				@include breakpoint(large down) {
+					font-size: 7.1rem;
+					line-height: 7.1rem;
+				}
+				&,
+				.du-home #main-content & {
+					font-family: $breve-display;
+				}
+			}
+		} // end p
+		+ .three-col-facts__item {
+			p {
+				strong {
+					color: #08657d;
+				}
+			}
+			+ .three-col-facts__item {
+				p {
+					strong {
+						color: #00746b;
+					}
+				}
+			}
+		}
+		@include breakpoint(small down) {
+			padding-top: 2.6rem;
+		}
+	} // end three-col-facts__item
+} // end .three-col-facts

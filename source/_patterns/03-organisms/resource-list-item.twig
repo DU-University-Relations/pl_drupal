@@ -1,0 +1,27 @@
+<div class="generic-sample-listing-item teaser info">
+    {% if pub_date %}
+        <p class="pub-date">
+            {{ pub_date }}
+        </p>
+    {% endif %}
+
+    <h5>
+        <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ title }}</a>
+    </h5>
+
+    <p>
+        <span>{{ type }}</span>
+        {% if (author_uri is not empty) and (first_name is not empty) and (last_name is not empty)%}
+        |
+        <a href="{{ author_uri }}">
+            {{ first_name }} {{ last_name }}
+        </a>
+        {% endif %}
+    </p>
+
+    {% if short_description %}
+        <p>
+            {{ short_description }}
+        </p>
+    {% endif %}
+</div>

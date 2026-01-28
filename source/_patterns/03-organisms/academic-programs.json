@@ -1,0 +1,51 @@
+{
+  "button": [{
+    "title": "All Types",
+    "type": "academic-filter",
+    "altClass": "active",
+    "data": {
+      "key": "filter",
+      "value": ".filter-major-Y, .filter-minor-Y, .dual-Y"
+    }
+  }, {
+    "title": "Majors",
+    "type": "academic-filter",
+    "data": {
+      "key": "filter",
+      "value": ".filter-major-Y"
+    }
+  }, {
+    "title": "Minors",
+    "type": "academic-filter",
+    "data": {
+      "key": "filter",
+      "value": ".filter-minor-Y"
+    }
+  }, {
+    "title": "Dual_Degrees",
+    "type": "academic-filter",
+    "altClass": "btn--disabled",
+    "data": {
+      "key": "filter",
+      "value": ".filter-dual-Y"
+    }
+  }
+  ],
+  "schools": {
+    "*": "See Programs from All Schools",
+    "AH": "Division of Arts, Humanities and Social Sciences",
+    "AHSS": "Division of Arts, Humanities and Social Sciences",
+    "DC": "Daniels College of Business",
+    "ED": "Morgridge College of Education",
+    "EN": "Daniel Felix Ritchie School of Engineering and Computer Science",
+    "IL": "Iliff School of Theology",
+    "IS": "Josef Korbel School of International Studies",
+    "LW": "Sturm College of Law",
+    "NM": "College of Natural Sciences and Mathematics",
+    "PP": "Graduate School of Professional Psychology",
+    "SS": "Division of Arts, Humanities and Social Sciences",
+    "SW": "Graduate School of Social Work",
+    "TX": "Graduate Tax Program",
+    "UC": "College of Professional Studies"
+  }
+}

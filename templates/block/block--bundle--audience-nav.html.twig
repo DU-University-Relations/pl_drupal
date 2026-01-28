@@ -1,0 +1,47 @@
+{% set big_buttons = content.field_big_buttons|field_target_entity %}
+{% set sm_buttons = content.field_small_buttons|field_target_entity %}
+
+{% if not big_buttons.0 %}
+    {% set big_buttons = {0:big_buttons } %}
+{% endif %}
+{% if not sm_buttons.0 %}
+    {% set sm_buttons = {0:sm_buttons } %}
+{% endif %}
+
+{% embed "@organisms/push-menu.twig" %}
+
+    {% for button in big_buttons %}
+        {% block big_buttons %}
+            {% for button in big_buttons %}
+                <div class="columns small-12 medium-6">
+                    {% include "@atoms/button-with-image.twig" with {
+                        'url':url_from_uri(button.field_link.uri),
+                        'title': button.field_link.title,
+                        'alt_text':button.field_link.options['attributes']['title'],
+                        'target':button.field_link.options['attributes']['target'],
+                        'onclick':button.field_link.options['attributes']['onClick'],
+                        'datatoggle':button.field_link.options['attributes']['data-toggle'],
+                        'src':file_url(button.field_button_image.entity.uri.value),
+                        'img_alt':button.field_button_image.0.alt
+                    } %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    {% endfor %}
+    {% block small_buttons %}
+        {% for button in sm_buttons %}
+            <div class="columns small-12 medium-6">
+                {% include "@atoms/button.twig" with {
+                    'url':url_from_uri(button.field_link.uri),
+                    'type':'dark-red',
+                    'styleModifier':'display-block',
+                    'title': button.field_link.title,
+                    'alt_text':button.field_link.options['attributes']['title'],
+                    'target':button.field_link.options['attributes']['target'],
+                    'onclick':button.field_link.options['attributes']['onClick'],
+                    'datatoggle':button.field_link.options['attributes']['data-toggle']
+                } %}
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

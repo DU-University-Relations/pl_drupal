@@ -1,0 +1,6 @@
+{% embed "@organisms/image-with-caption.twig" %}
+    {% set image = content.field_image_caption_image|field_value %}
+    {% set caption = content.field_image_caption_caption|field_value %}
+    {% set alignment = content.field_image_caption_alignment|field_value %}
+    {% set float = content.field_image_caption_float|field_value|render %}
+{% endembed %}

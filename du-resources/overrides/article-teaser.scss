@@ -1,0 +1,49 @@
+.article.teaser {
+  padding: 3rem 2rem;
+  height: 100%;
+  position: relative;
+  max-height: 23rem;
+  overflow: hidden;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: .2rem;
+    background: $neutral-color-5;
+  }
+  .article-list-image {
+    margin-right: 2rem;
+    img {
+      max-height: 15rem;
+      width: auto;
+    }
+  }
+  .article-info {
+    padding-left: 0;
+    max-height: 17.5rem;
+    overflow: hidden;
+    .article-date {
+      margin: 0;
+      color: $neutral-color-8;
+      font-size: 1.4rem;
+      margin-bottom: .3rem;
+      text-transform: uppercase;
+
+    }
+    .article-list-title {
+      margin: 0;
+      a {
+        text-decoration: none;
+        h5 {
+          color: $accent-color-2b;
+        }
+      }
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 1.6rem;
+    }
+  }
+}

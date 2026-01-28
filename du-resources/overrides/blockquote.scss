@@ -1,0 +1,73 @@
+//Blockquote
+blockquote {
+	width: 100%;
+	font-weight: bold;
+	font-size: 2.0rem;
+	font-family: $accent-font;
+	font-style: italic;
+	padding-bottom: 1.0rem;
+	padding-left: 1.3rem;
+	padding-right: 1.3rem;
+	@include breakpoint(medium up) {
+		font-size: 2.6rem;
+		padding-left: 2.0rem;
+		padding-right: 2.0rem;
+	}
+	@include breakpoint(large up) {
+		font-size: 2.8rem;
+		padding: 2.8rem 4rem 2.8rem 4rem;
+	}
+	p {
+		line-height: 3.0rem;
+		font-size: inherit;
+		@include breakpoint(medium up) {
+			line-height: 3.6rem;
+		}
+	}
+}
+.blockquote__background {
+	margin-left: 2.2rem !important;
+	margin-bottom: 10rem;
+	position: relative;
+	margin-top: 2.0rem;
+	margin-bottom: 8.6rem;
+	@include breakpoint(medium up) {
+		margin-left: 6.3rem !important;
+	}
+	&:before {
+		content: "";
+		background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+		border-top: .6rem solid $neutral-color-4;
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		z-index: -1;
+		@include breakpoint(large up) {
+			width: 82%;
+		}
+		@include breakpoint(xxlarge up) {
+			width: 75%;
+		}
+	}
+	.row {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	@media (min-width: 1215px) {
+		> .columns > .row > .columns:first-child {
+			position: relative;
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -300.0rem;
+				background-color: white;
+				display: block;
+				height: 100%;
+				right: 99.1rem;
+			}
+		}
+	}
+}//  .blockquote__background

@@ -1,0 +1,26 @@
+{% embed "@molecules/featured-events-slide.twig" %}
+    {% set date = content.field_featured_event_dates|field_value %}
+    {% set title = content.field_featured_event_title|field_value %}
+    {% block image %}
+        {{ content.field_featured_event_image|field_value }}
+    {% endblock %}
+    {% block paragraph %}
+        {{ content.field_featured_event_description|field_value }}
+    {% endblock %}
+    {% set details = [] %}
+    {% if content.field_featured_event_location|field_value %}
+        {% set details = details|merge([content.field_featured_event_location|field_value|render|striptags|trim]) %}
+    {% endif %}
+    {% if content.field_featured_event_time|field_value %}
+        {% set details = details|merge([content.field_featured_event_time|field_value|render|striptags|trim]) %}
+    {% endif %}
+    {% if content.field_featured_event_link|field_value %}
+        {% set button = {
+            'url': content.field_featured_event_link[0]['#url'],
+            'title': content.field_featured_event_link[0]['#title'],
+            'target': content.field_featured_event_link[0]['#options']['attributes']['target'],
+            "alt_text": content.field_featured_event_link.0['#options']['attributes']['title'],
+            "onclick": content.field_featured_event_link.0['#options']['attributes']['onClick']
+        } %}
+    {% endif %}
+{% endembed %}

@@ -1,0 +1,257 @@
+#academic-filters {
+    position: relative;
+}
+#academic-filter-toggler > a {   //mobile expand/collapse button for filter
+    display: block;
+    border-width: .2rem 0;
+    border-color: $neutral-color-5;
+    border-style: solid;
+    padding: 1.7rem 2.2rem;
+    font-family: $primary-font;
+    font-size: 2rem;
+    color: $neutral-color-2;
+    text-decoration: none;
+    margin-top: 5rem;
+    &:after {
+        content: "\e805";
+        padding-top: .6rem;
+        color: #000000;
+        font-weight: bold;
+        float: right;
+        font-family: "Fontello";
+        speak: none;
+        display: inline-block;
+        text-align: center;
+        text-transform: none;
+        line-height: 1.8rem;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: rotate(45deg);
+        transition: transform 0.3s;
+    }
+    &.open {
+        background-color: $neutral-color-6;
+        color: $primary-color-3;
+        &:after {
+            transform: rotate(0deg);
+            color: #666666;
+            font-weight: normal;
+        }
+    }
+}
+.index-list,               //information modal
+[class^="index-list--"],
+[class*=' index-list--'] {
+    margin-bottom: 0;
+    dt {
+        color: #fff;
+        line-height: 1.45;
+        margin-bottom: .2rem;
+    }
+    dd {
+        color: #fff;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+        font: {
+            size: 1.6rem;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    a {
+        color: #fff;
+    }
+    a:hover, a:focus {
+        color: #ccc;
+    }
+}
+
+.index-list--horizontal {  //'info' modal content
+    margin: 1.5rem 0 0;
+}
+
+#index-info-box {   // 'info' container
+    position: absolute;
+    background: #2A2930;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.3s;
+    transition: max-height 0.3s;
+    width: 100%;
+    margin-top: -2.3rem;
+    z-index: 1;
+    left: 0;
+    .index-info-box__wrapper {
+        padding: 1.5rem;
+        @include breakpoint(medium up) {
+            padding: 2rem;
+        }
+    }
+    &.open {
+        max-height: 1000rem;
+        @media screen and (min-width: 480px ) {
+            max-height: 300rem;
+        }
+        @include breakpoint(medium up) {
+            max-height: 150rem;
+        }
+        @include breakpoint(large up) {
+            max-height: 140rem;
+        }
+    }
+}
+//Filter Box
+.filter-box {
+    //max-width: 745px;
+    position: relative;
+    margin: 2.4rem auto 0;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    @include breakpoint(large up) {
+        margin-top: 5rem;
+    }
+    .btn.btn--academic-filter,
+    a.btn.btn--academic-filter:not(.info) {
+        width: calc(50% - 1rem);
+        min-width: 13rem;
+        text-transform: uppercase;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: .5rem;
+        margin-right: .5rem;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        @include breakpoint(medium up) {
+            width: auto;
+            padding: 1.3rem 1rem;
+        }
+        @include breakpoint(large up) {
+            font-size: 1.6rem;
+            min-width: 17rem;
+        }
+    }
+    a.btn.btn--academic-filter.info {
+        min-width: 0;
+        position: relative;
+        &.active {
+            &:after {
+                content: '';
+                border-bottom: 2.9rem solid #2A2930;
+                border-right: 2.9rem solid transparent;
+                border-left: 2.9rem solid transparent;
+                width: 5.8rem;
+                display: inline-block;
+                position: absolute;
+                bottom: -3.9rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    @include breakpoint(medium) { // = min width 48em
+        p + p {
+            // workaround since p tag was added into button atom
+            margin-left: 1rem; // --unverified if this element exists  -- 2020
+        }
+        .btn + .btn { //acts only on the info button
+            margin-left: 1rem;
+        }
+    }
+}
+.alphabet-filter-holder {
+    background: $neutral-color-6;
+    font-family: $primary-font;
+    font-weight: 600;
+    padding: 1.1rem 1.7rem;
+    text-align: center;
+    &.active-filter {
+        display: block;
+        margin-top: 2rem;
+        @include breakpoint(medium up) {
+            margin-top: 4rem;
+        }
+    }
+    &.inactive-filter {
+        display: none;
+    }
+    a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 2.4rem;
+        color: $accent-color-2b;
+        padding: 0 .7rem;
+        line-height: 1;
+        &.active {
+            color: $accent-color-2b;
+            &:hover,
+            &:focus {
+                color: $accent-color-2a;
+            }
+        }
+        &.inactive {
+            color: #c3c3c3;
+            cursor: default;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+/*.ap-item .flyout{
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.3s;
+  transition: max-height 0.3s;
+}
+.ap-item.ap-item--open .flyout{
+  max-height: 500px;}*/
+
+.academic-filter {
+    .search-box > input[type="text"] {
+        font-size: 5vw;
+        @include breakpoint(medium up) {
+            font-size: 3.6rem;
+        }
+    }
+}
+
+//.academic-error {
+//  padding-top: 2em;
+//  padding-bottom: 1em;
+//  background-color: lightpink;
+//}
+
+.academic-program {
+    margin-top: 3rem;
+    .program-links {
+        margin-top: 0;
+    }
+    .intro {
+        .program-overview {
+            margin-top: 0;
+            @media screen and (min-width: 40em) {
+                margin-top: 5rem;
+            }
+        }
+    }
+}
+.no-academic-programs-found {
+    width: 100%;
+    text-align: center;
+    padding: 4rem 4rem 12rem 4rem;
+}
+
+//Remove a-z cards - keep the html elements in place for filter and anchoring
+.academic-cards-module {
+    .ap-letter {
+        width: 0 !important;
+        padding: 0;
+        margin: 0;
+        * {
+            display: none;
+        }
+    }
+}

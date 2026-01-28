@@ -1,0 +1,47 @@
+    <div class="sub-menu-wrap">
+        {% block back_to_parent %}
+            {% if back_to_parent %}
+                <p>
+                    <a href="{{ back_to_parent.link }}" class="sub-menu__back-link" target="{{ back_to_parent.target }}">
+                        <span class="icon-du-left-arrow" aria-hidden="true"></span> {{ back_to_parent.title }}
+                    </a>
+                </p>
+            {% endif %}
+        {% endblock %}
+      {% if hide_subnav_block == '0' %}
+        <p id="sub-menu-toggler" data-responsive-toggle="sub-menu" data-hide-for="large">
+            <a href="#" data-toggle>
+                {{ toggler_text }}
+            </a>
+        </p>
+
+        <nav id="sub-menu"{% if is_tab_menu %} class="sub-menu--horizontal"{% endif %} aria-label="sub-navigation"{% if role %} data-role="{{ role }}"{% endif %}>
+            {% if current_theme == 'micro' %}
+                {% block subnav %}
+                    {{ subnav }}
+                {% endblock %}
+            {% endif %}
+            {% if has_sub_menu_search %}
+                {% include "@atoms/search-box.twig" %}
+            {% endif %}
+            {% block sub_nav_menu %}
+                <ul>
+                    {% for item in items %}
+                        <li{% if item.is_active %} class="active"{% endif %}>
+                            {% include "@atoms/link.twig" with item %}
+                            {% if item.third_level %}
+                                <ul>
+                                    {% for child in item.third_level.items %}
+                                        <li{% if is_active %} class="active"{% endif %}>
+                                            {% include "@atoms/link.twig" with child %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endblock %}
+        </nav>
+      {% endif %}
+    </div>

@@ -1,0 +1,31 @@
+{% embed "@organisms/academic-programs.twig" %}
+    {% block programs %}
+        {{ custom.programs }}
+    {% endblock %}
+    {% block filter_buttons %}
+        {{ content.field_program_filter_buttons|field_value }}
+    {% endblock %}
+    {% set schools = custom.schools %}
+
+    {% set alphabet_filter_class = "active-filter" %}
+    {% set hide_a_z_filter_letter = elements.field_hide_a_z_letter_filter.0['#markup'] %}
+    {% if hide_a_z_filter_letter == "On" %}
+      {% set alphabet_filter_class = "inactive-filter" %}
+    {% endif %}
+
+    {% set hide_legend = custom.hide_legend %}
+    {% block legend_col_1 %}
+      <div class="{{ custom.col1_classes }}">
+            <dl class="index-list">
+                {{ content.field_program_legend_col1|field_value }}
+            </dl>
+        </div>
+    {% endblock %}
+    {% block legend_col_2 %}
+        <div class="{{ custom.col2_classes }}">
+            <dl class="index-list--horizontal">
+                {{ content.field_program_legend_col2|field_value }}
+            </dl>
+        </div>
+    {% endblock %}
+{% endembed %}

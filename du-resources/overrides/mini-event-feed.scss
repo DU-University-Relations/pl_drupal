@@ -1,0 +1,33 @@
+.mini-event-feed {
+  .intro {
+    border-bottom: .2rem solid $neutral-color-5;
+  }
+  .intro h2 {
+    font-weight: bold;
+      @include breakpoint(small down) {
+        font-size: 2.3rem;
+      }
+  }
+  .feed-link {
+    padding-top: 1.2rem;
+  }
+  .feed-link a {
+    font-family: $cta-font;
+    font-weight: bold;
+    text-decoration: none;
+      @include breakpoint(small down) {
+        font-size: 1.5rem;
+      }
+  }
+  .mini-event-feed__item {
+    @include flex-grid-column(4);
+    @include breakpoint(small down) {
+      @include flex-grid-column(12);
+    }
+    margin-bottom: 4.5rem;
+  }
+  // Drupal workaround for stubborn Views markup
+  .views-element-container > div {
+    @include flex-grid-row();
+  }
+}

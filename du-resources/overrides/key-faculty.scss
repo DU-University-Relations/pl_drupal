@@ -1,0 +1,403 @@
+.key-faculty {  //universal and mobile styles below: - desktop at bottom
+  margin-bottom: 3.6rem;
+  position: relative;
+  z-index: 2;
+  h3 {
+    display: flex;
+    justify-content: center;
+    font-weight: normal;
+    text-align: center;
+  }
+  h3.btm-divider {
+    padding-bottom: 1.6rem;
+    margin-bottom: 0;
+  }
+  h3.btm-divider:after {
+    content: none !important;
+  }
+  .divider {
+    height: .6rem;
+    background-color: $neutral-color-2;
+    width: 7.7rem;
+    margin: 0 auto;
+  }
+  .component-header {
+    margin-bottom: 2.7rem;
+    .columns {
+      flex: 1 1 auto;
+    }
+  }
+  .component-container {
+    position: relative;
+  }
+  .profile-container {
+    max-width: 29.7rem;
+  }
+  .columns {
+    flex: none;
+  }
+  .key-faculty-profile {
+    padding: .2rem;
+    margin: 0 auto;
+  }
+  .faculty-profile-container {
+    max-width: 31.7rem;
+    margin: 0 auto;
+    padding: 1.0rem;
+    justify-content: center;
+  }
+  .key-profile-background {
+    position: relative;
+    margin-top: -1.5rem;
+    margin-bottom: 0;
+    padding-bottom: 7.5rem;
+  }
+  .key-profile-background:before { //for mobile each profile has its own 'row'
+    position: absolute;
+    background-color: $accent-color-2b;
+    height: 86%;
+    top: 8%;
+    content: "";
+    display: inline-block;
+    z-index: -1;
+    width: 100%
+  }
+  .faculty-container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    flex-flow: wrap;
+  }
+  .one_col {
+    max-width: 59.4rem;
+    .key-profile-background {
+      width: 31.7rem;
+      &:before {
+        width: 100%;
+        margin-top: 14%;
+      }
+    }
+    .faculty-profile-container {
+      flex-direction: row;
+    }
+    .information {
+      padding: 0;
+      background-color: $accent-color-2b;
+      position: static;
+      z-index: -1;
+      top: 20%;
+      left: 50%;
+      min-width: 28.8rem;
+      max-width: 54rem;
+      margin-left: -1.8rem;
+    }
+    .image {
+      display: block;
+      width: 61.2rem;
+      min-width: 22.7rem;
+      margin-left: -1.8rem;
+
+      img {
+        width: 24.7rem;
+        height: 38.4rem;
+        position: relative;
+        z-index: 4;
+      }
+    }
+    .name .first {
+      display: block;
+    }
+    .rank {
+      font-style: italic;
+    }
+    .learn-more {
+      padding: 1.0rem 2.8rem;
+      font-size: 1.6rem;
+      font-family: "Acto", sans-serif;
+      display: inline-block;
+      color: white;
+      background-color: #ac9147;
+      .icon-du-cust-right-arrow:before {
+        display: none;
+      }
+      &:hover {
+        background-color: #8f6d4d;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+    }
+    .key-profile-background:last-child {
+      margin-bottom: 2.7rem;
+    }
+  } //end one_col
+
+  .image {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 100%;
+      min-width: 22.7rem;
+      height: 38.4rem;
+      object-fit: cover;
+    }
+  }
+  [class^="icon-du"]:before {
+    margin-left: 0;
+  }
+  .icon-du-cust-right-arrow:before {
+    color: $secondary-color-3;
+    font-size: 1.4rem;
+  }
+  p {
+    line-height: 2.2rem;
+  }
+  .rank,
+  .name {
+    color: $neutral-color-6;
+  }
+  .name {
+    margin-top: 1.4rem;
+    //white-space: nowrap;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    white-space: inherit;
+  }
+  .rank + a {
+    color: $neutral-color-6;
+    text-decoration: none;
+  }
+  .rank +  a:hover {
+    text-decoration: underline;
+  }
+  .learn-more {
+    a {
+      color: $neutral-color-6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+  .rank span {
+    display: block;
+    a {
+      color: $neutral-color-6;
+      text-decoration: none;
+    }
+  }
+  .view-all-profiles {
+    margin-bottom: 3.6rem;
+    text-align: center;
+    a {
+      color: $link-accessibility-color-teal-light;
+      text-decoration: none;
+    }
+    a:hover {
+      color: $link-accessibility-color-teal-dark;
+      text-decoration: underline;
+    }
+  }
+}
+@include breakpoint(small up) {
+  .key-faculty {
+    margin-bottom: 5.4rem;
+    .key-faculty-profile {
+      width: 100%;
+    }
+    .faculty-profile-container {
+      max-width: 29.7rem;
+      margin: 0 auto;
+      padding: 1.0rem;
+    }
+    .key-profile-background { // all
+      position: relative;
+      margin-top: 2.5rem;
+      padding-bottom: 3.0rem;
+    }
+
+    .one_col {
+      //max-width: 33rem;
+      .key-faculty-profile {
+        padding: 0 9rem;
+        margin-left: -21%;
+      }
+      .faculty-container {
+        display: flex;
+        margin-right: 0;
+        margin-left: 6.0rem;
+        justify-content: center;
+      }
+      .image {
+        min-width: 28.9rem;
+        margin-left: -1.8rem;
+        width: inherit;
+        img {
+          max-width: 27.7rem;
+          min-width: 22.7rem;
+          max-height: 38.4rem;
+        }
+      }
+      .information {
+        z-index: 0;
+        left: 43%;
+      }
+    }
+    .view-all-profiles { // all
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include breakpoint(medium up) {
+  .key-faculty {
+    margin-bottom: 5.4rem;
+    .faculty-profile-container {
+      max-width: 29.7rem;
+      padding: 1rem;
+    }
+    .image {
+      img {
+        min-width: 24.7rem;
+        height: 35.4rem;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .one_col {
+      .key-profile-background {
+        width: initial;
+      }
+      .key-profile-background:before {
+        display: none;
+      }
+      .information {
+        padding: 0 3.6rem;
+        background-color: $accent-color-2b;
+        position: absolute;
+        top: 15%;
+        left: 48%;
+        width: auto;
+      }
+      .image {
+        margin-left: -14.4rem;
+        img {
+          width: 29.7rem;
+          max-width: 29.7rem;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(large up) {
+  .key-faculty {
+    margin-bottom: 9rem;
+    position: relative;
+    z-index: 2;
+    .full-background:before { //when more than 1 profile
+      position: absolute;
+      background-color: $accent-color-2b;
+      height: 86%;
+      top: 14%;
+      content: "";
+      display: inline-block;
+      z-index: -1;
+      width: 100%;
+      left: 50%;
+      margin-left: -50%;
+    }
+    .view-all-profiles {
+      margin-bottom: 3.6rem;
+    }
+    .key-profile-background {
+      margin-top: -1.5rem;
+      padding-bottom: 7.5rem
+    }
+    .key-profile-background:before {
+      display: none;
+    }
+    .faculty-profile-container {
+      max-width: 25.7rem;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    .img img {
+      width: 100%;
+      min-width: 22.7rem;
+      height: 38.4rem;
+      object-fit: cover;
+    }
+    .one_col { // single profile
+      .key-faculty-profile {
+        margin-left: -21.5%;
+      }
+      .faculty-profile-container {
+        max-width: 31.7rem;
+      }
+      .image {
+        width: inherit;
+        min-width: 28.9rem;
+        margin-left: -10.8rem;
+        img {
+          max-width: 27.7rem;
+          min-width: 22.7rem;
+          height: 36.4rem;
+        }
+      }
+      .information {
+        padding: 0 3.6rem;
+        position: absolute;
+        z-index: 1;
+        margin-left: -1.8rem;
+      }
+      .key-profile-background {
+        position: static;
+        width: initial;
+      }
+      .key-profile-background::before {
+        top: 14%;
+        width: initial;
+      }
+      .key-profile-background:last-child {
+        margin-bottom: 1.8rem;
+      }
+    }
+  }
+}
+
+@include breakpoint( xlarge up ) {
+  .key-faculty {
+    .image {
+      img {
+        width: 29.7rem;
+        height: 38.4rem;
+      }
+    }
+    .faculty-profile-container {
+      max-width: 31.7rem;
+    }
+    .one_col { // single profile
+      .key-faculty-profile {
+        margin-left: auto;
+      }
+      .image {
+        width: 61.2rem;
+        img {
+          width: 29.7rem;
+          height: 38.4rem;
+        }
+      }
+      .information {
+        min-width: 28.8rem;
+        max-width: 54rem;
+        margin-left: 0;
+        padding-left: 11%
+      }
+    }
+  }
+}

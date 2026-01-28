@@ -1,0 +1,37 @@
+{
+    "col_header": {
+        "title": "H3 Cards Header",
+        "type": "h3",
+        "cssClass": "btm-divider"
+    },
+    "cards": [
+        {
+            "layout": "two_col",
+            "title": "Card Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "layout": "two_col",
+            "title": "Second Col Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        }
+    ]
+}

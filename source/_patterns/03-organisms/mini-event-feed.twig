@@ -1,0 +1,17 @@
+<div class="row mini-event-feed">
+    <div class="columns small-12">
+        <div class="row intro">
+            <div class="feed-title columns"><h2>{{ title }}</h2></div>
+            <div class="feed-link columns shrink">{{ see_more_link }}</div>
+        </div>
+        <div class="row events">
+            {% block events %}
+                {% for event in events %}
+                    <div class="mini-event-feed__item">
+                        {% include "@molecules/event-card.twig" with event only %}
+                    </div>
+                {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+</div>

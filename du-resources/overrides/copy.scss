@@ -1,0 +1,274 @@
+@media screen {
+	.copy-module {
+		margin-bottom: 6.8rem;
+		@include breakpoint(small down) {
+			margin-bottom: 5.8rem;
+		}
+		iframe {
+			min-height: auto;
+		}
+		&.copy-module--image-alt {
+			> .row.expanded {
+				position: relative;
+				&:before {   //grey background bar only shows up if selected 'narrow'
+					content: "";
+					left: 0;
+					right: 0;
+					width: 100%;
+					background-color: #f4f4f4;
+					height: 25rem;
+					z-index: -1;
+					position: absolute;
+					top: 25rem;
+				}
+				@include breakpoint(medium down) {
+					&:before {
+						display: none;
+					}
+					> .columns {
+						padding-left: 0;
+						padding-right: 0;
+						> .row {
+							padding-left: 0;
+							padding-right: 0;
+						}
+					}
+					.large-9 {
+						position: relative;
+						padding-left: 0;
+						padding-right: 0;
+						&:before {
+							content: "";
+							left: 0;
+							right: 0;
+							width: 100%;
+							background-color: #f4f4f4;
+							z-index: -1;
+							position: absolute;
+							height: 16.3rem;
+							bottom: -9.8rem;
+						}
+						img {
+							width: 100%;
+							padding-left: 6.3rem;
+							padding-right: 6.3rem;
+						}
+					}
+					.large-3 {
+						padding-right: 4.3rem;
+					}
+				}
+				@include breakpoint(small down) {
+					.large-9 {
+						&:before {
+							height: 12.1rem;
+							bottom: 0;
+						}
+						img {
+							padding-left: 2.2rem;
+							padding-right: 2.2rem;
+						}
+					}
+					.large-3 {
+						padding-right: 2rem;
+					}
+				} //end @include
+			}
+		}
+		&.copy-module--image {
+            margin-top: 0;
+            margin-bottom: 4rem;
+			@include breakpoint(medium up) {
+				margin-top: 6.5rem;
+				margin-bottom: 10rem;
+			}
+			@include breakpoint(large up) {
+                margin-top: 9.5rem;
+                margin-bottom: 14rem;
+			}
+			> .row.expanded {
+				.content {
+					position: relative;
+					top: 5rem;
+					background-color: white;
+					padding: 3rem 6.5rem 3rem 4rem;
+					margin-bottom: 5rem;
+					font-size: 1.8rem;
+					@include breakpoint(medium down) {
+						top: -10.5rem;
+						margin-bottom: -10.5rem;
+						font-size: 1.6rem;
+					}
+					h3 {
+						margin-bottom: 3rem;
+						padding-bottom: 3.5rem;
+						position: relative;
+						&:after {
+							content: "";
+							width: 8.5rem;
+							position: absolute;
+							left: 0;
+							bottom: 0;
+							height: .6rem;
+							background-color: $neutral-color-2;
+						}
+					}
+				}
+                .content.image-right { //copy column on left
+                  min-height: 35rem;
+                  max-height: initial;
+                }
+				.large-3 {
+					.content {
+						left: -66%;
+						width: 166%;
+						&.image-right {
+							left: 0;
+						}
+					}
+				}
+				.large-6 {
+					.content {
+						left: -16%;
+						width: 118%;
+						&.image-right {
+							left: 0;
+						}
+					}
+				}
+				@include breakpoint(medium down) {
+					> .columns > .row {
+						margin-left: 0;
+						margin-right: 0;
+					}
+					.large-3,
+					.large-6 {
+						.content {
+							left: 0;
+							width: 75%;
+							float: right;
+							padding: 3rem 1.8rem;
+							@include breakpoint(small down) {
+								width: 100%;
+								float: none;
+								position: static;
+								margin-bottom: 0;
+							}
+						}
+					}
+				}
+				@include breakpoint(small down) {
+					> .columns {
+						padding-left: 0;
+						padding-right: 0;
+						> .row {
+							padding-left: 0;
+							padding-right: 0;
+						}
+					}
+					img {
+						width: 100%;
+						padding-left: 1.8rem;
+						padding-right: 1.8rem;
+					}
+				}
+			}
+            .image-right {
+              @include breakpoint(large up) {
+                position: absolute;
+                width: 100%;
+                max-height: 60rem;
+                overflow: hidden;
+              }
+            }
+		} // end   &.copy-module--image
+		> .row.expanded {
+			&,
+			> .columns > .row {
+				margin-left: auto;
+				margin-right: auto;
+				position: relative;
+			}
+		}
+		@include breakpoint(large down) {
+			> .row.expanded {
+				> .columns > .row {
+					padding-left: 4.7rem;
+					padding-right: 4.7rem;
+					@include breakpoint(small down) {
+						padding-left: 1.8rem;
+						padding-right: 1.8rem;
+					}
+				}
+			}
+		}
+      .content table {  //add shadows to the right and left of table for scroll overflow indicator
+        display: block;
+        overflow: hidden;
+        overflow-x: scroll;
+        margin-left: 0;
+        background-image: /* Shadows */
+                  linear-gradient(to right, white, white),
+                  linear-gradient(to right, white, white),
+                    /* Shadow covers */
+                  linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0)),
+                  linear-gradient(to left, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0));
+        background-position: left center, right center, left center, right center;
+        background-repeat: no-repeat;
+        background-color: white;
+        background-size: 20px 100%, 20px 100%, 15px 100%, 15px 100%;
+          /* Opera doesn't support this in the shorthand */
+        background-attachment: local, local, scroll, scroll;
+
+        &::-webkit-scrollbar { // hide scrollbar
+          width: 0 !important;
+          height: 0 !important;
+        }
+
+        tbody { background-color: transparent; } //remove background to expose shadows
+
+        @include breakpoint( medium down ) {
+          tbody tr:nth-child(even) {
+            background-color: #f9f9f959 !important; //lighten background to expose shadow
+          }
+        }
+
+        td {
+          min-width: 14.5rem;
+          hyphens: auto;
+          p {
+            line-height: 2.2rem;
+            @include breakpoint(medium up) {
+              line-height: 2.8rem;
+            }
+          }
+          strong {
+            font-size: 1.4rem;
+            @include breakpoint(medium up) {
+              font-size: 1.6rem;
+            }
+          }
+        }
+        @include breakpoint(medium up) {
+          display: table;
+        }
+      }// end table
+      //embed codes:
+      .paragraph--type--embed-code { //social media page feed overflows on mobile
+        iframe#twitter-widget-0 {
+          width: 85vw !important;
+          max-width: 85vw !important;
+          @include breakpoint(large up) {
+            width: 100% !important;;
+            max-width: 100% !important;;
+          }
+        }
+        iframe#map_frame { //widget has no height set
+          min-height: 55rem;
+        }
+      } //end embed codes
+	} //end.copy-module
+
+   .du-home.unit-site #main-content > .copy-module:first-of-type { margin-bottom: 0; } //Hide space 'hidden' h1 for homepages
+
+} //end @screen

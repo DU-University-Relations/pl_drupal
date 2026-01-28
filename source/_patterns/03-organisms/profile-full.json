@@ -1,0 +1,46 @@
+{
+  "full_name": "Name Last Name",
+  "back_link": "/profiles",
+  "display_name": "Academic",
+  "profile_type": "Type 1",
+  "profile_rank": "Rank 1",
+  "profile_appointment": "Appointment 1",
+  "is_expert": "true",
+  "expert_link": {
+    "url": "/node/1",
+    "title": "Expert Link",
+    "icon": {
+      "icon_name": "bank",
+      "bold": true
+    }
+  },
+  "email": "test@example.com",
+
+  "phone_primary": "Cell",
+  "phone_prim": "+1234566",
+
+  "phone_second": "Mobile",
+  "phone_sec": "+1234566",
+
+  "portfolio_web": "http://www.google.com",
+  "portfolio_pers": "http://www.google.com",
+  "group_web": "http://www.google.com",
+
+  "location": "Address, PO Box, City, Country",
+
+  "twitter": "twitter.com",
+  "facebook": "facebook.com",
+  "linkedin": "linkedin.com",
+
+  "hide_awards_tab": null,
+  "hide_news_tab": true,
+  "hide_perf_tab": null,
+  "hide_pub_tab": null,
+  "hide_research_tab": null,
+  "tab_flex": "16.67",
+
+  "cv": "/node/1",
+  "pub_link": "/node/2",
+  "news": null,
+  "newsroom_url": "/node/3"
+}

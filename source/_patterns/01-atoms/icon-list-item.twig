@@ -1,0 +1,17 @@
+<div class="icon-list__media">
+    {% if image %}
+        {{ image }}
+    {% endif %}
+    {% if icon %}
+        {{ icon }}
+    {% endif %}
+</div>
+{% if title %}
+    <p><strong>{{ title }}</strong></p>
+{% endif %}
+{% if description %}
+    {{ description }}
+{% endif %}
+{% if link %}
+    <p>{{ link }}</p>
+{% endif %}

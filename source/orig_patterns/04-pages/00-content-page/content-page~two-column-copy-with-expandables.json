@@ -1,0 +1,58 @@
+{
+	"two_column_copy": {
+		"columns": [
+			{
+				"h2": {
+					"title": "Headline H2",
+					"type": "h3"
+				},
+				"has_wrapper": true,
+				"alt_text": "An Image",
+				"src": "http://placehold.it/585x250",
+				"hide_paragraph": true,
+				"expanding_list": {
+				    "expanding_items": [
+				      {
+				        "title": "Expanding Item 1",
+				        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+				      },
+				      {
+				        "title": "Expanding Item 2",
+				        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+				      },
+				      {
+				        "title": "Expanding Item 3",
+				        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+				      }
+				    ]
+				}
+			},
+			{
+				"h2": {
+					"title": "Headline H2",
+					"type": "h3"
+				},
+				"has_wrapper": true,
+				"alt_text": "An Image",
+				"src": "http://placehold.it/585x250",
+				"hide_paragraph": true,
+				"expanding_list": {
+				    "expanding_items": [
+				      {
+				        "title": "Expanding Item 1",
+				        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+				      },
+				      {
+				        "title": "Expanding Item 2",
+				        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+				      },
+				      {
+				        "title": "Expanding Item 3",
+				        "text": "This is expanded content. This is another sentence in this area. This is another sentence in this area. This is another sentence in this area."
+				      }
+				    ]
+				}
+			}
+		]
+	}
+}

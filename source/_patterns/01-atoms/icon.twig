@@ -1,0 +1,13 @@
+{% if url %}
+<a
+    href="{{ url }}"
+    {% if alt_text %}title="{{ alt_text|e('html_attr') }}"{% endif %}
+    {% if target %}target="{{ target|e('html_attr') }}"{% endif %}
+    {% if onclick %}onclick="{{ onclick|e('html_attr') }}"{% endif %}
+>
+{% endif %}
+	<span class="icon-du-{{ icon_class }}" aria-hidden="true"></span>
+    {% if title %}<span class="show-for-sr">{{ title }}"</span>{% endif %}
+{% if url %}
+</a>
+{% endif %}

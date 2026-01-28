@@ -1,0 +1,32 @@
+{
+  "navigation_items": [
+    {
+      "title": "Admission & Aid",
+      "flyout": "none"
+    },
+    {
+      "title": "Academics",
+      "flyout": "small"
+    },
+    {
+      "title": "Research",
+      "flyout": "none"
+    },
+    {
+      "title": "Campus Life",
+      "flyout": "large"
+    },
+    {
+      "title": "News",
+      "flyout": "none"
+    },
+    {
+      "title": "Calendar",
+      "flyout": "none"
+    },
+    {
+      "title": "About",
+      "flyout": "none"
+    }
+  ]
+}

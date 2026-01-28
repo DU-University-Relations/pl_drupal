@@ -1,0 +1,13 @@
+{
+    "slides": [
+        {
+            "src": "/_duresources/foundation/images/large_image_module.jpg",
+            "alt_text": "This is a slide image",
+            "caption": "<p>This is caption 1.</p>",
+            "is_active": true,
+            "videoStart": true,
+            "videoUrl": "https://www.youtube.com/embed/1WpZK8C87Sw?rel=0",
+            "cta": "Watch Chancellor's address to students"
+        }
+    ]
+}

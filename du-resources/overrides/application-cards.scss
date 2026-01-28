@@ -1,0 +1,221 @@
+.application-cards-module {
+	background-color: #f4f4f4;
+  margin-bottom: 7rem;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+  @include breakpoint(medium up) {
+    margin-bottom: 10rem;
+  }
+  @include breakpoint(large up) {
+    margin-bottom: 14rem;
+  }
+  a {
+    text-decoration: none;
+    color: $header-color;
+  }
+	&.application-cards-module-overlay {
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 0;
+		}
+		> .row {
+			position: relative;
+			z-index: 1;
+		}
+	}
+    &--has-icons {
+      .cards-module__content {
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 7.4rem;
+          display: none;
+          background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+          @include breakpoint(medium up) {
+            display: block;
+          }
+        }
+        .img-wrapper {
+          margin-top: 3rem;
+          img {
+            width: 8rem;
+            height: 8rem;
+            margin: 0 auto 3rem auto;
+            display: block;
+          }
+        }
+      }
+    }
+    > .row {
+      margin-top: 5rem;
+      position: relative;
+      top: -3rem;
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+      @include breakpoint(large up) {
+        padding-left: inherit;
+        padding-right: inherit;
+      }
+      > .columns {
+        flex-basis: 100%;
+        @include breakpoint(medium up) {
+          flex-basis: 33.33%;
+        }
+      }
+    }
+    .cards-module__content {
+      background-color: white;
+      padding: 0 5rem;
+      margin-bottom: 1.8rem;
+      border: 1px solid #eeeeee;
+      text-align: center;
+      .card-img-wrapper {
+        display: none;
+        @include breakpoint(medium up) {
+          display: block;
+          margin-left: -3rem;
+          margin-right: -3rem;
+          margin-bottom: 2.4rem;
+          display: none
+        }
+      }
+      h4 {
+        font-weight: 600;
+        margin-bottom:4rem;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        @include breakpoint(large up) {
+          font-size: 2.6rem;
+          line-height: 3.4rem;
+        }
+        &:hover {
+          color: $link-accessibility-color-teal-light;
+        }
+      }
+    }
+    .cards-module--has-icons {
+      img {
+        width: 8rem;
+        height: 8rem;
+        margin: 0 auto 3rem auto;
+        display: block;
+      }
+    }
+    @include breakpoint(small down) {
+      > .row > .columns:first-child .cards-module__content {
+        border-top: .2rem solid $neutral-color-4;
+      }
+      .cards-module__content {
+        padding: 1rem 1.4rem;
+        margin-bottom: 1.8rem;
+        border-width: 0 0 .2rem 0;
+        border-style: solid;
+        border-color: $neutral-color-4;
+        h4 {
+          font-size: 2.4rem;
+          padding-top: 1rem;
+          padding-right: 3rem;
+          position: relative;
+          cursor: pointer;
+        }
+        .img-wrapper ~ h4 { padding-right: 0; }
+      }
+    }
+  }// end .application-cards-module
+  body.unit-theme-teal .application-cards-module-overlay {
+    &:before {
+      background-color: $unit-accent-color-teal;
+      opacity: 0.75;
+    }
+  }
+  body.unit-theme-purple .application-cards-module-overlay {
+    &:before {
+      background-color: $unit-accent-color-purple;
+      opacity: 0.75;
+    }
+  }
+  body.unit-theme-green .application-cards-module-overlay {
+    &:before {
+      background-color: $unit-accent-color-green;
+      opacity: 0.75;
+    }
+  }
+  body.unit-theme-gold .application-cards-module-overlay {
+    &:before {
+      background-color: $unit-accent-color-gold;
+      opacity: 0.75;
+    }
+  }
+  body.unit-theme-red .application-cards-module-overlay {
+    &:before {
+      background-color: $unit-accent-color-red;
+      opacity: 0.75;
+    }
+  }
+  body.unit-theme-grey .application-cards-module-overlay {
+    &:before {
+      background-color: $unit-accent-color-grey;
+      opacity: 0.5;
+    }
+  }
+  .application-cards__description {
+    p {
+      padding-right: 6rem;
+    }
+  }
+  .application-cards__deadline {
+    background-color: white;
+    padding: 0 2rem;
+    margin-top: 6rem;
+    text-align: center;
+    hr {
+      clear: both;
+      max-width: 66.66667rem;
+      height: 0;
+      margin: 0 auto 1.5rem auto;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: .2rem solid #d1d1d2;
+      border-left: 0;
+    }
+    p {
+      color: $neutral-color-1;
+      text-align: center;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      padding: 0;
+      @include breakpoint(large up) {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        padding: inherit;
+      }
+    }
+  }
+  .application-cards__deadline-date {
+    background-color: white;
+    padding: 0 3rem;
+    text-align: center;
+    p {
+      color: $neutral-color-1;
+      font-weight: 600;
+      text-align: center;
+      font-size: 2.4rem;
+      line-height: 2.2rem;
+      padding: 0;
+      @include breakpoint(large up) {
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+      }
+    }
+  }

@@ -1,0 +1,64 @@
+{% include "organisms-push-menu" %}
+
+<div class="off-canvas-content" id="off-canvas-content" data-off-canvas-content>
+
+	{% include "organisms-header" %}
+	
+	<article id="main-content" role="main">
+		
+		<div class="row">
+			<div class="columns large-offset-4 large-8 pull-up page-title-band">
+				{% if page_title %}
+					{% include "atoms-headline" %}
+				{% endif %}
+			</div>
+		</div>	
+		<div class="row">
+			<div class="columns small-12 large-3 pull-up">
+				{% if sub_menu %}
+					{% include "molecules-sub-nav" %}
+				{% endif %}
+			</div>
+			<div class="columns small-12 large-8 large-offset-1 intro">
+				{% if intro_story %}
+					{% if headlines %}
+						{% include "atoms-headline" %}
+					{% endif %}
+					<p><strong>Jim Turgeon takes over as 10th head coach at the University of Denver</strong></p>
+					{% include "atoms-image" %}
+					{% if paragraphs %}
+						{% include "atoms-paragraph" %}
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+
+		{% if stories_module %}
+			{% include "organisms-stories" %}
+		{% endif %}
+
+		{% for sections_item in sections %}
+			<div class="row">
+				<div class="columns small-12">
+					{% if headline %}
+						{% include "atoms-headline" %}
+					{% endif %}
+				</div>
+			</div>
+			{% if featured_events %}
+				{% include "organisms-featured-events" %}
+			{% endif %}
+			<div class="row">
+				<div class="columns small-12">
+					{% if category_list %}
+						{% include "organisms-category-list" %}
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+		
+	</article>
+	
+	{% include "organisms-footer" %}
+
+</div>

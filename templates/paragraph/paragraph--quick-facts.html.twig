@@ -1,0 +1,4 @@
+{% embed "@organisms/information-overview.twig" %}
+  {% set bckgrnd = content.field_qf_background|field_raw('value') %}
+  {% set items = content.field_qf_facts|field_value %}
+{% endembed %}

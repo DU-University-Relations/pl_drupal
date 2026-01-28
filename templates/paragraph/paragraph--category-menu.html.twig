@@ -1,0 +1,5 @@
+{% embed "@organisms/category-menu.twig" %}
+    {% set category_menu = content.field_category_link|field_value %}
+    {% set toggler_text = content.field_toggler_text|field_value %}
+    {% set title = content.field_heading|field_value %}
+{% endembed %}

@@ -1,0 +1,19 @@
+<div class="row expanded blockquote-order">
+    <div class="columns">
+        <div class="row">
+            <div class="{{ blockquote_class }}">
+                <blockquote>
+                    {% include "@atoms/paragraph-raw.twig" %}
+                    {% if full_name %}
+                        <cite>
+                            {{ full_name }}{% if type %}, {{ type }}{% endif %}{% if cite_caption %}, {{ cite_caption }}{% endif %}
+                        </cite>
+                    {% endif %}
+                    {% if cta %}
+                        <a class="btn btn-blockquote" title="{{ cta.title }}" href="{{ cta.url }}" {% if new_page == 'On' %}target="_blank"{% else %}target="_self"{% endif %}>{{ cta.title }}</a>
+                    {% endif %}
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>

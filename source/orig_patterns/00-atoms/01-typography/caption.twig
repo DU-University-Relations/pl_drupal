@@ -1,0 +1,15 @@
+
+<div class="{{ caption.styleModifier }}">
+	{% if caption.caption_title %}
+		{{ caption.caption_title|raw }}
+	{% endif %}
+	{% if caption.caption_subtitle %}
+		{{ caption.caption_subtitle|raw }}
+	{% endif %}
+	{% if caption.captionLink %}
+		<p><a href="{{ caption.captionURL|raw }}">{{ caption.captionLink }}</a></p>
+	{% endif %}
+	{% if caption.citation %}
+		{{ caption.citationText|raw }}
+	{% endif %}
+</div>

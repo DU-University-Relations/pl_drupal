@@ -1,0 +1,12 @@
+{% embed "@organisms/featured-articles.twig" %}
+  {% set header = {
+    'title':content.field_title|field_value, 
+    'type':'h3', 
+    'cssClass':'btm-divider'
+    } 
+  %}
+  {% set article_count = content.field_featured_articles_articles['#items']|length %}
+  {% block articles %}
+      {{ content.field_featured_articles_articles|field_value }}
+  {% endblock %}
+{% endembed %}

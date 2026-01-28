@@ -1,0 +1,29 @@
+<ul class="menu mega-flyout">
+    <li>
+        <div class="row ">
+            <div class="medium-4 columns">
+                <div class="content-wrap">
+                    {{ image }}
+                    <div class="content">
+                        <h2>
+                            {{ headline }}
+                        </h2>
+                        <p>{{ description }}</p>
+                        <p>
+                            {{ button }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="medium-8 columns">
+                <ul class="two-col">
+                    {% for link in links %}
+                        <li>
+                            {{ link }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>

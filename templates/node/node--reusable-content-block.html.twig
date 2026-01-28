@@ -1,0 +1,7 @@
+{% embed "@organisms/reusable-block.twig" %}
+  {% set title = label %}
+  {% set hide_title = content.field_hide_title_from_display[0]["#markup"] %}
+  {% set body = content.body %}
+  {% set page = content.field_paragraph_ref %}
+{% endembed %}
+

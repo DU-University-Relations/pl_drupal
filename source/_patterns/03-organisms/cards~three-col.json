@@ -1,0 +1,88 @@
+{
+    "cards": [
+        {
+            "layout": "three_col",
+            "title": "Card Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "layout": "three_col",
+            "title": "Card Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "layout": "three_col",
+            "title": "Card Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "layout": "three_col",
+            "title": "Card Title Lorem Ipsum Dolor Sit Amet",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "layout": "three_col",
+            "title": "Card Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "layout": "three_col",
+            "title": "Card Title",
+            "type": "h4",
+            "cssClass": "",
+            "has_wrapper": true,
+            "src": "http://placehold.it/386x151",
+            "alt_text": "image text",
+            "list_of_links": false,
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        }
+    ]
+}

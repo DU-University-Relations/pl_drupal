@@ -1,0 +1,166 @@
+// Main grid layout.
+.gallery-grid {
+  display: grid;
+  margin-bottom: 8.0rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: .4rem .4rem;
+  @include breakpoint(medium up) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: .4rem 1.0rem;
+  }
+  @include breakpoint(large up) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 1.4rem 2.6rem;
+  }
+}
+
+// Grid elements.
+.content-gallery .gallery-grid a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: .1rem solid #ddd;
+  &:after {     //expanding arrows icon
+    content: '\f0b2';
+    font-family: $icon-font;
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: none;
+    width: 1em;
+    margin-right: .4rem;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1.8rem;
+    margin-left: 0.4rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    color: white;
+    text-shadow: $neutral-color-3 0 0 .5rem;
+    bottom: 1.2rem;
+    font-size: 2.5rem;
+    right: .9rem;
+  }
+  &:before {
+    // Only displays the overlay if the device has ability to hover.
+    @media (hover: hover) {
+      content: '';
+      display: block;
+      background: rgba($neutral-color-1, 0);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition-duration: 0.3s;
+    }
+  }
+  &:hover{
+    .grid-text {
+      color: white;
+    }
+    &::before {
+      background: rgba($neutral-color-1, 0.75);
+    }
+  }
+}
+
+// Large grid element override.
+.content-gallery .gallery-grid a:nth-child(1) {
+  @include breakpoint(medium up) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+}
+
+// Card title text
+.content-gallery .grid-text {
+  visibility: hidden;
+  color: transparent;
+  clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);
+  height: 1px;
+  width: 1px;
+  // Only displays the title text if the device has ability to hover.
+  @media (hover: hover) {
+    height: auto;
+    width: auto;
+    visibility: visible;
+    clip-path: none;
+    display: block;
+    position: absolute;
+    text-align: center;
+    font-family: $headline-font;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1.2;
+    text-decoration: none;
+    color: transparent;
+    padding: 1rem;
+  }
+  @include breakpoint(large up) {
+    font-size: 3rem;
+  }
+  a.btn {
+    margin-top: 1.8rem;
+  }
+}
+
+.content-gallery .gallery-grid > div {
+  display: none;
+}
+
+.ui-dialog .ui-dialog-title {
+  white-space: normal;
+}
+
+//Reset X button styles for gallery component modal
+.slick-slider-wrapper  .ui-dialog-titlebar {
+  button.ui-button {
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+    text-indent: initial;
+    font-size: 2.7rem;
+    overflow: hidden;
+    margin: -3.5rem .5rem 0 0;
+    border: none;
+    text-indent: .2rem;
+    &:before {
+      display: inline-block;
+      content: "\00d7";
+      position: relative;
+      top: -.5rem;
+      left: .3rem;
+    }
+    .ui-icon {
+      background-image: initial;
+    }
+  }
+  .ui-button:hover .ui-icon, .ui-button:focus .ui-icon {
+    background-image: initial;
+  }
+}
+
+.du-content-gallery-modal-form .slick-prev,
+.du-content-gallery-modal-form .slick-next {
+  &:hover, &:focus {
+    &:before {
+      opacity: 0.75 !important;
+      color: #fefefe;
+    }
+  }
+}
+
+.du-content-gallery-modal-form {
+  a.btn {
+    margin-top: 1.8rem;
+  }
+}

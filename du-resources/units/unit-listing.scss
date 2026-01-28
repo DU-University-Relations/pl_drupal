@@ -1,0 +1,50 @@
+.unit-site {
+  .generic-listing {
+    margin-bottom: 4rem;
+    padding: 0 1.8rem;
+    @include breakpoint(large up) {
+      padding: 0;
+    }
+    .page-info {
+      padding-top: 2.0rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: $neutral-color-2;
+      @include breakpoint(medium down) {
+        font-size: 1.4rem;
+        padding-top: .5rem;
+      }
+    }
+    .results-container {
+      @include flex-grid-row();
+      margin-bottom: 1.0rem;
+      width: 100%;
+      @include breakpoint(small down) {
+        margin-bottom: 0;
+      }
+    }
+    .results-item {
+      @include flex-grid-column(6);
+    }
+    .results-container.one-col .results-item {
+      @include flex-grid-column(12);
+    }
+    .listing-pager {
+      width: 100%;
+      padding-bottom: 5.4rem;
+    }
+    @include breakpoint(small down) {
+      .results-item {
+        @include flex-grid-column(12);
+      }
+    }
+    .empty-results {
+      padding: 2.0rem;
+    }
+    .no-results-found {
+      width: 100%;
+      text-align: center;
+      padding: 4.0rem 4.0rem 7.0rem 4.0rem;
+    }
+  }
+}

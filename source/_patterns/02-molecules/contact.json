@@ -1,0 +1,26 @@
+{
+  "contact": {
+    "src": "http://placehold.it/386x151",
+    "alt_text": "image text",
+    "title": "Name of Person or Department",
+    "type": "h4",
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    "phone": "1(303) 871_2000",
+    "email": "unit@du.edu",
+    "fax": "1(303) 871-2001",
+    "url": "www.du.edu",
+    "address": {
+      "address1": "2197 S. University Blvd.",
+      "address2": "",
+      "city": "Denver",
+      "state": "Colorado",
+      "postalcode": "80208"
+    },
+    "building": {
+      "name": "University Hall",
+      "longitude": "_104.961896",
+      "latitude": "39.676617"
+    }
+  }
+}

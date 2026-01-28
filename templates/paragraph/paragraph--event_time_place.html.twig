@@ -1,0 +1,11 @@
+{% embed "@atoms/event-time-place.twig" %}
+    {# Note: All date fields must have a formatter set to render as a unix timestamp ('U') #}
+    {% set start_date = content.field_event_time_start_date|field_value|render|date("F j") %}
+    {% set end_date = content.field_event_time_end_date|field_value|render|date("F j") %}
+    {% set start_time = content.field_event_time_start_date|field_value|render|date("g:ia") %}
+    {% set end_time = content.field_event_time_end_date|field_value|render|date("g:ia") %}
+    {# structured data time needs to be in iso-8601 #}
+    {% set start_time_schema = content.field_event_time_start_date|field_value|render|date("c") %}
+    {% set end_time_schema = content.field_event_time_end_date|field_value|render|date("c") %}
+    {% set location = content.field_event_time_location|field_value %}
+{% endembed %}

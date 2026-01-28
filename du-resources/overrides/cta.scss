@@ -1,0 +1,253 @@
+.cta-module {
+	padding: 3.2rem 1.7rem 4.8rem;
+	margin-top: 2.0rem;
+	margin-bottom: 4.0rem;
+	position: relative;
+	overflow: hidden;
+	color: $neutral-color-6;
+	@include breakpoint(medium up) {
+		margin-top: 3.0rem;
+		margin-bottom: 5.0rem;
+		padding-bottom: 5.4rem;
+		padding-top: 4.9rem;
+	}
+	@include breakpoint(large up) {
+		margin-top: 4.0rem;
+		margin-bottom: 6.0rem;
+		padding-bottom: 6.8rem;
+		padding-top: 6.4rem;
+	}
+	@include breakpoint(xlarge up) {
+		margin-top: 6.0rem;
+		margin-bottom: 8.0rem;
+	}
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+	}
+	&.cta-module--large {
+		padding: 8.1rem 0 10.3rem;
+		margin-bottom: 6.0rem;
+		@include breakpoint(medium up) {
+			padding-bottom: 13.9rem;
+			padding-top: 11.6rem;
+			margin-bottom: 8.0rem;
+			margin-top: 3.0rem;
+		}
+		@include breakpoint(large up) {
+			padding-top: 13.7rem;
+			padding-bottom: 16.1rem;
+		}
+		.content {
+			text-align: center;
+			position: relative;
+			padding: 2.2rem;
+			min-height: 13.2rem;
+			@include breakpoint(medium up) {
+				padding: 4.0rem;
+			}
+			h2 {
+				font-size: 2.8rem;
+				line-height: 3.2rem;
+
+				@include breakpoint(medium up) {
+					font-size: 3.8rem;
+					line-height: 4.2rem;
+				}
+				@include breakpoint(large up) {
+					font-size: 4.2rem;
+					margin-bottom: 1.8rem;
+				}
+				+ p {
+					padding-top: 1.8rem;
+					position: relative;
+					margin-bottom: 3.3rem;
+					@include breakpoint(medium up) {
+						margin-bottom: 1.0rem;
+					}
+					&:after {
+						content: "";
+						background-color: white;
+						width: 7.8rem;
+						height: .6rem;
+						position: absolute;
+						left: 50%;
+						margin-left: -3.9rem;
+						top: -.3rem;
+					}
+				}
+			}
+			.btn-wrap {
+				position: absolute;
+				bottom: -2.9rem;
+				left: 0;
+				right: 0;
+				top: auto;
+				margin-top: 0;
+				width: 100%;
+				.btn {
+					padding: 1.5rem 2.0rem;
+					min-width: 14.1rem;
+					margin-top: 0;
+				}
+			}
+		}// end .content
+	} // .cta-module--large
+	&--remove-btm-margin {
+		margin-bottom: 0 !important;
+	}
+	&--teal {
+		.content {
+			background-color: $accent-color-2b;
+		}
+	}
+	&--purple {
+		.content {
+			background-color: $accent-color-1b;
+		}
+	}
+	&--green {
+		.content {
+			background-color: $accent-color-3b;
+		}
+	}
+	&--gold {
+		.content {
+			background-color: $secondary-color-2;
+		}
+	}
+	&--black {
+		.content {
+			background-color: $neutral-color-1;
+		}
+	}
+	&[class*="overlay"] {
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+		> .row {
+			position: relative;
+			z-index: 1;
+		}
+	}
+	&--overlay-black {
+		&:before {
+			background-color: $neutral-color-2;
+			opacity: 0.5;
+			@include breakpoint(large up) {
+				background-color: $neutral-color-1;
+			}
+		}
+	}
+	&--overlay-teal {
+		&:before {
+			background-color: $accent-color-2b;
+			opacity: 0.75;
+		}
+		.content .btn-wrap .btn {
+			background-color: $link-accessibility-color-gold-light;
+			&:hover {
+				background-color: $link-accessibility-color-gold-dark;
+			}
+		}
+	}
+	&--overlay-purple {
+		&:before {
+			background-color: $accent-color-1a;
+			opacity: 0.75;
+		}
+	}
+	&--overlay-green {
+		&:before {
+			background-color: $accent-color-3a;
+			opacity: 0.75;
+		}
+	}
+	&--overlay-gold {
+		&:before {
+			background-color: $secondary-color-1;
+			opacity: 0.75;
+		}
+		.content .btn-wrap .btn{
+			background-color: $link-accessibility-color-teal-light;
+			&:hover {
+				background-color: $link-accessibility-color-teal-dark;
+			}
+		}
+	}
+	.content {
+		h2 {
+			color: white;
+			font-weight: 800;
+			text-align: center;
+			font-size: 3.0rem;
+			line-height: 3.4rem;
+			@include breakpoint(large up) {
+				font-size: 3.6rem;
+			}
+			+ p {
+				font-size: 1.6rem;
+				@include breakpoint(large up) {
+					font-size: inherit;
+				}
+			}
+		}
+		p {
+			text-align: center;
+		}
+		.btn-wrap {
+			margin-bottom: 0;
+			.btn {
+				display: inline-block;
+				padding: 1.5rem 2.0rem;
+				min-width: 155px;
+			}
+		}
+	} //end .content
+	> .row > .columns > .row {
+		align-items: center;
+	}
+	@include breakpoint(small down) {
+		@media screen and (max-width: 550px) {
+			&.cta-module--large {
+				.content {
+					padding: 2.2rem 1.0rem;
+					h2 {
+						font-size: 5vw;
+					}
+				}
+			}
+		}
+		.content {
+			h2 {
+				font-size: 2.4rem;
+				line-height: 2.6rem;
+					+ p {
+					font-size: 1.5rem;
+					line-height: 2.0rem;
+				}
+			}
+			.btn {
+				margin-top: 1.8rem;
+			}
+		}
+		> .row > .columns > .row > .columns {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}

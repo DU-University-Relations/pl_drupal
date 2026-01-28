@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+{% embed  "@molecules/elevate-course-item.twig" %}
+    {% set title = fields.title.content %}
+    {% set instance_title = fields.field_title.content %}
+    {% set instance_fee = fields.field_fee.content %}
+    {% set instance_start = fields.field_start_date.content %}
+    {% set instance_code = fields.field_elevate_code.content %}
+    {% set instance_id = fields.field_elevate_instance_id.content %}
+    {% set instance_summary = fields.field_summary_brief_1.content %}
+    {% set course_summary = fields.field_summary_brief.content %}
+    {% set course_program = fields.field_course_program.content %}
+    {% set node_link = fields.view_node.content %}
+{% endembed %}

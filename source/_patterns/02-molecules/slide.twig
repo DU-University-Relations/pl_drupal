@@ -1,0 +1,10 @@
+<li class="orbit-slide{% if is_active %} is-active{% endif %}">
+    <figure class="orbit-figure">
+        {{ slide_image }}
+        {% if caption %}
+            <figcaption class="orbit-caption">
+                        {{ caption|raw }}
+            </figcaption>
+        {% endif %}
+    </figure>
+</li>

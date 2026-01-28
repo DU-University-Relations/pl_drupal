@@ -1,0 +1,267 @@
+<div class="row">
+    <div class="columns small-12">
+        <h3 class="btm-divider">Contact</h3>
+    </div>
+</div>
+
+<div class="contact-single-module contact-single-module--{{ contact.color_theme }} buffer-on-inner-row" data-equalizer="contact-single-module__content" data-equalize-on="medium">
+    <div class="row medium-unstack">
+        <div class="contact-single-module_overlay contact-single-module_overlay--{{ contact.color_theme }} columns large-4 show-for-large" style="background-image: url('{{ contact.img_url }}')">
+            <div class="contact-single-module__content" data-equalizer-watch="contact-single-module__content">&nbsp;</div>
+        </div>
+        <div class="columns small-12 medium-6 large-4">
+            <div class="contact-single-module__content" data-equalizer-watch="contact-single-module__content">
+                <h3 class="btm-divider">{{ contact.title }}</h3>
+
+                {% if contact_single_show_media == 1 %}
+                <div class="hide-for-small-only">
+                    {% if ( contact.custom_social_header ) %}
+                        <h6>{{ contact.custom_social_header }}</h6>
+                    {% else %}
+                        <h6>Follow the {{ contact.title }}</h6>
+                    {% endif %}
+
+                    <ul class="menu social-media">
+                        {% if contact.facebook %}
+                            <li>
+                                <a href="{{ contact.facebook }}"
+                                {% if contact.facebook_alt_text %}title="{{ contact.facebook_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.facebook_target %}target="{{ contact.facebook_target|e('html_attr') }}"{% endif %}
+                                {% if contact.facebook_onclick %}onclick="{{ contact.facebook_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-facebook" aria-hidden="true"></span>
+                                    <span class="show-for-sr">Facebook"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.twitter %}
+                            <li>
+                                <a href="{{ contact.twitter }}"
+                                {% if contact.twitter_alt_text %}title="{{ contact.twitter_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.twitter_target %}target="{{ contact.twitter_target|e('html_attr') }}"{% endif %}
+                                {% if contact.twitter_onclick %}onclick="{{ contact.twitter_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-twitter" aria-hidden="true"></span>
+                                    <span class="show-for-sr">Twitter"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.instagram %}
+                            <li>
+                                <a href="{{ contact.instagram }}"
+                                {% if contact.instagram_alt_text %}title="{{ contact.instagram_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.instagram_target %}target="{{ contact.instagram_target|e('html_attr') }}"{% endif %}
+                                {% if contact.instagram_onclick %}onclick="{{ contact.instagram_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-instagram" aria-hidden="true"></span>
+                                    <span class="show-for-sr">Instagram"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.linkedin %}
+                            <li>
+                                <a href="{{ contact.linkedin }}"
+                                {% if contact.linkedin_alt_text %}title="{{ contact.linkedin_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.linkedin_target %}target="{{ contact.linkedin_target|e('html_attr') }}"{% endif %}
+                                {% if contact.linkedin_onclick %}onclick="{{ contact.linkedin_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-linkedin" aria-hidden="true"></span>
+                                    <span class="show-for-sr">LinkedIn"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.snapchat %}
+                            <li>
+                                <a href="{{ contact.snapchat }}"
+                                {% if contact.snapchat_alt_text %}title="{{ contact.snapchat_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.snapchat_target %}target="{{ contact.snapchat_target|e('html_attr') }}"{% endif %}
+                                {% if contact.snapchat_onclick %}onclick="{{ contact.snapchat_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-snapchat" aria-hidden="true"></span>
+                                    <span class="show-for-sr">SnapChat"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.youtube %}
+                            <li>
+                                <a href="{{ contact.youtube }}"
+                                {% if contact.youtube_alt_text %}title="{{ contact.youtube_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.youtube_target %}target="{{ contact.youtube_target|e('html_attr') }}"{% endif %}
+                                {% if contact.youtube_onclick %}onclick="{{ contact.youtube_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-youtube" aria-hidden="true"></span>
+                                    <span class="show-for-sr">YouTube"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.zeemee %}
+                            <li>
+                                <a href="{{ contact.zeemee }}"
+                                   {% if contact.zeemee_alt_text %}title="{{ contact.zeemee_alt_text|e('html_attr') }}"{% endif %}
+                                        {% if contact.zeemee_target %}target="{{ contact.zeemee_target|e('html_attr') }}"{% endif %}
+                                        {% if contact.zeemee_onclick %}onclick="{{ contact.zeemee_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-zeemee" aria-hidden="true"></span>
+                                    <span class="show-for-sr">ZeeMee"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="columns small-12 medium-6 large-4">
+            <div class="contact-single-module__content" data-equalizer-watch="contact-single-module__content">
+                <ul class="contact-list">
+                    {% if contact.email %}
+                        <li>
+                            <div class="contact-list__media"><span class="icon-du-mail-alt" aria-hidden="true"></span>
+                            </div>
+                            <a href="mailto:{{ contact.email }}" title="Contact Email">{{ contact.email }}</a></li>
+                    {% endif %}
+                    {% if contact.phone %}
+                        <li class="show-for-small-only">
+                            <div class="contact-list__media"><span class="icon-du-phone" aria-hidden="true"></span>
+                            </div>
+                            <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></li>
+                        <li class="hide-for-small-only non-link">
+                            <div class="contact-list__media"><span class="icon-du-phone" aria-hidden="true"></span>
+                            </div><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></li>
+                    {% endif %}
+                    {% if contact.fax %}
+                        <li class="show-for-small-only">
+                            <div class="contact-list__media"><span class="icon-du-fax" aria-hidden="true"></span></div>
+                            <a href="fax:{{ contact.fax }}">{{ contact.fax }}</a></li>
+                        <li class="hide-for-small-only non-link">
+                            <div class="contact-list__media"><span class="icon-du-fax" aria-hidden="true"></span>
+                            </div> {{ contact.fax }}</li>
+                    {% endif %}
+                    {% if contact.url %}
+                        <li>
+                            <div class="contact-list__media">
+                                <span class="icon-du-link-ext-alt" aria-hidden="true"></span></div>
+                            <a href="{{ contact.url }}"
+                                {% if contact.alt_text %}title="{{ contact.alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.target %}target="{{ contact.target|e('html_attr') }}"{% endif %}
+                                {% if contact.onclick %}onclick="{{ contact.onclick|e('html_attr') }}"{% endif %}>
+                            {{ contact.url_text }}</a>
+                        </li>
+                    {% endif %}
+                    {% if ( contact.building ) or ( contact.address1 ) %}
+                        <li>
+                            <div class="contact-list__media"><span class="icon-du-location" aria-hidden="true"></span>
+                            </div>
+                            {% if contact.address1 %}
+                                <a href="https://www.google.com/maps/place/{{ contact.address1|render|replace({' ': '+'}) }}+{{ contact.city }}+{{ contact.state }}+{{ contact.postalcode }}" {% if contact.building %} title="{{ contact.building }}"{% endif %} target="_blank">
+                                    {% if contact.building %}
+                                        {{ contact.building }} <br />
+                                    {% endif %}
+
+                                    {% if contact.address1 %}
+                                        {{ contact.address1 }} <br />
+                                    {% endif %}
+                                    {{ contact.city }}, {{ contact.state }} {{ contact.postalcode }}
+                                </a>
+                            {% else %}
+                                {{ contact.building }}
+                            {% endif %}
+                        </li>
+                    {% endif %}
+
+                    {% if contact.hours %}
+                        <li>
+                            <div class="contact-list__media"><span class="icon-du-clock" aria-hidden="true"></span></div>
+                                {% for hours_item in contact.hours %}
+                                    {{ hours_item }}<br/>
+                                {% endfor %}
+
+                        </li>
+                    {% endif %}
+                </ul>
+                {% if contact_single_show_media == 1 %}
+                <div class="show-for-small-only">
+                    {% if contact.custom_social_header %}
+                        <h6>{{ contact.custom_social_header }}</h6>
+                    {% else %}
+                        <h6>Follow the {{ contact.title }}</h6>
+                    {% endif %}
+
+                    <ul class="menu social-media">
+                        {% if contact.facebook %}
+                            <li>
+                                <a href="{{ contact.facebook }}"
+                                {% if contact.facebook_alt_text %}title="{{ contact.facebook_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.facebook_target %}target="{{ contact.facebook_target|e('html_attr') }}"{% endif %}
+                                {% if contact.facebook_onclick %}onclick="{{ contact.facebook_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-facebook" aria-hidden="true"></span>
+                                    <span class="show-for-sr">Facebook"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.twitter %}
+                            <li>
+                                <a href="{{ contact.twitter }}"
+                                {% if contact.twitter_alt_text %}title="{{ contact.twitter_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.twitter_target %}target="{{ contact.twitter_target|e('html_attr') }}"{% endif %}
+                                {% if contact.twitter_onclick %}onclick="{{ contact.twitter_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-twitter" aria-hidden="true"></span>
+                                    <span class="show-for-sr">Twitter"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.instagram %}
+                            <li>
+                                <a href="{{ contact.instagram }}"
+                                {% if contact.instagram_alt_text %}title="{{ contact.instagram_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.instagram_target %}target="{{ contact.instagram_target|e('html_attr') }}"{% endif %}
+                                {% if contact.instagram_onclick %}onclick="{{ contact.instagram_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-instagram" aria-hidden="true"></span>
+                                    <span class="show-for-sr">Instagram"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.linkedin %}
+                            <li>
+                                <a href="{{ contact.linkedin }}"
+                                {% if contact.linkedin_alt_text %}title="{{ contact.linkedin_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.linkedin_target %}target="{{ contact.linkedin_target|e('html_attr') }}"{% endif %}
+                                {% if contact.linkedin_onclick %}onclick="{{ contact.linkedin_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-linkedin" aria-hidden="true"></span>
+                                    <span class="show-for-sr">LinkedIn"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.snapchat %}
+                            <li>
+                                <a href="{{ contact.snapchat }}"
+                                {% if contact.snapchat_alt_text %}title="{{ contact.snapchat_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.snapchat_target %}target="{{ contact.snapchat_target|e('html_attr') }}"{% endif %}
+                                {% if contact.snapchat_onclick %}onclick="{{ contact.snapchat_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-snapchat" aria-hidden="true"></span>
+                                    <span class="show-for-sr">SnapChat"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.youtube %}
+                            <li>
+                                <a href="{{ contact.youtube }}"
+                                {% if contact.youtube_alt_text %}title="{{ contact.youtube_alt_text|e('html_attr') }}"{% endif %}
+                                {% if contact.youtube_target %}target="{{ contact.youtube_target|e('html_attr') }}"{% endif %}
+                                {% if contact.youtube_onclick %}onclick="{{ contact.youtube_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-youtube" aria-hidden="true"></span>
+                                    <span class="show-for-sr">YouTube"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if contact.zeemee %}
+                            <li>
+                                <a href="{{ contact.zeemee }}"
+                                   {% if contact.zeemee_alt_text %}title="{{ contact.zeemee_alt_text|e('html_attr') }}"{% endif %}
+                                        {% if contact.zeemee_target %}target="{{ contact.zeemee_target|e('html_attr') }}"{% endif %}
+                                        {% if contact.zeemee_onclick %}onclick="{{ contact.zeemee_onclick|e('html_attr') }}"{% endif %}>
+                                    <span class="icon-du-zeemee" aria-hidden="true"></span>
+                                    <span class="show-for-sr">ZeeMee"</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

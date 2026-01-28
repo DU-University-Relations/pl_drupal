@@ -1,0 +1,105 @@
+@media screen {
+  .two-column-copy {
+    margin-bottom: 3.2rem;
+    @include breakpoint(small down) {
+      margin-bottom: .6rem;
+    }
+    .columns {
+      margin-bottom: 6.6rem;
+      @include breakpoint(medium) {
+        &:first-child {
+          padding-right: 2.5rem
+        }
+        + .columns {
+          padding-left: 2.5rem;
+        }
+      }
+    }
+    @include breakpoint(small down) {
+      .two-col {
+        column-count: 1;
+      }
+    }
+
+
+    // --List styles--: link and icon -- in two col component
+
+    @include breakpoint(small down) {
+      .columns ~ .columns > *:first-child:not(h4):not(p):not(.responsive-embed):not(.accordion) {  // when 2-col collapses for mobile to 1-col there should be no gap between the cols
+        margin-top: -5.8rem;
+      }
+
+      .columns:first-of-type *:last-child:not(ul) { //sepearte the two columns on collapse to 1, unless it is an <ul>
+        margin-bottom: 0;
+      }
+
+      .columns ~ .columns > p:first-child{  // when 2-col collapses for mobile to 1-col paragraphs need a little more room on top
+        margin-top: -2.5rem;
+      }
+
+      .columns:nth-of-type(1) > ul:last-child	{
+        margin-bottom: -.9rem !important;
+      }
+    }
+
+    h2, h3 { margin-top: 3.0rem; }
+
+    ul:not(.list-of-links--alt) + ul li:nth-of-type(1) { // remove the top border on the adjacent next list
+      border-top: none;
+    }
+
+    ul.normal + ul.icon-list, ul.normal + ul.list-of-links {  // when bullet list is used-- give space to sibling if is list
+      margin-top: 3.0rem;
+      li:first-of-type {
+        border-top: 1px solid $neutral-color-4;
+      }
+    }
+    ul.normal + ul.list-of-links--alt {// when bullet list is used-- give space to sibling if is alt/button list type
+      margin-top: 3.0rem;
+    }
+
+    p + ul { margin-top: 3.0rem; } // add margin to adjacent unlike types
+    a + p, a + ul { margin-top: 2.5rem; }
+
+    .cta-inline-module, .cta-inline-module + p { margin-top: 3.0rem; } // give margin to button
+    .cta-inline-module + ul { margin-top: 4.0rem; }
+    .list-of-links--alt { margin-bottom: 4.5rem; }  // give margin to button type list style
+
+
+    ul.two-col li {  // when there is a 2 col list -correctly give each item a border top
+      border-top: .1rem solid $neutral-color-4;
+      margin-top: -.1rem;
+    }
+    .normal.two-col li { border-top: none; }
+
+    .columns ul + ul {
+      margin-top: -1.9rem;  // if 2 lists are used in the same col they should flow together
+    }
+    .columns:nth-of-type(1) > *:last-child:not(.icon-list):not(.list-of-links):not(p) { // if the last item of the first col is not a list add margin to its bottom
+      margin-bottom: 5.0rem;
+    }
+
+    .list-of-links ~ *:not(.icon-list):not(.list-of-links), .icon-list ~ *:not(.icon-list):not(.list-of-links):not(.normal) {  // if the adjacent sibling of a list is not a list add margin
+      margin-top: 3.0rem;
+    }
+    ul.accordion + ul:not(.accordion), .list-of-links.two-col + .icon-list {
+      margin-top: 3.5rem;
+      li:first-of-type  {
+        border-top: .1rem solid $neutral-color-4;
+      }
+    }
+
+    .list-of-links--alt.two-col li {
+      border-top: none;
+      padding: 1.5rem 0;
+    }
+
+    ul.icon-list + ul.list-of-links.two-col {
+      margin-top: 4.0rem;
+      li:first-of-type {
+        border-top: .1rem solid $neutral-color-4;
+      }
+    }
+  } // end 2 col
+} // end @ screen
+//#toolbar-administration {display:none}

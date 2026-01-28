@@ -1,0 +1,192 @@
+.elevate-cards-item {
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  @media(max-width:480px) {
+    margin-bottom: 0.9rem;
+  }
+}
+.elevate-cards-holder {
+  position: relative;
+  &:after {
+    content: '';
+    display: inline-block;
+    border-bottom: 2.8rem solid #fff;
+    border-left: 2.8rem solid transparent;
+    border-right: 2.8rem solid transparent;
+    position: absolute;
+    bottom: -4.0rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .elevate-cards-content {
+    text-decoration: none;
+    display: block;
+    min-height: 32.0rem;
+    background-color: #ffffff;
+    position: relative;
+    border-top: .6rem solid $accent-color-2b;
+    transition: border 0.3s ease;
+    padding: 1.1rem 1.7rem 1.7rem;
+    margin-bottom: 1.7rem;
+    @media(max-width: 480px) {
+      min-height: 16.5rem;
+    }
+    .elevate-cards-title {
+      h2 {
+        font-family: $headline-font;
+        font-size: 2.6rem;
+        line-height: 3rem;
+        font-weight: 800;
+        transition: color 0.3s ease;
+        overflow-wrap: break-word;
+        margin: 0;
+        .card-list-item--open & {
+          color: $primary-color-3;
+        }
+      }
+      div {
+        color: $neutral-color-8;
+      }
+    }
+    .elevate-cards-middle {
+      color: $neutral-color-1;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      margin-top: 1.8rem;
+      @media(max-width:480px) {
+
+      }
+    }
+    .elevate-cards-bottom {
+      position: absolute;
+      bottom: 2.0rem;
+      left: 1.7rem;
+      font-size: 1.6rem;
+      color: $neutral-color-3;
+      @media(max-width:480px) {
+        position: relative;
+        bottom: 0;
+        left: 0;
+      }
+      .course-date {
+        padding-left: 0.9rem;
+      }
+    }
+    .more-button {
+      border: .2rem solid #b1b1b1;
+      position: absolute;
+      width: 3.0rem;
+      height: 3.0rem;
+      line-height: 2.5rem;
+      bottom: 1.7rem;
+      right: 1.7rem;
+      cursor: pointer;
+      transition: border 0.3s ease;
+      font-size: 2.5rem;
+      border-radius: 1.6rem;
+      text-align: center;
+      .card-list-item--open & {
+        border-color: $primary-color-3;
+      }
+      span {
+        color: #b1b1b1;
+        font-weight: 800;
+        transition: color 0.3s ease;
+        .card-list-item--open & {
+          color: $primary-color-3;
+        }
+        &:before {
+          width: auto;
+        }
+      }
+    }
+    .columns &:hover {
+      cursor: pointer;
+      border-color: $primary-color-3;
+      .elevate-cards-title h2 {
+        color: $primary-color-3;
+      }
+      .more-button {
+        border-color: $primary-color-3;
+        span {
+          color: $primary-color-3;
+        }
+      }
+    }
+  }
+}
+
+.elevate-cards {
+  background: #f4f4f4;
+  margin-top: 7.2rem;
+  margin-bottom: 3.8rem;
+  @include breakpoint(medium up) {
+    margin-bottom: 6.0rem;
+  }
+  > .row {
+    margin-top: 7.2rem;
+    padding-bottom: 3.0rem;
+    position: relative;
+    top: -3.0rem;
+    @include flex-grid-row();
+    @include breakpoint(medium down) {
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+    }
+    @media (max-width: 480px) {
+      padding-left: .9rem;
+      padding-right: .9rem;
+    }
+    > .columns {
+      float: left;
+      flex: auto;
+      @include flex-grid-column(12);
+      @include breakpoint(medium up) {
+        @include flex-grid-column(6);
+      }
+      @include breakpoint(large up) {
+        @include flex-grid-column(3);
+      }
+    }
+  }
+}
+.elevate-cards-list {
+  form {
+    width: 100%;
+    padding: 2.4rem 2.2rem 2.3rem 2.2rem;
+    @include flex-grid-row();
+  }
+  .form-item {
+    @include flex-grid-column(12);
+    @include breakpoint(medium up) {
+      @include flex-grid-column(6);
+    }
+    @include breakpoint(large up) {
+      @include flex-grid-column(3);
+    }
+  }
+  label {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: $primary-font;
+    margin-bottom: .3rem;
+  }
+}
+
+// Temporarily hide Elevate updates on CPD.
+.professional-development {
+  .elevate-cards-holder {
+    .elevate-cards-title {
+      h2 {
+        line-height: 3.4rem;
+      }
+    }
+    .elevate-cards-middle {
+      display: none;
+    }
+  }
+}

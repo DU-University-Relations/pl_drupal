@@ -1,0 +1,7 @@
+<div class="shared-content-block">
+    {% block shared_content %}
+        {% for shared in shared_content %}
+            {% include "@molecules/shared-content.twig" with shared %}
+        {% endfor %}
+    {% endblock %}
+</div>

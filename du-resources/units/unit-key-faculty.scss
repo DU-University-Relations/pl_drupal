@@ -1,0 +1,34 @@
+
+.row-key-faculty .full-background:before {
+  top: 1.3rem !important;
+  left: 50%;
+  margin-left: -50%;
+}
+
+.row-key-faculty.small-up-1 {
+  min-height: 22.0rem;
+  @include breakpoint(large up) {
+    min-height: 14.0rem;
+  }
+}
+
+.key-faculty .rank span {
+  display: block;
+}
+
+.key-faculty .name {
+  white-space: inherit;
+}
+
+div.faculty-profile-container {
+  text-align: center;
+  .information {
+    padding-left: 0;
+  }
+  @include breakpoint(medium up) {
+    text-align: left;
+    .information {
+      padding-left: 10%;
+    }
+  }
+}

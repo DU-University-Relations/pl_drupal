@@ -1,0 +1,263 @@
+@media screen {
+
+  .cards-module {
+    background-color: #f4f4f4;
+    margin-bottom: 8.5rem;
+    @include breakpoint(large up) {
+      margin-bottom: 14rem;
+    }
+    &--has-icons {
+      .cards-module__content {
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 7.4rem;
+          background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+          display: none;
+          @include breakpoint(large up) {
+            display: block;
+          }
+        }
+        .img-wrapper {
+          margin-top: 3rem;
+          img {
+            width: 8rem;
+            height: 8rem;
+            margin: 0 auto 3rem auto;
+            display: block;
+          }
+        }
+      }
+    }
+    > .row {
+      margin-top: 5rem;
+      padding-bottom: 3rem;
+      position: relative;
+      top: -3rem;
+      flex-basis: 100%;
+    }
+    .cards-module__content {
+      background-color: white;
+      padding: 0 3rem;
+      margin-bottom: 1.8rem;
+      border: .1rem solid #eeeeee;
+      p {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+        @include breakpoint(large up) {
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+      ul {
+        li {
+          font-size: 1.6rem !important;
+        }
+      }
+      .card-img-wrapper {
+        margin-left: -3rem;
+        margin-right: -3rem;
+        margin-bottom: 2.4rem;
+        display: none;
+        @include breakpoint(large up) {
+          display: block;
+        }
+        div {
+          max-height: 15rem;
+          overflow: hidden;
+        }
+      }
+      //img[src^="https://embed.widencdn.net"] { margin-top: -10% }  //center widen images vertically
+      //img[height="151"] { margin-top: 0 !important; width: initial; max-width: initial } //  unless is 151px then keep as is
+      img {
+        width: 100%;
+      }
+      h4 {
+        font-weight: 800;
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+        @include breakpoint(medium) {
+          font-size: 2.4rem;
+        }
+      }
+      .btn {
+        display: inline-block;
+        font-size: 1.6rem;
+        padding: 1.2rem 2.5rem;
+        margin-bottom: 4rem;
+      }
+    } //end .cards-module__content
+    .video-responsive{
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+    .video-responsive iframe{
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+    .cards-module--has-icons {
+      img {
+        width: 8rem;
+        height: 8rem;
+        margin: 0 auto 3rem auto;
+        display: block;
+      }
+    }
+    @include breakpoint(medium down) {
+      > .row > .columns:first-child .cards-module__content {
+        border-top: .2rem solid $neutral-color-4;
+        &.expanded {
+          border-top: .5rem solid #d4c092;
+          margin-top: 0;
+        }
+      }
+      .cards-module__content {
+        .js & {
+          padding: 1rem 1.4rem;
+          margin-bottom: 0;
+          border-width: 0 0 .2rem 0;
+          border-style: solid;
+          border-color: $neutral-color-4;
+          &.expanded {
+            border-width: .5rem 0;
+            border-color: #d4c092;
+            margin-top: -.2rem;
+            > h4 {
+              + .cards-module__hidden-on-small {
+                max-height: 150rem;
+              }
+            }
+          }
+          > h4 {
+            font-size: 2.4rem;
+            display: block;
+            padding-top: 1rem;
+            padding-right: 3rem;
+            position: relative;
+            cursor: pointer;
+            + .cards-module__hidden-on-small {
+              max-height: 0;
+              overflow: hidden;
+              transition: max-height 0.5s ease;
+            }
+          }
+        }
+        .img-wrapper {
+          display: none;
+        }
+      }
+      .cards-module__content.has-plus-minus {
+        .js & {
+          &.expanded {
+            > h4 {
+              &:after {
+                content: '\e808';
+              }
+            }
+          }
+          > h4 {
+            &:after {
+              content: "\e809";
+              font-family: $icon-font;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              margin-top: -.9rem;
+            }
+          }
+        }
+      }
+    }
+    &.two-up {
+      .row {
+        .columns {
+          &:first-child {
+            .cards-module__content {
+              background-color: $accent-color-2b;
+              &:before {
+                background: none;
+              }
+              h3 {
+                padding-top: 13rem;
+                color: $neutral-color-6;
+                @include breakpoint(medium down) {
+                  padding-top: 3rem;
+                }
+                &:after {
+                  background-color: $neutral-color-6;
+                }
+                @media screen and (min-width: 768px) and (max-width: 860px) {
+                  font-size: 2.7rem;
+                }
+                @media screen and (max-width: 767px) {
+                  padding-top: 1.5rem;
+                  font-size: 2.8rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .Center-card-alignment {
+      justify-content: center;
+    }
+    .Right-card-alignment {
+      justify-content: flex-end;
+    }
+    .Left-card-alignment {
+      justify-content: flex-start;
+    }
+  }// end .cards-module
+}// end @media screen
+
+// the below media query is targeting the ritchieschool.du.edu
+@media screen and (max-width: 767px) {
+  body.du-home.unit-site  #main-content > div.cards-module.buffer-on-inner-row > div > div div {
+    > div.expanded {  // remove expanded styles
+      border-color: $neutral-color-4;
+      margin-top: initial;
+      border-top: .2rem solid $neutral-color-4;
+      border-width: 0 0 .2rem 0;
+      cursor: default;
+    }
+    > h4 {
+      cursor: default; //remove pointer
+      &:after {
+        user-select: none;
+      }
+    }
+  }
+  // reset the border on the first top item
+  body.du-home.unit-site  #main-content > div.cards-module.buffer-on-inner-row > div > div:nth-child(1) > div > div.expanded {
+    border-top: .2rem solid $neutral-color-4;
+  }
+}// end @media
+
+//below is for fix to du.edu/admission-aid/financial-aid-scholarships/undergraduate-financial-aid/price-and-affordability
+@include breakpoint(small) {
+  .cards-module ~ div.row.two-column-copy > div > h4 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: $neutral-color-3;
+  }
+}
+@include breakpoint(medium) {
+  .cards-module ~ div.row.two-column-copy > div > h4 {
+    font-size: 1.8rem;
+  }
+}
+@include breakpoint(large) {
+  .cards-module ~ div.row.two-column-copy > div > h4 {
+    font-size: 2.2rem;
+  }
+}

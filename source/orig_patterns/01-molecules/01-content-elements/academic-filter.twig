@@ -1,0 +1,80 @@
+<div class="columns small-12">
+	<div class="filter-box">
+  	  {% for button_item in button %}
+  	    {% include "@atoms/button.twig" with button_item %}
+  	  {% endfor %}
+	</div>
+  <div class="row">
+      <div id="index-info-box" data-toggler=".open">
+          <div class="index-info-box__wrapper row">
+              <div class="medium-6 columns">
+                  <dl class="index-list">
+                      <dt>MAJORS</dt>
+                      <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consequuntur culpa doloremque esse eum in iste labore, quasi repellendus repudiandae vero.</dd>
+                      <dt>MINORS</dt>
+                      <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis ducimus earum facilis magni modi nulla, optio, perspiciatis quaerat quis vero voluptatibus?</dd>
+                      <dt>DUAL-DEGREES</dt>
+                      <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut dignissimos doloribus eaque earum eligendi est illo, minima nam odit pariatur quaerat quam quia reiciendis repellendus sequi veritatis! Beatae consequatur, officiis quidem repellendus sed sit.</dd>
+                  </dl>
+              </div>
+              <div class="small-12 medium-6 columns">
+                  <dl class="index-list--horizontal">
+                      <dt>BA</dt>
+                      <dd>Bachelor of Arts</dd>
+                      <dt>BS</dt>
+                      <dd>Bachelor of Science</dd>
+                      <dt>BFA</dt>
+                      <dd>Bachelor of Fine Arts</dd>
+                      <dt>BM</dt>
+                      <dd>Bachelor of Music</dd>
+                      <dt>BSAcc</dt>
+                      <dd>Bachelor of Science in Accounting</dd>
+                      <dt>BSBA</dt>
+                      <dd>Bachelor of Science in Business Administration</dd>
+                      <dt>BSCpE</dt>
+                      <dd>Bachelor of Science in Computer Engineering</dd>
+                      <dt>BSEE</dt>
+                      <dd>Bachelor of Science in Electronic Engineering</dd>
+                  </dl>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+	<div class="row align-middle">
+	  <div class="small-12 medium-7 large-9 columns">
+			{% include "@atoms/alphabet-filter.twig" %}
+			{% include "@atoms/school-program-filter.twig" %}
+		</div>
+		<div class="small-12 medium-5 large-3 columns">
+			<div class="az-school-switch">
+				{% include "@atoms/switch-box.twig" %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/html" id="letterTemplate">
+    <div class="columns ap-item ap-letter" data-filter-name="__LETTER__">
+        <div class="cards-program__holder">
+            <div class="cards-program__content">
+                <div class="cards-module__program-title">
+                    <h2>__LETTER__</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="schoolTemplate">
+    <div class="columns ap-item ap-school"  data-filter-school="__SCHOOL_ABBR__">
+        <div class="cards-program__holder">
+            <div class="cards-program__content">
+                <div class="cards-module__program-title">
+                    <h2>__SCHOOL__</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

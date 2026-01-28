@@ -1,0 +1,9 @@
+{
+  "search_box": {
+    "placeholder": "Search",
+    "altClass": "",
+    "includeForm": "true",
+    "action": "#",
+    "method": "get"
+  }
+}

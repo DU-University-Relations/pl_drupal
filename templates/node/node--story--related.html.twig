@@ -1,0 +1,25 @@
+{% embed  "@molecules/related-story.twig" %}
+
+    {# need to "render" to reload cache on change #}
+    {% set catch_cache = content.field_story_image|render %}
+    {% set catch_cache = content.field_link|render %}
+
+    {# set story variables for use in PL template #}
+    {% set story = {
+        "src": content.field_story_image,
+        "alt_text": content.field_story_image|field_raw('alt'),
+        "title": node.label,
+        "type": "h4",
+        "text":  render_var(content.body|field_value),
+        "read_more": content.field_link.0['#title'],
+        "story_url": content.field_link.0['#url'],
+        "link_target": content.field_link.0['#options']['attributes']['target'],
+        "link_title": content.field_link.0['#options']['attributes']['title'],
+        "link_onclick": content.field_link.0['#options']['attributes']['onClick']
+    } %}
+
+{% endembed %}
+
+
+
+

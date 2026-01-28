@@ -1,0 +1,13 @@
+<div class="row du-home__section-1">
+    <div class="columns small-12">
+        {% if headline %}
+            {% include "@atoms/headline.twig" with {'title':headline, 'type':headline_type, 'cssClass':'btm-divider text-center'} %}
+        {% endif %}
+    </div>
+    <div class="columns small-12 order-1 medium-order-2 medium-8 large-7">
+        {% include "@atoms/paragraph.twig" with {'text':statement} %}
+    </div>
+    <div class="columns small-12 order-2 medium-order-1 medium-4">
+        {{ links }}
+    </div>
+</div>

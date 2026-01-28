@@ -1,0 +1,151 @@
+@media screen {
+  .related-stories-module {
+    margin-bottom: 6.0rem;
+    position: relative;
+    &:before {
+      content: "";
+      background-color: #f4f4f4;
+      height: 28.5rem;
+      position: absolute;
+      bottom: 15.0rem;
+      left: 0;
+      right: 0;
+      z-index: -1;
+      @include breakpoint(medium down) {
+        bottom: 10.0rem;
+      }
+    }
+    .slick-dots {
+      padding-bottom: 2.5rem;
+      button {
+        vertical-align: -webkit-baseline-middle;
+      }
+    }
+    .related-stories-image {
+      overflow: hidden;
+      @include breakpoint(medium up) {
+        height: 45.0rem;
+      }
+      > div {
+        height: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    article {
+      display: none;
+    }
+    @include breakpoint(medium) {
+      .orbit-container,
+      .slider-container {
+        height: auto;
+        margin: 0 auto;
+      }
+      .related-stories-module__story {
+        .related-stories-image {
+          @include breakpoint(medium down) {
+            height: 26.0rem;
+            overflow: hidden;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    @include breakpoint(small down) {
+      &.buffer-on-inner-row > .row {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .related-stories-module__story {
+        img {
+          width: 100%;
+        }
+      }
+      .orbit-slide,
+      .slide {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    @include breakpoint(small up) {
+      .orbit-slide,
+      .slide {
+        position: relative;
+      }
+    }
+  }
+  .related-stories-module__story__content {
+    bottom: 5.0rem;
+    margin-left: 16%;
+    position: relative;
+    @include breakpoint(medium down) {
+      margin-left: 10%;
+    }
+    @include breakpoint(small down) {
+      margin-left: 1.0rem;
+    }
+    > a {
+      background-color: $accent-color-1b;
+      color: white;
+      display: block;
+      text-decoration: none;
+      padding: 4.0rem 3.5rem;
+      @include breakpoint(large) {
+        min-height: 28.5rem;
+      }
+      @include breakpoint(medium down) {
+        padding: 2.7rem 2.0rem;
+      }
+      h4 {
+        color: white;
+        font-weight: bold;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        @include breakpoint(medium down) {
+          font-size: 2.2rem;
+          line-height: 2.6rem;
+        }
+      }
+      .read-more {
+        font-weight: bold;
+        font-family: $cta-font;
+        margin-bottom: 0;
+        @include breakpoint(medium down) {
+          font-size: 1.6rem;
+        }
+      }
+      p {
+        font-size: 1.8rem;
+        line-height: 2.8rem;
+        @include breakpoint(medium down) {
+          font-size: 1.5rem;
+          line-height: 2.2rem;
+        }
+      }
+      &:hover,
+      &:focus {
+        background-color: $accent-color-1a;
+        .read-more {
+          text-decoration: underline;
+        }
+      }
+    }
+    .feature-media {
+      display: none;
+    }
+    .story-highlight {
+      font-weight: bold;
+    }
+  }// end .related-stories-module__story__content
+} // end @media screen
+@include breakpoint(medium up) {  //change to only orbit slide carousel that are tiles/cards on med-large screens
+  #uniqueRelatedStoriesID > div.orbit-container,
+  #uniqueRelatedStoriesID > div.slider-container {
+    height: initial !important;  // fix issue with text cut-off after resize
+  }
+}

@@ -1,0 +1,68 @@
+{% set slides = content.field_testimonials_spotlight|field_value %}
+
+<div class="quotes-module__wrapper">
+  <div class="row row--expanded quotes-module">
+    <div class="columns small-12">
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="data-orbit" data-auto-play="false">
+        <div class="orbit-container">
+          {% for slides_item in slides %}
+
+            {% set text = slides_item['#node'].field_copy[0].value|striptags %}
+            {% set image_url = slides_item['#node'].field_media_image.entity.uri.value %}
+            {% set alt_text = slides_item['#node'].field_media_image.title.value %}
+            {% set src = file_url(image_url) %}
+            {% set cite_name = slides_item['#node'].field_name[0].value %}
+            {% set cite_caption = slides_item['#node'].field_attribution[0].value %}
+
+            <div class="{% if is_active %}is-active {% endif %}orbit-slide">
+              <div class="row">
+                <div class="columns small-12 medium-9">
+                  <div class="quotes-module__content">
+                    <blockquote>
+                      <p>{{ text }}</p>
+                      {%  if cite_caption or cite_name %}
+                      <cite>{{ cite_name }}
+                        {%  if cite_caption %}
+                          <small>{{ cite_caption }}</small>
+                        {% endif %}
+                      </cite>
+                      {% endif %}
+                    </blockquote>
+                  </div>
+                </div>
+                <div class="columns small-12 medium-3 hide-for-small-only">
+                  {% if image_url is not empty %}
+                    <div class="quotes-module__image">
+                      {% if has_wrapper %}
+                      <div class="img-wrapper">
+                        {% endif %}
+                        <img src="{{ src|raw }}" alt="{{ alt_text|raw }}" class="{% if homeCssClass %}{{ homeCssClass }}{% endif %} {% if cssClass %}{{ cssClass }}{% endif %}"/>
+                        {% if has_content %}
+                          <div class="img-wrapper__content">
+                            {{ has_content.text|raw }}
+                          </div>
+                        {% endif %}
+                        {% if has_wrapper %}
+                      </div>
+                      {% endif %}
+
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <nav class="orbit-bullets">
+          <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+          {% if slides|length > 1 %}
+            {% set item_num = slides|length %}
+            {% for i in 1..item_num - 1%}
+            <button data-slide="{{ i }}"><span class="show-for-sr">Second slide details.</span></button>
+            {% endfor %}
+          {% endif %}
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

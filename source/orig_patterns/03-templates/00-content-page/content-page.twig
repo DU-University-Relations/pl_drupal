@@ -1,0 +1,172 @@
+{% include "@organisms/push-menu.twig" %}
+
+<div class="off-canvas-content" id="off-canvas-content" data-off-canvas-content>
+
+	{#{% include "@organisms/header.twig" %}#}
+	
+	<article id="main-content" role="main">
+		
+		<div class="row">
+			<div class="columns large-offset-4 large-8 pull-up page-title-band">
+				{% if page_title %}
+				  {% include "@atoms/headline.twig" %}
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+            <div class="columns small-12 large-3 pull-up">
+                {% if sub_menu %}
+                    {% include "@molecules/sub-nav.twig" %}
+                {% endif %}
+            </div>
+            <div class="columns small-12 large-8 large-offset-1 intro">
+                <h2>This is an H2</h2>
+                {% for text in pre_hide %}
+                    {% include "@atoms/paragraph.twig" with text %}
+                {% endfor %}
+                {% include "@molecules/show-hide-toggle.twig" %}
+                {% for text in post_hide %}
+                    {% include "@atoms/paragraph.twig" with text %}
+                {% endfor %}
+            </div>
+        </div>
+		<div class="row">
+			<div class="columns small-12 large-8 large-offset-4">
+				{% if not hide_list %}
+				{% include "@atoms/list.twig" %}
+				{% endif %}
+
+				{% if list_of_links %}
+				{% include "@atoms/headline.twig" %}
+				{% include "@atoms/list.twig" %}
+				{% endif %}
+
+				{% if icon_list %}
+				{% include "@atoms/headline.twig" %}
+				{% include "@atoms/list.twig" %}
+				{% endif %}
+
+				{% if inset_video %}
+				{% include "@atoms/YouTube.twig" %}
+				{% endif %}
+
+				{% if not hide_paragraphs %}
+				{% include "@atoms/paragraph.twig" %}
+				{% endif %}
+				
+				{% include "@molecules/expanding-list.twig" %}
+
+				{% if captioned_image %}
+				{% include "@atoms/image.twig" %}
+				{% endif %}
+
+				{% if not hide_paragraphs %}
+				{% include "@atoms/paragraph.twig" %}
+				{% endif %}
+				
+				{% if right_col_tables %}
+				{% include "@atoms/headline.twig" %}
+				{% include "@atoms/table.twig" %}
+				{% endif %}
+			</div>
+		</div>
+		
+		{#{% if cta_modules %}
+		{% include "@organisms/CTA.twig" %}
+		{% endif %}
+
+		{% if blockquote %}
+		{% include "@organisms/blockquote.twig" %}
+		{% endif %}#}
+		
+		{% if not hide_hr %}
+		<div class="row">
+			<div class="columns">
+				<hr>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if feature_video %}
+		{% include "@organisms/feature-video.twig" %}
+		{% endif %}
+
+		{% if copy_modules %}
+		{% include "@organisms/copy.twig" %}
+		{% endif %}
+
+		{% if cards_module %}
+		{% include "@organisms/cards.twig" %}
+		{% endif %}
+
+		{% if large_image_module %}
+		{% include "@organisms/large-image.twig" %}
+		{% endif %}
+		
+
+		{% if full_width_tables %}&#35;&#125;#}
+		<div class="row">
+			<div class="columns small-12">
+				{% include "@atoms/headline.twig" %}
+				{% include "@atoms/table.twig" %}
+			</div>
+		</div>
+		{% endif %}
+		
+		{% if stories_module %}
+		{% include "@organisms/stories.twig" %}
+		{% endif %}
+
+		{% if related_stories_module %}
+		{% include "@organisms/related-stories.twig" %}
+		{% endif %}
+
+		{% if contacts_module %}
+		{% include "@organisms/contacts.twig" %}
+		{% endif %}
+
+		{% if contact_single_module %}
+		{% include "@organisms/contact-single.twig" %}
+		{% endif %}
+
+		{% if academic_programs %}
+
+			<div class="row">
+				<div class="columns small-12 academic-filter">
+		        	{% include "@atoms/search-box.twig" %}
+			        <p id="academic-filter-toggler" data-responsive-toggle="academic-filters" data-hide-for="large">
+			            <a href="#" data-toggle="" class="">
+			                Filter programs
+			            </a>
+			        </p>
+			        <div id="academic-filters">
+			          {% include "@molecules/academic-filter.twig" %}
+			        </div>
+					
+				</div>
+			</div>
+			{% include "@organisms/academic-program.twig" %}
+
+		{% endif %}
+        
+        {% if school_list %}
+        {% include "@molecules/expanding-2column-list.twig" %}
+        {% endif %}
+        
+        {% if information_overview %}
+        {% include "@organisms/information-overview.twig" %}
+        {% endif %}
+        
+        {% if admission_steps %}
+        	{% include "@organisms/admission-steps.twig" %}
+        {% endif %}
+
+        {% if two_column_copy %}
+        	{% include "@organisms/two-column-copy.twig" %}
+        {% endif %}
+
+	</article>
+	
+	{% include "@organisms/footer.twig" %}
+
+</div>

@@ -1,0 +1,63 @@
+{% embed "@molecules/contact-single.twig" %}
+
+    {% set contact_single_show_media = 0 %}
+
+    {% set  contact =  {
+        "color_theme": "teal",
+        "img_url": "/themes/custom/pl_drupal/images/contact-single-module-bg-img-bw.jpg",
+        "type": "h2",
+        "src": "http://placehold.it/386x151",
+        'title' : node.label,
+        "phone": content.field_phone_contact_single|field_value,
+        "email": content.field_email_contact_single|field_value,
+        "fax": content.field_fax_contact_single|field_value,
+        "building": content.field_building_contact_single|field_value,
+        "address1": content.field_address1_contact_single|field_value,
+        "city": content.field_city_contact_single|field_value,
+        "state": content.field_state_contact_single|field_value,
+        "postalcode": content.field_postalcode_contact_single|field_value,
+        "url": node.field_url_contact_single.0.url,
+        "url_text": node.field_url_contact_single.0.title,
+        "target": content.field_url_contact_single.0['#options']['attributes']['target'],
+        "alt_text": content.field_url_contact_single.0['#options']['attributes']['title'],
+        "onclick": content.field_url_contact_single.0['#options']['attributes']['onClick'],
+        "custom_social_header": content.field_social_hdr_contact_single|field_value,
+        "facebook": node.field_facebook_contact_single.0.url,
+        "facebook_target": content.field_facebook_contact_single.0['#options']['attributes']['target'],
+        "facebook_alt_text": content.field_facebook_contact_single.0['#options']['attributes']['title'],
+        "facebook_onclick": content.field_facebook_contact_single.0['#options']['attributes']['onClick'],
+        "twitter": node.field_twitter_contact_single.0.url,
+        "twitter_target": content.field_twitter_contact_single.0['#options']['attributes']['target'],
+        "twitter_alt_text": content.field_twitter_contact_single.0['#options']['attributes']['title'],
+        "twitter_onclick": content.field_twitter_contact_single.0['#options']['attributes']['onClick'],
+        "instagram": node.field_instagram_contact_single.0.url,
+        "instagram_target": content.field_instagram_contact_single.0['#options']['attributes']['target'],
+        "instagram_alt_text": content.field_instagram_contact_single.0['#options']['attributes']['title'],
+        "instagram_onclick": content.field_instagram_contact_single.0['#options']['attributes']['onClick'],
+        "linkedin": node.field_linkedin_contact_single.0.url,
+        "linkedin_target": content.field_linkedin_contact_single.0['#options']['attributes']['target'],
+        "linkedin_alt_text": content.field_linkedin_contact_single.0['#options']['attributes']['title'],
+        "linkedin_onclick": content.field_linkedin_contact_single.0['#options']['attributes']['onClick'],
+        "snapchat": node.field_snapchat_contact_single.0.url,
+        "snapchat_target": content.field_snapchat_contact_single.0['#options']['attributes']['target'],
+        "snapchat_alt_text": content.field_snapchat_contact_single.0['#options']['attributes']['title'],
+        "snapchat_onclick": content.field_snapchat_contact_single.0['#options']['attributes']['onClick'],
+        "youtube": node.field_youtube_contact_single.0.url,
+        "youtube_target": content.field_youtube_contact_single.0['#options']['attributes']['target'],
+        "youtube_alt_text": content.field_youtube_contact_single.0['#options']['attributes']['title'],
+        "youtube_onclick": content.field_youtube_contact_single.0['#options']['attributes']['onClick'],
+        "zeemee": node.field_zeemee_contact_single.0.url,
+        "zeemee_target": content.field_zeemee_contact_single.0['#options']['attributes']['target'],
+        "zeemee_alt_text": content.field_zeemee_contact_single.0['#options']['attributes']['title'],
+        "zeemee_onclick": content.field_zeemee_contact_single.0['#options']['attributes']['onClick'],
+        "hours": content.field_hours_contact_single|field_value
+      }
+    %}
+
+    {% if ( contact.facebook ) or ( contact.twitter ) or ( contact.instagram ) or ( contact.linkedin ) or ( contact.snapchat ) or ( contact.youtube ) or ( contact.zeemee )  %}
+
+        {% set contact_single_show_media = 1 %}
+
+    {% endif %}
+
+{% endembed %}

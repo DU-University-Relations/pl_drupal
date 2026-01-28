@@ -1,0 +1,18 @@
+{
+	"headline": "<strong>Experience</strong> is Our Training Ground",
+	"images": [
+		"/_duresources/foundation/images/home_ed_01_welding.jpg",
+		"/_duresources/foundation/images/home_ed_02_tinyhouse.jpg",
+		"/_duresources/foundation/images/home_ed_03_hardening.jpg"
+	],
+	"image_alt": "alt text",
+	"statement":"<p>Our education takes you out of the classroom and into communities where you can learn by making an impact. Our academic programs integrate with real_world learning, connecting with the professional environments you’ll strive towards after graduation.</p><p>We’re an active research university, developing knowledge to tackle challenges worldwide. Whether you’re researching Alzheimer’s, sustainable technologies or the needs of underserved communities, you’ll have the resources and support to make your discoveries at home and abroad.</p>",
+	"list": {
+		"styleModifier": "list_of_links__alt",
+		"items": [
+			{
+				"title": "<a href=\"#\">Outside the Classroom</a>"
+			}
+		]
+	}
+}

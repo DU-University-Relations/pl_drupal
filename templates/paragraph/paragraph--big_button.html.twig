@@ -1,0 +1,26 @@
+
+{% embed "@molecules/big-btn.twig" %}
+    {# For future use- we can look at the parent bundle and set the size of the button accordingly #}
+    {% if(paragraph.getParentEntity().bundle() == 'cta_group') %}
+        {% set size_class = "medium-4" %}
+    {% endif %}
+
+    {% set button = {
+        "size_class":  size_class ? size_class: "medium-4",
+        "url": content.field_link.0['#url'],
+        "onclick": content.field_link.0['#options']['attributes']['onClick'],
+        "data_toggle" : content.field_link.0['#options']['attributes']['data-toggle'],
+        "cssClass": "bg-img-btn",
+        "altTitle": content.field_link.0['#options']['attributes']['title'],
+        "title": content.field_link.0['#title'],
+        "target": content.field_link.0['#options']['attributes']['target'],
+    } %}
+    {% block image %}
+        {{ content.field_card_image|field_value }}
+    {% endblock %}
+    {% block icon %}
+        {% if content.field_icon %}
+            {{ content.field_icon|field_value }}
+        {% endif %}
+    {% endblock %}
+{% endembed %}

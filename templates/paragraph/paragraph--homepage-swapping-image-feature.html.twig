@@ -1,0 +1,8 @@
+{% embed "@organisms/swapping-img-feature.twig" %}
+    {% set headline = content.field_hsf_heading|field_value %}
+    {% set images = image_urls %}
+    {% set image_alt = image_alt %}
+    {% set statement = content.field_hsf_statement|field_value %}
+    {% set button = content.field_hsf_link %}
+    {% set alt_layout = paragraph.field_hsf_style.value %}
+{% endembed %}

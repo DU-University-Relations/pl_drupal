@@ -1,0 +1,16 @@
+<ul class="vertical large-horizontal menu align-right dropdown" data-options="closeOnClickInside: false;hoverDelay: 300;" data-dropdown-menu>
+    {% for item in navigation_items %}
+        <li class="{% if loop.index == 1%}active{% endif %} mega-menu">
+            <a href="http://www.example.com">{{ item.title }}</a>
+            {% if item.flyout == "small" %}
+                {% include "@molecules/mega-flyout-small.twig" %}
+            {% endif %}
+            {% if item.flyout == "large" %}
+                {% include "@molecules/mega-flyout-large.twig" %}
+            {% endif %}
+            {% if item.flyout == "dropdown" %}
+                {% include "@molecules/mega-flyout-dropdown.twig" %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

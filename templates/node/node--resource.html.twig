@@ -1,0 +1,118 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{% embed  "@organisms/resource.twig" %}
+    {% block page_title %}
+        {% include "@atoms/headline.twig" with {'title' : label, 'type' : 'h1'} %}
+    {% endblock %}
+
+    {% set title = node.title %}
+    {% set type = content.field_resource_type|field_value %}
+
+    {% set res_link = node.field_resource_link.0.url %}
+    {% set res_title = node.field_resource_link.0.title %}
+    {% set res_target = node.field_resource_link.0.options.attributes.target %}
+
+    {% set scholar_link = node.field_res_google_scholar_link.0.url %}
+    {% set scholar_title = node.field_res_google_scholar_link.0.title %}
+    {% set scholar_target = node.field_res_google_scholar_link.0.options.attributes.target %}
+
+    {% set back_link = content.resource_list_link %}
+
+    {% if content.field_back_link_text|render|trim is not empty %}
+      {% set back_link_text = content.field_back_link_text.0 %}
+    {% else %}
+      {% set back_link_text = "Back to Resources Listing" %}
+    {% endif %}
+
+    {% set publishing_body = content.field_res_publishing_body.0 %}
+    {% if content.field_res_publishing_body_label.0 %}
+      {% set publishing_body_label = content.field_res_publishing_body_label.0 %}
+    {% else %}
+      {% set publishing_body_label = "Publishing Body" %}
+    {% endif %}
+    {% set hide_owning_units = node.field_hide_owning_unit.0.value %}
+    {% set hide_assoc_units = node.field_hide_associated_unit.0.value %}
+    {% set owning_units = content.field_res_owning_unit %}
+    {% set assoc_units = content.field_res_associated_units %}
+    {% set short_description = content.field_res_short_description|field_value %}
+    {% set abstract = content.field_resource_abstract|field_value %}
+    {% set keywords = content.field_res_keywords %}
+    {% set locations = content.field_res_locations %}
+    {% set author_uri = node.field_link.0.url %}
+    {% set first_name = content.field_res_author_first_name|field_value %}
+    {% set last_name = content.field_res_author_last_name|field_value %}
+    {% if node.field_res_date_of_publication.0.value %}
+        {% set pub_date = node.field_res_date_of_publication.0.value|date('F d, Y') %}
+    {% endif %}
+{% endembed %}

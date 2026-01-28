@@ -1,0 +1,9 @@
+<div class="row news-story-headline headline-news-story {% if image_position %}top-news-story-image-{{ image_position }}{% endif %}">
+    <div class="row columns">
+        {% block news_stories %}
+            {% for article in articles %}
+                {{ article }}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

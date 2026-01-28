@@ -1,0 +1,18 @@
+{% embed "@organisms/contacts.twig" %}
+
+    {% set contact_title = content.field_contact_title|field_value %}
+    {% set contacts = content.field_contact_information_cards|field_value %}
+    {% set layout = 'three_col' %}
+    {% set contacts_header = {
+        "title": "Contacts",
+        "type":"h3",
+        "cssClass": "btm-divider"
+        }
+    %}
+    {% block contacts %}
+        {% for contact in contacts %}
+            {{ contact }}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}

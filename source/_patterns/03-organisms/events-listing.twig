@@ -1,0 +1,86 @@
+<div{{ attributes.addClass(classes, 'events-listing__wrapper', 'row') }}>
+    <div class="columns small-12">
+        <div id="events-listing-date-filter-anchor" class="row events-listing__nav events-listing__top-filters">
+             <div class="small-12 medium-7 large-8 columns">
+                <div class="event-filter-dropdown-holder">
+                    <div class="small-12 medium-10 large-10 columns event-keyword-holder">
+                        {% include "@atoms/search-box.twig" with {
+                            "search_box": {
+                                "placeholder": "Search Keywords",
+                                "altClass": "search-box--events",
+                                "hiddenFields": params,
+                                "includeForm": "true",
+                                "includeSubmit": "true",
+                                "action": "?",
+                                "method": "get"
+                            }
+                        } %}
+                    </div>
+                    <div class="small-12 medium-10 large-10 columns theme-filter event-type-filter-holder">
+                        <form class="button-group" data-filter-group="events">
+                          <label class="show-for-sr">All university events</label>
+                            {% block type_filters %}
+                                <select class="filters-select">
+                                    <option value="*">All Event Types</option>
+                                    <option value=".perf-arts">Performing Arts</option>
+                                    <option value=".athletics">Athletics</option>
+                                </select>
+                            {% endblock %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {% if calendar_links %}
+                <div class="small-12 medium-5 large-4 columns " id="calendar-list">
+                    <h4 class="hide-for-small-only">Other Calendars</h4>
+                    <ul class="row hide-for-small-only">
+                        {% for link in calendar_links %}
+                            <li class="small-12 columns "><span class="icon-du-link-ext-alt"></span>{{ link }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="row events-listing__nav events-listing__date-filters">
+            <div class="small-12 medium-6 columns">
+                <div class="row" id="month-nav">
+                    <div class="columns order-1 medium-order-2 expand row month-range">
+                        {% if calendar_month %}
+                            {% include "@atoms/headline.twig" with calendar_month %}
+                        {% endif %}
+                    </div>
+                    <div class="columns order-2 medium-order-1 shrink .active-filter" id="byMonth">
+                        {% if url_prev|raw != '#' %}<a href="{{ url_prev|raw }}#events-listing-date-filter-anchor">{% include "@atoms/_du-icon.twig" with {icon_name:"left-arrow"} %}<span class="show-for-sr">Previous Month</span></a>{% endif %}
+                      {% if url_next|raw != '#' %}<a href="{{ url_next|raw }}#events-listing-date-filter-anchor">{% include "@atoms/_du-icon.twig" with {icon_name:"right-arrow"} %}<span class="show-for-sr">Next Month</span></a>{% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-6 columns">
+                <div class="row" id="byDate">
+                    <div class="small-6 medium-6 columns" id="datepickerImageStart"><img src='{{ calendar_image }}' alt="calendar-picker"/><h2>
+                            {{ start_date }}
+                        </h2>
+                        <div id="datepicker-start"></div></div>
+                    <div class="small-6 medium-6  columns" id="datepickerImageEnd"><img src='{{ calendar_image }}' alt="calendar-picker"/><h2>
+                            {{ end_date }}
+                        </h2>
+                        <div id="datepicker-end"></div></div>
+                </div>
+            </div>
+        </div>
+        {% block calendar %}
+            <div id="events-listing" class="events-listing__items row">
+                {% if events %}
+                    {% include "@molecules/events-listing.twig" with {"icon_name" : "clock"} %}
+                {% endif %}
+            </div>
+        {% endblock %}
+        <div id="events-listing-no-events" class="row events-listing__no-events">
+            <div class="columns small-12">
+                <p>Sorry, there are no scheduled events this month or for the provided criteria above.</p>
+            </div>
+        </div>
+    </div>
+</div>

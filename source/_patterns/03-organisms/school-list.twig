@@ -1,0 +1,32 @@
+<a href="#" class="accordion-title"> <!--Visible when closed-->
+    <div class="expanded row school">
+        <div class="small-12 medium-6 large-4 columns school-name">
+            <p class="division">{{ label|raw }}</p>
+            <h3>{{ title|raw }}</h3>
+        </div>
+        <div class="small-12 medium-5 large-4 large-offset-1 columns subtitle">
+            <h4>{{ subtitle|raw }}</h4>
+            <p class="excerpt">{{ summary|raw }}</p>
+        </div>
+    </div>
+</a>
+<div class="accordion-content" data-tab-content> <!--Visible when open only-->
+    <div class="expanded row">
+        <div class="small-12 small-order-2 medium-order-2 medium-12 large-4 large-order-1 columns">
+            {% for button in buttons %}
+                <div class="cta">
+                    {% embed "@atoms/button.twig" %}
+                        {% set title = button['#title'] %}
+                        {% set url = button['#url'] %}
+                        {% set target = button['#options']['attributes']['target'] %}
+                        {% set alt_text = button['#options']['attributes']['title'] %}
+                        {% set onclick = button['#options']['attributes']['onClick'] %}
+                    {% endembed %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="small-12 small-order-1 medium-order-1 medium-12 large-6 large-offset-1 large-order-2 columns">
+            {{ description|raw }}
+        </div>
+    </div>
+</div>

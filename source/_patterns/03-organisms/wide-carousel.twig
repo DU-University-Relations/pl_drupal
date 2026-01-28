@@ -1,0 +1,35 @@
+<div class="wide-carousel__wrapper row{% if alt_layout %} wide-carousel__wrapper--alt{% endif %}">
+	<div class="columns small-12{% if not alt_layout %} medium-offset-7{% endif %} medium-5">
+		{% if headline %}
+			{% include "@atoms/headline.twig" with {
+				type:"h3",
+				cssClass:"top-divider" ~ ((alt_layout) ? " text-right"),
+				title:headline
+			} %}
+		{% endif %}
+	</div>
+	<div class="wide-carousel columns small-12">
+		{# TODO: Figure out whether / what should go into aria-label #}
+		<div id="{{ "wide_carousel" ~ random(999999999) }}" class="orbit" role="region" {#aria-label="Favorite Space Pictures"#} data-orbit="data-orbit" data-auto-play="true" data-use-m-u-i="false" data-timer-delay="10000" data-pause-on-hover="false">
+			<div class="orbit-container">
+				{% for slide in slides %}
+					{{ slide }}
+				{% endfor %}
+			</div>
+			<nav class="orbit-bullets hide-for-large">
+                {% for slides_item in slides %}
+					<button
+						{% if loop.index0 == 0 %}
+							class="is-active"
+						{% endif %}
+						data-slide="{{ loop.index0 }}">
+						<span class="show-for-sr">Slide {{ loop.index }} details.</span>
+                        {% if loop.index0 == 0 %}
+							<span class="show-for-sr">Current Slide</span>
+                        {% endif %}
+					</button>
+                {% endfor %}
+			</nav>
+		</div>
+	</div>
+</div>

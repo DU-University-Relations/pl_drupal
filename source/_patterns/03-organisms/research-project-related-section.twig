@@ -1,0 +1,75 @@
+{% if related_material_list %}
+  <div class="related-materials">
+
+    {% set related_material_length = related_material_list|length %}
+    {% set related_material_card_size = 'medium-4' %}
+    {% if related_material_length == 1 %}
+      {% set related_material_card_size = 'medium-8' %}
+    {% endif %}
+
+    {% if (related_material_list|length > 2) %}
+      <div class="row">
+        <div class="columns small-12 medium-4">
+          {% include "@atoms/headline.twig" with project.related.header %}
+        </div>
+      </div>
+    {% endif %}
+    <div class="row">
+      {% if (related_material_list|length < 3) %}
+        <div class="columns small-12 medium-4">
+          {% include "@atoms/headline.twig" with project.related.header %}
+        </div>
+      {% endif %}
+      {% for related_material in related_material_list %}
+        <div class="columns small-12 {{ related_material_card_size }} related-card-section">
+          {% if related_material['#url'].external %}
+            {% set link_url = related_material['#url'].uri %}
+          {% else %}
+            {% set link_url = path(related_material['#url'].routeName, related_material['#url'].routeParameters) %}
+          {% endif %}
+
+          {% set link_target =  '' %}
+          {% set link_title = '' %}
+          {% set link_onClick =  '' %}
+          {% set link_cssclass =  '' %}
+
+          {% if related_material['#options']['attributes']['target'] %}
+            {% set link_target = related_material['#options']['attributes']['target'] %}
+          {% endif %}
+          {% if related_material['#options']['attributes']['title'] %}
+            {% set link_alt_text = related_material['#options']['attributes']['title'] %}
+          {% endif %}
+          {% if related_material['#options']['attributes']['onClick'] %}
+            {% set link_onclick = related_material['#options']['attributes']['onClick'] %}
+          {% endif %}
+          {% if related_material['#options']['attributes']['class'] %}
+            {% set link_cssclass = related_material['#options']['attributes']['class'] %}
+          {% endif %}
+
+          {% set link_text_url =  {
+            "title": related_material['#title'],
+            "href": link_url,
+            "cssClass" : link_cssclass,
+            "onclick": link_onclick,
+            "alt_text": link_alt_text,
+            "target": link_target
+          } %}
+
+          {% set button = {
+            "type" : "small",
+            "title": 'Read More',
+            "url": link_url,
+            "altClass" : link_cssclass,
+            "onclick": link_onclick,
+            "alt_text": link_alt_text,
+            "target": link_target
+          } %}
+          <h3 class="related-title title">
+            {% include "@atoms/link.twig" with link_text_url %}
+          </h3>
+          {% include "@atoms/button.twig" with button %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

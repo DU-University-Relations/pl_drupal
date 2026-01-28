@@ -1,0 +1,14 @@
+{% set catch_cache = content.field_link|render %}
+    {% set
+        button =  {
+            "title": content.field_link|field_raw('title'),
+            "type": "",
+            "url": content.field_link.0['#url'],
+            "alt_text": content.field_link.0['#options']['attributes']['title'],
+            "onclick": content.field_link.0['#options']['attributes']['onClick'],
+            "datatoggle": content.field_link.0['#options']['attributes']['data-toggle'],
+            "altClass": content.field_link.0['#options']['attributes']['class'],
+            "target": content.field_link.0['#options']['attributes']['target']
+        }
+    %}
+{% include "@atoms/button.twig" with button %}

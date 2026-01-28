@@ -1,0 +1,196 @@
+.news-carousel {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin: 50px 10px;
+    @media (min-width: 640px) {
+      max-width: 640px;
+      margin: 50px auto;
+    }
+    @media (min-width: 768px) {
+      max-width: 768px;
+    }
+    @media (min-width: 1024px) {
+      max-width: 1024px;
+    }
+    @media (min-width: 1280px) {
+      max-width: 1280px;
+    }
+    @media (min-width: 1536px) {
+      max-width: 1536px;
+    }
+    .news-item {
+      display: flex;
+      margin: 8px;
+      border: 4px solid $primary-color-3;
+      color: black;
+      width: 100%;
+      &__publication {
+        color: white;
+        font-family: $cta-font;
+        text-transform: uppercase;
+        text-orientation: sideways;
+        writing-mode: vertical-rl;
+        background-color: $primary-color-3;
+        padding: 48px 12px 48px 8px;
+      }
+      &__group {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        width: 100%;
+        &__image {
+          position: relative;
+          overflow: hidden;
+          aspect-ratio: 16 / 9;
+          img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+          }
+        }
+        &__info {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 28px 10px 46px;
+          width: 100%;
+          &__title {
+            font-family: $headline-font;
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 1.2;
+          }
+          &__link {
+            display: flex;
+            a {
+              display: flex;
+              gap: 4px;
+              align-items: center;
+              text-decoration: none;
+              &:hover span {
+                color: black;
+                background-color: $secondary-color-3;
+              }
+              span {
+                border-bottom: 4px solid $secondary-color-3;
+              }
+              svg {
+                height: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .slider-title {
+      display: flex;
+      flex-direction: column;
+      margin: 0 8px 24px 8px;
+      font-weight: bold;
+      font-size: 48px;
+      gap: 8px;
+      &::after {
+        content: "";
+        width: 84px;
+        height: 6px;
+        background-color: black;
+      }
+    }
+    .slider-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+      margin: 0 8px;
+      button {
+        color: white;
+        background-color: $primary-color-3;
+        padding: 8px;
+        &.slick-disabled, &.slick-disabled:hover {
+          cursor: default;
+          background-color: $neutral-color-8;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: $secondary-color-3;
+        }
+        svg {
+          width: 40px;
+        }
+      }
+    }
+  }
+  .slick-initialized .slick-track {
+    display: flex;
+    .slick-slide {
+      display: flex;
+      height: auto;
+    }
+  }
+}
+
+youtube-embed {
+  background-color: #000;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+  max-width: 720px;
+}
+youtube-embed::after {
+  content: "";
+  display: block;
+  padding-bottom: calc(100% / (16 / 9));
+}
+youtube-embed > iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+youtube-embed > .yt-playbtn {
+  display: block;
+  width: 68px;
+  height: 48px;
+  position: absolute;
+  cursor: pointer;
+  transform: translate3d(-50%, -50%, 0);
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  background-color: transparent;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');
+  filter: grayscale(100%);
+  transition: filter .1s cubic-bezier(0, 0, 0.2, 1);
+  border: none;
+}
+youtube-embed:hover > .yt-playbtn,
+youtube-embed .yt-playbtn:focus {
+  filter: none;
+}
+youtube-embed.yt-activated {
+  cursor: unset;
+}
+youtube-embed.yt-activated::before,
+youtube-embed.yt-activated > .yt-playbtn {
+  opacity: 0;
+  pointer-events: none;
+}
+.yt-visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

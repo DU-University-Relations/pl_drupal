@@ -1,0 +1,30 @@
+{
+  "big_buttons": [
+    {
+      "button": ""
+    },
+    {
+      "button": ""
+    },
+    {
+      "button": ""
+    },
+    {
+      "button": ""
+    }
+  ],
+  "sm_buttons": [
+    {
+      "title": "Button Text 1"
+    },
+    {
+      "title": "Button Text 2"
+    },
+    {
+      "title": "Button Text 3"
+    },
+    {
+      "title": "Button Text 4"
+    }
+  ]
+}

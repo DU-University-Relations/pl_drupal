@@ -1,0 +1,35 @@
+{% set hide_filters = elements.field_hide_filters.0['#markup'] %}
+{% set hide_audience_filter = elements.field_hide_event_audience_filter.0['#markup'] %}
+{% set hide_type_filter = elements.field_hide_event_type_filter.0['#markup'] %}
+
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    hide_filters == "On" ? 'filters-off',
+    hide_audience_filter == "On" ? 'event-audience-filter-off',
+    hide_type_filter == "On" ? 'event-type-filter-off'
+    ]
+%}
+
+{% embed "@organisms/events-listing.twig" %}
+    {% block type_filters %}
+        {{ custom.type_filter }}
+    {% endblock %}
+    {% block calendar %}
+        {{ custom.calendar }}
+    {% endblock %}
+    {% set calendar_image = base_path ~ directory ~ "/images/calendar-icon.png" %}
+    {% set calendar_links = content.field_event_list_cal_links|field_value %}
+    {% set calendar_month = {
+        "title": custom.month_name,
+        "type": "h2"
+    } %}
+    {% set start_date = custom.start_date %}
+    {% set end_date = custom.end_date %}
+    {% set url_prev = custom.url_prev %}
+    {% set url_next = custom.url_next %}
+    {% set params = custom.params %}
+{% endembed %}

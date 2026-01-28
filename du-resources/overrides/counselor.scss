@@ -1,0 +1,158 @@
+.paragraph--type--counselor-and-staff-directory {
+  padding-bottom: 10rem;
+}
+
+//.paragraph--type--counselor-profile-search {
+//  padding-top: 100px;
+//}
+
+#profile-list-counselors {
+  margin-top: 2rem;
+}
+
+#profile-list-counselors .resource-listing > h3 {
+  font-size: 1.8rem;
+  width: 100%;
+}
+
+#profile-list-counselors span.fieldset-legend {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #18161f;
+}
+
+#profile-list-counselors .fieldset-wrapper {
+  margin: 1rem 0 2rem;
+}
+
+#profile-list-counselors .form-item {
+  input {
+    margin: .6rem 0;
+    float: left; // keep text indent if content breaks onto two lines
+    clear: both;
+    width: 2rem;
+    height: 2rem;
+    border: .2rem solid #c8ccd4;
+    border-radius: 100%;
+    -webkit-tap-highlight-color: transparent;
+    @include breakpoint(large up) {
+      margin: 0;
+      float: none;
+    }
+  }
+  label {
+    font-size: 1.8rem;
+    float: left;  // keep text indent if content breaks onto two lines
+    line-height: 3.2rem;
+    width: 80%;
+    &:before {  //custom radio button -- android firefox were not showing up
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border: .1rem solid $neutral-color-3;
+      position: absolute;
+      left: 4rem;
+      margin-top: .6rem;
+      border-radius: 50%;
+    }
+    @include breakpoint(medium up) {
+      &:before {
+        display: none;
+      }
+    }
+    @include breakpoint(large up) {
+      float: none;
+      vertical-align: middle;
+    }
+  }
+  //not the dropdown items  -- remove the sudo element over radio button --
+  &.js-form-item-field-counselor-region-target-id, &.js-form-item-field-counselor-state-target-id {
+    label {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}
+
+// Only apply this margin if it's in the Page Overview region.
+article#main-content {
+  div.row {
+    #profile-list-counselors .resource-listing {
+      // width: calc(100% + 50%);
+      margin-top: 5rem;
+      // margin-left: -50%;
+      @include breakpoint(large up) {
+        width: calc(100% + 50%);
+        margin-top: 21rem;
+        margin-left: -50%;
+      }
+    }
+  }
+}
+
+// Hide the 'All' option on admission counselors block_1 view.
+#profile-list-counselors {
+  .admissions-counselor-filters {
+    div.form-item-field-counselor-student-type-value {
+      input[id^="edit-field-counselor-student-type-value-all"],
+      label[for^="edit-field-counselor-student-type-value-all"] {
+        display: none;
+      }
+    }
+
+  }
+}
+
+#profile-list-counselors.counselor-staff-directory {
+  // Header
+  .counselor-staff-header {
+    @include breakpoint(medium up) {
+      display: flex;
+    }
+
+    h3 {
+      margin-right: 5.4rem;
+    }
+
+    .admissions-counselor-filters {
+      flex: 1;
+      margin-top: .4rem;
+    }
+
+    .admissions-counselor-filters form {
+      display: flex;
+    }
+
+    .admissions-counselor-filters .js-form-type-textfield {
+      width: 100%;
+    }
+
+    .admissions-counselor-filters [type="submit"] {
+      padding: 1.2rem 4.9rem 1.3rem;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+
+  }
+
+
+  //Results
+  .resource-listing {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .views-row {
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      article {
+        border-top: .2rem solid #e0e0e0;
+      }
+    }
+
+    @include breakpoint(medium up) {
+      width: 50%;
+    }
+  }
+}

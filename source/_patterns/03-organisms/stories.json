@@ -1,0 +1,44 @@
+{
+    "layout" : "three_col",
+
+    "col_header": {
+        "title": "Three_Column Stories",
+        "type": "h3",
+        "cssClass": "btm-divider"
+    },
+    "stories": [
+        {
+            "src": "http://placehold.it/388x343",
+            "alt_text": "alt text for story image",
+            "title": "Story Headline",
+            "type": "h4",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "src": "http://placehold.it/388x343",
+            "alt_text": "alt text for story image",
+            "title": "Story Headline",
+            "type": "h4",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        },
+        {
+            "src": "http://placehold.it/388x343",
+            "alt_text": "alt text for story image",
+            "title": "Story Headline",
+            "type": "h4",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+            "button": {
+                "title": "Learn More",
+                "type": ""
+            }
+        }
+    ]
+}

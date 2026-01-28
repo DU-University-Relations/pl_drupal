@@ -1,0 +1,58 @@
+{
+	"API_enabled": true,
+	"event_id": 2091,
+	"bodyClass": "utility_page",
+	"header": {
+		"logo_images": [
+	      {
+	        "alt_text": "Logo",
+	        "src": "/_duresources/foundation/images/logo.png"
+	      },
+	      {
+	        "alt_text": "Logo Text",
+	        "src": "/_duresources/foundation/images/logo_text.png"
+	      }
+	    ],
+		"hero_image": {
+			"alt_text": "Hero Image",
+			"src": "/_duresources/foundation/images/hero_image_utility_page.jpg"
+		},
+		"hide_hero_caption": true
+	},
+	"page_title": {
+		"title": ""
+	},
+	"back_to_parent": {
+		"title": "Back to Event Listing"
+	},
+	"details": [
+		{
+			"icon_name": "calendar_empty",
+			"detail": "November 4 – November 7"
+		},
+		{
+			"icon_name": "clock",
+			"detail": "8:00pm – 7:00pm"
+		},
+		{
+			"icon_name": "location",
+			"detail": "Mary Reed, Room 103"
+		}
+	],
+	"sidebar_buttons": [
+		{
+			"icon": {
+				"before": {
+					"icon_name": "print"
+				}
+			},
+			"title": "Print",
+			"altClass": "btn__small",
+			"url": "javascript:window.print();"
+		}
+	],
+	"text": "",
+	"footer": {
+		"hide_big_btn_row": true
+	}
+}

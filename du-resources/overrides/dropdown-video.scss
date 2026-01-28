@@ -1,0 +1,115 @@
+.dropdown-video-module__container {
+	margin-bottom: 9.4rem;
+	margin-top: 4.0rem;
+	@include breakpoint(medium up) {
+		margin-bottom: 12.4rem;
+		margin-top: 8.3rem;
+	}
+	@include breakpoint(large up) {
+		margin-bottom: 16.4rem;
+		margin-top: 12.2rem;
+	}
+}
+.dropdown-video-module {
+	position:relative;
+	&__wrapper {
+		overflow: hidden;
+		height: 24.0rem;
+		transition: height 1s ease;
+		@include breakpoint(medium up) {
+			height: 33.2rem;
+		}
+		@include breakpoint(large up) {
+			height: 38.2rem;
+		}
+			img {
+				width: 100vw;
+			}
+		#dropdownVideo {
+			display:none;
+			iframe {
+				margin-left: 0vw;
+				margin-right: 0vw;
+				width: 100vw;
+				height: 80vh;
+				border-width: 0px;
+				@include breakpoint(large up) {
+					margin-left: 16vw;
+					margin-right: 16vw;
+					width: 68vw;
+				}
+			}
+		}
+	}
+
+	.dropdown-video-module__toggle {
+		display: none;
+		p {
+			margin-bottom:0rem;
+		}
+	}
+	.js & .dropdown-video-module__toggle,
+	.js & .dropdown-video-module__close-modal {
+		display: block;
+		position: relative;
+		text-align:center;
+		margin-top: -4.4rem;
+		margin-left: 20%;
+		width: 60%;
+		@include breakpoint(large up) {
+			margin-top: -2.4rem;
+			margin-left: 35%;
+			width: 30%;
+		}
+		@media screen and (max-width:400px) {
+			margin-top: -8.4rem;
+		}
+		.dropdown-video-module__toggle__hide {
+			display: none;
+		}
+	}
+	.js &--active {
+		.dropdown-video-module__wrapper {
+			width: 100%;
+			background-color: $neutral-color-2;
+			height: 46.1rem;
+			@include breakpoint(large up) {
+				height: 80vh;
+			}
+			.orbit-previous,
+			.orbit-next {
+				display: block;
+			}
+			.orbit-caption {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+		.dropdown-video-module__toggle {
+			text-align: center;
+			.dropdown-video-module__toggle__open {
+				display: none;
+			}
+			.dropdown-video-module__toggle__hide {
+				display: block;
+			}
+		}
+	}
+}//end .dropdown-video-module
+@include breakpoint(small down) {
+	.reveal.dropdown-video-module__modal {
+		background-color: transparent;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		overflow: visible;
+		margin-top: 15%;
+		height: auto;
+		min-height: 0;
+		width: auto;
+		&:focus {
+			border: 0 none;
+			outline: none;
+		}
+	}
+}

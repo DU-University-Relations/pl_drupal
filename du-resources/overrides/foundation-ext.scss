@@ -1,0 +1,23 @@
+.bg-dark-gray {
+	background-color: $neutral-color-2; // footer band. Maybe not repeated elsewhere?
+}
+.buffer-top {
+	margin-top: 1.8rem;
+}
+.display-block {
+	display: block;
+}
+.buffer-on-inner-row {
+	> .row {
+		padding-left: 1.8rem;
+		padding-right: 1.8rem;
+		@include breakpoint(medium up) {
+			padding-left: 5.5rem;
+			padding-right: 5.5rem;
+		}
+		@include breakpoint(xlarge up) {
+			padding-left: inherit;
+			padding-right: inherit;
+		}
+	}
+}

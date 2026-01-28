@@ -1,0 +1,10 @@
+.unit-site {
+  .feature-video-module {
+    .feature-video-module__video-wrapper {
+      position: relative;
+      @include breakpoint(large) {
+        min-height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<footer>
+    <div class="footer-site-level">
+        <div class="grid-x ">
+
+            <div class="large-4 medium-6 cell grid-x">
+
+                {% if logo %}
+                    <div class="footer-site-level-logo">
+                        {% include "@molecules/logo.twig" with logo %}
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="large-4 medium-6 cell">
+
+                {% include "@molecules/footer-site-level-info.twig" with info %}
+
+                {% include "@molecules/footer-site-level-address.twig" with address %}
+
+            </div>
+
+            <div class="large-4 cell">
+
+                {% include "@molecules/footer-site-level-social.twig" with social %}
+
+                {% include "@molecules/footer-site-level-links.twig" with footerlinks %}
+
+            </div>
+
+        </div>
+    </div>
+    {% include "@molecules/_unit-copyright.twig" %}
+</footer>

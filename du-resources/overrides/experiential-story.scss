@@ -1,0 +1,221 @@
+.experiential-wrapper {
+  margin-bottom: 10.8rem;
+}
+
+// Story theme color array.
+$story-theme-colors: (
+  black: $neutral-color-1,
+  crimson: $primary-color-1,
+  white: $neutral-color-9,
+);
+
+$story-colors: black, crimson, white;
+
+// Looping through each color, appending the color to the class and setting colors based on those claseses.
+@each $color in $story-colors {
+  .paragraph--story-style--#{$color} {
+    background: map-get($story-theme-colors, $color);
+    font-size: 1.6rem;
+    line-height: 1.2;
+    // Switching text color depending on theme color.
+    @if ($color == black) or ($color == crimson) {
+      color: $neutral-color-9;
+      h3, h4, h5, h6, button, a {
+        color: $neutral-color-9;
+      }
+      .slide-content::before {
+        background: $neutral-color-9;
+      }
+    } @else {
+      color: $neutral-color-1;
+      h3, h4, h5, h6, button, a {
+        color: $neutral-color-1;
+      }
+      .slide-content-wrapper::before {
+        background: $neutral-color-1;
+      }
+    }
+
+    // Setting background color behind text
+    .slide-content {
+      @if $color == black {
+        background: $neutral-color-1;
+      } @else if $color == crimson {
+        background: $primary-color-1;
+      } @else {
+        background: $neutral-color-9;
+      }
+    }
+
+    // Setting overlay color
+    .slide-media::before {
+      @if $color == black {
+        background: rgba($neutral-color-1, 0.4);
+      } @else if $color == crimson {
+        background: rgba($primary-color-1, 0.4);
+      } @else {
+        background: none;
+      }
+    }
+
+  }
+}
+
+.story-slide {
+  height: 90vh;
+}
+
+// Slider buttons
+.paragraph--type--experiential-story .slick-arrow {
+  height: .1rem;
+  width: .1rem;
+  display: block;
+  overflow: hidden;
+  @include breakpoint(large up) {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    z-index: 9;
+    text-indent: -999.9rem;
+  }
+  &:focus {
+    outline: none;
+  }
+  &.full-width{
+    width: 100%;
+  }
+  &.slick-next {
+    right: 0;
+    top: 0;
+  }
+  &.slick-prev {
+    left: 0;
+    top: 0;
+  }
+}
+
+.paragraph--story-style--black .slick-prev,
+.paragraph--story-style--crimson .slick-prev {
+  cursor: url(../images/ex-arrow-left-white.png) 30 30, auto;
+}
+
+.paragraph--story-style--black .slick-next,
+.paragraph--story-style--crimson .slick-next {
+  cursor: url(../images/ex-arrow-right-white.png) 30 30, auto;
+}
+
+.paragraph--story-style--white .slick-prev {
+  cursor: url(../images/ex-arrow-left.png) 30 30, auto;
+}
+
+.paragraph--story-style--white .slick-next {
+  cursor: url(../images/ex-arrow-right.png) 30 30, auto;
+}
+
+// Styling slideshow progress bar.
+.progress {
+  display: block;
+  width: 100%;
+  height: 1.0rem;
+  overflow: hidden;
+  margin-top: -1.0rem;
+  margin-bottom: 0;
+
+  background-color: $neutral-color-10;
+  background-image: linear-gradient(to right, $primary-color-1, $primary-color-1);
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  transition: background-size .4s ease-in-out;
+  span {
+    font-size: 0;
+  }
+}
+
+
+// tooltip
+.slide-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.slide-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 20.0rem;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: .6rem;
+  padding: .5rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 33%;
+  margin-left: -7.5rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-family: $primary-font;
+}
+
+.slide-tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -.5rem;
+  border-width: .5rem;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.slide-tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+// Video styling
+.full-screen-video {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 23.0rem;
+  @include breakpoint(medium up) {
+    height: 100%;
+  }
+}
+
+.full-screen-video video {
+  height: 100vh;
+  width: auto;
+}
+
+// Mobile swipe icon
+.mobile-swipe-icon {
+  position: absolute;
+  right: 2.0rem;
+  bottom: 2.5rem;
+  z-index: 9;
+  @include breakpoint(large up) {
+    display: none;
+  }
+  span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: $neutral-color-9;
+    .paragraph--story-style--white & {
+      color: $neutral-color-1;
+    }
+
+    &:before {
+      display: block;
+      font-size: 3.0rem;
+      margin-bottom: .5rem;
+    }
+  }
+}

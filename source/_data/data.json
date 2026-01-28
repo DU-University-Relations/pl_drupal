@@ -1,0 +1,360 @@
+{
+
+
+  "pl": true,
+  "bodyClass": "pl",
+  "title": "Faker.words(2, true)",
+  "text": "Faker.words(3, true)",
+  "site_title": "Faker.words(2, true)",
+  "site_slogan": "Faker.words(5, true)",
+  "headline": {
+    "short": "Faker.words(3, true)",
+    "medium": "Faker.words(7, true)"
+  },
+  "excerpt": {
+    "short": "Faker.sentence",
+    "medium": "Faker.sentences(2, true)",
+    "long": "Faker.paragraph"
+  },
+  "description": "Faker.paragraphs(2, true)",
+  "url": "http://example.com",
+  "name": {
+    "titleMale": "Faker.title('male')",
+    "titleFemale": "Faker.title('female')",
+    "first": "Faker.firstName",
+    "middle": "Faker.firstName",
+    "last": "Faker.lastName"
+  },
+  "email": "Faker.email",
+  "username": "Faker.userName",
+  "year": {
+    "long": "Faker.year",
+    "short": "Faker.numberBetween(01, 99)"
+  },
+  "month": {
+    "long": "Faker.monthName",
+    "digit": "Faker.month"
+  },
+  "dayofweek": "Faker.dayOfWeek",
+  "day": "Faker.numberBetween(1, 30)",
+  "hour": {
+    "long": "Faker.numberBetween(1, 99)",
+    "short": "Faker.numberBetween(1, 9)",
+    "ampm": "Faker.amPm"
+  },
+  "minute": "Faker.numberBetween(1, 59)",
+  "seconds": "Faker.numberBetween(1, 59)",
+
+
+
+
+
+
+  "htmlClass": "no-js",
+  "sub_menu": {
+    "toggler_text": "Explore this Section",
+    "items": [
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      }
+    ]
+  },
+  "page_title": {
+    "title": "H1 Page Title",
+    "type": "h1"
+  },
+  "img_link_cards": [
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Current Students",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Alumni",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Families",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Neighbors",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Faculty",
+      "cssClass": "bg-img-btn"
+    },
+    {
+      "alt_text": "Audience Card Alt Text",
+      "src": "/_duresources/foundation/images/feature_card_img2.jpg",
+      "title": "Staff",
+      "cssClass": "bg-img-btn"
+    }
+  ],
+  "audience_buttons": [
+    {
+      "title": "Button Text",
+      "type": "dark_red",
+      "altClass": "display-block"
+    },
+    {
+      "title": "Button Text 2",
+      "type": "dark_red",
+      "altClass": "display-block"
+    },
+    {
+      "title": "Button Text 3",
+      "type": "dark_red",
+      "altClass": "display-block"
+    },
+    {
+      "title": "Button Text 4",
+      "type": "dark_red",
+      "altClass": "display-block"
+    },
+    {
+      "title": "Button Text 5",
+      "type": "dark_red",
+      "altClass": "display-block"
+    }
+  ],
+  "headers": [
+    {
+      "type": "h1",
+      "title": "H1 Page Title"
+    },
+    {
+      "type": "h2",
+      "title": "H2 Page Intro lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ],
+  "key": "value",
+  "key2": "use this for variables you want to load globally",
+  "title": "This is an Example Title",
+  "img": {
+    "avatar": {
+      "src": "http://placeimg.com/100/100/people",
+      "alt_text": "Avatar"
+    },
+    "square": {
+      "src": "http://placeimg.com/300/300/nature",
+      "alt_text": "Square"
+    },
+    "rectangle": {
+      "src": "http://placeimg.com/400/300/tech",
+      "alt_text": "Rectangle"
+    },
+    "landscape_4x3": {
+      "src": "http://placeimg.com/400/300/tech",
+      "alt_text": "4x3 Image"
+    },
+    "landscape_16x9": {
+      "src": "http://placeimg.com/640/360/tech",
+      "alt_text": "16x9 Image"
+    }
+  },
+  "headline": {
+    "short": "Proin nec congue dolor",
+    "medium": "Nunc dignissim elementum nibh ut mattis"
+  },
+  "excerpt": {
+    "short": "Duis tempor lectus vitae dolor convallis accumsan. Proin volutpat dui sit amet malesuada vestibulum.",
+    "medium": "Donec gravida elit quam, vitae scelerisque sem vestibulum eu. Morbi iaculis consectetur diam, at sagittis ex sodales quis. Duis scelerisque ipsum lectus, in consequat mi volutpat hendrerit. Aliquam erat volutpat.",
+    "long": "Vestibulum sit amet faucibus magna. Duis viverra massa et velit euismod, sit amet vulputate lorem tincidunt. Nam eleifend eleifend magna, a condimentum massa commodo vitae. Aliquam non auctor odio, quis lacinia nisl. Phasellus vel metus ligula. Ut tempor pellentesque dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam viverra turpis malesuada ultricies consequat. Donec et urna id metus commodo fermentum."
+  },
+  "pre_hide": [
+    {
+      "text": "Donec gravida elit quam, vitae scelerisque sem vestibulum eu. Morbi iaculis consectetur diam, at sagittis ex sodales quis. Duis <a href=\"#\">scelerisque ipsum lectus</a>, in consequat mi volutpat hendrerit. Aliquam erat volutpat. Morbi iaculis consectetur diam, at sagittis ex sodales quis. Morbi iaculis consectetur diam, at sagittis ex sodales quis. Morbi iaculis consectetur diam, at sagittis ex sodales quis."
+    },
+    {
+      "text": "Vestibulum sit amet faucibus magna. Duis viverra massa et velit euismod, sit amet vulputate lorem tincidunt. Nam eleifend eleifend magna, a condimentum massa commodo vitae. Aliquam non auctor odio, quis lacinia nisl. Phasellus vel metus ligula. Ut tempor pellentesque dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam viverra turpis malesuada ultricies consequat. Donec et urna id metus commodo fermentum."
+    }
+  ],
+  "post_hide": [
+    {
+      "text": "Donec gravida elit quam, vitae scelerisque sem vestibulum eu. Morbi iaculis consectetur diam, at sagittis ex sodales quis. Duis <a href=\"#\">scelerisque ipsum lectus</a>, in consequat mi volutpat hendrerit. Aliquam erat volutpat."
+    },
+    {
+      "text": "Vestibulum sit amet faucibus magna. Duis viverra massa et velit euismod, sit amet vulputate lorem tincidunt. Nam eleifend eleifend magna, a condimentum massa commodo vitae. Aliquam non auctor odio, quis lacinia nisl. Phasellus vel metus ligula. Ut tempor pellentesque dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam viverra turpis malesuada ultricies consequat. Donec et urna id metus commodo fermentum."
+    }
+  ],
+  "show_hide_icons": [
+    {
+      "icon_name": "plus"
+    },
+    {
+      "icon_name": "minus"
+    }
+  ],
+  "text": "Vestibulum sit amet faucibus magna. Duis viverra massa et velit euismod, sit amet vulputate lorem tincidunt. Nam eleifend eleifend magna, a condimentum massa commodo vitae. Aliquam non auctor odio, quis lacinia nisl. Phasellus vel metus ligula. Ut tempor pellentesque dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam viverra turpis malesuada ultricies consequat. Donec et urna id metus commodo fermentum.",
+  "description": "Curabitur metus dui, faucibus facilisis augue a, commodo viverra elit. ",
+  "url": "#",
+  "name": {
+    "first": "Junius",
+    "firsti": "J",
+    "middle": "Marius",
+    "middlei": "M",
+    "last": "Koolen",
+    "lasti": "K"
+  },
+  "year": {
+    "long": "2013",
+    "short": "13"
+  },
+  "month": {
+    "long": "January",
+    "short": "Jan",
+    "digit": "01"
+  },
+  "dayofweek": {
+    "long": "Sunday",
+    "short": "Sun"
+  },
+  "day": {
+    "long": "01",
+    "short": "1",
+    "ordinal": "st"
+  },
+  "hour": {
+    "long": "06",
+    "short": "6",
+    "military": "06",
+    "ampm": "am"
+  },
+  "minute": {
+    "long": "20",
+    "short": "20"
+  },
+  "seconds": "31",
+  "cite": "Attribution",
+  "pagination": {
+    "hidden": false,
+    "previous": {
+      "icon_name": "left_arrow"
+    },
+    "next": {
+      "icon_name": "right_arrow"
+    }
+  },
+  "footer": {
+    "big_btns": [
+      {
+        "cssClass": "bg-img-btn",
+        "alt_text": "Big Btn Alt",
+        "src": "/_duresources/foundation/images/footer_btn_img1.jpg",
+        "icon": {
+          "alt_text": "icon",
+          "src": "/_duresources/foundation/images/footer_icon_request_info.png"
+        },
+        "title": "Request Info"
+      },
+      {
+        "cssClass": "bg-img-btn",
+        "alt_text": "Big Btn Alt",
+        "src": "/_duresources/foundation/images/footer_btn_img2.jpg",
+        "icon": {
+          "alt_text": "icon",
+          "src": "/_duresources/foundation/images/footer_icon_apply.png"
+        },
+        "title": "Apply to DU"
+      },
+      {
+        "cssClass": "bg-img-btn",
+        "alt_text": "Big Btn Alt",
+        "src": "/_duresources/foundation/images/footer_btn_img3.jpg",
+        "icon": {
+          "alt_text": "icon",
+          "src": "/_duresources/foundation/images/footer_icon_visit.png"
+        },
+        "title": "Visit DU"
+      }
+    ],
+    "footer_links": [
+      {
+        "title": "DU Athletics"
+      },
+      {
+        "title": "Sitemap"
+      },
+      {
+        "title": "Jobs"
+      },
+      {
+        "title": "Contact"
+      },
+      {
+        "title": "Legal Notice"
+      },
+      {
+        "title": "Privacy Policy"
+      }
+    ],
+    "follow_us": {
+      "title": "Follow Us:",
+      "type": "h2",
+      "social_media_icons": [
+        {
+          "cssClass": "icon-du-facebook",
+          "title": "Facebook"
+        },
+        {
+          "cssClass": "icon-du-twitter",
+          "title": "Twitter"
+        },
+        {
+          "cssClass": "icon-du-instagram",
+          "title": "Instagram"
+        },
+        {
+          "cssClass": "icon-du-snapchat",
+          "title": "SnapChat"
+        },
+        {
+          "cssClass": "icon-du-linkedin",
+          "title": "LinkedIn"
+        },
+        {
+          "cssClass": "icon-du-youtube",
+          "title": "YouTube"
+        },
+        {
+          "cssClass": "icon-du-zeemee",
+          "title": "ZeeMee"
+        }
+      ]
+    },
+    "copyright": "Copyright © 2019  |  All Rights Reserved  |  Equal Opportunity Affirmative action institution"
+  },
+  "search_box": {
+    "placeholder": "Search",
+    "altClass": ""
+  }
+}

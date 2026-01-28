@@ -1,0 +1,52 @@
+<article class="news-story teaser">
+    {% if article_medium_image %}
+        <div class="columns small-12 news-image">
+            <a href="{{ title_path }}" class="news-image-link">
+                {% if article_medium_image %}
+                    {{ article_medium_image }}
+                {% endif %}
+                <div class="news-image-overlay">
+                    <p>READ STORY</p>
+                </div>
+            </a>
+        </div>
+    {% endif %}
+    <div class="columns small-12 news-info">
+        <div class="news-article-header">
+            <div class="news-article-title-container">
+                {% if publish_date %}
+                    <div class="row news-date">
+                        {{ publish_date }}
+                    </div>
+                {% endif %}
+
+                {% if article_categories %}
+                    {% block article_category %}
+                        <div class="news-category">
+                            {% for category in article_categories %}
+                                {% set category_title = category['#title'] %}
+                                {% set category_tid = category['#options'].entity.id %}
+                                {% set category_link = 'news/category/' ~ category_title | replace({' ': '-'}) | lower %}
+
+                                {% if loop.last %}
+                                    <a href="{{ category_link }}">{{ category_title }}</a>
+                                {% else %}
+                                    <a href="{{ category_link }}">{{ category_title }}</a>,
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endblock %}
+                {% else %}
+                    {% set no_categories = 'top' %}
+                {% endif %}
+
+                <div class="news-title {% if no_categories %}{{ no_categories }}{% endif %}">
+                    <h3><a href="{{ title_path }}">{{ title }}</a></h3>
+                </div>
+            </div>
+        </div>
+        {% if teaser %}
+            <div class="news-article-teaser">{{ teaser }}</div>
+        {% endif %}
+    </div>
+</article>

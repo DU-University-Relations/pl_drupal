@@ -1,0 +1,33 @@
+<div class="row two-column-copy">
+    {% for column in columns %}
+        <div class="columns small-12 medium-6">
+            {% if column.h2 %}
+                {% include "@atoms/headline.twig" with column.h2 %}
+            {% endif %}
+
+            {% if column.image %}
+                {% include "@atoms/image.twig" with column.image %}
+            {% endif %}
+
+            {% if not column.hide_paragraph %}
+                {% include "@atoms/paragraph.twig" %}
+            {% endif %}
+
+            {% if column.h3 %}
+                {% include "@atoms/headline.twig" with column.h3 %}
+            {% endif %}
+
+            {% if column.two_col_list %}
+                {% include "@atoms/list.twig" with column.two_col_list %}
+            {% endif %}
+
+            {% if column.button %}
+                <p>{% include "@atoms/button.twig" %}</p>
+            {% endif %}
+
+            {% if column.expanding_list %}
+                {% include "@molecules/expanding-list.twig" %}
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

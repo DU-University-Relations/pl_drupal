@@ -1,0 +1,42 @@
+<div class="columns card-list-item">
+    <div class="cards-list__holder">
+        <div class="cards-list__content">
+          <p class="academic-card">{{ card_kind_type }}</p>
+            <div class="cards-list-module__title">
+                <h2 class="cards-list-title">
+                    {{ title }}
+                </h2>
+            </div>
+            <div class="card-list-bottom">
+                GPA: {{ gpa }}
+            </div>
+            <div class="more-button"><span class="icon-du-plus"></span></div>
+        </div>
+        <!-- flyout-->
+        <div class="flyout">
+            <div class="flyout-content__holder row">
+                <div class="columns small-12 medium-8">
+                    <div class="more-description">
+                        {% include "@atoms/headline.twig" with {'title': 'About this Scholarship', 'type': 'h3', 'cssClass':''} %}
+                        {{ description }}
+                        {% if kind %}
+                            <div class="scholarship-kind">
+                                {{ kind|raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="columns small-12 medium-4 cards-module__buttons">
+                    <ul>
+                        {% if gpa %}<li><span class="inline-label">Minimum GPA:</span> {{ gpa }}</li>{% endif %}
+                        {% if class_level %}<li><span>Class Level:</span> {{ class_level }}</li>{% endif %}
+                        {% if home_state %}<li><span>Home State:</span> {{ home_state }}</li>{% endif %}
+                        {% if school %}<li><span>School/College:</span> {{ school }}</li>{% endif %}
+                        {% if major %}<li><span>Major:</span> {{ major }}</li>{% endif %}
+                        {% if population %}<li><span>Population(s):</span> {{ population }}</li>{% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

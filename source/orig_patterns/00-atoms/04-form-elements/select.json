@@ -1,0 +1,25 @@
+{
+	"label": "Select Label",
+	"options": [
+		{
+			"value": "value",
+			"option_text": "Option Text"
+		},
+		{
+			"value": "value2",
+			"option_text": "Option Text 2"
+		},
+		{
+			"value": "value3",
+			"option_text": "Option Text 3"
+		},
+		{
+			"value": "value4",
+			"option_text": "Option Text 4"
+		},
+		{
+			"value": "value5",
+			"option_text": "Option Text 5"
+		}
+	]
+}

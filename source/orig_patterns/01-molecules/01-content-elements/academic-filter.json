@@ -1,0 +1,27 @@
+{
+"button":[
+      {
+        "title": "ALL TYPES",
+        "type": "academic-filter",
+        "altClass": "active"
+      },
+      {
+        "title": "MAJORS",
+        "type": "academic-filter"
+      },
+      {
+        "title": "MINORS",
+        "type": "academic-filter"
+      },
+      {
+        "title": "DUAL_DEGREES",
+        "type": "academic-filter"
+      },
+      {
+        "icon": "icon_du_info_circled",
+        "title": "Degree Info",
+        "type": "academic-filter",
+        "altClass": "info"
+      }
+    ]
+}

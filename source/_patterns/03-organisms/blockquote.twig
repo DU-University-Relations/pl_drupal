@@ -1,0 +1,14 @@
+<div class="row expanded blockquote__background">
+	<div class="columns">
+		<div class="row">
+			<div class="columns{% if not feature_video_quote %} large-offset-2{% endif %}{% if feature_video_quote %} large-5 large-offset-7{% endif %}">
+				<blockquote>
+					{% include "@atoms/paragraph.twig" %}
+					{% if cite %}
+						<cite>{{ cite }}</cite>
+					{% endif %}
+				</blockquote>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+<div class="filter-container columns small-12">
+    <div class="filter-container-inner">
+        <div class="listing-filters" id="{{ filter_id }}" >
+            <div class="listing-filters-contents">
+                {% block filter_form %}
+                    {# These are just some generic example filters. Each listing would really have its own unique filter set. #}
+                    <form>
+                        <div class="form-item">
+                            <label for="input-1">Item 1</label>
+                            <input type="text" placeholder="generic text entry."/>
+                        </div>
+                        <div class="form-item">
+                            <label for="input-2">Item 2</label>
+                            <input type="text" placeholder="generic text entry."/>
+                        </div>
+                        <div class="form-item">
+                            <label for="input-3">Item 3</label>
+                            <input type="text" placeholder="generic text entry."/>
+                        </div>
+                        <div class="form-item">
+                            <label for="input-4">Item 4</label>
+                            <input type="text" placeholder="generic text entry."/>
+                        </div>
+                        <div class="form-item">
+                            <label for="input-5">Item 5</label>
+                            <input type="text" placeholder="generic text entry."/>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn--hollow" type="submit">Reset Filters</button>
+                            <button class="btn" type="submit">Submit Button</button>
+                        </div>
+                    </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

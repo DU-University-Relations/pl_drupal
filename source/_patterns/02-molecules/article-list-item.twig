@@ -1,0 +1,24 @@
+<div class="columns large-6">
+    <div class="views-row">
+        <article class="article teaser">
+            <div class="row">
+                {% if thumbnail_image %}
+                    <div class="columns shrink article-list-image">
+                        {{ thumbnail_image }}
+                    </div>
+                {% endif %}
+                <div class="columns article-info">
+                    <div class="row article-date">
+                        {{ publish_date }}
+                    </div>
+                    <div class="row article-list-title">
+                        <h5>{{ title|raw }}</h5>
+                    </div>
+                    <div>
+                        {{ teaser }}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

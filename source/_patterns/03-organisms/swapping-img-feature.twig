@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="columns small-12{% if not alt_layout %} medium-4  medium-offset-1{% endif %}">
+		{% if headline %}
+			{% include "@atoms/headline.twig" with {
+				"title": headline,
+				"type": (alt_layout ? "h2" : "h3"),
+				"cssClass": (alt_layout ? "btm-divider text-center" : "top-divider text-right")
+			} %}
+		{% endif %}
+	</div>
+</div>
+{% if alt_layout %}
+	<div class="row row--expanded swapping-img-feature swapping-img-feature--alt">
+		<div class="columns small-12 medium-6">
+			<div class="swapping-img-feature__content">
+				{{ statement }}
+				{{ button }}
+				{% if list %}
+                	{% include "@atoms/list.twig" %}
+				{% endif %}
+			</div>
+		</div>
+		<div class="columns small-12 medium-6 swapping-img-feature__image">
+            {% if images %}
+				<img src="{{ images[0]|raw }}" alt="{{ image_alt }}"
+					{% for url in images %}
+						data-img-{{ loop.index0 }}="{{ url|raw }}"
+					{% endfor %}
+				/>
+            {% endif %}
+		</div>
+	</div>
+{% else %}
+	<div class="row row--expanded swapping-img-feature">
+		<div class="columns small-12 medium-6 swapping-img-feature__image">
+            {% if images %}
+				<img src="{{ images[0]|raw }}" alt="{{ image_alt }}"
+					{% for url in images %}
+						data-img-{{ loop.index0 }}="{{ url|raw }}"
+					{% endfor %}
+				/>
+            {% endif %}
+		</div>
+		<div class="columns small-12 medium-6">
+			<div class="swapping-img-feature__content">
+				{{ statement }}
+				{{ button }}
+				{% if list %}
+					{% include "@atoms/list.twig" %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endif %}

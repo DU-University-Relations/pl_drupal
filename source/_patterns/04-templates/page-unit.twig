@@ -1,0 +1,25 @@
+{% include "@organisms/push-menu.twig" %}
+<div class="off-canvas-content{% if is_utility_page %} utility-page{% endif %} {{ site_name|lower|replace({' &': '', ' and': '', ' the': '', ' ': '-', ',': '', '\'': '' }) }}" id="off-canvas-content" data-off-canvas-content>
+    <div class="content-top">
+        {# Universal admin tools like local task tabs, messages, etc can go here. #}
+        {% block content_top %}
+        {% endblock %}
+    </div>
+    {% block page_head %}
+        {% embed "@organisms/header-unit.twig" with { "hero_media": hero_media, "hide_hero": hide_hero, "logo": logo, "image_logo": image_logo } %}
+            {% block mega_nav %}
+                {% include "@molecules/mega-nav.twig" with nav only %}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+    {% block content %}
+        {% embed "@organisms/node.twig" %}
+        {% endembed %}
+    {% endblock %}
+    {% block footer %}
+        {% include "@organisms/footer-site-level.twig" %}
+    {% endblock %}
+    <span id="du-loader" aria-hidden="true">
+        <span class="icon-du-spin3 animate-spin"></span>
+    </span>
+</div>

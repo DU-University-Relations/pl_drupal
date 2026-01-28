@@ -1,0 +1,156 @@
+header {
+  .utility-menu {
+        height: auto;
+        background: $neutral-color-1;
+    .menu  {
+      @include breakpoint(small down) {
+        width: 100%;
+      }
+      .menu-toggle-utility {
+        display: flex;
+        justify-content: flex-end;
+        @include breakpoint(small down) {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+        }
+        &__title {
+          margin-bottom: 59px;
+          width: 50%;
+          z-index: 5;
+          display: none;
+          @include breakpoint(small down) {
+            text-transform: uppercase;
+            font-family: "BreveSans", sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: white;
+            padding: 1.15rem 0.5rem 0.8rem 1rem;
+          }
+
+          &::after {
+            content: "\e800";
+            font-family: $icon-font;
+            padding-left: .7rem;
+          }
+          @include breakpoint(small down) {
+            display: block;
+          }
+        }
+
+        .menu-toggle-utility-text {
+          display: none;
+          @include breakpoint(small down) {
+            display: block;
+          }
+        }
+
+        &:first-of-type(li) {
+          @include breakpoint(small down) {
+            padding-top: 6.2rem;
+          }
+        }
+
+        li {
+          @include breakpoint(small down) {
+            background: white;
+            border: none !important;
+          }
+          a {
+            @include breakpoint(small down) {
+              width: 100%;
+              font-size: 1.8rem;
+              color: #18171e;
+              font-weight: 600;
+              font-family: "BreveSans", sans-serif;
+              vertical-align: middle;
+              border-color: #e0e0e0;
+              border-style: solid;
+              border-width: 0 0 0 0.4rem;
+              height: auto;
+              text-align: left;
+              background-color: white;
+              position: relative;
+              z-index: 1;
+            }
+          }
+        }
+      }
+      li {
+        margin-left: 0;
+        a {
+          //height:48px; // fix rounding issues with link height when zooming in/out
+          background-color: $neutral-color-2;
+          text-transform: uppercase;
+          font-family: $primary-font;
+          font-weight: 600;
+          font-size: 1.3rem;
+          color: white;
+          padding-bottom: 1.7rem;
+          padding-top: 1.8rem;
+          text-decoration: none;
+          &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
+        }
+        &.audience-menu > a {
+          background-color: $primary-color-6;
+          &:hover,
+          &:focus {
+            text-decoration: none;
+            background-color: #710829;
+          }
+          &:after {
+            content: "\e800";
+            font-family: $icon-font;
+            padding-left: .7rem;
+
+          }
+          &[aria-expanded="true"]:after {
+            content: "\e805";
+            font-size: 1.0rem;
+            padding-top: .2rem;
+          }
+        }
+        @include breakpoint(small down) {
+          display: none;
+          &.audience-menu {
+            display: block;
+          }
+        }
+        .btn-gold {
+          background-color: $secondary-color-2 !important;
+          &:hover,
+          &:focus {
+            background-color: $secondary-color-1 !important;
+          }
+        }
+      }
+    }
+  }
+  .is-stuck {
+    .utility-menu {
+      height: 3.6rem;
+    }
+    #block-utilitymenu {
+      ul {
+        height: 3.6rem;
+      }
+      a {
+        height: auto;
+        padding-top: 1.1rem;
+        padding-bottom: 1.2rem;
+      }
+    }
+  }
+    #utility-menu {
+      height: 4.8rem;
+    }
+    .is-stuck #utility-menu {
+      height: 3.6rem;
+    }
+} //end header

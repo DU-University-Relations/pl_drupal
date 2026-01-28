@@ -1,0 +1,84 @@
+.du-tuition-calculator-calculator {
+  margin: 4rem 0;
+  .chosen-container-single.chosen-select .chosen-single {
+    @extend select;
+    margin-bottom: 0 !important;
+  }
+  .chosen-container-single .chosen-single div b,
+  .chosen-container-active.chosen-with-drop .chosen-single div b {
+    background: none !important;
+  }
+  .chosen-container-single .chosen-drop {
+    .chosen-search  {
+      height: 4.5rem;
+      .chosen-search-input {
+        background-size: 69px 52px !important;
+        padding: .4rem 3rem .4rem .5rem;
+        background: url("chosen-sprite.png") no-repeat 100% -28px;
+        height: 3.5rem;
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .chosen-container .chosen-results li.active-result {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+  .js-form-item,
+  fieldset {
+    label,
+    legend {
+      font-family: $primary-font;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: $neutral-color-3;
+      display: block;
+      margin-bottom: 1rem;
+      &.option {
+        font-weight: normal;
+        display: inline;
+      }
+    }
+    select,
+    .chosen-select {
+      margin-bottom: 3rem;
+      width: 100%;
+      @include breakpoint(medium up) {
+        width: 30rem !important;
+      }
+    }
+  }
+  #edit-search-option--wrapper {
+    margin-top: 2rem;
+  }
+  #edit-search-option {
+    @media(min-width: 400px) {
+      display: flex;
+    }
+  }
+  #edit-academic-year--wrapper {
+    padding-bottom: 2rem;
+    border-bottom: 3px solid $neutral-color-4;
+    .form-item-academic-year input {
+      margin: 0;
+    }
+  }
+  .dutc-per-credit,
+  .dutc-annual {
+    font-weight: bold;
+    font-size: 2.2rem;
+    margin-top: 3rem;
+    .dutc-per-credit-cost,
+    .dutc-annual-cost {
+      font-size: 3.6rem;
+      font-family: $headline-font;
+    }
+  }
+  .dutc-disclaimer {
+    font-size: 1.6rem;
+    font-style: italic;
+  }
+  .dutc-footer {
+    margin-top: 2rem;
+  }
+}

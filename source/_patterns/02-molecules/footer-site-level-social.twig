@@ -1,0 +1,10 @@
+<div class="footer-site-level-social">
+    <p class="small-8 medium-7 columns text-align-left">{{ text }}</p>
+    <div class="medium-10 flex-container social-media">
+        {% for item in icons %}
+            <div class="flex-child-shrink">
+                {% include "@atoms/icon.twig" with item %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% embed "@molecules/shared-content.twig" %}
+
+    {% set  shared =  {
+        "type": "h3",
+        "cssClass": "shared-content-title",
+        "title": node.label,
+        "text": content.field_shared_content_copy|field_value,
+        "show": node.field_shared_content_show_title.value
+      }
+    %}
+
+    {% set label = node.label %}
+    {% set text = content.field_shared_content_copy|field_value %}
+
+{% endembed %}

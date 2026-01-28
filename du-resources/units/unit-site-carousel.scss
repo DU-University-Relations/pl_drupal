@@ -1,0 +1,110 @@
+.unit-site-carousel {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 5.0rem;
+
+  &__single {
+    .unit-site-carousel__nav {
+      display: none;
+    }
+
+    @include breakpoint(xlarge) {
+      max-width: none !important;// override foundation max width
+      margin-left: 0!important;
+      margin-right: 0!important;
+      padding: 0;
+      background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+    }
+    .unit-site-carousel__slides {
+      max-width: 100.0rem;
+      margin: 0 auto;
+    }
+  }
+  // &__multi {
+  // }
+  .unit-site-carousel__overlay {
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: #18171e;
+    opacity: 0.7;
+    &.left { left: 0; }
+    &.right { right: 0; }
+  }
+  .unit-site-carousel__nav {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 0;
+    right: 0;
+    max-width: 118.0rem;
+    margin: 0 auto;
+  }
+  .prev-button, .next-button {
+    position: absolute;
+    z-index: 2;
+    font-size: 6.5rem;
+    line-height: 0;
+    color: white;
+    transform: translate(0, -50%);
+    border-radius: 10.0rem;
+    padding: 1.2rem 0;
+    cursor: pointer;
+  }
+
+  .prev-button{ left: 1.0rem; }
+  .next-button { right: 1.0rem; }
+
+  .unit-carousel-slide {
+    position: relative;
+    display: block !important; // override inline-block from slick slider.
+  }
+
+  .unit-carousel-slide img {
+    width: 100%;
+  }
+  .unit-carousel-slide .caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.65);
+    padding: 2.5rem 3.4rem;
+    color: white;
+    line-height: 2.2rem;
+    min-height: 9.4rem;
+    width: 100%;
+    p {
+      line-height: 2.2rem;
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+
+  @include breakpoint(small down) {
+    .prev-button, .next-button {
+      font-size: 3.0rem;
+      background: transparentize($neutral-color-2, 1);
+      transition: background 0.3s;
+      &:hover {
+        background: transparentize($neutral-color-2, 0.25);
+      }
+    }
+    .prev-button {
+      padding-left: .4rem;
+      padding-right: .8rem;
+      left: 3.0rem;
+    }
+    .next-button {
+      padding-left: .8rem;
+      padding-right: .4rem;
+      right: 3.0rem;
+    }
+    .unit-carousel-slide .caption {
+      padding: 1.8rem 2.0rem;
+      position: static;
+      color: $neutral-color-2;
+      background: transparent;
+    }
+  }
+}

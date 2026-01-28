@@ -1,0 +1,10 @@
+{% set headline = {
+    "title": title,
+    "type": "h3",
+    "cssClass": "btm-divider" ~ " text-" ~ alignment
+} %}
+<div class="row heading">
+    <div class="column">
+        {% include "@atoms/headline.twig" with headline %}
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{
+  "page_name": "Content Page With Single Carousel Slide",
+  "hide_hero": true,
+  "hero_image": {},
+  "show_content": {
+    "unit_carousel_single": true
+  }
+}

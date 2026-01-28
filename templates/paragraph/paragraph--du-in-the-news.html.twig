@@ -1,0 +1,9 @@
+{% embed "@organisms/du-news-list.twig" %}
+
+{% set du_news_button =  {
+    "title": content.field_du_news_button|field_raw('title'),
+    "href": content.field_du_news_button.0['#url'],
+    "target": content.field_du_news_button.0['#options']['attributes']['target'],
+} %}
+
+{% endembed %}

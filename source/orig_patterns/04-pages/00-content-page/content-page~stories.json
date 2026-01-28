@@ -1,0 +1,79 @@
+{
+	"stories_module": [
+		{
+			"three_col_header": {
+				"title": "Three_Column Stories Module",
+				"type": "h3",
+				"cssClass": "btm-divider buffer-top"
+			},
+	    	"stories": [
+		        {
+		            "src": "/_duresources/foundation/images/story_image.jpg",
+		            "alt_text": "alt text for story image",
+		            "title": "Story Headline",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.",
+		            "button": {
+		                "title": "Learn More",
+		                "type": ""
+		            }
+		        },
+		        {
+		            "src": "/_duresources/foundation/images/story_image.jpg",
+		            "alt_text": "alt text for story image",
+		            "title": "Story Headline",
+		            "type": "h4",
+		            "text": "The demand for computer science experience is growing across the country. DU’s recently developed program in Emergent Digital Practices offers degrees in a variety of computer technology fields, including cybersecurity, 3D modeling, data management and more. Increasingly, women are filling these gaps in the job market, and DU students are no exception.<br/><br/>Undergraduate computer science student Sadie Roy talks about her experience in the new program, comparing coding to building and solving your own puzzle. She says she looks ahead to using her knowledge to build a career in computer science.",
+		            "button": {
+		                "title": "Learn More",
+		                "type": ""
+		            }
+		        },
+		        {
+		            "src": "/_duresources/foundation/images/story_image.jpg",
+		            "alt_text": "alt text for story image",
+		            "title": "Story Headline",
+		            "type": "h4",
+		            "text": "Students in the Department of Biological Sciences and in Gender and Women’s Studies will be able to complete the five_year track with two degrees, a rare opportunity that is almost unprecedented among study abroad programs. Once their undergraduate portion is completed, students will be able to study for a fifth year at Lund and walk away with a master’s degree. Internationalization is a core tenet of the DU experience, with over 70% of undergraduates spending time abroad during their stay at DU.",
+		            "button": {
+		                "title": "Learn More",
+		                "type": ""
+		            }
+		        }
+		    ]
+		},
+		{
+			"buffer-top": true,
+			"two_col": true,
+		    "two_col_header": {
+		        "title": "Two_Column Stories",
+		        "type": "h3",
+		        "cssClass": "btm-divider medium_text-right"
+		    },
+	    	"stories": [
+		        {
+		            "src": "/_duresources/foundation/images/story_image.jpg",
+		            "alt_text": "alt text for story image",
+		            "title": "Story Headline",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+		            "button": {
+		                "title": "Learn More",
+		                "type": ""
+		            }
+		        },
+		        {
+		            "src": "/_duresources/foundation/images/story_image.jpg",
+		            "alt_text": "alt text for story image",
+		            "title": "Story Headline",
+		            "type": "h4",
+		            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+		            "button": {
+		                "title": "Learn More",
+		                "type": ""
+		            }
+		        }
+		    ]
+		}
+	]
+}

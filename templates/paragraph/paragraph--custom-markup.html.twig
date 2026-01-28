@@ -1,0 +1,6 @@
+{% set custom_html = paragraph.field_custom_html.value %}
+{% set custom_css = paragraph.field_custom_css.value %}
+{% apply spaceless %}
+  <style>{{ custom_css|raw }}</style>
+  {{ custom_html|raw }}
+{% endapply %}

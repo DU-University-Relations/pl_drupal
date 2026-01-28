@@ -1,0 +1,15 @@
+{
+    "hero_items": [
+        {
+            "label": "College",
+            "value": "NM"
+        },
+        {
+            "value": "Graduate"
+        },
+        {
+            "hide": true,
+            "value": "Masters"
+        }
+    ]
+}

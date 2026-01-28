@@ -1,0 +1,10 @@
+{
+	"alert": {
+		"is_notification": true,
+		"title": "Important",
+		"type": "h1",
+		"button_text": "Toggle Alert",
+		"text": "Important Alert Headline Goes Here",
+		"icon_name": "cust_close"
+	}
+}

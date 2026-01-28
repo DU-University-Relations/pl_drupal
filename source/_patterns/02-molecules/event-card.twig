@@ -1,0 +1,21 @@
+<a href="{{ url }}" class="event-card">
+    {% if date %}
+        <p>{{ date }}</p>
+    {% endif %}
+    {% if title %}
+        {% include "@atoms/headline.twig" with {"type" : "h3", "title" : title|raw} %}
+    {% endif %}
+    {% if start_time != end_time and end_time is not empty %}
+        <p>{% include "@atoms/_du-icon.twig" with {"icon_name" : "clock"} %} {{ start_time }} - {{ end_time }}</p>
+    {% else %}
+        {% if start_time != "12:00am" %}
+            <p>{% include "@atoms/_du-icon.twig" with {"icon_name" : "clock"} %} {{ start_time }}</p>
+        {% endif %}
+    {% endif %}
+    {% if location %}
+        <p>{% include "@atoms/_du-icon.twig" with {"icon_name" : "location"} %} {{ location|raw }}</p>
+    {% endif %}
+    <div class="event-listing__details-button">
+        <p class="btn">View Details</p>
+    </div>
+</a>

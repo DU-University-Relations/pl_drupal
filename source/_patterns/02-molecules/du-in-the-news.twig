@@ -1,0 +1,24 @@
+<article class="du-in-the-news-item teaser columns">
+    {% if link_url %}<a class="du-news-hover" href="{{ link_url }}">{% endif %}
+        <div class="img-container">
+            <div class="logo-image">
+                {{ news_logo }}
+            </div>
+            <div class="news-image">
+                {{ news_image }}
+                <div class="news-image-overlay">
+                    <p>READ STORY</p>
+                </div>
+            </div>
+        </div>
+        <div class="du-news-title">
+            {% include "@atoms/headline.twig" with {'title' : label, 'type' : 'h6'} %}
+        </div>
+        {% if author %}
+            <div class="du-news-author">{{ author }}</div>
+        {% endif %}
+        <div class="du-news-date">
+            {{ date }}
+        </div>
+    {% if link_url %}</a>{% endif %}
+</article>

@@ -1,0 +1,23 @@
+{#
+/**
+ * @file bibcite-citation.html.twig
+ * Default theme implementation to present bibliographic data as citation.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_bibcite_citation()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('bibcite-citation') }}>
+  {% if content %}
+    {% if citation_url %}
+      <a href="{{ citation_url }}" target="_blank" {{ attributes.addClass('bibcite-citation-linked') }}>{{ content }}</a>
+    {% else %}
+      {{ content }}
+    {% endif %}
+  {% endif %}
+</div>

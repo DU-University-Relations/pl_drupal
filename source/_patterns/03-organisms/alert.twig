@@ -1,0 +1,67 @@
+{% if alert.level == 'catastrophic' %}
+    <div class="catastrophic-alert">
+        <header role="banner">
+            <div class="row">
+                <div class="columns small-12 medium-12 large-4">
+                    <img src="/themes/custom/pl_drupal/images/alert-logo.png" alt="Logo">
+                </div>
+                <div class="columns small-12 medium-12 large-8">
+                    <h1>
+                        {% if alert.first_word|render is not empty %}
+                            {{ alert.first_word }}
+                        {% else %}
+                            Alert
+                        {% endif %}
+                    </h1>
+                    <h2>{{ alert.text }}</h2>
+                </div>
+            </div>
+        </header>
+        <article id="main-content" role="main">
+            <div class="row">
+                <div class="columns small-12 medium-12 large-8 large-order-2">
+                    {{ alert.alert_expanded_text }}
+                </div>
+                <aside class="columns small-12 medium-12 large-4 large-order-1">
+                    {{ alert.alert_sidebar_text }}
+                </aside>
+            </div>
+        </article>
+    </div>
+{% else %}
+    <aside id="du-alert" class="du-alert{% if alert.level == 'notification' %} du-alert--notification{% endif %} {% if alert.level != 'notification' %} du-alert--urgent{% endif %} {% if alert.color is not empty %}notification-{{ alert.color }}{% endif %}" data-closable>
+        <div class="row">
+            <div class="columns text-center">
+                <button class="du-alert__action-button" data-close >
+                    <span class="show-for-sr">{{ alert.button_text }}</span>
+                    <span class="icon-du-cust-close " aria-hidden="true"></span>
+                </button>
+                <div class="du-alert__first-word">
+                    {% if alert.first_word|render is not empty %}
+                        {{ alert.first_word }}
+                    {% elseif alert.first_word|render is empty and alert.level =='notification' %}
+                        Important
+                    {% else %}
+                        Alert
+                    {% endif %}
+                </div>
+                <span class="title">{{ alert.text }}</span>
+                {% if alert.level != 'notification' %}
+                    <button id="urgent-alert-toggle" data-toggle="du-alert__content">
+                        <span class="icon-du-down-arrow" aria-label="More Information">&nbsp;</span>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        {% if alert.level != 'notification' %}
+            <div id="du-alert__content" data-toggler=".du-alert__content--expanded">
+                <div class="row">
+                    <div class="columns">
+                        {{ alert.alert_expanded_text }}
+                        {{ alert.alert_link }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </aside>
+{% endif %}

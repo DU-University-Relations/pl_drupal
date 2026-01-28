@@ -1,0 +1,39 @@
+.recently-edited-content {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+  overflow: auto;
+
+  header, footer {
+    text-align: left;
+    h5 {
+      margin-top: 3rem;
+    }
+    a {
+      font-size: 1.7rem;
+      background-color: #B61601;
+      padding: 10px 50px;
+      color: white;
+      text-decoration: none;
+      width: 200px;
+      margin: 0 auto;
+
+      &:hover {
+        background-color: #8c2332;
+      }
+    }
+  }
+
+  .views-exposed-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-end;
+
+    .js-form-item {
+      margin-right: 1rem;
+    }
+  }
+
+
+}

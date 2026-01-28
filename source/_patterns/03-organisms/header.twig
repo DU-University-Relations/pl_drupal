@@ -1,0 +1,95 @@
+<header class="header {% if inline_site %}core-inline-site{% endif %} {% if hero_video %} hero-video{% endif %}{% if hero_url %} hero-image{% endif %}" role="banner">
+    {% block utility_nav %}
+        {% include "@molecules/utility-nav.twig" %}
+    {% endblock %}
+    <div data-sticky-container>
+        <div id="top-bar-sticky-wrap" class="sticky" data-sticky data-sticky-on="small" data-margin-top="0" data-top-anchor="utility-menu:bottom">
+            {% if du_elevate_display_enabled %}
+                <div class="core-elevate-wrapper">
+                    {% include "@molecules/_unit-elevate-cart.twig" %}
+                </div>
+            {% endif %}
+            <div class="top-bar">
+                <nav id="main-menu-wrap">
+                    <div class="row expanded">
+                        <div class="columns shrink">
+                            <a href="{{ logo_url }}" class="logo {% if inline_site %}inline-site{% endif %}">
+                               {# Custom logo for inline site NWSSCOE #}
+                               {% if site_name == 'NWSS CoE' %}
+                                    <div class="site-logo">
+                                        <img src="/themes/custom/pl_drupal/images/DU_CDPHE_Combined_Logo.png" width="80" alt="University of Denver">
+                                    </div>
+                                    {{ logo_text|raw }}
+                                {% else %}
+                                    {{ logo|raw }}
+                                    <div class="site-identity">
+                                        <span class="site-prefix">{{ site_prefix }}</span>
+                                        <span class="site-name">{{ site_name }}</span>
+                                    </div>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="columns">
+                            <div id="main-menu">
+                                {% block mega_nav %}
+                                    {% include "@molecules/mega-nav.twig" %}
+                                {% endblock %}
+
+                                {% block utility_nav_sm %}
+                                    {% set extra_class =  'show-for-small-only ' %}
+                                    {% include "@molecules/utility-nav-sm.twig" %}
+                                {% endblock %}
+                            </div>
+                        </div>
+
+                        <div class="columns shrink">
+                            <ul id="search-toggler" class="dropdown menu" data-dropdown-menu data-options="clickOpen: true; closeOnClickInside: false; closeOnClick: true; disableHover: true;">
+                                <li class="search mega-menu">
+                                    <a href="#">Search</a>
+                                    <ul id="search" class="menu">
+                                        <li>
+                                            <div class="row">
+                                                <div class="columns">
+                                                    <div class="search-box">
+                                                        <label class="show-for-sr" for="site-search-input" aria-label="search-label">Search Input</label>
+                                                        <input name="search" id="site-search-input" placeholder="Search" type="text" required="required" tabindex="1">
+                                                        <button class="search-submit" type="button" title="Submit Search">
+                                                            <span class="icon-du-cust-search" aria-hidden="true"></span>
+                                                            <span class="show-for-sr">Submit Search</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% set current_url = url('<current>')|render|render %}
+                                {% if (node.bundle == 'elevate_course') or ('elevate/programs' in current_url) or ('/continuing-education' in current_url) %}
+                                <li class="core-elevate-button">
+                                    <a href="#utility-elevate-cart-popup" class="core-utility-menu__cart-button" aria-controls="#elevate-cart-popup">
+                                        <span class="toggle-icon">{% include "@atoms/_du-icon.twig" with {"icon_name": "basket"} %}</span>
+                                        <span class="toggle-label">Cart</span>
+                                        <span class="items-in-cart">1</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            {% if menu_item_count > 0 %}
+                                <div id="unit-main-menu-toggler" class="align-right" data-responsive-toggle="main-menu" data-hide-for="large">
+                                    <button class="icon-du-cust-menu" type="button" data-toggle="main-menu">
+                                        <span class="show-for-sr">Toggle Menu</span></button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {% if not hide_hero %}
+        {% include "@organisms/hero-media-unit.twig" %}
+    {% endif %}
+
+
+</header>

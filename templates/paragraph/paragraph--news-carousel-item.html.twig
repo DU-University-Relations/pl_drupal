@@ -1,0 +1,8 @@
+{% embed "@molecules/news-carousel-item.twig" %}
+    {% set title = content.field_title|field_value ? content.field_title|field_value : title %}
+    {% set publication = content.field_publication|field_value %}
+    {% set description = content.field_description|field_value ? content.field_description|field_value : description %}
+    {% set link = content.field_link[0]['#url'] %}
+    {% set image = paragraph.field_news_image.entity.uri.value %}
+    {% set youtube_id = content.field_youtube_id|field_value %}
+{% endembed %}

@@ -1,0 +1,140 @@
+.article {
+  .intro {
+    margin-bottom: 0;
+    > h2.subhead {
+      display: block;
+      margin-block-start: 1.5rem;
+      margin-block-end: 1.5rem;
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+      font-size: 2rem;
+      line-height: 3rem !important;
+      margin-top: 0;
+      color: #18161f;
+      font-family: $headline-font;
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+      @include breakpoint(medium up) {
+        font-size: 2.1rem;
+        line-height: 3.1rem !important;
+        margin-block-end: 1.8rem;
+        margin-block-start: 0;
+        margin-inline-end: 0;
+        margin-inline-start: 0;
+      }
+      @include breakpoint(large up) {
+        font-size: 2.3rem;
+      }
+    }
+    .article-type-date {
+      font-size: 1.8rem;
+      font-weight: bold;
+      .article-type {
+        color: $accent-color-2b;
+      }
+      .news-category ~ .columns {
+        flex: auto;
+      }
+    }
+    .article-overview {
+      & > div {
+        margin-top: 2rem;
+        p {
+          line-height: 2.8rem !important;
+          font-family: $primary-font;
+          font-size: 1.8rem;
+        }
+        li {
+          font-size: 1.8rem;
+          font-family: $primary-font;
+        }
+      }
+    }
+  } //end .intro
+  // Feature Media and caption
+  .feature-media {
+    & > div {
+      width: 100%;
+      margin: 2rem 0 5rem 0;
+      text-align: center;
+    }
+    span.caption {
+      margin-bottom: 3rem;
+      p {
+        font-size: 1.4rem;
+        font-style: italic;
+        line-height: 1.8rem !important;
+        @include breakpoint(medium up) {
+          font-size: 1.6rem;
+          line-height: 2.2rem !important;
+        }
+      }
+    }
+  }
+  .feature-media-caption-margin > div {
+    margin-bottom: 1rem;
+  } //end Feature Media and caption
+
+  .comment-article-form {
+    #edit-submit {
+      margin: 2rem auto;
+      display: block;
+    }
+  }
+  .article-comment {
+    margin-bottom: 5rem;
+  }
+  .article-related {
+    margin-bottom: 5rem;
+    h2 {
+      font-weight: bold;
+    }
+    h3 {
+      margin-bottom: 1.5rem;
+    }
+    .article-related-type {
+      font-size: 1.9rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .related-card-section {
+      margin-bottom: 1.5rem;
+      @include breakpoint(medium up) {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .embedded-entity {
+    padding: 2rem 2.5rem;
+    display: table;
+    figcaption {
+      display: table-caption;
+      caption-side: bottom;
+      padding: 0 2rem 2rem;
+    }
+  }
+  figure > figcaption {
+    padding: 0 2rem 2rem; // figcaption is not always a child of .embedded-entity but is a sibling
+  }
+  .align-center {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+} //end article
+
+// add padding to article.embedded-entity to resolve non-padded widen images
+article {
+  .embedded-entity.align-left {
+    padding: 1rem 2rem 1rem 0;
+  }
+  .embedded-entity.align-right {
+    padding: 1rem 0 1rem 2rem;
+  }
+  .embedded-entity.align-center {
+    padding: 1rem 0 1rem 0;
+  }
+}
+
+.unit-site .article .pull-up {
+  margin-top: 0;
+}

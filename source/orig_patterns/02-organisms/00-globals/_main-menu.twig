@@ -1,0 +1,39 @@
+<div id="main-menu">
+    <ul class="vertical large-horizontal menu align-right dropdown" data-options="closeOnClickInside: false;hoverDelay: 300;" data-dropdown-menu>
+        {% for item in main_menu.menu_items %}
+            <li class="{% if item.is_active %}active{% endif %}{% if item.mega_menu %} mega-menu{% endif %}">
+                {% include "@atoms/link.twig" with item %}
+                {% if item.mega_menu %}
+                    <ul class="menu">
+                        <li>
+                            <div class="row {% if item.alt_layout %} mega-menu--alt-layout{% endif %}">
+                                <div class="{% if item.alt_layout %}medium-8{% endif %}{% if not item.alt_layout %}medium-4{% endif %} columns">
+                                    <div class="content-wrap">
+                                        {% include "@atoms/image.twig" with item.mega_menu %}
+                                        <div class="content">
+                                            {% if item.mega_menu.content %}
+                                                {% include "@atoms/headline.twig" with item.mega_menu.content %}
+                                                {% include "@atoms/paragraph.twig" with item.mega_menu.content %}
+                                                {% if item.mega_menu.content.button %}
+                                                    <p>{% include "@atoms/button.twig" with item.mega_menu.content.button %}</p>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="{% if item.alt_layout %}medium-4{% endif %}{% if not item.alt_layout %}medium-8{% endif %} columns">
+                                    <ul{% if not item.alt_layout %} class="two-col"{% endif %}>
+                                        {% for sub_item in item.mega_menu.sub_menu_items %}
+                                            <li>{% include "@atoms/link.twig" with sub_item %}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+   {# {% include "@molecules/utility-menu.twig" with utility_menu %}#}
+</div>

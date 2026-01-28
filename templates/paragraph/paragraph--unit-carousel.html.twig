@@ -1,0 +1,10 @@
+{% embed "@organisms/unit-carousel.twig" %}
+    {% set slides = content.field_unit_carousel_slide|field_value %}
+    {% set slide_count = slides|length %}
+    {% block slides %}
+        {% for slide in slides %}
+            {{ slide }}
+        {% endfor %}
+    {% endblock %}
+    {% set title = content.field_unit_carousel_title|field_value %}
+{% endembed %}

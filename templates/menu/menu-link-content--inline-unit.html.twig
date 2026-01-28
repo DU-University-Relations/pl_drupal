@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a menu link entity entity.
+ *
+ * Available variables:
+ * - menu_link_content: Menu link entity.
+ * - show_item_link: Indicator for menu item link.
+ *
+ * @see template_preprocess_menu_link_content()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set menu_dropdown_classes = [
+  'menu-dropdown',
+  content.field_nav_image|render ? 'menu-dropdown--full' : 'menu-dropdown--links-only',
+  elements['#menu_level'] is defined ? 'menu-dropdown-' ~ elements['#menu_level'],
+  elements['#view_mode'] ? 'menu-type-' ~ elements['#view_mode'],
+] %}
+{% set large_menu = content.children|length > 7 ? true : false %}
+
+{% if content['#menu_level'] == 0 and content.children %}
+  <div{{ attributes.addClass(menu_dropdown_classes) }}>
+    {% if show_item_link %}
+      {{ link(menu_link_content.getTitle(), menu_link_content.getUrlObject()) }}
+    {% endif %}
+    {% if content %}
+        {% if content.field_nav_image|render %}
+          <div class="row">
+            <div class="menu-dropdown__content {{ large_menu ? 'medium-4' : 'medium-8' }} columns">
+              <div class="menu-dropdown__content__image">
+                {{ content.field_nav_image }}
+              </div>
+              <div class="menu-dropdown__content__card {{ large_menu ? 'menu-dropdown__content__card--relative' : 'menu-dropdown__content__card--absolute' }}">
+                <h2>{{ content.field_nav_headline }}</h2>
+                {{ content.field_nav_description }}
+                {% if content.field_nav_button|render  %}
+                  <a href="{{ content.field_nav_button.0['#url'] }}" class="btn">{{ content.field_nav_button.0['#title'] }}</a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="menu-dropdown__sub-links {{ large_menu ? 'menu-dropdown__sub-links--large medium-8' : 'menu-dropdown__sub-links--small medium-4' }} columns">
+              {{ content.children }}
+            </div>
+          </div>
+        {% else %}
+          <div class="menu-dropdown__sub-links">
+            {{ content.children }}
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,23 @@
+{#
+    See hook_preprocess_paragraph__homepage_facts
+     'facts' variable has been preloaded.
+#}
+{% embed "@organisms/3-col-facts.twig" %}
+    {% set headline = content.field_hpf_heading|field_value %}
+    {% set src = styled_src %}
+    {% set specific_id = "threeColFacts" ~ random(999999999) %} {# TODO: find a more sane way to ensure each 3-col-facts gets a unique ID #}
+    {% set cols = [
+        {
+            "number": content.field_hpf_fact1_stat|field_value,
+            "description": content.field_hpf_fact1_text|field_value
+        },
+        {
+            "number": content.field_hpf_fact2_stat|field_value,
+            "description": content.field_hpf_fact2_text|field_value
+        },
+        {
+            "number": content.field_hpf_fact3_stat|field_value,
+            "description": content.field_hpf_fact3_text|field_value
+        }
+    ] %}
+{% endembed %}

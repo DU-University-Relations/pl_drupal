@@ -1,0 +1,43 @@
+<div class="quick-fact-module__content {% if statistic %} statistic {% endif %}">
+    {% if item.url is not empty %}<a href="{{ item.url }}" title="{{ item.alt_text }}" target="{{ item.target }}">{% endif %}
+    {% if view_mode == '3-col' %}
+    {% if image %}
+        <div id="factImage">
+	        {% if item.url is not empty %}<a href="{{ item.url }}" title="{{ item.alt_text }}" target="{{ item.target }}">{% endif %}
+            {{ image }}
+            {% if item.url is not empty %}</a>{% endif %}
+        </div>
+    {% else %}
+    {% if statistic %}
+		<h3>
+            <span class="statistic">
+                {{ statistic }}
+            </span>
+        </h3>
+    {% endif %}
+    {% endif %}
+    {% else %}
+        {% if image %}
+            <div id="factImage">
+                {% if item.url is not empty %}<a href="{{ item.url }}" title="{{ item.alt_text }}" target="{{ item.target }}">{% endif %}
+                {{ image }}
+                {% if item.url is not empty %}</a>{% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+    {% if caption or headline or citation %}
+	    <h3>
+            {% if item.url is not empty %}<a href="{{ item.url }}" title="{{ item.alt_text }}" target="{{ item.target }}">{% endif %}
+            {% if headline %}
+            <span class="headline">{{ headline }}</span>
+            {% endif %}
+            {% if caption %}
+            <span class="caption">{{ caption }}</span>
+            {% endif %}
+            {% if citation %}
+            <span class="citation">{{ citation }}</span>
+            {% endif %}
+            {% if item.url is not empty %}</a>{% endif %}
+        </h3>
+    {% endif %}
+</div>

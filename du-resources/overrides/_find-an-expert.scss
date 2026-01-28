@@ -1,0 +1,336 @@
+// Find an Expert View
+.find-an-expert {
+  header {
+    padding-top: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #18171e;
+    margin-bottom: 2rem;
+    span {
+      color: $primary-color-3;
+      font-size: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+  .views-exposed-form {
+    display: flex;
+    .js-form-item {
+      width: calc( 50% - 2rem );
+      margin: 0 1rem 2rem;
+      label {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-family: "BreveSans", sans-serif;
+        margin-bottom: .3rem;
+      }
+    }
+    input[type="text"] {
+      height: 3.3rem;
+    }
+  }
+
+  .blazy--view--find-an-expert,
+  .views-view-grid {
+    .views-row {
+      .views-col {
+        position: relative;
+        box-shadow: rgba(50, 50, 93, 0.2) 2px 6px 6px -2px, rgba(0, 0, 0, 0.2) 2px 3px 4px -3px;
+        padding: 15px;
+        width: 100% !important;
+        margin: 12px 5px;
+        @include breakpoint(medium up) {
+          width: 48% !important;
+          height: 435px;
+        }
+        @include breakpoint(large up) {
+          width: 32% !important;
+          height: 435px;
+        }
+        &:hover {
+          box-shadow: rgba(50, 50, 93, 0.4) 2px 6px 6px -2px, rgba(0, 0, 0, 0.4) 2px 3px 4px -3px;
+          transition: .2s linear;
+        }
+        .views-field-title {
+          text-align: center;
+          float: left;
+          width: 100%;
+          min-height: 65px;
+          h5{
+            margin-bottom: 0px;
+          }
+          a {
+            color: #05637b;;
+            text-decoration: none;
+            font-size: 2.8rem;
+            line-height: .4;
+            &:hover, &:focus {
+              color: #033b4a;
+            }
+          }
+        }
+        .views-field-field-profile-photo {
+          padding: 0;
+          text-align: center;
+          width: 150px;
+          @include breakpoint(500px up) {
+            width: 225px;
+          }
+          @include breakpoint(medium up) {
+            width: 40%;
+          }
+          @include breakpoint(large up) {
+            width: 40%;
+            margin-top: -4px;
+            margin-right: -10px;
+            float: right;
+            padding: 5px 5px 6rem;
+          }
+          img {
+            box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+            border-radius: 28%;
+            border-left: 4px solid #a89968;
+            border-top: 4px solid #a89968;
+            border-bottom: 4px solid #a89968;
+            border-right: 4px solid #a89968;
+            transition: .45s linear;
+          }
+        }
+        .views-field-body {
+          font-size: 1.55rem;
+          line-height: 1.35;
+          margin-top: 5px;
+          padding-top: 5px;
+          width: 63%;
+          p {
+            font-size: 1.45rem;
+            line-height: 1.35;
+          }
+        }
+        .views-field-field-specialization {
+          text-align: center;
+          width: 100%;
+          padding-bottom: 5px;
+          @include breakpoint(large up) {
+            width: 62%;
+            float: left;
+          }
+          .views-label {
+            border-bottom: 3px solid grey;
+            font-size: 1.95rem;
+            font-weight: bold;
+          }
+
+          .field-content {
+            font-size: 1.75rem;
+            line-height: 1.55;
+          }
+        }
+        .views-field-view-node,
+        .views-field-field-email {
+          position: absolute;
+          right: 21px;
+          top: 254px;
+          border-radius: 28%;
+          border-left: 4px solid #a89968;
+          border-top: 4px solid #a89968;
+          border-bottom: 4px solid #a89968;
+          border-right: 4px solid #a89968;
+          transition: .45s linear;
+          a{
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+          }
+          .field-content {
+            border-radius: 23%;
+            padding: 1rem 1rem;
+          }
+        }
+        .views-field-view-node {
+          right: 21px;
+          top: 254px;
+        }
+        .views-field-field-email {
+          right: 21px;
+          top: 310px;
+          display: none;
+        }
+      }
+      // Apply multiple background affects on hover to the selected children
+      .views-col:hover {
+        .views-field-field-profile-photo img {
+          border-left: 4px solid #ba0c2f;
+          border-top: 4px solid #ba0c2f;
+          border-bottom: 4px solid #ba0c2f;
+          border-right: 4px solid #ba0c2f;
+        }
+        .views-field-view-node {
+          border-left: 4px solid #ba0c2f;
+          border-top: 4px solid #ba0c2f;
+          border-bottom: 4px solid #ba0c2f;
+          border-right: 4px solid #ba0c2f;
+        }
+      }
+    }
+  }
+}
+
+// Find an Expert Content Page
+.find-an-expert-page {
+  width: 70%;
+  max-width: 120rem;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  display: flex;
+
+  #inner-information {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: flex-start;
+
+    @include breakpoint(large up) {
+      width: 33%;
+    }
+
+    .expert-field-wrapper {
+      .field_social_links-field {
+        margin-right: 2rem;
+        .follow-us {
+          background: none;
+          padding: 0;
+          display: flex;
+          .row {
+            margin-left: 0;
+            margin-right: 0;
+            .columns {
+              &:first-child {
+                display: none;
+              }
+            }
+          }
+          .follow-us__view-all {
+            display: none;
+          }
+          .columns {
+            ul li {
+              &::before {
+                height: 0;
+              }
+              a {
+                span {
+                  color: #8c2332;
+                }
+                &:hover {
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #outer-information {
+    width: 66%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+  }
+
+  .expert-field-wrapper {
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+  }
+
+  .expert-label {
+    font-size: 1.95rem;
+    font-weight: bold;
+    margin-bottom: .3rem;
+    color: #8b6e4a;;
+    text-decoration: underline;
+  }
+
+  .field_profile_photo-field {
+    width: 95%;
+    max-width: 222px;
+    margin-right: 37px;
+    margin-top: -4px;
+    float: left;
+    padding: 5px 5px 6rem;
+    img {
+      box-shadow: 1px 2px 8px rgba(0,0,0,0.5);
+      border-radius: 28%;
+      border-left: 6px solid #a89968;
+      border-top: 6px solid #a89968;
+      border-bottom: 6px solid #a89968;
+      border-right: 6px solid #a89968;
+      transition: .45s linear;
+    }
+  }
+
+  .field_email-field {
+    padding: 1.5rem 2rem;
+    font-family: "Acto", sans-serif;
+    text-decoration: none;
+    width: 95%;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    background-color: #8b6e4a;
+    font-size: 1.95rem;
+    border-radius: 28%;
+    border-left: 6px solid #a89968;
+    border-top: 6px solid #a89968;
+    border-bottom: 6px solid #a89968;
+    border-right: 6px solid #a89968;
+    transition: .45s linear;
+    margin: -60px 0 15px 0;
+
+    @include breakpoint(576px up) {
+      width: 205px;
+      margin: -60px 0 15px 7px;
+    }
+
+    &:hover {
+      border-left: 6px solid #ba0c2f;
+      border-top: 6px solid #ba0c2f;
+      border-bottom: 6px solid #ba0c2f;
+      border-right: 6px solid #ba0c2f;
+    }
+
+    a{
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .back-to-expert-page {
+    position: absolute;
+    right: 19%;
+    bottom: -10px;
+
+    button {
+      background-color: #18171e;
+      text-transform: uppercase;
+      font-family: "BreveSans", sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: white;
+      padding: 1.7rem;
+      cursor: pointer;
+
+      &:hover {
+        color: #a89968;
+        background-color: white;
+        border: 1px solid #ba0c2f;
+      }
+    }
+  }
+}

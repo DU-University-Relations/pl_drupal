@@ -1,0 +1,13 @@
+<div class="row list-filter">
+    <div class="list-filter-sizes">{{ header }}</div>
+    {% if exposed %}
+        <a class="list-filter-filter-button icon-du-down-arrow" data-toggle="list-filter-exposed">
+            <span>Filter</span>
+        </a>
+        <div class="list-filter-form filter-arrow up" id="list-filter-exposed" data-toggler>
+            <div class="filter">
+                {{ exposed }}
+            </div>
+        </div>
+    {% endif %}
+</div>

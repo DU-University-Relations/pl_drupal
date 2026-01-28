@@ -1,0 +1,80 @@
+.footer-site-level {
+  background-color: $accent-color-2b;
+  color: #ffffff;
+  padding: 5.5rem 0;
+  & > div {
+    max-width: $grid-row-width;
+    margin: 0 auto;
+    @include breakpoint(large down) {
+      margin-left: 2.5rem;
+      margin-right: 5.5rem;
+    }
+    @include breakpoint(medium down) {
+      margin-left: 5vw;
+      margin-right: 5vw;
+    }
+    .footer-site-level-logo {
+      margin-bottom: 4rem;
+    }
+    .footer-site-level-social {
+      font-size: 1.4rem;
+      margin-left: 5rem;
+      @include breakpoint(medium down) {
+        margin-left: 0;
+        margin-top: 2rem;
+      }
+      p {
+        padding-left: 0;
+        margin-bottom: 1rem;
+        line-height: 1.6rem;
+      }
+      .social-media {
+        margin-left: -1.2rem;
+        & > div a {
+          font-size: 2.3rem;
+          color: #ffffff;
+        }
+      }
+    }
+    .footer-site-level-address {
+      margin-left: 6vw;
+      @include breakpoint(medium down) {
+        margin-left: 5rem;
+      }
+      span {
+        float: left;
+        margin-left: -4rem;
+        font-size: 2.4rem;
+        margin-top: -1.5rem;
+        @include breakpoint(medium down) {
+          margin-left: -5rem;
+        }
+      }
+      p {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+        line-height: 2rem;
+      }
+    }
+    .footer-site-level-info {
+      margin-left: 4vw;
+      @include breakpoint(medium down) {
+        margin-left: 0;
+      }
+      & > div {
+        margin-top: 1rem;
+        span {
+          font-size: 2.4rem;
+        }
+        p {
+          font-size: 1.6rem;
+          margin-bottom: 0;
+          margin-left: 1rem;
+          @include breakpoint(medium down) {
+            margin-left: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

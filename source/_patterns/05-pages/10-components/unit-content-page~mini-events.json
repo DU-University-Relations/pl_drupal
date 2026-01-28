@@ -1,0 +1,8 @@
+{
+  "page_name": "Content Page",
+  "hide_hero": true,
+  "hero_image": {},
+  "show_content": {
+    "mini_event_feed": true
+  }
+}

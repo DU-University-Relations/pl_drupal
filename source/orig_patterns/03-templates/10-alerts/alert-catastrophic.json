@@ -1,0 +1,51 @@
+{
+	"bodyClass": "catastrophic_alert",
+	"catastrophic_alert": {
+		"logo_images": [
+	      {
+	        "alt_text": "Logo",
+	        "src": "http://placehold.it/225x84"
+	      }
+	    ],
+	    "headers": [
+	    	{
+	    		"title": "Emergency Notification",
+	    		"type": "h1"
+	    	},
+	    	{
+	    		"title": "Headline Campus Closed Due to Major Emergency Lorem Ipsum Dolor Sit Amet Consectetur ",
+	    		"type": "h2"
+	    	}
+	    ],
+	    "text": "<p>Lorem ipsum dolor sit amet, <a href=\"#\">consectetur adipiscing elit</a>. Sed sit amet erat nec est consequat elementum. Aliquam et fringilla libero. Duis lacus mauris, venenatis eu aliquam at, pellentesque non risus. Donec dictum, felis sagittis sollicitudin feugiat, nisl lacus tempus est, quis imperdiet magna elit eget nisi.</p><p>Donec eget magna nec ipsum vehicula sagittis ut ut magna. Sed volutpat quam eu blandit blandit. Sed a eros eu est cursus laoreet nec eu sem. Mauris sagittis congue mi eget condimentum. Duis dictum accumsan mattis. Nam lectus eros, consequat a congue eget, viverra et purus. Suspendisse et gravida mauris. Duis urna felis, pretium at dignissim quis, eleifend eget ligula. Integer neque nibh, convallis in blandit ut, auctor id diam. Phasellus consectetur mauris tempus lorem auctor, at suscipit elit suscipit. Nulla eu consequat est. Sed porttitor augue non tortor ullamcorper rutrum. Nunc eget ornare eros, nec accumsan libero. Proin a mattis ligula, quis varius nisl.</p>",
+	    "sidebar_sections": [
+	    	{
+	    		"title": "This is an H3",
+	    		"type": "h3",
+	    		"sub_sections": [
+	    			{
+			    		"title": "This is an H4",
+			    		"type": "h4",
+	    				"text": "<p><strong>Bold Text:</strong> XXX_XXX_XXXX</p>"
+	    			},
+	    			{
+			    		"title": "This is an H4",
+			    		"type": "h4",
+	    				"text": "<p><strong>Bold Text:</strong> This is text with a number XXX_XXX_XXXX</p><p><strong>Bold Text:</strong> XXX_XXX_XXXX</p>"
+	    			}
+	    		]
+	    	},
+	    	{
+	    		"title": "This is an H3",
+	    		"type": "h3",
+	    		"sub_sections": [
+	    			{
+			    		"title": "This is an H4",
+			    		"type": "h4",
+	    				"text": "<p><strong>Bold Text:</strong> XXX_XXX_XXXX</p>"
+	    			}
+	    		]
+	    	}
+	    ]
+	}
+}

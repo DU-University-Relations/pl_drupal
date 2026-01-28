@@ -1,0 +1,179 @@
+.filter-button {
+  border: .2rem solid #b1b1b1;
+  padding: 1.5rem 1.8rem;
+  color: #81796f;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: $cta-font;
+  font-size: 1.6rem;
+
+  &:hover, &:focus, &.open {
+    color: white;
+    background: $primary-color-3;
+    border-color: $primary-color-3;
+  }
+}
+
+.filters-off {
+  .filter-button-wrapper {
+    display: none;
+  }
+}
+.category-filter-off {
+  .form-item-category,
+  .form-item-field-article-category-target-id {
+    display: none;
+  }
+}
+.author-filter-off {
+  .form-item-author,
+  .js-form-item-author,
+  .form-item-author-tid-depth,
+  .js-form-item-author-tid-depth,
+  .form-item-field-article-byline-author-target-id,
+  .js-form-item-field-article-byline-author-target-id {
+    display: none;
+  }
+}
+.topic-filter-off {
+  .js-form-item-topic,
+  .js-form-item-field-article-topic-target-id {
+    display: none;
+  }
+}
+.keyword-filter-off {
+  .js-form-item-combine,
+  .form-item-field-search-by-keyword,
+  .js-form-item-field-search-by-keyword {
+    display: none;
+  }
+}
+.article-type-filter-off {
+  .form-item-field-article-type-target-id,
+  .js-form-item-field-article-type-target-id {
+    display: none;
+  }
+}
+.article-content-tag-filter-off {
+  .form-item-content-tags-tid-depth,
+  .js-form-item-content-tags-tid-depth {
+    display: none;
+  }
+}
+.profile-specialization-filter-off {
+  .form-item-specialization-tid-depth,
+  .js-form-item-specialization-tid-depth {
+    display: none;
+  }
+}
+.profile-unit-affiliation-filter-off {
+  .form-item-unit-affiliation,
+  .form-item-unit-affiliation_target_id,
+  .form-item-unit-affiliation-tid-depth,
+  .js-form-item-unit-affiliation-target-id {
+    display: none;
+  }
+}
+.profile-type-filter-off {
+  .form-item-field-profile-type-target-id,
+  .js-form-item-field-profile-type-target-id {
+    display: none;
+  }
+}
+.profile-keyword-search-off {
+  .js-form-type-textfield.form-item-combine {
+    display: none;
+  }
+}
+.faculty-type-filter-off {
+  .form-item-field-profile-faculty-type-target-id,
+  .js-form-item-field-profile-faculty-type-target-id {
+    display: none;
+  }
+}
+.profile-marketing-specialization-filter-off {
+  .form-item-field-marketing-specializations-target-id,
+  .form-item-specialization-tid-depth,
+  .js-form-item-field-marketing-specializations-target-id {
+    display: none;
+  }
+}
+.research-interest-filter-off {
+  .form-item-field-research-interest-proj-target-id,
+  .js-form-item-field-research-interest-proj-target-id {
+    display: none;
+  }
+}
+.research-type-filter-off {
+  .form-item-field-research-type-proj-target-id,
+  .js-form-item-field-research-type-proj-target-id {
+    display: none;
+  }
+}
+.research-unit-filter-off {
+  .form-item-unit-tid-depth,
+  .js-form-item-unit-tid-depth {
+    display: none;
+  }
+}
+.research-faculty-filter-off {
+  .form-item-field-faculty-proj-member-target-id,
+  .js-form-item-field-faculty-proj-member-target-id {
+    display: none;
+  }
+}
+.date_range-filter-off {
+  .form-item-field-res-date-of-publication-value-min,
+  .js-form-item-field-res-date-of-publication-value-min,
+  .form-item-field-res-date-of-publication-value-max,
+  .js-form-item-field-res-date-of-publication-value-max {
+    display: none;
+  }
+}
+.resource-type-filter-off {
+  .form-item-field-resource-type-target-id,
+  .js-form-item-field-resource-type-target-id {
+    display: none;
+  }
+}
+.resource-keyword-filter-off {
+  .form-item-field-res-keywords-target-id,
+  .js-form-item-field-res-keywords-target-id {
+    display: none;
+  }
+}
+.resource-location-filter-off {
+  .form-item-field-res-locations-target-id,
+  .js-form-item-field-res-locations-target-id {
+    display: none;
+  }
+}
+.resource-associated-unit-filter-off {
+  .form-item-field-res-associated-units-target-id,
+  .js-form-item-field-res-associated-units-target-id {
+    display: none;
+  }
+}
+.resource-owning-unit-filter-off {
+  .form-item-field-res-owning-unit-target-id,
+  .js-form-item-field-res-owning-unit-target-id {
+    display: none;
+  }
+}
+.profile-list-hide-items-per-page-filter {
+  .js-form-item-items-per-page {
+    display: none;
+  }
+}
+.profile-list-hide-filter-pagination-off {
+  nav.pager,
+  div.page-info {
+    display: none;
+  }
+}
+.show-marketing-specialization-filter {
+  display: block;
+}
+.hide-marketing-specialization-filter {
+  display: none;
+}

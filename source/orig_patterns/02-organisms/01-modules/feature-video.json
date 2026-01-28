@@ -1,0 +1,18 @@
+{
+    "blockquote": {
+    	"feature_video_quote": true,
+        "text": "\"Getting involved and helping the community is really important because it develops that sense of civic identity, so that makes you a lot closer to your community… when you really know what's going on.\"",
+        "cite": "Attribution"
+    },
+	"play_pause_icons": [
+		{
+			"icon_name": "play_circled2"
+		},
+		{
+			"icon_name": "pause_circled"
+		}
+	],
+	"id": "exampleVideo",
+	"is_feature_video": true,
+	"mp4_url": "/_duresources/foundation/videos/where_phenomenal_happens.mp4"
+}

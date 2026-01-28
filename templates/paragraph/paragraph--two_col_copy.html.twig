@@ -1,0 +1,13 @@
+{% embed "@organisms/two-column-copy.twig" %}
+    {% set header = content.field_heading|field_value %}
+    {% set col_1_header = content.field_title|field_value %}
+    {% set col_2_header = content.field_subtitle|field_value %}
+    {% set subhead =   content.field_subhead|field_value %}
+    {% set body_text = content.field_paragraph_ref|field_value %}
+    {% block column_1 %}
+        {{ content.field_copy_column_1|field_value }}
+    {% endblock %}
+    {% block column_2 %}
+        {{ content.field_copy_column_2|field_value }}
+    {% endblock %}
+{% endembed %}

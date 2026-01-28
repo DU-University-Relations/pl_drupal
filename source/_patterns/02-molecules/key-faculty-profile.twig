@@ -1,0 +1,28 @@
+<div class="key-faculty-profile" data-equalizer-watch="profiles-module__content">
+    <div class="faculty-profile-container">
+        {% if display.image %}
+            <div class="image">{{ display.image }}</div>
+        {% endif %}
+        <div class="information">
+            {% if display.first_name or display.last_name or display.display_name %}
+                <h4 class="name">
+                    {% if display.display_name %}
+                        <span class="first">{{ display.display_name }}</span>
+                    {% elseif display.first_name or display.last_name %}
+                        <span class="first">{{ display.first_name }}</span>
+                        <span class="second">{{ display.last_name }}</span>
+                    {% endif %}
+                </h4>
+            {% endif %}
+                <p class="rank">
+                    <span class="first">{{ display.job_title }}{% if display.job_title and display.appointment %}, {% endif %}</span>
+                    <span class="second">{{ display.appointment }}</span>
+                </p>
+                <a href="{{ node_link }}">
+                  <p class="learn-more">
+                      <span class="icon-du-cust-right-arrow">Learn More</span>
+                  </p>
+                </a>
+        </div>
+    </div>
+</div>

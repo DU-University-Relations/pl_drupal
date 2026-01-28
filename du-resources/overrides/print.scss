@@ -1,0 +1,420 @@
+@media print {
+	/*@page {
+	  margin: 1cm 2cm 2cm;
+	}*/
+	header {
+		height: auto;
+		.hero-media,
+		.hero-media__caption,
+		.utility-menu,
+		#main-menu,
+		#search-toggler,
+		#main-menu-toggler {
+			display: none;
+		}
+		.sticky.is-stuck {
+			position: relative;
+		}
+		#main-menu-wrap a.logo {
+			margin-left: 0;
+			> span {
+				position: static;
+			}
+		}
+	}
+	#main-content {
+		margin-left: 2.0rem;
+		margin-right: 2.0rem;
+		.pull-up {
+			margin-top: 0;
+			padding-left: 0 !important;;
+			margin-left: 0;
+			h1 {
+				margin-top: 8.0rem;
+				font-size: 4.0rem;
+				margin-bottom: 2.0rem;
+			}
+		}
+	}
+	.intro {
+		&.large-8 {
+			flex: 0 0 100%;
+    		max-width: 100%;
+		}
+		&.large-offset-1 {
+		    margin-left: 0;
+		}
+	}
+	blockquote {
+		border: 0 none;
+	}
+	.blockquote__background {
+		.large-offset-2 {
+		    margin-left: 0;
+		}
+	}
+	.academic-filter {
+		display: none;
+	}
+	.cards-list-module {
+		.card-list-item {
+			width: 50%;
+			//float: none;
+			position: static !important;
+			display: block;
+			min-width: 50%;
+			page-break-inside: avoid;
+			margin-bottom: 1.8rem;
+			&.card-list-item--open {
+				width: 100%;
+				min-width: 100%;
+			}
+			.cards-list__content {
+				min-height: 0;
+				padding: .5rem 0 0 0;
+				border-top-width: 3px;
+				h2.cards-list-title {
+					margin-bottom: .5rem;
+					font-size: 2.4rem;
+    				line-height: 2.8rem;
+				}
+				.academic-card {
+					margin-bottom: .5rem;
+					padding-bottom: .4rem;
+					font-size: 1.4rem;
+				}
+			}
+			.card-list-bottom {
+				position: static;
+				font-size: 1.3rem;
+			}
+			&.ap-letter,
+			&.ap-school,
+			.more-button {
+				display: none;
+			}
+			.flyout {
+				position: static;
+				float: none;
+				width: 100% !important;
+				border-bottom-width: 0;
+				.flyout-content__holder {
+					padding: 0 1.0rem;
+					> .columns {
+						max-width: 100%;
+						flex: 0 0 100%;
+						padding-right: 0;
+					}
+				}
+				.cards-module__buttons {
+					display: none;
+				}
+			}
+		}
+		.js-filter-cards {
+			height: auto !important;
+			position: static;
+		}
+	}
+
+	.copy-module {
+		ul {
+			margin-left: 1.0rem;
+			li {
+				list-style-type: disc !important;
+			}
+		}
+		&.copy-narrow {
+			.large-9,
+			.large-3 {
+				flex: 0 0 50%;
+    			max-width: 50%;
+			}
+			.large-3 {
+				.content {
+					width: 100%;
+					left: 0;
+				}
+			}
+		}
+	}
+
+    .information-overview-module {
+       .orbit-container {
+           height:auto;
+           .fact .quick-fact-module__content {
+                h2 {
+                    font-size:2.8rem;
+                    padding-top:1.0rem;
+                }
+           }
+            .factStatistic {
+                height: 50%!important;
+            }
+            ul.list-of-facts {
+                li {
+                    height:auto!important;
+                }
+            }
+       }
+    }
+	.related-stories-module {
+		.orbit-container {
+			height: auto;
+		}
+		.related-stories-module__story {
+    		page-break-inside:avoid;
+		}
+		.related-stories-module__story__content {
+			margin-top: 2.0rem;
+			a {
+				text-decoration: none;
+				.read-more {
+					font-weight: bold;
+					font-family: $cta-font;
+				}
+			}
+		}
+	}
+	.stories-module {
+		> .row {
+			padding-top: 0;
+		}
+		.stories-module__story {
+			.content {
+				height: auto !important;
+			}
+		}
+	}
+	.cards-module {
+		> .row {
+			position: static;
+			> .columns .cards-module__content {
+				height: auto !important;
+				margin-top: 2.0rem;
+				h4 {
+					padding-top: 2.0rem;
+				}
+			}
+		}
+	}
+	.accordion {
+		.accordion-title {
+			&:before {
+				display: none;
+			}
+			padding: 0 0 1.0rem 0;
+		}
+		.accordion-content {
+    		display: block;
+		}
+	}
+	.feature-video-module {
+		.blockquote__background {
+			.large-offset-7 {
+				margin-left: 0;
+				max-width: none;
+				flex: 0 0 100%;
+			}
+		}
+		.feature-video-module__video-wrapper {
+			position: relative;
+			a.video-toggle {
+				text-decoration: none;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: 0;
+				padding: 0;
+				display: block;
+				z-index: 1;
+				opacity: 1;
+				.video-toggle__text {
+					position: absolute;
+					bottom: 2.8rem;
+					left: .8rem;
+					color: white;
+					> [class*="icon-du"] {
+						font-size: 6.2rem;
+						position: relative;
+						top: 1.0rem;
+						color: white;
+					}
+					.icon-du-pause-circled {
+						display: none;
+					}
+				}
+			}
+			video {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+	.large-image-module .large-image-module__toggle {
+		display: none !important;
+	}
+	#events-listing__show-more {
+		display: none;
+	}
+	.js #events-listing > .columns:nth-child(1n+7) .events-listing__item {
+		display: block;
+	}
+	#du-alert {
+		.du-alert__action-button {
+			display: none;
+		}
+		#du-alert__content {
+		    display: block !important;
+		    border-bottom: .2rem solid $neutral-color-5;
+		    margin-bottom: 3.0rem;
+		}
+	}
+    .school-list .accordion-content {
+        display:block;
+    }
+    #school-list-container {
+    	.school-name {
+    		max-width: none;
+    		flex: 0 0 100%;
+    	}
+    }
+	h1, h2, h3, h4, h5 {
+		page-break-after:avoid;
+    	page-break-inside:avoid;
+	}
+	ul, ol, img, p, blockquote, table {
+		page-break-inside: avoid;
+	}
+	.search-results {
+		page-break-inside: auto;
+	}
+
+	.img-wrapper__content {
+		font-style: italic;
+	}
+	.contacts-module {
+		.contacts-module__content {
+			height: auto !important;
+		}
+	}
+  .contact-single-module {
+    .contact-single-module_overlay {
+      display: none;
+    }
+    .columns {
+      max-width: 50%;
+    }
+    .show-for-small-only {
+      display: none;
+    }
+  }
+  .contact-single-module__content {
+    height: auto !important;
+
+    .social-media {
+      flex-direction: column;
+      -webkit-box-align: left;
+      -webkit-align-items: left;
+      -ms-flex-align: left;
+      align-items: left;
+
+      li > a {
+        padding-left: 0;
+        /* These are technically the same, but use both */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        -ms-word-break: break-all;
+        /* This is the dangerous one in WebKit, as it breaks things wherever */
+        word-break: break-all;
+        /* Instead use this non-standard one: */
+        word-break: break-word;
+
+        /* Adds a hyphen where the word breaks, if supported (No Blink) */
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+      }
+    }
+  }
+  ul.two-col {
+  	li {
+  		margin-left: 2.0rem;
+  		list-style-type: disc !important;
+  	}
+  }
+	footer {
+		.copyright {
+			margin-top: 5.0rem;
+			border-top: .6rem solid $neutral-color-1;
+		}
+	}
+
+	// DISPLAY:BLOCK / DISPLAY:NONE
+	.sub-menu-wrap,
+	.follow-us,
+	footer .bg-dark-gray,
+	.js .show-hide-toggle {
+		display: none;
+	}
+	.js .show-hide__contents {
+		display: block;
+	}
+
+
+	// ADMISSION STEPS
+	.admission-steps {
+		.admission-steps__nav {
+			display: none;
+		}
+		.large-offset-4 {
+    		margin-left: 0;
+    		max-width: none;
+    		flex: 0 0 100%;
+    		padding-left: 0;
+		}
+		.admission-steps__print {
+			display: none;
+		}
+		.admission-steps__section-name {
+			position: static !important;
+			width: auto;
+    		height: auto;
+		}
+		.tabs-panel[aria-hidden="true"] {
+		    display: block !important;
+		}
+		.tabs.vertical {
+			display: none;
+		}
+		> .tabs-content {
+			border-width: 0 !important;
+			.tabs-content {
+				border-width: 0 !important;
+				ul {
+					margin-left: 1.0rem;
+					li {
+						list-style-type: disc !important;
+					}
+				}
+			}
+			> .tabs-panel > .row > .large-9 {
+				max-width: none;
+    			flex: 0 0 100%;
+			}
+		}
+		.sub-step-content {
+			min-height: 0 !important;
+			border-width: 0 !important;
+			h4 {
+				page-break-after:avoid;
+				font-size: 3.0rem;
+				line-height: 3.6rem;
+			}
+		}
+	}
+}

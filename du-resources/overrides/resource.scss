@@ -1,0 +1,121 @@
+article.resource {
+  .row.author a {
+    text-decoration: none;
+  }
+  .row.pub-date, .row.type {
+    font-weight: 600;
+  }
+  .row.short-desc {
+    font-size: 2.4rem;
+  }
+  .row.pub-body {
+    div > div:first-child {
+      font-weight: 600;
+    }
+  }
+  .scholar-link {
+    margin-left: 1.0rem;
+  }
+  .row.owning-unit,
+  .row.assoc-unit,
+  .row.pub-body {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .row.owning-unit,
+  .row.assoc-unit,
+  .row.pub-body {
+    div.title {
+      font-weight: 600;
+    }
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+  .row.keywords,
+  .row.locations {
+    border-top: .1rem solid #efefef;
+    margin-top: 3.0rem;
+    margin-bottom: 4.0rem;
+    padding-top: 1.0rem;
+    font-style: italic;
+    font-size: 1.6rem;
+  }
+  .row.owning-unit,
+  .row.assoc-unit,
+  .row.pub-body,
+  .add-this {
+    border-bottom: .1rem solid #efefef;
+  }
+  .add-this {
+    padding-bottom: 1.8rem;
+    margin-bottom: 1.8rem;
+    padding-top: 5rem;
+  }
+  .row.owning-unit {
+    padding-top: 1.8rem;
+  }
+}// end article.resource
+
+#resource-list {
+  background: white;
+  .resource-listing.row {
+    background: white;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .pub-date {
+    color: $neutral-color-8;
+    font-size: 1.4rem;
+    margin-bottom: .3rem;
+    text-transform: uppercase;
+  }
+  a {
+    text-decoration: none;
+    h5 {
+      color: $accent-color-2b;
+    }
+  }
+  .info {
+    overflow: hidden;
+    a {
+      text-decoration: none;
+      h5 {
+        color: $accent-color-2b;
+      }
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 1.6rem;
+    }
+  }// end .info
+  .short-desc {
+    margin-left: 0;
+    margin-right: 0;
+    p {
+      margin-bottom: 0;
+      font-size: 1.6rem;
+    }
+  }
+  .generic-sample-listing-item {
+    margin: 2rem;
+    &::before {
+      background: none;
+    }
+    @include breakpoint(small down) {
+      margin: 0;
+    }
+  }
+  .pager {
+    margin: 5rem auto;
+    .pager__item--previous a:hover,
+    .pager__item--next a:hover{
+      border-bottom: none;
+    }
+    @include breakpoint(medium down) {
+      margin-bottom: 2rem;
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 1rem;
+    }
+  }
+}// end #resource-list

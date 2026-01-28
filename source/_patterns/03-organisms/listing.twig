@@ -1,0 +1,40 @@
+<div class="row generic-listing">
+    <div class="page-info columns">
+        {{ page_info }}
+    </div>
+    {% if form is not empty %}
+        {# <button data-toggle="GenericFilter1">{% include "@atoms/icon.twig" with {icon_class: "check"}%} Filter</button> #}
+        <div class="filter-button-wrapper columns shrink" data-filter-id="{{ filter_id }}" aria-controls="{{ filter_id }}">
+            {% include "@atoms/filter-button.twig" %}
+        </div>
+        {% embed "@molecules/listing-filters.twig" %}
+            {% set filter_id = filter_id %}
+            {% block filter_form %}
+                {{ form }}
+            {% endblock %}
+        {% endembed %}
+    {% else %}
+        <div id="main-content" class="columns large-offset-4 large-8 pull-up page-title-band">
+            <h1><span>
+            {% if view_title is not empty %}
+                {{ view_title | replace({'-': ' '}) | raw }}
+            {% else %}
+                Matching Articles
+            {% endif %}
+            </span></h1>
+        </div>
+    {% endif %}
+    <div class="results-container {% if single_col %}one-col{% endif %}">
+        {% block results %}
+            {% for result_item in results %}
+                <div class="results-item">
+                    {% include "@molecules/generic-teaser.twig" with result_item %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+    {% block pager %}
+        {% include "@molecules/pager.twig" %}
+    {% endblock %}
+
+</div>

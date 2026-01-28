@@ -1,0 +1,16 @@
+{% embed "@molecules/feature-fact.twig" %}
+    {% set image = content.field_qff_image|field_value %}
+    {% set headline = content.field_qff_headline|field_value %}
+    {% set statistic = content.field_qff_statistic|field_value %}
+    {% set caption = content.field_qff_caption|field_value %}
+    {% set citation = content.field_qff_citation|field_value %}
+    {% set link = {
+        "url": content.field_qff_link.0['#url'],
+        "target": content.field_qff_link.0['#options']['attributes']['target'],
+        "alt_text": content.field_qff_link.0['#options']['attributes']['name']
+    } %}
+{% endembed %}
+
+
+
+

@@ -1,0 +1,17 @@
+{% if content is iterable %}
+	{% for contentitem in content %}
+		{% if contentitem is iterable %}
+			{% if contentitem.multi %}
+				{% for multiitem in contentitem.multi %}
+					{% include contentitem.path with multiitem %}
+				{% endfor %}
+			{% else %}
+				{% include contentitem.path with contentitem %}
+			{% endif %}
+		{% else %}
+			{{ contentitem|raw }}
+		{% endif %}
+	{% endfor %}
+{% else %}
+	{{ content|raw }}
+{% endif %}

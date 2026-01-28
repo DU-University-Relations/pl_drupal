@@ -1,0 +1,22 @@
+<div class="small-12 medium-4 columns fact {% if item.list %}list {% endif %}">
+    <div class="quick-fact-module__content {% if item.statistic %} statistic {% endif %}">
+        {% if item.src %}
+            <div class="quick-fact-module__head">
+                <div id="factImage">{% include "@atoms/image.twig" with item %}</div>
+            </div>
+        {% endif %}
+
+        {% if item.statistic %}
+            <div class="quick-fact-module__head factStatistic">{% include "@atoms/headline.twig" with item.statistic %}</div>
+        {% endif %}
+
+        {% if item.caption %}
+            {% include "@atoms/caption.twig" with item %}
+        {% endif %}
+
+        {% if list %}
+           {% include "@atoms/list.twig" with list %}
+        {% endif %}
+
+    </div>
+</div>

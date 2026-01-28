@@ -1,0 +1,20 @@
+<div class="footer-site-level-info">
+    {% if email %}
+        <div class="row align-middle">
+            {% include "@atoms/icon.twig" with { "icon_class": "mail-alt" } %}
+            <a href="mailto:{{ email }}">{{ email }}</a>
+        </div>
+    {% endif %}
+    {% if phone %}
+        <div class="row align-middle">
+            {% include "@atoms/icon.twig" with { "icon_class": "phone" } %}
+            <a href="tel:{{ phone }}">{{ phone }}</a>
+        </div>
+    {% endif %}
+    {% if fax %}
+        <div class="row align-middle">
+            {% include "@atoms/icon.twig" with { "icon_class": "fax" } %}
+            <a href="fax:{{ fax }}">{{ fax }}</a>
+        </div>
+    {% endif %}
+</div>

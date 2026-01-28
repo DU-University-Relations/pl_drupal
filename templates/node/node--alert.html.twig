@@ -1,0 +1,16 @@
+{% set alert =  {
+
+    "level":content.field_alert_type|field_raw('value'),
+    "color":content.field_alert_color|field_raw('value'),
+    "first_word": content.field_alert_first_word|field_value,
+    "title": "Alert",
+    "type": "h1",
+    "button_text": "Dismiss Alert",
+    "text": label|field_value,
+    "icon_name": ( content.field_alert_type|field_raw('value') == 'notification') ? "cust-close": "down-arrow",
+    "alert_expanded_text":  render_var(content.field_alert_description|field_value),
+    "alert_sidebar_text":  render_var(content.field_alert_sidebar|field_value),
+    "alert_link": content.field_alert_link|field_value
+
+} %}
+{% include  "@organisms/alert.twig" %}

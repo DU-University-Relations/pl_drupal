@@ -1,0 +1,27 @@
+{
+  "toggler_text": "Explore this Section",
+ 	"items": [
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Current Second Level",
+        "is_active": true
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      },
+      {
+        "title": "Second Level Page"
+      }
+    ]
+}

@@ -1,0 +1,100 @@
+.unit-site {
+  .unit-sites-list {
+    position: relative;
+    display: none;
+    max-height: 75vh;
+    overflow: auto;
+    background: #fff;
+    @include breakpoint(large up) {
+      background: #e7e7e7;
+      box-shadow: inset 0 .1rem .3rem rgba(0,0,0,0.2);
+    }
+    &.expanded { display: block; }
+    .unit-sites-list-wrapper {
+      overflow: hidden; // poor mans clearfix
+      position: relative;
+      margin: 0 auto;
+      padding: 2.0rem 3.0rem 2.0rem;
+      max-width: $grid-row-width;
+      box-shadow: inset 0 .1rem .3rem rgba(0,0,0,0.2);
+      @include breakpoint(medium up) {
+        padding: 2.0rem 6.0rem 2.0rem;
+      }
+      @include breakpoint(large up) {
+        box-shadow: none;
+        padding: 1.5rem 5.4rem;
+      }
+    }
+    @include breakpoint(medium down) {
+      position: absolute;
+      z-index: 2;
+      top: 12.0rem;
+      width: 100%;
+      box-shadow: 0 -5.0rem 5.0rem 5.0rem rgba(0,0,0,0.3);
+      .unit-header .is-stuck & {
+        top: 6.0rem;
+      }
+      .unit-sites-list-wrapper {
+        padding-bottom: 4.0rem;
+      }
+    }
+    @include breakpoint(small down) {
+      top: 8.7rem;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      @include breakpoint(large up) {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    li {
+      position: relative;
+      margin: 0;
+      @include breakpoint(large up) {
+        margin: 0 2.7rem 0 0;
+        &:after {
+          content: ">";
+          position: absolute;
+          display: inline-block;
+          top: 0;
+          right: -1.5rem;
+        }
+      }
+      &:last-of-type {
+        margin: 0;
+        font-weight: bold;
+        &:after {
+          content:"";
+        }
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+    li a {
+      display: block;
+      color: $neutral-color-2;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 2.2rem 2.8rem 2.2rem 0;
+      border-bottom: .2rem solid $neutral-color-4;
+      @include breakpoint(large up) {
+        border-bottom: 0 solid transparent;
+        padding: 0;
+      }
+      &:hover, &:focus {
+        // color: $primary-color-3;
+        // background: $neutral-color-4;
+      }
+      &.off-site:after {
+        font-family: $icon-font;
+        content: "\00A0" "\00A0" "\f14c";
+      }
+      &.current-site {
+        // border-left: 8px solid $primary-color-3;
+      }
+    }
+  }//end .unit-sites-list
+}//end .unit-sites

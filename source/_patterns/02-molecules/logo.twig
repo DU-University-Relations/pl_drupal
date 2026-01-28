@@ -1,0 +1,10 @@
+<a
+    href="{% if not href %}#{% endif %}{% if href %}{{ href }}{% endif %}"
+    {% if cssClass %}class="{{ cssClass }}"{% endif %}
+    {% if new_window %} target="_blank"{% endif %}
+    title="{{alt_text|e('html_attr')}}"
+    {% if target %}target="{{ target|e('html_attr') }}"{% endif %}
+    {% if onclick %}onclick="{{ onclick|e('html_attr') }}"{% endif %}
+>
+    {% include "@atoms/image.twig" with image %}
+</a>

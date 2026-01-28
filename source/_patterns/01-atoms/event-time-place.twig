@@ -1,0 +1,20 @@
+<p><span class="icon-du-calendar-empty" aria-hidden="true"></span>
+    {% if end_date != start_date %}
+        {{ start_date }} - {{ end_date }}
+    {% else %}
+        {{ start_date }}
+    {% endif %}
+
+</p>
+{% if start_time != "12:00am" %}
+    <p>
+        <span class="icon-du-clock" aria-hidden="true"></span>
+        {{ start_time }} - {{ end_time }}
+    </p>
+{% endif %}
+{% if location %}
+    <p>
+        <span class="icon-du-location" aria-hidden="true"></span>
+        <span class="location">{{ location }}</span>
+    </p>
+{% endif %}

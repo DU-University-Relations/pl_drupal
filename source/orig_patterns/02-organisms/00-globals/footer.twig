@@ -1,0 +1,48 @@
+{% if footer %}
+	<footer>
+		{% if not hide_big_btn_row %}
+			<div class="has-gray-band">
+				<div class="row">
+					{% if big_btns %}
+						<div class="columns small-12 medium-4">
+							{% include "@molecules/big-btn.twig" %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+		{% if follow_us %}
+		<div class="follow-us">
+			<div class="row align-middle">
+				<div class="columns small-12 large-3">
+					{% include "@atoms/headline.twig" %}
+				</div>
+				<div class="columns small-12 large-6">
+					<ul class="menu social-media align-spaced">
+						{% if social_media_icons %}
+							<li>
+								<a href="#">
+									<span class="{{ cssClass }}" aria-hidden="true"></span>
+									<span class="show-for-sr">{{ title }}"</span>
+								</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+				<div class="columns small-12 large-3">
+					<a href="#" class="follow-us__view-all"><strong>View All <span class="icon-du-right-arrow" aria-hidden="true"></span></strong></a>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		<nav class="bg-dark-gray" aria-label="footer-links">
+			<ul class="menu align-center">
+				{% if footer_links %}
+					<li>{% include "@atoms/link.twig" %}</li>
+				{% endif %}
+			</ul>
+		</nav>
+		<p class="copyright">{{ copyright }}</p>
+	</footer>
+	<span id="du-loader" aria-hidden="true"><span class="icon-du-spin3 animate-spin"></span></span>
+{% endif %}

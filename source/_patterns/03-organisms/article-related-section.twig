@@ -1,0 +1,23 @@
+{% if related_list %}
+    <div class="article-related">
+        {% if (related_title and related_list|length > 2) %}
+            <div class="row">
+                <div class="columns">
+                    {% include "@atoms/headline.twig" with related_title %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            {% if (related_title and related_list|length < 3) %}
+                <div class="columns small-12 medium-4">
+                    {% include "@atoms/headline.twig" with related_title %}
+                </div>
+            {% endif %}
+            {% for article_related in related_list %}
+                <div class="columns small-12 medium-4 related-card-section">
+                    {{ article_related }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,27 @@
+{% embed "@organisms/feature-video.twig" %}
+    {% if paragraph.field_featured_vid_ogg.value or paragraph.field_featured_vid_mp4.value %}
+        {% set video_upload = {
+            "ogg_url": content.field_featured_vid_ogg|field_value[0]['#markup'],
+            "mp4_url": content.field_featured_vid_mp4|field_value[0]['#markup'],
+            "poster_url": content.field_featured_vid_static_image|field_value[0]['#markup']
+        }%}
+        {% set play_label = content.field_featured_vid_play_label|field_value %}
+    {% else %}
+        {% set is_youtube = true %}
+        {% set youtube_embed = content.field_featured_vid_youtube_embed|field_value %}
+    {% endif %}
+    {% set blockquote = {
+        "feature_video_quote": true,
+        "text": content.field_featured_vid_quote|field_value,
+        "cite": content.field_featured_vid_cite|field_value
+    } %}
+    {% set play_pause_icons = [
+        {
+            "icon_name": "play-circled2"
+        },
+        {
+            "icon_name": "pause-circled"
+        }
+    ] %}
+
+{% endembed %}

@@ -1,0 +1,54 @@
+.list-filter {
+  position: relative;
+  width: 100%;
+  margin-bottom: 5.4rem;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+  .list-filter-sizes {
+    color: $neutral-color-2;
+    width: 30%;
+  }
+  .list-filter-form {
+    width: 100%;
+    margin-top: 2.5rem;
+    color: $neutral-color-6;
+    background-color: $secondary-color-7;
+    .icon-du-down-arrow:before {
+      margin-right: .7rem;
+    }
+    .views-exposed-form {
+      width: 100%;
+      .form-item {
+        display: inline-block;
+        width: 30%;
+        padding: 0 2.5rem 0 3.5rem;
+      }
+      label {
+        margin-top: 1.8rem;
+        color: $neutral-color-6;
+      }
+      .form-actions {
+        position: relative;
+        margin: 1.8rem 0;
+        margin-left: 40%;
+        input:first-child {
+          text-transform: uppercase;
+        }
+      }
+      #edit-reset {
+        background-color: $secondary-color-7;
+        border: .1rem solid $neutral-color-6;
+        margin-left: 1.5rem;
+      }
+    }
+  } //end .list-filter-form
+  .list-filter-filter-button {
+    width: 12%;
+    color: #fff;
+    background-color: $secondary-color-6;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1.0rem 2.0rem;
+    border: .2rem solid $neutral-color-8;
+  }
+}

@@ -1,0 +1,57 @@
+{#
+ * @file
+ * Default theme implementation for the full search form.
+ *
+ * Available variables:
+ *
+ * - variables['form'] : the form elements array, pre-render
+ * - variables['search_form']['hidden'] : hidden form elements collapsed + rendered
+ * - variables['search_form'] : non-hidden form elements rendered and keyed by original form keys
+ * - variables['search_form_complete'] : the entire form collapsed and rendered.
+ *
+ * @see template_preprocess_cludo_search_search_form()
+ #}
+
+{{ cludo_search_search_form }}
+<div id="main-content">
+  <div class="row">
+    <div class="columns small-12 large-12">
+    <h1 class="buffer-top">Search Results</h1>
+      <div class="cludo-search-form">
+        {{ form }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns small-12 large-12">
+      <div class="sub-menu-wrap">
+        {% if form['#tab_info'] %}
+        <p id="sub-menu-toggler" data-responsive-toggle="sub-menu" data-hide-for="large" style="display: none;">
+          <a href="#" data-toggle="data-toggle">Filter Search Results</a></p>
+          <div class="cludo-search-tabs-wrapper">
+            <nav id="sub-menu" class="sub-menu--horizontal" aria-label="sub-navigation" data-role="facets">
+              <ul class="cludo-search-tabs">
+                {% for tab in form['#tab_info'] %}
+                  <li class="csearch-tab csearch-tab-{{ loop.index }} {% if loop.index == 1 %}active{% endif %}">
+                    <a href="#" data-facet="{{ tab.category }}" title="{{ tab.name }}" class="csearch-tab-link csearch-tab-link-{{ loop.index }} {% if loop.index == 1 %}active{% endif %}">{{ tab.name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns small-12 large-12">
+      <div id="cludo-search-results">
+        <div class="search-result-count search-results__listing-summary"></div>
+        <div class="search-did-you-mean"></div>
+        <div class="search-results"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+.expert-list-item {
+  padding: 5.5rem 0 2.0rem 0;
+  height: 100%;
+  position: relative;
+  border-bottom: .2rem solid $neutral-color-4;
+  .expert-name-main,
+  .expert-name-column {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: $neutral-color-2;
+    margin-bottom: 1.6rem;
+    margin-top: -.8rem;
+  }
+  .expert-name-main {
+    position: absolute;
+    left: -999.9rem;
+    top: -999.9rem;
+  }
+  .details {
+    display: flex;
+    background: $neutral-color-6;
+    padding: 2.4rem 2.0rem 3.0rem 2.0rem;
+  }
+  .thumb-wrapper {
+    width: 16.8rem;
+    max-width: 40%; // for small viewports.
+    margin-top: -5.0rem;
+    flex-grow: 0;
+  }
+  .profile-button {
+    margin-top: 1.5rem;
+  }
+  .expertise {
+    padding-left: 2.4rem;
+    flex-grow: 1;
+  }
+  .expert-topics {
+    h4 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: .8rem;
+    }
+    a {
+      display: inline-block;
+      margin-bottom: .4rem;
+    }
+  }
+  .expert-topics + .expert-icons {
+    margin-top: 2.0rem;
+    padding-top: 2.0rem;
+    border-top: .1rem solid $neutral-color-4;
+  }
+  .expert-icons {
+    color: $neutral-color-3;
+    overflow: hidden;
+  }
+  .expert-icon {
+    margin-bottom: .6rem;
+    font-size: 1.6rem;
+  }
+  .expert-icon-glyph {
+    font-size: 1.8rem;
+  }
+  .description {
+    padding-right: 2.0rem;
+  }
+  @include breakpoint(medium down) {
+     padding-top: 2.0rem;
+    .expert-name-main {
+      position: static;
+    }
+    .expert-name-column {
+      display: none;
+    }
+    .details {
+      float:left;
+      margin-right: 1.6rem;
+      margin-bottom: .8rem;
+      padding-bottom: 2.0rem;
+    }
+    .thumb-wrapper {
+      margin-top: 0;
+    }
+    .description {
+      padding-right: 0;
+    }
+  }
+  @include breakpoint(small down) {
+    .details {
+      width: 100%;
+      padding: 2.0rem 1.2rem;
+      margin-right: 0;
+      margin-bottom: 2.0rem;
+    }
+    .profile-button {
+      padding: 2.0rem 1.2rem;
+      background: $neutral-color-6;
+    }
+  }
+}// end .expert-list-item

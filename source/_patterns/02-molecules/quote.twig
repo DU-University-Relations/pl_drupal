@@ -1,0 +1,28 @@
+<div class="{% if is_active %}is-active {% endif %}slick-slideshow quote">
+	<div class="row">
+		<div class="columns small-12 medium-9">
+			<div class="quotes-module__content">
+				<blockquote>
+					{% if text %}
+						<p>{{ text }}</p>
+					{% endif %}
+					{% if cite_name or cite_caption %}
+						<cite>
+							{{ cite_name }}
+							{%  if cite_caption %}
+								<small>{{ cite_caption }}</small>
+							{% endif %}
+						</cite>
+          {% endif %}
+				</blockquote>
+			</div>
+		</div>
+		<div class="columns small-12 medium-3 hide-for-small-only">
+			{% if image %}
+				<div class="quotes-module__image">
+					{{ image }}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>

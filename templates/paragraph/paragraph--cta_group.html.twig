@@ -1,0 +1,10 @@
+{# CTAs #}
+{% embed "@organisms/footer-ctas.twig" %}
+    {% block ctas %}
+        {{ content.field_ctas|field_value }}
+    {% endblock %}
+{% endembed %}
+
+{# Modals #}
+{{ content.field_field_cta_modals|field_value }}
+

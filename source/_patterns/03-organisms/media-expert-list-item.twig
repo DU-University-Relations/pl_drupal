@@ -1,0 +1,22 @@
+<div class="expert-list-item">
+    <h3 class="expert-name-main">{{ name }}</h3>
+    <div class="row">
+        <div class="columns small-12 large-5 small-order-1 large-order-0 show-for-large">
+            {% include "@molecules/_media_expert_details.twig" %}
+        </div>
+        <div class="columns small-12 large-7 small-order-0 large-order-1">
+            <div class="description">
+                <div aria-hidden="true" class="expert-name-column">{{ name }}</div>
+                <div class="hide-for-large">
+                    {% include "@molecules/_media_expert_details.twig" %}
+                </div>
+                {#
+                <div class="thumb-wrapper hide-for-large">
+                    {{ thumbnail }}
+                </div>
+                #}
+                {{ description }}
+            </div>
+        </div>
+    </div>
+</div>

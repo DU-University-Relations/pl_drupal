@@ -1,0 +1,420 @@
+@media screen {
+	.admission-steps {
+		position: relative;  // can remove
+		overflow: hidden;   // can remove
+		margin-bottom: 1.9rem;
+		@include breakpoint(medium up) {
+			margin-bottom: 5.9rem;
+		}
+		.columns.tabs-title {
+			> a {
+				font-size: 2rem;
+				line-height: 2rem;
+				font-weight: bold;
+				color: #c8c8c8;
+				text-decoration: none;
+				padding-left: 7.4rem;
+				position: relative;
+				.admission-steps__circle {
+					position: absolute;
+					left: 0;
+					top: 1.5rem;
+					font-size: 2.5rem;
+					font-weight: bold;
+					color: #c8c8c8;
+					border: .4rem solid #c8c8c8;
+					width: 5.6rem;
+					height: 5.6rem;
+					border-radius: 2.8rem;
+					display: inline-block;
+					text-align: center;
+					padding-top: 1.4rem;
+				}
+				&:hover,
+				&:focus {
+					color: $secondary-color-3;
+					.admission-steps__circle {
+						background-color: $secondary-color-3;
+						color: white;
+						border-color: $secondary-color-3;
+					}
+				}
+				@include breakpoint(small down) {
+					padding: 3rem 0 4.2rem;
+					color: $secondary-color-3;
+					text-align: center;
+					border-bottom: .1rem solid $neutral-color-5;
+					br {
+						display: none;
+					}
+					.admission-steps__circle {
+						position: static;
+						display: block;
+						margin: 0 auto 1.4rem;
+						color: $secondary-color-3;
+						border-color: $secondary-color-3;
+					}
+				}
+			} //end >a
+			&.is-active {
+				a {
+					background-color: transparent;
+					color: $secondary-color-3;
+					.admission-steps__circle {
+						background-color: $secondary-color-3;
+						color: white;
+						border-color: $secondary-color-3;
+					}
+				}
+			}
+		}// end .columns.tabs-title
+		.tabs { // side nav for desktop  --> hidden by expanding list tablet and mobile
+			border-color: $neutral-color-5;
+			border-width: .2rem 0 0 0;
+			&.vertical {
+				position: relative;
+				margin-top: 1.6rem;
+				margin-bottom: 3rem;
+				&:after {
+					content: "";
+					background-color: #f4f4f4;
+					top: -4.6rem;
+					bottom: -5.4rem;
+					left: 8rem;
+					right: -300rem;
+					position: absolute;
+					display: block;
+					z-index: -1;
+				}
+				li {
+					margin-left: 0;
+					&:before {
+						display: none;
+					}
+					a {
+						border-bottom: .2rem solid $neutral-color-5;
+						display: block;
+						font-size: 2rem;
+						color: #231f20;
+						padding: 2.1rem 1.0rem 2.2rem 2.4rem;
+						position: relative;
+						font-family: $headline-font;
+						text-decoration: none;
+					}
+					&[aria-selected='true'],
+					&.is-active {
+						a {
+							border-left: .6rem solid #caaf77;
+							padding-left: 1.8rem;
+							&:after {
+								content: "";
+								border-top: 3rem solid transparent;
+								border-bottom: 3rem solid transparent;
+								border-right: 3rem solid white;
+								position: absolute;
+								right: -3.7rem;
+								top: 50%;
+								margin-top: -3.1rem;
+								display: block;
+							}
+						}
+					}
+				}// end li
+			} // end &.vertical
+		}// end .tabs
+		> .tabs-content {
+			background-color: transparent;
+			border: 0 none;
+		}
+		.tabs-content {
+			&.vertical {
+				margin-left: 3.4rem;
+				border: 0 none;
+			}
+			.tabs-panel {
+				padding: 4rem 5.2rem;
+					p.academicYear {
+							font-weight: 500;
+							font-style: italic;
+					}
+					#deadlines {
+							ul {
+									margin-left: 1.5rem;
+									li {
+											p {
+													margin-bottom: .7rem;
+											}
+									}
+							}
+					}
+			}
+		} // tabs-content
+		.tabs-title {
+			> a {
+				&:hover,
+				&:focus,
+				&[aria-selected='true'] {
+					background-color: transparent;
+					color: #caaf77;
+				}
+			}
+		}
+		.admission-steps__print {
+			font-weight: bold;
+			font-size: 1.9rem;
+			float: right;
+			text-decoration: none;
+		}
+			> .row:first-child { /// row with the title text /h2
+					margin-left: 1.8rem;
+					margin-right: 1.8rem;
+					@include breakpoint(medium up) {
+						margin-left: 5.6rem;
+						margin-right: 5.6rem;
+					}
+					@include breakpoint(large up) {
+						margin-left: auto;
+						margin-right: auto;
+					}
+		}
+		@include breakpoint(medium down) {  //this creates a min and max with media quiery combinations with @includes below (max width 63em)
+			.admission-steps__nav {
+				margin-left: 6.0rem;
+				margin-right: 3.2rem;
+			} //end .admission-steps__nav
+
+			> .tabs-content {
+				position: relative;
+				background-color: white;
+				border-color: $secondary-color-3;
+				border-width: 0;
+				border-style: solid;
+				margin: 0 2.2rem 2.2rem;
+				&:before {
+					content: "";
+					background-color: #f4f4f4;
+					position: absolute;
+					left: -6rem;
+					right: -6rem;
+					bottom: -5rem;
+					top: 5rem;
+					z-index: -1;
+				}
+				@include breakpoint(medium up) {
+					margin-left: 6rem;
+					margin-right: 6rem;
+					border-width: .5rem 0;
+				}
+				.tabs-panel {
+					min-height: 0 !important;
+					padding: 0 1.5rem;
+						h4 {
+								display: none;
+								&.hide-for-large {
+										display: block;
+								}
+						}
+						p,
+						li { //reduce for mobile
+							line-height: 1.9rem;
+							font-size: 1.4rem;
+						}
+						ul li:before {  //bullet for list item
+							top: 8px !important;
+						}
+						@include breakpoint(medium up) {
+							p,
+							li {
+								line-height: 2.8rem;
+								font-size: 1.8rem;
+							}
+	    				ul li:before {  //bullet for list item
+								top: 1.2rem !important;
+							}
+						}
+					}//end .tabs-panel
+					.vertical {
+						margin-left: 0;
+					}
+			}// end > .tabs-content
+			.sub-step-content {
+				&.is-active {
+					display: block;
+				}
+			}
+			.sub-step-content__toggle {
+				margin-bottom: 0;
+				&:first-child {
+					a {
+						border-top: 0 none;
+					}
+				}
+				a {
+					border-top: .2rem solid $neutral-color-5;
+					display: block;
+					font-size: 1.7rem;
+					color: #231f20;
+					padding: 1.6rem 4rem 1.9rem 1.5rem;
+					position: relative;
+					font-family: $headline-font;
+					text-decoration: none;
+					@include breakpoint(medium up) {
+						font-size: 1.8rem;
+					}
+					&:after {
+						content: '\e809';
+						font-family: $icon-font;
+						border: .1rem solid $secondary-color-3;
+						height: 3rem;
+						width: 3rem;
+						position: absolute;
+						top: 50%;
+						right: .2rem;
+						text-align: center;
+						margin-top: -1.5rem;
+						font-size: 2.3rem;
+						line-height: 2.7rem;
+						color: $secondary-color-3;
+						font-weight: bold;
+						border-radius: 1.7rem;
+					}
+					&.open {
+						border-bottom: 0 none;
+						&:after {
+							content: '\e808';
+							background-color: $secondary-color-3;
+							color: white;
+						}
+					}
+				}
+			}
+		} // end breakpoint medium down
+
+		@include breakpoint(small down) {  //mobile view is stacked
+			> .admission-steps__nav {
+				//transition: background-color 1ms ease;
+				margin-top: 4.1rem;
+			    //opacity: 1;
+					border-top: .5rem solid $secondary-color-3;
+					border-bottom: .5rem solid $secondary-color-3;
+					margin-left: 2.2rem;
+					margin-right: 2.2rem;
+					background-color: white;
+					position: relative;
+					&:before {
+						content: "";
+						background-color: #f4f4f4;
+						position: absolute;
+						left: -2.2rem;
+						right: -2.2rem;
+						bottom: -3.8rem;
+						top: 2.8rem;
+						z-index: -1;
+					}
+					> .columns {
+						padding-left: 1.5rem;
+						padding-right: 1.5rem;
+						&.tabs-title {
+							position: relative;
+							&:after {
+								content: "";
+								border-top: 1.3rem solid transparent;
+								border-bottom: 1.3rem solid transparent;
+								border-left: 1.1rem solid #f4f4f4;
+								position: absolute;
+								right: 2.2rem;
+								top: 50%;
+								margin-top: -.6rem;
+							}
+						}
+						&.large-2 > a {
+							border-bottom: 0 none;
+						}
+					}
+				.tabs-title a {
+					//background-color: white;
+				}
+				&.admission-steps--slide-off {
+					opacity: 0;
+					position: absolute;
+					+ .tabs-content {
+						opacity: 1; // show steps
+						height: auto;
+					}
+				}
+			} // end admission-steps__nav
+			.admission-steps__back {
+				margin: 0 2.2rem .8rem;
+				a {
+					color: #a99a6f;
+					font-size: 1.3rem;
+					text-transform: uppercase;
+					margin-top: -1.0rem;
+					padding-top: .5rem;
+					padding-bottom: .8rem;
+					display: block;
+					font-weight: 600;
+					text-decoration: none;
+					&:hover,
+					&:focus {
+						color: $secondary-color-2;
+					}
+				}
+			} // end admission-steps__back
+			.admission-steps__section-title { // ref in app.js  not in twig  - mobile step title
+				margin-left: 2.2rem;
+				margin-bottom: 1.2rem;
+				margin-right: 2.2rem;
+				color: $secondary-color-3;
+				font-size: 2.0rem;
+				font-weight: bold;
+				.admission-steps__circle,
+				br {
+					display: none;
+				}
+			}
+			> .tabs-content {
+				transition: background-color 1ms ease;
+				opacity: 0;
+				border-width: .5rem 0;
+				border-style: solid;
+				border-color: $secondary-color-3;
+				height: 0;
+				&:before {
+					top: 2.8rem;
+				}
+			}
+		} //end mobile styles
+
+		@include breakpoint(large) {
+			h4 {  //hidden label
+				font-size: 3.6rem;
+				line-height: 4.2rem;
+			}
+		}
+		.align-years {
+			overflow: auto;
+			div.columns:first-child {
+				float: left;
+			}
+			div.columns:last-child {
+				float: right;
+			}
+		}
+		.indent-paragraph {
+			margin-left: 4.0rem;
+		}
+		.indent-paragraph {
+			position: relative;
+			strong:before {
+				content: "";
+				height: .5rem;
+				width: .5rem;
+				position: absolute;
+				left: -1.3rem;
+				background-color: #bcbcbc;
+				top: 1.1rem;
+			}
+		}
+	} // end .admission-steps
+} // end @ screen

@@ -1,0 +1,8 @@
+{% if content.field_heading|field_value is not empty %}
+	<div class="row">
+		<div class="columns">
+			<h3 class="btm-divider">{{ content.field_heading|field_value }}</h3>
+		</div>
+	</div>
+{% endif %}
+{{ elevate_courses }}

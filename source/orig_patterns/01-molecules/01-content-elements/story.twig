@@ -1,0 +1,12 @@
+<div class="stories-module__story">
+    <div class="content" data-equalizer-watch="row">
+        {% include "@atoms/image.twig" with story%}
+        {% include "@atoms/headline.twig" with story %}
+        {% include "@atoms/paragraph.twig" with story %}
+    </div>
+    <div class="story-cta">
+            {% if story.button %}
+                <p>{% include "@atoms/button.twig" with story.button %}</p>
+            {% endif %}
+    </div>
+</div>

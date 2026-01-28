@@ -1,0 +1,38 @@
+%author-border {
+  border-bottom: .1rem solid $neutral-color-4;
+  padding-bottom: 2rem;
+}
+.author {
+  h3 {
+    @extend %author-border;
+  }
+  .author-item {
+    @extend %author-border;
+    font-family: $accent-font;
+    margin-top: 2rem;
+    h4 {
+      color: $accent-color-2b;
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 0;
+    }
+    .author-info {
+      a span {
+        color: $neutral-color-3;
+      }
+      p {
+        margin: 0 1.5rem;
+        color: $accent-color-2b;
+      }
+    }
+    .author-social {
+      margin-top: 2rem;
+      span {
+        background-color: $secondary-color-3;
+        display: inline-block;
+        @include border-radius(4rem);
+        color: #ffffff;
+      }
+    }
+  }
+}//end .author

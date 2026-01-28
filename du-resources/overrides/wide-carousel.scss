@@ -1,0 +1,161 @@
+.wide-carousel__wrapper {
+	&.row {
+		max-width: none;
+		> .columns {
+			padding-left: 0;
+			padding-right: 0;
+			> .row {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		@include breakpoint(large down) {
+			#main-content & {
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+	.wide-carousel {
+		@include breakpoint(small down) {
+			position: relative;
+			&:before {
+				content: "";
+				background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+				position: absolute;
+				right: 0;
+				top: -3.0rem;
+				left: auto;
+				bottom: 0;
+				width: 100%;
+				height: 3.0rem;
+				z-index: 0;
+			}
+		}
+		@include breakpoint(medium) {
+			.orbit-slide > .row > .columns:first-child {
+				position: relative;
+				&:before {
+					content: "";
+					background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+					position: absolute;
+					right: 0;
+					top: -4.7rem;
+					left: auto;
+					bottom: 0;
+					width: 50%;
+					height: 4.7rem;
+					z-index: 0;
+					@include breakpoint(large down) {
+						top: -3.0rem;
+						height: 3.0rem;
+					}
+				}
+			}
+		}
+		@include breakpoint(large) {
+			.wide-carousel__media-wrapper {
+				position: relative;
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+				@include breakpoint(xlarge) {
+					padding-bottom: 46.25%;
+					> * {
+						top: -5% !important;
+				    	height: auto !important;
+					}
+				}
+				> * {
+					position: absolute;
+				    top: 0;
+				    left: 0;
+				    width: 100%;
+				    height: 100%;
+				}
+			    > video {
+			    	z-index: 2;
+			    	+ img {
+			    		display: none;
+			    	}
+			    }
+			    > img {
+			    	z-index: 1;
+			    }
+			}
+		}
+		@include breakpoint(small down) {
+			margin-top: 3.5rem;
+		}
+		@include breakpoint(medium down) {
+			.wide-carousel__media-wrapper {
+				> video {
+					display: none;
+				}
+				> img {
+					width:100%;
+				}
+			}
+		}
+	}
+	&.wide-carousel__wrapper--alt .wide-carousel {
+		@include breakpoint(medium) {
+			.orbit-slide > .row > .columns:first-child {
+				&:before {
+					right: auto;
+					left: 0;
+				}
+			}
+		}
+	}
+	.wide-carousel__content {
+		margin-bottom: -5.7rem;
+	    position: relative;
+	    background-color: white;
+	    z-index: 3;
+	    padding: 1.3rem 4.4rem;
+	    @include breakpoint(medium) {
+	    	left: -1.0rem;
+	    }
+	    p {
+		    font-size: 1.6rem;
+			line-height: 2.4rem;
+		}
+		@include breakpoint(small down) {
+	    	padding: 1.5rem 2.2rem 0 2.2rem;
+	    	margin-bottom: 0;
+		    p {
+			    font-size: 1.4rem;
+			    line-height: 1.9rem;
+			}
+	    }
+	}
+	@include breakpoint(medium) {
+		&.wide-carousel__wrapper--alt {
+			.wide-carousel__content {
+				left: 1.0rem;
+			}
+		}
+	}
+	@include breakpoint(small down) {
+		> .columns:first-child {
+			padding-left: 2.2rem;
+			padding-right: 2.2rem;
+		}
+		h3 {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
+.unit-site-carousel__multi.unit-site-carousel {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+// Gives the non-homepage wide-carousel the same padding as the homepage wide-carousel.
+body:not(.du-home) .wide-carousel__wrapper {
+	padding-bottom: 15rem;
+}

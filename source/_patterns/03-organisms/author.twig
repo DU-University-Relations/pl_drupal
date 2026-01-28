@@ -1,0 +1,42 @@
+<div class="author-item">
+    <div class="row">
+        <div class="columns">
+            <h4>{{ name }}</h4>
+            <p>{{ title|raw }}</p>
+        </div>
+        <div class="columns text-right">
+            {{ photo }}
+        </div>
+    </div>
+    <div class="author-info">
+        {% if email %}
+            <div class="row">
+                {% include "@atoms/icon.twig" with { "icon_class": "mail-alt", "url": email_url } %}
+                <p>{{ email }}</p>
+            </div>
+        {% endif %}
+        {% if phone %}
+            <div class="row">
+                {% include "@atoms/icon.twig" with { "icon_class": "phone", "url": phone_url } %}
+                <p>{{ phone }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="row author-social">
+        {% if facebook %}
+        <div class="columns shrink">
+            {% include "@atoms/icon.twig" with facebook %}
+        </div>
+        {% endif %}
+        {% if twitter %}
+        <div class="columns shrink">
+            {% include "@atoms/icon.twig" with twitter %}
+        </div>
+        {% endif %}
+        {% if linkedin %}
+        <div class="columns">
+            {% include "@atoms/icon.twig" with linkedin %}
+        </div>
+        {% endif %}
+    </div>
+</div>

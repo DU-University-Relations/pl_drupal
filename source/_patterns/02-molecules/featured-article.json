@@ -1,0 +1,19 @@
+{
+  "image": {
+    "src": "http://placehold.it/600x400",
+    "alt_text": "placeholder"
+  },
+  "category": "Arts + Culture",
+  "headline": {
+    "title": "Lorem Ipsum dolor sit amet, consectetur adipiscing elit",
+    "type": "h3",
+    "cssClass": "btm-divider"
+  },
+  "teaser": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+  "link": {
+    "title": "This is an example link",
+    "target": "_self",
+    "href": "#",
+    "onclick": ""
+  }
+}

@@ -1,0 +1,15 @@
+<div class="columns small-12 medium-4">
+	<div class="cards-module__content" data-equalizer-watch="cards-module__content">
+		{% include "@atoms/image.twig" with card %}
+		{% include "@atoms/headline.twig" with card %}
+		<div class="cards-module__hidden-on-small">
+			{% include "@atoms/paragraph.twig" %}
+			{% if list_of_links %}
+				{% include "@atoms/list.twig" with card %}
+			{% endif %}
+			{% if card.button %}
+				<p>{% include "@atoms/button.twig" with card.button  %}</p>
+			{% endif %}
+		</div>
+	</div>
+</div>

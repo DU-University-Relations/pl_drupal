@@ -1,0 +1,167 @@
+.handbook {
+  header {
+    padding-top: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #18171e;
+    margin-bottom: 2rem;
+    span {
+      color: $primary-color-3;
+      font-size: 2rem;
+      margin-right: .75rem;
+    }
+  }
+
+  .views-exposed-form {
+    display: flex;
+    .js-form-item {
+      width: calc( 50% - 2rem );
+      margin: 0 1rem 2rem;
+      label {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-family: "BreveSans", sans-serif;
+        margin-bottom: .3rem;
+      }
+    }
+    input[type="text"] {
+      height: 3.3rem;
+    }
+  }
+
+  table {
+    caption {
+      padding: 0.5rem 0.5rem;
+      font-weight: bold;
+      text-align: left;
+      color: $neutral-color-6;
+      background: $neutral-color-2;
+    }
+    thead {
+      th {
+        padding: 0.5rem 1rem;
+        line-height: 1;
+        a {
+          color: $white;
+          display: flex;
+          &:hover {
+            text-decoration: none;
+          }
+          .tablesort {
+            margin-left: auto;
+            &--asc {
+              background-image: url(../images/twistie-down.svg);
+            }
+            &--desc {
+              background-image: url(../images/twistie-up.svg);
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: 778px) {
+        th {
+          font-size: 1.4rem;
+        }
+      }
+
+      // Section/Chapter column.
+      .views-field-nothing {
+        width: 10%;
+      }
+
+      // Title column.
+      .views-field-title {
+        width: 47%;
+      }
+
+      // Policy Document column.
+      .views-field-field-policy-document {
+        width: 22%;
+      }
+
+      // Last Updated Date column.
+      .views-field-field-last-updated-date {
+        width: 20%;
+      }
+      @media screen and (max-width: 778px) {
+        // Policy Document field.
+        .views-field-field-policy-document {
+          display: none;
+        }
+
+        // Last Updated Date field.
+        .views-field-field-last-updated-date {
+          display: none;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 1.5rem 1rem;
+          line-height: 1;
+          a {
+            text-decoration: none;
+          }
+        }
+        @media screen and (max-width: 778px) {
+          // Policy Document field.
+          .views-field-field-policy-document {
+            display: none;
+          }
+
+          // Last Updated Date field.
+          .views-field-field-last-updated-date {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// HRIC Handbook Section Content Landing Page.
+.handbook-content-page {
+  width: 70%;
+  max-width: 120rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+
+  div {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    ul, li, ol {
+      text-align: left;
+    }
+  }
+
+  p:last-of-type {
+    margin-bottom: 4rem;
+  }
+
+  div:last-of-type {
+    margin-bottom: 4rem;
+  }
+
+  .back-to-handbook-page {
+    button {
+      background-color: #18171e;
+      text-transform: uppercase;
+      font-family: "BreveSans", sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: white;
+      padding: 1.7rem;
+      border: 1px solid black;
+      cursor: pointer;
+
+      &:hover {
+        color: #18171e;
+        background-color: white;
+        border: 1px solid black;
+      }
+    }
+  }
+}

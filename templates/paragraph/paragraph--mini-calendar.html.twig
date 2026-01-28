@@ -1,0 +1,11 @@
+{% embed "@organisms/mini-event-feed.twig" %}
+    {% if content.field_mini_events_heading|field_value is not empty %}
+        {% set title=content.field_mini_events_heading|field_value %}
+    {% endif %}
+    {% if content.field_mini_events_more_link|field_value is not empty %}
+        {% set see_more_link=content.field_mini_events_more_link|field_value %}
+    {% endif %}
+    {% block events %}
+        {{ custom.calendar }}
+    {% endblock %}
+{% endembed %}

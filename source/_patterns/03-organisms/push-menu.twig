@@ -1,0 +1,36 @@
+<div aria-label="audience-menu" class="off-canvas position-right" id="audience-menu" data-position="right" data-auto-focus="false" data-transition="push" data-off-canvas="data-off-canvas">
+    <div class="row">
+        {% block big_buttons %}
+            {% for button in big_buttons %}
+                <div class="columns small-12 medium-6">
+                    {% include "@atoms/button-with-image.twig" with {
+                        'url':'#',
+                        'title': "Button Title",
+                        'alt_text':'alt',
+                        'target':'',
+                        'onclick':'',
+                        'src':'#',
+                        'img_alt':'img-alt'
+                    } %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+    <div class="row">
+        {% block small_buttons %}
+            {% for button in sm_buttons %}
+                <div class="columns small-12 medium-6">
+                    {% include "@atoms/button.twig" with {
+                        'url':'#',
+                        'type':'dark-red',
+                        'styleModifier':'display-block',
+                        'title': button.title,
+                        'alt_text':'alt',
+                        'target':'',
+                        'onclick':''
+                    } %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

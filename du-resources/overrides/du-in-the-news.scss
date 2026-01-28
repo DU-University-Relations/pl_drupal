@@ -1,0 +1,182 @@
+.paragraph--type--du-in-the-news-list .views-element-container {
+  @extend .row;
+  @extend .columns;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    margin-bottom: 3.1rem;
+    border-top: .2rem solid $neutral-color-7;
+    padding: 0 2rem;
+    @include breakpoint(medium up) {
+      margin-bottom: 7.2rem;
+    }
+    @include breakpoint(large up) {
+      margin-bottom: 6.9rem;
+    }
+  }
+}
+
+.du-news-list-content {
+  margin-bottom: 3.6rem;
+  @media screen and (max-width: 320px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  h3 {
+    font-size: 3.8rem;
+    font-weight: 500;
+    margin-bottom: 4.1rem;
+  }
+  & > .row {
+    @include breakpoint(medium down) {
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+    }
+  }
+  .du-in-the-news-item.teaser {
+    margin-bottom: 4.5rem;
+    display: flex;
+    justify-content: center;
+    .du-news-date {
+      font-size: 1.6rem;
+      color: $neutral-color-3;
+      padding-bottom: .7rem;
+    }
+    .du-news-title {
+      // margin-bottom: 0.7rem;
+      font-size: 2.6rem;
+      margin-top: .9rem;
+      h6 {
+        font-size: 2.5rem;
+        margin-bottom: 0;
+      }
+    }
+    .du-news-author {
+      color: $neutral-color-3;
+    }
+    a.du-news-hover {
+      text-decoration: none;
+      &:hover {
+        h6 span,
+        p {
+          color: $accent-color-2b;
+        }
+      }
+    }
+  }
+}
+
+.du-in-the-news-view {
+  .du-in-the-news-header {
+    margin-bottom: -4.5rem;
+    padding: 0 2rem;
+  }
+  form {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-actions input {
+      margin: 0 0 1rem;
+      @include breakpoint(medium up) {
+        margin: 0 0 0 1rem;
+      }
+    }
+  }
+  .pager {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5.4rem;
+  }
+}
+
+.du-news-list-content {
+  div.logo-image {
+      margin-bottom: 1rem;
+  }
+  div.news-image {
+    position: relative;
+    .news-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      font-family: "BreveSlabTitle", sans-serif;
+      color: #fff;
+      font-size: 2.2rem;
+      font-weight: 700;
+      display: none;
+      margin: auto;
+      @include breakpoint(large up) {
+        max-width: initial;
+        min-width: initial;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        vertical-align: middle;
+        color: $white !important;
+      }
+    }
+    &:hover,
+    &:focus {
+      .news-image-overlay {
+        display: block;
+        background: rgba(0, 0, 0, 0.42);
+        color: #fff;
+      }
+    }
+  }
+}
+
+.paragraph--type--du-in-the-news-list .logo-image {
+  margin-bottom: 5px;
+}
+
+.hide-dates.paragraph--type--du-in-the-news-list .du-news-date { //hide dates for in-page component if selected
+  display: none;
+}
+
+// show /hide the pager--
+.paragraph--type--du-in-the-news-list {
+  @extend .row;
+  @extend .columns;
+  &:after { //gray line show when there is no pager
+    content: "";
+    display: block;
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border-top: 2px solid $neutral-color-7;
+  }
+  .pager, header { //hide pager for in-page component if selected
+    display: none;
+  }
+}
+.show-pager.paragraph--type--du-in-the-news-list {
+  &:after{
+    display: none;
+  }
+  .pager, header { //show pager for full-page component if selected
+    display: flex;
+  }
+  header {
+    @extend .row;
+    @extend .columns;
+  }
+  .btn {
+    display: none;
+  }
+}
+//hide exposed filters
+.paragraph--type--du-in-the-news-list {
+  #views-exposed-form-du-in-the-news-block-1 {
+    display: none;
+  }
+}
+

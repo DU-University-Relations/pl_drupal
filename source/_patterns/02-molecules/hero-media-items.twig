@@ -1,0 +1,21 @@
+{% macro span(condition, text, class) %}
+	{% if condition %}
+		<span {% if class %}class="{{ class }}"{% endif %}>{{ text }}</span>
+	{% else %}
+		{{ text }}
+	{% endif %}
+{% endmacro %}
+<div class="hero-items">
+	<div class="row align-center">
+		{% for hero_item in hero_items %}
+			{% if not hero_item.hide %}
+				<div class="columns small-12 shrink">
+					{% import _self as self %}
+					{% set label = self.span(hero_item.label, hero_item.label ? hero_item.label ~ ": " : "") %}
+                    {% set value = self.span(not hero_item.label, hero_item.value, 'value') %}
+					<p class="label">{{ label }}{{ value }}</p>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>

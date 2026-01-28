@@ -1,0 +1,11 @@
+{% if headline %}
+	<div class="hero-title text-center align-middle">
+		<div class="columns small-12">
+    		{% if hero_degree_type and hero_department_code %}
+				{% set hero_label = {'type': 'h3', 'title': hero_degree_type ~ " " ~ hero_department_code ~ ":"} %}
+				{% include "@atoms/headline.twig" with hero_label %}
+            {% endif %}
+			{% include "@atoms/headline.twig" with headline %}
+		</div>
+	</div>
+{% endif %}

@@ -1,0 +1,100 @@
+<article{{ attributes }} id="main-content" role="main" >
+    <div class="row">
+        <div class="columns large-offset-2 large-8 pull-up page-title-band">
+            {% block page_title %}
+                {% include "@atoms/headline.twig" with {'title' : title, 'type' : 'h1'} %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row course-module">
+        <div class="columns small-12 large-12">
+			<div class="course-code-number">
+				<h2>{{ subject_code }} {{ course_number }}</h2>
+			</div>
+
+			<!-- course description details-->
+			<div class="course__detail">
+				<div class="row">
+					<div class="columns small-12 {{ additional_info_col_css }}">
+						<div class="course-description">
+							{% include "@atoms/paragraph.twig" with {'text' : course_desc } %}
+						</div>
+					</div>
+					{% if additional_info_col_css %}
+					<div class="columns small-12 medium-4 additional-info">
+
+						<div class="row">
+							<div class="columns {% if course_info_2.title is not empty %}show-right-border{% endif %}">
+								<div class="additional-info--has-icons">
+									{% include "@atoms/headline.twig" with {'title' : course_info_1.title,  'type' : 'h4'} %}
+									<div class="img-wrapper" {% if course_info_1.image %} style="background-image: url('{{ course_info_1.image }}')" {% endif %}>
+										<div class="info-text">
+											{% include "@atoms/headline.twig" with {'title' : course_info_1.text,  'type' : 'h2', "cssClass": "other-info-color"} %}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{% if course_info_2.title is not empty %}
+							<div class="columns {% if course_info_3.title is not empty %}{% endif %}">
+								<div class="additional-info--has-icons">
+									{% include "@atoms/headline.twig" with {'title' : course_info_2.title,  'type' : 'h4'} %}
+									<div class="img-wrapper" {% if course_info_2.image %} style="background-image: url('{{ course_info_2.image }}')" {% endif %}>
+										<div class="info-text">
+											{% include "@atoms/headline.twig" with {'title' : course_info_2.text,  'type' : 'h2', "cssClass": "other-info-color"} %}
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+	
+							{% if course_info_3.title is not empty %}
+							<div class="columns {% if course_info_4.title is not empty %}show-top-right-border{% else %}show-top-border{% endif %}">
+								<div class="additional-info--has-icons">
+									{% include "@atoms/headline.twig" with {'title' : course_info_3.title,  'type' : 'h4'} %}
+									<div class="img-wrapper" {% if course_info_3.image %} style="background-image: url('{{ course_info_3.image }}')" {% endif %}>
+										<div class="info-text">
+											{% include "@atoms/headline.twig" with {'title' : course_info_3.text,  'type' : 'h2', "cssClass": "other-info-color"} %}
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+	
+							{% if course_info_4.title is not empty %}
+							<div class="columns show-top-border">
+								<div class="additional-info--has-icons">
+									{% include "@atoms/headline.twig" with {'title' : course_info_4.title,  'type' : 'h4'} %}
+									<div class="img-wrapper" {% if course_info_4.image %} style="background-image: url('{{ course_info_4.image }}')" {% endif %}>
+										<div class="info-text">
+											{% include "@atoms/headline.twig" with {'title' : course_info_4.text,  'type' : 'h2', "cssClass": "other-info-color"} %}
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+
+						</div>
+
+					</div>
+					{% endif %}
+				</div>
+			</div>
+
+		</div>
+	</div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Course",
+  "name": "{{ title }}",
+  "description": "{{ course_desc }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "University of Denver",
+    "sameAs": "https://www.du.edu/"
+  }
+}
+</script>
+	
+</article>

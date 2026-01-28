@@ -1,0 +1,45 @@
+<div class="columns card-list-item">
+    <div class="cards-list__holder">
+        <div class="cards-list__content {{ card_class_color }}">
+            <p class="academic-card">{{ activity_type }}</p>
+            <div class="cards-list-module__title">
+                <h2 class="cards-list-title">
+                    {{ title }}
+                </h2>
+            </div>
+            <div class="card-list-bottom">
+              <div class="date-display">
+                {% if start_date %}
+                  <div class="activity-date">
+                    {{ start_date|raw }}
+                    {%  if end_date %} - {{ end_date|raw }}{% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="more-button"><span class="icon-du-plus"></span></div>
+        </div>
+        <!-- flyout-->
+        <div class="flyout">
+            <div class="flyout-content__holder row">
+                <div class="columns small-12 medium-8">
+                    <div class="more-description">
+                        {% include "@atoms/headline.twig" with {'title': flyout_title, 'type': 'h3', 'cssClass':''} %}
+                        {{ description }}
+                        {% if start_date %}
+                          <div class="activity-date">
+                            {{ start_date|raw }}
+                            {%  if end_date %} - {{ end_date|raw }} {% endif %}
+                          </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="columns small-12 medium-4 cards-module__buttons">
+                    <ul>
+                        <li>{{ cta }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

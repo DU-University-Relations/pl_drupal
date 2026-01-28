@@ -1,0 +1,9 @@
+{% set category_link = {
+    "title": content.field_link|field_raw('title'),
+    "icon": content.field_icon|field_value,
+    "alt_text": content.field_link.0['#options']['attributes']['title'],
+    "onclick": content.field_link.0['#options']['attributes']['onClick'],
+    "url": content.field_link.0['#url'],
+    "target": content.field_link.0['#options']['attributes']['target']
+}%}
+{% include "@molecules/category_link.twig" with category_link %}

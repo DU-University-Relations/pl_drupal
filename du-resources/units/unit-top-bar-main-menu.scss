@@ -1,0 +1,667 @@
+@media screen {
+  .unit-nav-group {
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    position: relative;
+    a {
+      color: $neutral-color-2;
+    }
+    .btn {
+      color: white;
+    }
+
+    &.no-hero {
+      height: 26.5rem;
+      @include breakpoint(medium up) {
+        height: 26.5rem;
+      }
+      @media screen and (min-width:630px) and (max-width: 770px) {
+        height: 26.5rem;
+        ~ header.alert-closed {
+          margin-top: -8.5rem;
+        }
+      }
+      @include breakpoint(large up) {
+        height: 31.5rem;
+      }
+      @include breakpoint(large up) {
+        ~ header.alert-closed {
+          margin-top: -6.5rem;
+        }
+      }
+    }
+
+    &.no-hero #top-bar-sticky-wrap {
+      width: 100%;
+      &:after {
+        position: absolute;
+        width: 100%;
+        display: block;
+        height: 3.0rem;
+        content: "";
+        background: linear-gradient(to bottom, rgba(181, 183, 186, 1) 0%, rgba(181, 183, 186, 0) 50%);
+        pointer-events: none;
+        transition: height 0.5s ease;
+      }
+    }
+
+    #top-bar-sticky-wrap {
+      z-index: 500; // mega nav was the wrong index
+      width: 100%;
+      &,
+      * {
+        transition: all 0.5s ease, height 0s; // fix hero jumping when nav expands at top
+      }
+    }
+
+    // MAIN MENU
+    #main-menu-wrap {
+      position: relative;
+      z-index: 10;
+      background-color: white;
+      height: 6rem;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      @include breakpoint(large up) {
+        height: 8.0rem;
+      }
+      .logo {
+        display: flex;
+        z-index: 3;
+        color: $neutral-color-2;
+        text-decoration: none;
+        position: relative;
+        user-select: none;
+        padding: .6rem 0 0 1.8rem;
+        align-items: center;
+        @include breakpoint(medium up) {
+          width: auto;
+        }
+        @include breakpoint(large up) {
+          padding: .6rem 0 0 3.8rem;
+        }
+        img {
+          height: 5.0rem;
+          width: auto;
+          @include breakpoint(large up) {
+            height: 6.8rem;
+          }
+        }
+        .site-identity {
+          padding-left: 1.6rem;
+        }
+        .site-prefix {
+          display: block;
+          font-family: $primary-font;
+          font-size: 1.2rem;
+          font-weight: 600;
+          line-height: 1rem;
+          letter-spacing: 0.045rem;
+          @include breakpoint(large up) {
+            font-size: 1.6rem;
+            line-height: 1.2;
+          }
+          @include breakpoint(xlarge up) {
+            font-size: 1.7rem;
+          }
+        }
+        .site-name {
+          font-family: $accent-font;
+          font-size: 1.8rem;
+          font-weight: 900;
+          line-height: 1;
+          letter-spacing: -0.018rem;
+          margin-bottom: -.3rem;
+          white-space: pre-wrap;
+          @include breakpoint(medium up) {
+            font-size: 2rem;
+          }
+          @include breakpoint(large up) {
+            font-size: 2.6rem;
+          }
+        }
+        &.image {
+          background: white;
+          &:before {
+            content: "";
+            position: absolute;
+            right: 100%;
+            width: 16.0rem;
+            height: 3.0rem;
+            z-index: 1;
+            background: white;
+          }
+          &:after {
+            content: "";
+            position: absolute;
+            left: 100%;
+            width: 16.0rem;
+            height: 3.0rem;
+            z-index: 1;
+            background: linear-gradient(to right, white 0, white 60px, rgba(255,255,255,0) 100%);
+          }
+        }
+        @include breakpoint(medium down) {
+          width: auto;
+          &.image {
+            &:before, &:after {
+              display: none;
+            }
+          }
+        }
+        @include breakpoint(small down) {
+          width: 25rem;
+          .site-identity {
+            padding-left: .8rem;
+          }
+        .site-name {
+            display: block;
+          }
+        }
+        @media print, screen and (max-width: 460px) {
+          // width: unset;
+          .site-identity {
+            padding-left: .8rem;
+          }
+          .site-name {
+            display: block;
+          }
+          &.image {
+            width: auto;
+            img { height: 6.0rem; }
+          }
+        }
+      } // end .logo
+
+      #main-menu {
+        max-height: 75vh;
+        overflow: auto;
+        .main-menu-contents {
+          padding: 0 2.0rem 0 0;
+          margin: 0 auto;
+        }
+
+        .main-menu-contents > ul, .main-menu-contents > nav > ul {
+          flex-wrap: nowrap;
+          position: static;
+          background-color: white;
+          @include breakpoint(medium down) {
+            flex-direction: column;
+            border-top: .8rem solid $neutral-color-5;
+            float: none;
+          }
+
+          > li {
+            &.active > a, > a.is-active, &:hover > a, &:focus > a, &.open > a {
+              color: $neutral-color-2;
+              background-color: transparent;
+              @include breakpoint(large) {
+                border-bottom: .8rem solid $primary-color-3;
+
+                //.unit-theme-teal & {border-bottom-color: $unit-accent-color-teal;}
+                //.unit-theme-purple & {border-bottom-color: $unit-accent-color-purple;}
+                //.unit-theme-green & {border-bottom-color: $unit-accent-color-green}
+                //.unit-theme-gold & {border-bottom-color: $unit-accent-color-gold;}
+                //.unit-theme-grey & {border-bottom-color: $unit-accent-color-grey;}
+                //.unit-theme-red & {border-bottom-color: $unit-accent-color-red;}
+              }
+              @include breakpoint(medium down) {
+                border-left: .8rem solid $primary-color-3;
+
+                //.unit-theme-teal & {border-left-color: $unit-accent-color-teal;}
+                //.unit-theme-purple & {border-left-color: $unit-accent-color-purple;}
+                //.unit-theme-green & {border-left-color: $unit-accent-color-green}
+                //.unit-theme-gold & {border-left-color: $unit-accent-color-gold;}
+                //.unit-theme-grey & {border-left-color: $unit-accent-color-grey;}
+                //.unit-theme-red & {border-left-color: $unit-accent-color-red;}
+              }
+            }
+            > a {
+              height: 8.0rem;
+              border-width: .8rem 0;
+              border-style: solid;
+              text-align: center;
+              border-color: transparent;
+              text-decoration: none;
+              white-space: pre-wrap;
+              //center nav anchors vertically
+              vertical-align: middle;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              &:hover,
+              &:focus {
+                background-color: $neutral-color-6;
+                @include breakpoint(large) {
+                  border-bottom: .8rem solid $primary-color-3;
+
+                  //.unit-theme-teal & {border-bottom-color: $unit-accent-color-teal;}
+                  //.unit-theme-purple & {border-bottom-color: $unit-accent-color-purple;}
+                  //.unit-theme-green & {border-bottom-color: $unit-accent-color-green}
+                  //.unit-theme-gold & {border-bottom-color: $unit-accent-color-gold;}
+                  //.unit-theme-grey & {border-bottom-color: $unit-accent-color-grey;}
+                  //.unit-theme-red & {border-bottom-color: $unit-accent-color-red;}
+                }
+              }
+            }
+            @include breakpoint(medium down) {
+              border-bottom: .2rem solid $neutral-color-5;
+              display: block;
+              width: 100%;
+              > a {
+                box-sizing: border-box;
+                display:block !important;
+                border:none;
+                font-size: 2.0rem;
+                font-weight: 600;
+                height: auto;
+                text-align: left;
+                white-space: normal;
+                padding: 2.0rem 1.2rem;
+                width: 100%;
+              }
+              &[role="menuitem"] {
+                max-width: 32.0rem;
+              }
+            }
+          } //end li
+          li {
+            margin-left: 0;
+            > a {
+              font-weight: 600;
+              font-family: $primary-font;
+              @include breakpoint(large down) {
+                font-size: 1.8rem;
+                padding-left: .2rem;
+                padding-right: 1.2rem;
+              }
+            }
+          }
+        }//end .main-menu-contents > ul
+        ul:not(.menu-level-0)  {   // prevents list item issues on ie edge---  could be removed after spring 2020 when edge is chromium
+          li {
+            overflow: hidden;
+            > a  {display: inline-flex;}
+          }
+        }
+
+
+        @include breakpoint(medium down) {
+          display: none;
+          background-color: white;
+          padding: 4.0rem 6.2rem;
+          &.expanded { display: block; }
+          @include breakpoint(small down) {
+            padding: 3.0rem 3.0rem;
+          }
+          .main-menu-contents {
+            display: flex;
+            justify-content: space-between;
+            align-content: stretch;
+            > nav {
+              width: 50%;
+            }
+          }
+          .main-menu-contents > ul {
+            &.menu {
+              display: block;
+            }
+            > li + li {
+              margin-left: 0;
+            }
+          }
+          .mobile-utility-wrapper {
+            width: 50%;
+            padding-left: 7.0rem;
+          }
+        }
+        @include breakpoint(small down) {
+          .main-menu-contents {
+            display: block;
+            > nav {
+              width: 100%;
+            }
+            .mobile-utility-wrapper {
+              width: 100%;
+            }
+          }
+        }
+      }
+      // MEGA NAV
+      .is-dropdown-submenu-parent.mega-menu {
+        position: static;
+      }
+
+      > .row.expanded {
+        max-width: $grid-row-width;
+        height: 100%;
+        > .columns.shrink + .columns {
+          padding-right: 0;
+          height: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+        > .columns.shrink:last-child {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        @include breakpoint(medium down) {
+          #main-menu {
+            position: absolute;
+            top: 6rem;
+            left: 0;
+            right: 0;
+            padding-top: 3.2rem;
+            box-shadow: inset 0 .1rem .3rem rgba(0,0,0,0.2), 0 8px 9px 0 rgba(0, 0, 0, 0.2);
+            .main-menu-contents > ul {
+              &.align-right {
+                justify-content: center;
+                @include breakpoint(medium down) {
+                  justify-content: left;
+                }
+              }
+            }
+          }
+          .columns.shrink {
+            padding-right: 0;
+            #unit-main-menu-toggler {
+              float: right;
+              position: relative;
+              button {
+                cursor: pointer;
+                height: 6rem;
+                width: 5.9rem;
+                display: inline-block;
+                &.icon-du-cust-menu,
+                &.du-icon-cust-menu {
+                  font-size: 2.8rem;
+                }
+                &.open.icon-du-cust-menu,
+                &.open.du-icon-cust-menu {
+                  &:before {
+                    content: "\e805";
+                  }
+                }
+              }
+            }
+          }
+        }// end @include medium
+        @include breakpoint(small down) {
+          #main-menu {
+            top: 6rem;
+            .main-menu-contents {
+              padding: 0;
+            }
+            .main-menu-contents > ul {
+              width:80%;
+              > li { max-width: none !important; }
+            }
+            .mobile-utility-wrapper {
+              width:80%;
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    } // MAIN MENU
+    #top-bar-sticky-wrap.is-stuck {
+      box-shadow: 0 .2rem .7rem 0 rgba(0, 0, 0, 0.3);
+      #main-menu-wrap {
+        height: 6.2rem;
+        .logo {
+          // margin-left: 1.0rem;
+          // width: auto;
+          @media print, screen and (max-width: 380px) {
+            // width: unset;
+          }
+          .site-logo {
+            width: auto;
+            align-items: center;
+          }
+          img {
+            height: 5.0rem;
+            width: auto;
+            max-width: 4rem;
+            // New logo requires small breakpoint adjustment on mobile sticky
+            @include breakpoint(small down) {
+              max-width: 2.6rem;
+            }
+          }
+          .newman-center-logo {
+            img:first-of-type  {
+              width: 100% !important;
+              transform: scale(1);
+              max-width: 100%;
+            }
+          }
+          &.image {
+            margin-top: 0;
+            img { height: 5.0rem; }
+          }
+          .site-identity {
+            padding-left: .8rem;
+            @include breakpoint(medium up) {
+              margin-top: .5rem;
+            }
+          }
+          .site-prefix {
+            // font-size: 1.6rem;
+          }
+          .site-name {
+            // font-size: 2.0rem;
+          }
+        }//end .logo
+
+        > .row.expanded {
+          #main-menu ul {
+            > li > a {
+              @include breakpoint(large) {
+                font-size: 1.6rem;
+                height: 6.2rem;
+              }
+            }
+          }
+          #main-menu {
+            @include breakpoint(medium down) {
+              top: 6.0rem;
+              padding-top: 5.0rem;
+            }
+          }
+        }
+      }
+      &:after {
+        height: 1.4rem;
+      }
+    }
+  } // end .unit-nav-group
+} // end @screen
+
+.unit-site {
+  // Adjusting last main level link to open inside the window.
+  li.is-dropdown-submenu-parent:last-of-type .mega-flyout.mega-menu--dropdown {
+    margin-left: -12%;
+  }
+}
+
+// Logged in adjustment of navigation
+body.adminimal-admin-toolbar.unit-site {
+  padding-top: 19.0rem !important;
+}
+
+//Sturm College of Law -- specific adjustments to have site name on one line
+.sturm-college-of-law .unit-nav-group #main-menu-wrap .logo .site-name {
+  line-height: 2.5em;
+  @include breakpoint(large down) {
+    margin-top: .6rem;
+  }
+}
+.sturm-college-of-law .unit-nav-group > div > div.is-at-top.is-anchored #main-menu-wrap .logo .site-name {
+  @include breakpoint(large down) {
+    margin-top: 1.0rem;
+  }
+}
+
+//CAHSS -reduce font size from 28-24px
+.arts-humanities-social-sciences .unit-nav-group #main-menu-wrap .logo .site-name {
+  font-size: 2.4rem;
+  @include breakpoint(small down) {
+    font-size: 3.8vw;
+  }
+}
+
+.arts-humanities-social-sciences .unit-nav-group #main-menu-wrap #main-menu .main-menu-contents > nav > ul li > a {
+  font-size: 1.8rem;
+}
+
+.arts-humanities-social-sciences #unit-main-menu-toggler.display-none-toggle {
+  display: none;
+}
+
+//Burnes - make site identity /name bold for top nav
+.poverty-homelessness .unit-nav-group {
+  #main-menu-wrap .logo {
+    .site-prefix, .site-name {
+      font-family: "BreveText", sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.8rem;
+      letter-spacing: -0.18rem;
+      margin-bottom: -.3rem;
+      white-space: pre-wrap;
+      @include breakpoint(medium down) {
+        font-size: 2.6rem;
+      }
+      @include breakpoint(small down) {
+        display: block;
+        font-size: 1.8rem;
+      }
+      @media screen and (max-width: 460px) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  //on scroll
+  #top-bar-sticky-wrap.is-stuck #main-menu-wrap .logo {
+    .site-prefix, .site-name {
+      font-size: 2.0rem;
+      @include breakpoint(medium down) {
+        font-size: 1.8rem;
+      }
+      @include breakpoint(small down) {
+        font-size: 1.4rem;
+      }
+    }
+  }
+} //end Burnes
+
+//GSPP clinics microsite
+.clinics .unit-nav-group {
+  #main-menu-wrap .logo {
+    .site-prefix, .site-name {
+      font-family: "BreveText", sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.8rem;
+      letter-spacing: -0.18rem;
+      margin-bottom: -.3rem;
+      white-space: pre-wrap;
+      @include breakpoint(medium down) {
+        font-size: 2.6rem;
+        display: block;
+      }
+      @media screen and (max-width: 460px) {
+        font-size: 2.2rem;
+      }
+    }
+  }
+  //on scroll
+  #top-bar-sticky-wrap.is-stuck #main-menu-wrap .logo {
+    .site-prefix, .site-name {
+      font-size: 2.4rem;
+      @include breakpoint(medium down) {
+        font-size: 2.0rem;
+      }
+      @include breakpoint(small down) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+
+//Denver Advantage -- specific adjustments to have site name on one line
+.denver-advantage header.core-inline-site #main-menu-wrap .logo .site-name {
+  line-height: 2.5rem;
+  @include breakpoint(large down) {
+    margin-top: 0;
+  }
+}
+.denver-advantage header.core-inline-site > div > div.is-at-top.is-anchored #main-menu-wrap .logo .site-name {
+  @include breakpoint(large down) {
+    margin-top: .2rem;
+  }
+}
+
+//Denver Advantage -- specific adjustments to have site name on one line
+.denver-advantage header.core-inline-site #main-menu-wrap .logo .site-name {
+  line-height: 2.5rem;
+  @include breakpoint(large down) {
+    margin-top: 0;
+  }
+}
+
+
+//Giving & Alumni,  Accessibility
+.giving, .alumni, .accessibility {
+  .unit-nav-group #top-bar-sticky-wrap.is-stuck #main-menu-wrap .logo .site-identity { //on scroll
+    margin-top: 0;
+  }
+}
+
+.giving, .alumni, .accessibility {
+  .unit-nav-group #main-menu-wrap .logo .site-identity {
+    margin-top: 0;
+  }
+}
+
+//Korbel
+.international-studies {
+  .unit-nav-group #main-menu-wrap #main-menu > div > ul li {
+    overflow: initial;
+    > a { display: flex;}
+  }
+}
+
+//CWC and C+V
+.colorado-womens-college, .community--values {
+  .header #main-menu-wrap a.logo.inline-site .site-name {
+    margin-bottom: 0;
+    margin-top: -.2rem;
+    max-width: 14.5rem;
+    @media (min-width: 350px) {
+      max-width: 16.0rem;
+      margin-top: -.3rem;
+    }
+    @media (min-width: 410px) {
+      max-width: 18.0rem;
+      margin-top: -.5rem;
+    }
+    @include breakpoint(medium up) {
+      margin-top: .8rem;
+      max-width: 50.0rem;
+      &.is-stuck {
+        margin-top: .6rem;
+      }
+    }
+  }
+}
+
+@include breakpoint(large up) {  //on scroll
+  .off-canvas-wrap.colorado-womens-college header #top-bar-sticky-wrap.is-stuck #main-menu-wrap a.logo.inline-site .site-name {
+    margin-top: .6rem;
+  }
+}

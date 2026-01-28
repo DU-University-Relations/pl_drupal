@@ -1,0 +1,10 @@
+<div class="cards-list-module find-stories-list">
+    <div class="row js-filter-cards">
+        {% block stories %}
+            {% for row in rows %}
+                {# include "@molecules/scholarship-item.twig" with row.content #}
+                {{ row }}
+            {% endfor %}
+        {% endblock %}
+    </div>
+</div>

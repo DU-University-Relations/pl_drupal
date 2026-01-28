@@ -1,0 +1,31 @@
+{% if (contacts_header and layout == "three_col") %}
+    <div class="row">
+        <div class="columns">
+            {% if contact_title|render %}
+                <h3 class="btm-divider">{{ contact_title }}</h3>
+            {% else %}
+                <h3 class="btm-divider">Contact</h3>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+<div class="contacts-module buffer-on-inner-row {% if layout == 'two_col' %} stories-module--two-col{% endif %}" data-equalizer="contacts-module__content" data-equalize-on="medium">
+    <div class="row small-up-1 medium-up-2 large-up-3">
+        {% if layout == 'two_col' %}
+            <div class="columns small-12 medium-4">
+                {% if contact_title|render %}
+                    <h3 class="btm-divider">{{ contact_title }}</h3>
+                {% else %}
+                    <h3 class="btm-divider">Contact</h3>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if contacts %}
+            {% block contacts %}
+                {% for contact in contacts %}
+                    {% include "@molecules/contact.twig" with contact %}
+                {% endfor %}
+            {% endblock %}
+        {% endif %}
+    </div>
+</div>

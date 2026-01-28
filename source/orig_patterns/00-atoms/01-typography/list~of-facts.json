@@ -1,0 +1,23 @@
+{
+	"list": {
+        "styleModifier": "list-of-facts",
+		"items": [
+			{
+				"fact_title": "99%",
+                "fact_text": "<p>First list item</p>"
+			},
+			{
+				"fact_title": "1%",
+                "fact_text": "<p>First list item</p>"
+			},
+			{
+				"fact_title": "XX%",
+                "fact_text": "<p>First list item</p>"
+			},
+            {
+				"fact_title": "XX%",
+                 "fact_text": "<p>of students had a job or were in grad school within<br/> six months of finishing their degree</p>"
+			}
+		]
+	}
+}

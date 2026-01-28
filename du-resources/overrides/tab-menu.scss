@@ -1,0 +1,252 @@
+
+.tab-menu-component {
+  margin-top: -3.6rem;
+  margin-bottom: 2.5rem;
+
+  .tab-menu-wrap {
+    overflow: hidden;
+    height: 10.0rem;
+    border-bottom: .2rem solid $neutral-color-5;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tab-menu-component .tab-menu-wrap {
+    height: 7.2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #tab-menu {
+    margin-left: 0;
+    background-image: /* Shadows */
+            linear-gradient(to right, white, white),
+            linear-gradient(to right, white, white),
+              /* Shadow covers */
+            linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0)),
+            linear-gradient(to left, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0));
+
+    background-position: left center, right center, left center, right center;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 2.0rem 100%, 2.0rem 100%, 10px 100%, 10px 100%;
+
+    /* Opera doesn't support this in the shorthand */
+    background-attachment: local, local, scroll, scroll;
+  }
+}
+
+#tab-menu::-webkit-scrollbar { width: 0 !important }
+
+#tab-menu {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;  // <-- this is the principal overflow controller
+  overflow-y: hidden;
+  > ul {
+    margin: auto;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    height: 4.5rem;
+    @include breakpoint(medium) {
+      height: 7.2rem;
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        padding-bottom: 5.8rem;
+        margin-bottom: 3.1rem;
+      }
+    }
+    li {
+      &:before {
+        display: none;
+      }
+      @media print, screen and (min-width: 1023px) {
+        display: inline-block;
+        margin-left: 1.0rem;
+        min-height: initial;
+      }
+      a {
+        display: block;
+        color: $neutral-color-2;
+        text-decoration: none;
+        font-weight: 700;
+        min-width: 19.0rem;
+        white-space: nowrap;
+        @media print, screen and (min-width: 1023px) {
+          text-align: center;
+        }
+        @include breakpoint(medium down) {
+          padding-left: 1.8rem;
+          border-color: $neutral-color-5;
+          border-style: solid;
+          border-width: 0 0 0 .4rem;
+          height: 3.1rem;
+        }
+        &:hover::after,
+        &.is-active::after {
+          content: "";
+          display: block;
+          margin: 0 auto;
+          margin-top: 0.9rem;
+          height: .6rem;
+          width: 13.0rem;
+          background-color: $primary-color-3;
+        }
+        @include breakpoint(large down) {
+          min-width: 15.0rem;
+          &:hover::after,
+          &.is-active::after {
+            content: "";
+            display: block;
+            margin: 0 auto;
+            margin-top: 2.5rem;
+            height: .6rem;
+            width: 15.0rem;
+            background-color: $primary-color-3;
+          }
+        }
+      }
+    }
+  } // end > ul
+} //end #tab-menu
+
+@media screen and (min-width: 48em) {
+  .tab-menu-component .tab-menu-wrap {
+    text-align: center;
+    margin-bottom: 6.0rem;
+  }
+  #main-content ul.menu-scroll li {
+    max-width: 15.0rem;
+  }
+}
+
+@media screen and (min-width: 68em) {
+  #main-content ul.menu-scroll li {
+    max-width: 20.0rem;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .tab-menu-component .tab-menu-wrap {
+    height: 7.5rem;
+  }
+
+  #tab-menu > ul {
+    height: 7.2rem;
+    line-height: 2.2rem;
+  }
+  .tab-menu-link { margin-left: 0; }
+}
+
+@media screen and (max-width: 510px) {
+  #tab-menu > ul > li:last-child {
+    left: -.7rem;
+  }
+}
+
+@media screen and (min-width: 552px) and (max-width: 568px) {
+  #tab-menu > ul > li:last-child {
+    left: .1rem;
+  }
+}
+
+@include breakpoint(medium down) {
+  .tab-menu-wrap {
+    #tab-menu {
+      > ul {
+        margin-bottom: 0;
+        display: inline-flex;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        &:after {
+          display: none;
+        }
+        li:first-of-type {
+          margin-left: 0;
+        }
+        li {
+          margin: 0;
+          &.active {
+            color: #353535;
+            font-weight: bold;
+            cursor: default;
+          }
+          a {
+            min-width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #353535;
+            padding: 1.5rem 2.0rem 1.8rem 2.0rem;
+            position: relative;
+            font-family: $primary-font;
+            text-decoration: none;
+            &:hover,
+            &:focus {
+              background-color: $neutral-color-6;
+              color: $primary-color-3;
+              text-decoration: none;
+              &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: .8rem;
+                background-color: $primary-color-3;
+              }
+            }
+            &.is-active {
+              background-color: #ffffff6b;
+              color: #353535;
+              font-weight: bold;
+              cursor: default;
+              &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: .8rem;
+                background-color: $primary-color-3;
+              }
+            }
+            &:hover::after,
+            &.is-active::after {
+              display: none;
+              content: none;
+            }
+          }
+        } //end li
+        ul {
+          margin-bottom: -.2rem;
+        }
+      } // end > ul
+      > p + ul,
+      > .search-box + ul {
+        margin-top: 0;
+      }
+    }// end #tab-menu
+  }// end .tab-menu-wrap
+}// end @breakpoint medium
+
+@include breakpoint(small down) {
+  .tab-menu-wrap {
+    #tab-menu {
+      border-top: .3rem solid $neutral-color-6;
+    }
+  }
+}
+
+@media screen and (min-width:770px) {
+  ul.menu-scroll {
+    width: initial !important; //using js to set width on mobile to keep active tab centered on refresh
+  }
+}

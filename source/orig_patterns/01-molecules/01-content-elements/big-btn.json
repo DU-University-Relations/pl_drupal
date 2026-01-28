@@ -1,0 +1,12 @@
+{
+  "button": {
+    "cssClass": "bg-img-btn",
+    "alt_text": "Big Btn Alt",
+    "src": "http://placehold.it/388x235",
+    "icon": {
+      "alt_text": "icon",
+      "src": "http://placehold.it/75x80/eeeeee/888888"
+    },
+    "title": "Button w/ Bg Img"
+  }
+}

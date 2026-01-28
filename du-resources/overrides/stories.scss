@@ -1,0 +1,154 @@
+body #main-content, body.du-home #main-content { // this was to enable some component style for du home page.
+  .stories-module {
+    position: relative;
+    margin-bottom: 6.8rem;
+    @include breakpoint(small down) {
+      margin-bottom: 3.0rem;
+    }
+    &:before {
+      content: "";
+      background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+      height: 16.5rem;
+      top: 0;
+      width: 100%;
+      display: block;
+      z-index: 0;
+      position: absolute;
+      right: 0;
+      @include breakpoint(large) {
+        height: 27.7rem;
+      }
+      @include breakpoint(large down) {
+        border-left: 9.3rem solid white;
+      }
+      @include breakpoint(small down) {
+        display: none;
+      }
+    }
+    &.stories-module--two-col {
+      &:before {
+        width: 60%;
+      }
+      @include breakpoint(medium) {
+        &:before {
+          width: 100%;
+        }
+        > .row {
+          > .columns:first-child {
+            position: relative;
+            &:before {
+              content: "";
+              position: absolute;
+              top: -4.0rem;
+              left: -300.0rem;
+              background-color: white;
+              display: block;
+              right: -4.0rem;
+              height: 16.5rem;
+              z-index: -1;
+              @include breakpoint(large) {
+                height: 27.7rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    > .row {
+      @include breakpoint(xlarge) {
+        > .columns:first-child {
+          position: relative;
+          &:before {
+            content: "";
+            position: absolute;
+            top: -4.0rem;
+            left: -200.0rem;
+            background-color: white;
+            display: block;
+            right: 35.0rem;
+            height: 16.5rem;
+            z-index: -1;
+            @include breakpoint(large) {
+              height: 27.7rem;
+            }
+          }
+        }
+      }
+      @include breakpoint(medium) {
+        padding-top: 40px;
+      }
+    }
+
+    .stories-module__wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stories-module__story {
+      font-family: $accent-font;
+      img {
+        width: 100%;
+        + * {
+          margin-top: 2.5rem;
+        }
+      }
+      h5 {
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+        font-weight: 400;
+        padding-top: 1rem;
+        @include breakpoint(medium down) {
+          font-size: 2.6rem;
+          line-height: 3.2rem;
+        }
+      }
+      p {
+        font-size: 1.8rem;
+        line-height: 2.8rem;
+        @include breakpoint(medium down) {
+          font-size: 1.5rem;
+          line-height: 2.4rem;
+        }
+      }
+      @include breakpoint(small down) {
+        position: relative;
+        margin: 4.5rem auto 3.0rem auto;
+        max-width: 32.0rem;
+        &:before {
+          content: "";
+          background: transparent url('../images/arrow-pattern.png') repeat scroll 0 0;
+          height: 24.2rem;
+          top: -4.4rem;
+          left: 3.0rem;
+          display: block;
+          z-index: -1;
+          position: absolute;
+          right: -2.2rem;
+        }
+        @media (max-width: 480px) {
+          max-width: none;
+          &:before {
+            left: -2.2rem;
+          }
+        }
+      }
+      .content {
+        margin-bottom: 1.8rem;
+        height: auto !important;
+      }
+    }
+    @include breakpoint(medium) { // Min Width 768px
+      .medium-text-right {
+        max-width: 44%;
+        float: right;
+        margin-top: 0;
+        margin-top: -4.0rem;
+        margin-right: 27%;
+        &.btm-divider:after {
+          left: unset;
+          right: 0;
+        }
+      }
+    }
+  }// end .stories-module
+}// end .du-home #main-content

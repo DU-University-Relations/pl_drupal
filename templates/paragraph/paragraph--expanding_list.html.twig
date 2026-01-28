@@ -1,0 +1,35 @@
+{% embed "@molecules/expanding-list.twig" %}
+    {% set expanding_list = [] %}
+    {% if content.field_exp_list_item|field_target_entity[1] %}
+        {% for field in content.field_exp_list_item|field_target_entity %}
+            {% set expanding_list = expanding_list|merge({(loop.index0) :
+                {
+                    'title': field.field_title.value,
+                    'text':
+                    {
+                        '#type' : 'processed_text',
+                        '#text' : field.field_body_text.value,
+                        '#format' : field.field_body_text.format
+                    }
+                }
+            }
+                ) %}
+        {% endfor %}
+    {% else %}
+        {% set field = content.field_exp_list_item|field_target_entity %}
+        {% set expanding_list = expanding_list|merge({(loop.index0) :
+            {
+                'title': field.field_title.value,
+                'text':
+                {
+                    '#type' : 'processed_text',
+                    '#text' : field.field_body_text.value,
+                    '#format' : field.field_body_text.format
+                }
+            }
+        }
+            ) %}
+    {% endif %}
+{% endembed %}
+
+

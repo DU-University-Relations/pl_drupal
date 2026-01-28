@@ -1,0 +1,10 @@
+{% embed "@organisms/featured-courses.twig" %}
+
+	{% set title = content.field_featured_courses_heading|field_value %}
+
+	{% set courses = content.field_featured_course_ref|field_value %}	
+
+    {% block courses %}
+		{{ content.field_featured_course_ref|field_value }}
+    {% endblock %}
+{% endembed %}

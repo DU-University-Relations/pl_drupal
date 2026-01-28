@@ -1,0 +1,154 @@
+.scholarship-list {
+  .card-list-item {
+    .cards-list__holder {
+      .flyout {
+        .flyout-content__holder {
+          .scholarship-kind {
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 2.0rem;
+            margin-bottom: 2.0rem;
+            @include breakpoint(medium up) {
+              margin-top: 4.0rem;
+            }
+          }
+          .cards-module__buttons {
+            font-size: 1.6rem;
+            margin-left: 0;
+            margin-right: 0;
+            max-width: 100%;
+            li {
+              margin-top: 0;
+              span {
+                font-weight: bold;
+                &:not(.inline-label) {
+                  display: block;
+                }
+              }
+            }
+            @include breakpoint(medium up) {
+              margin-left: auto;
+              margin-right: auto;
+              max-width: 26.0rem;
+            }
+          }
+        }// end  .flyout-content__holder
+      } //end .flyout
+    }// end .cards-list__holder
+  } //end .card-list-item
+}// end .scholarship-list
+
+.scholarship { // Scholarship Content Style
+  margin: 6.0rem 0 6.0rem;
+  .scholarship-content__holder {
+    padding-bottom: 6.0rem;
+    @include breakpoint(large up) {
+      padding-bottom: 0;
+    }
+    .scholarship-kind {
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin-top: 2.0rem;
+      margin-bottom: 2.0rem;
+      @include breakpoint(medium up) {
+        margin-top: 4.0rem;
+      }
+    }
+    .rightside-info {
+      font-size: 1.6rem;
+      li {
+        margin-top: 0;
+        span {
+          font-weight: bold;
+          &:not(.inline-label) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}// end .scholarship-module
+
+.scholarship-view { //main component wrapper
+  .pager__items {   //page number indicators container
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.scholarship-filter-dropdown { //this rule does not seem to apply to it's class?
+  .form-item:not(.form-item-field-scholarship-kind-checkbox-financial) {
+    label {
+      display: none;
+    }
+  }
+}
+.scholarship-filter-search {
+  width: 100%;
+  label {
+    display: none;
+  }
+  .search-box {
+    padding-left: 1.0rem;
+    input {
+      border-width: 0 0 .4rem 0;
+      padding-bottom: .2rem;
+      padding-right: 5.0rem;
+      border-color: $neutral-color-4;
+      box-shadow: none;
+      margin-bottom: 0;
+      height: auto;
+      font-size: 1.8rem;
+      font-family: "BreveSlabTitle", sans-serif;
+      @include breakpoint(medium up) {
+        font-size: 2.4rem;
+      }
+      @include breakpoint(large up) {
+        font-size: 3.6rem;
+      }
+    }
+  }
+}// end .scholarship-filter-search
+
+.scholarship-filter-submit {
+  & > div {
+    height: 100%;
+    padding-top: 0.9rem;
+    input {
+      float: right;
+      height: 100%;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      @include breakpoint(medium up) {
+        padding-right: 10.0rem;
+        padding-left: 10.0rem;
+      }
+      @include breakpoint(medium down) {
+        margin: 0 auto;
+        display: block;
+        float: none;
+      }
+    }
+  }
+}
+
+.no-scholarship-result-found {
+  width: 100%;
+  text-align: center;
+  padding: 4.0rem 4.0rem 12.0rem 4.0rem;
+}
+
+.scholarship-filter {
+  margin-bottom: 6.0rem;
+  #edit-field-scholarship-kind-checkbox > div > label {
+    display: inline-flex;
+    @media screen and (max-width: 430px) {
+      margin-right: 0;
+    }
+
+  }
+  //Filter display rules
+  .scholarship-filter-search ~ .scholarship-filter-dropdown {
+    display: initial; // display the dropdown filters
+  }
+}

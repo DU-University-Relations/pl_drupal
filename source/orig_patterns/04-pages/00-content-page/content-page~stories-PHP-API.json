@@ -1,0 +1,26 @@
+{
+	"stories_module": [
+		{
+			"three_col_header": {
+		        "title": "Three_Column Stories",
+		        "type": "h3",
+		        "cssClass": "btm-divider"
+		    },
+		    "API_enabled": true,
+		    "stories": [
+		        {
+		            "src": "<?=$item['imageUrl'];?>",
+		            "alt_text": "alt text for story image",
+		            "title": "<?=$item['title'];?>",
+		            "type": "h4",
+		            "text": "<?=$item['content'];?>",
+		            "button": {
+		                "title": "<?=$item['linkText'];?>",
+		                "url": "<?=$item['linkUrl'];?>",
+		                "type": ""
+		            }
+		        }
+		    ]
+		}
+	]
+}

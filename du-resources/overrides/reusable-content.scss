@@ -1,0 +1,49 @@
+.reusable-content {
+  margin-bottom: 6.8rem;
+  overflow: hidden;
+  .copy-module & {
+    margin-bottom: 0;
+    .columns {
+      padding: 0;
+    }
+    h3 {
+      @extend .buffer-top;
+    }
+  }
+  .featured-events-module { //featured events in reusable content
+    @include breakpoint(large up) {
+      &:before {
+        content: "";
+        left: -50%;
+        width: 200%;
+      }
+    }
+  }
+
+  // kaltura video iframe responsiveness using custom wrapper
+  @media screen and (min-width: 570px) {
+    #kaltura-responsive-video-inline {
+      margin-top: 460px;
+    }
+  }
+
+  @media (min-width: 570px) and (max-width: 767px) {
+    #kaltura-responsive-video-inline {
+      margin-top: 83.15%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1099px) {
+    #kaltura-responsive-video-inline {
+      margin-top: 93.15%;
+    }
+  }
+
+  @media screen and (min-width: 1100px) {
+    #kaltura-responsive-video-inline {
+      margin-top: 61.15%;
+    }
+  }
+}
+
+
