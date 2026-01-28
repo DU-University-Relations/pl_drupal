@@ -4,6 +4,7 @@
 
 @import "variables";
 
+// Foundation Sites 6.9.0 (modern version)
 @import "foundation-sites/scss/foundation";
 @import "foundation-sites/scss/util/util";
 
@@ -13,16 +14,9 @@
 @include foundation-flex-classes;
 @include foundation-flex-grid;
 
-//pull in du-specific scss that is not in the patterns dir
-@import "global";
-@import "../du-resources/base/*.scss";
-@import "../du-resources/overrides/*.scss";
-@import "../du-resources/units/*.scss";
-@import "../du-resources/micro/*.scss";
+// Drupal Seven admin theme tabs (moved from core to contrib in Drupal 10)
+@import "../../../../themes/contrib/seven/css/components/tabs";
 
-// Run through the entire patterns collection, finding all scss files included therein
-// @import "../source/**/*.scss";
-
-@import "../../../libraries/slick-carousel/slick/slick.scss";
-
-@import "../../../core/themes/seven/css/components/tabs";
+// DU Alumni Customizations extracted from production sparkle.css
+// Contains all DU-specific styles (extracted from sparkle.css, Foundation base removed)
+@import "du-customizations-only";

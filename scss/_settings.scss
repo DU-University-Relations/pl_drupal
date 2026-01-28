@@ -48,11 +48,11 @@ $global-font-size: 10px;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-        primary: #1779ba,
+        primary: #D5D2C5,
         secondary: #767676,
         success: #3adb76,
-        warning: #ffae00,
-        alert: #cc4b37,
+        warning: #A89968,
+        alert: #BA0C2F,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -61,7 +61,7 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: #525252;//#18161f;
-$body-font-family: 'BreveSans', sans-serif;
+$body-font-family: neue-haas-unica, sans-serif;
 $body-antialiased: true;
 $global-margin: 1.8rem;
 $global-padding: 1.8rem;
@@ -382,7 +382,7 @@ $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
 $input-color: #525252;
 $input-placeholder-color: #525252;
-$input-font-family: "BreveSans", sans-serif;
+$input-font-family: neue-haas-unica, sans-serif;
 $input-font-size: rem-calc(16);
 $input-font-weight: $global-weight-normal;
 $input-background: $white;

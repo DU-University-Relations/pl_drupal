@@ -1,4 +1,4 @@
-$primary-font: "BreveSans", sans-serif;
+$primary-font: neue-haas-unica, sans-serif;
 $accent-font: "BreveText", sans-serif;
 $headline-font: "BreveSlabTitle", sans-serif;
 $cta-font: "Acto", sans-serif;
@@ -33,7 +33,7 @@ $accent-color-1a: #2f254d;
 $accent-color-1b: #534779;
 $accent-color-1c: #6d6191;
 $accent-color-2a: #033b4a;
-$accent-color-2b: #05637b;
+$accent-color-2b: #375060; // Production DU teal (was #05637b bright cyan)
 $accent-color-2c: #2090ac;
 $accent-color-3a: #506121;
 $accent-color-3b: #7a9032;
@@ -45,7 +45,7 @@ $accent-color-brand-2: #811f2c;
 $accent-color-brand-3: #66141e;
 $accent-color-brand-4: #4d0b13;
 
-$unit-accent-color-teal: #126379;
+$unit-accent-color-teal: #375060; // Production DU teal (was #126379)
 $unit-accent-color-purple: #544976;
 $unit-accent-color-green: #586b2c;
 $unit-accent-color-gold: #8c7846;
@@ -55,4 +55,4 @@ $unit-accent-color-red: #960e33;
 $link-accessibility-color-gold-dark: #765b3a; // #bda474 => #765b3a
 $link-accessibility-color-gold-light: #8b6e4a; // #8b6e4a => #A58D5B
 $link-accessibility-color-teal-dark: #033b4a; // #05637b => #033b4a
-$link-accessibility-color-teal-light: #05637b; // #2090ac => #05637b
+$link-accessibility-color-teal-light: #375060; // #2090ac => #05637b => #375060 (sparkle.css production value)

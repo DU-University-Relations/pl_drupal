@@ -161,6 +161,8 @@ h3, h5 { font-weight: 700; }
 a {
 	color: $link-accessibility-color-teal-light;
 	text-decoration: underline;
+	transition: all .25s ease; // sparkle.css production value
+	font-weight: 500; // sparkle.css production value
 	&:hover,
 	&:focus {
 		color: $link-accessibility-color-teal-dark;

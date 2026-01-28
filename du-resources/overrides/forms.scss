@@ -29,7 +29,7 @@ form {
     padding: 0.9rem;
   }
   .du-form__required {
-    color: $primary-color-3;
+    color: get-color(alert); // #BA0C2F - sparkle.css production value (was $primary-color-3: #98012e)
     font-size: 2.4rem;
     line-height: 2.2rem;
     padding-right: .3rem;
@@ -37,7 +37,7 @@ form {
   .du-form__error {
     padding: .5rem 1.0rem;
     font-size: 1.4rem;
-    background-color: $primary-color-3;
+    background-color: get-color(alert); // #BA0C2F - sparkle.css production value (was $primary-color-3: #98012e)
     margin-bottom: 1.8rem;
     color: white;
     font-family: $primary-font;
