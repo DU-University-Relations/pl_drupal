@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+export/*
+public/*
+source/styleguide/*
+config/*.json
+
+
+# OS generated files
+.DS_Store
+.DS_Store?
+
+# Dependencies
+vendor/
+
+# Build dependencies
+node_modules/

@@ -1,5 +1,5 @@
 <div class="columns ap-item card-list-item
-     {% for degree in degree_classes %}{% if loop.index0 > 0 %}{{ " " }}{% endif %}{{ "filter-" }}{{ degree }}{% endfor %}
+     {% for degree in degree_classes %}{{ loop.index0 > 0 ? ' ' : '' }}{{ "filter-" }}{{ degree }}{% endfor %}
     "
      data-filter-name="{{description|e('html_attr')}}"
      data-filter-school="{{ code }}"
@@ -17,7 +17,7 @@
                 </h2>
             </div>
             <div class="card-list-bottom">
-                {% for degree in degrees %}{% if loop.index0 > 0 %}{{ ", " }}{% endif %}{{ degree }}{% endfor %}
+                {% for degree in degrees %}{{ loop.index0 > 0 ? ', ' : '' }}{{ degree }}{% endfor %}
                 {#
                 {{^ API-enabled }}
                 {{ degrees }}

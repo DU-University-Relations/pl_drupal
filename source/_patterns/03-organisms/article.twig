@@ -46,8 +46,10 @@
 
                     {% if article_type[0] %}
 
-                            {% for key, item in article_type if key|first != '#' %}
+                            {% for key, item in article_type %}
+                                {% if key|first != '#' %}
                                 {{ item }}<span>&nbsp;&nbsp;&bull;</span>
+                                {% endif %}
                             {% endfor %}
 
                     {% endif %}

@@ -1,7 +1,0 @@
-<label>{{ label|raw }}
-  <select{% if multiple %} multiple="true"{% endif %}>
-  	{% for option in options %}
-    <option value="{{ option.value }}">{{ option.option_text }}</option>
-    {% endfor %}
-  </select>
-</label>
