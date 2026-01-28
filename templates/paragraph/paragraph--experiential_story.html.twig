@@ -53,6 +53,8 @@
 
 {{ content|without('field_experiential_story_style', 'field_experiential_story_title', 'field_experiential_story_slide') }}
 
+{{ attach_library('pl_drupal/experiential_slideshow') }}
+
 {% block paragraph %}
   <div class="experiential-wrapper">
     <div{{ attributes.addClass(classes) }}>
