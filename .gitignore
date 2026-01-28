@@ -15,3 +15,10 @@ vendor/
 
 # Build dependencies
 node_modules/
+
+# Unused/legacy CSS files
+dest/du-law-polyfill.css
+dest/profile-nav.css
+
+# Old Foundation location (now in dest/libraries/)
+dest/foundation/

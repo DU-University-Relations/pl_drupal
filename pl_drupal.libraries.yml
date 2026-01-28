@@ -76,6 +76,14 @@ attach_utm_cookies:
     - core/jquery
     - core/drupal
 
+# Attached in: pl_drupal.theme line 306 for inline unit sites.
+core-inline:
+  version: '10.0.0'
+  css:
+    theme:
+      dest/core-inline.css:
+        preprocess: false
+
 # Attached in templates/paragraph/paragraph--experiential_story.html.twig.
 experiential_slideshow:
   version: '10.0.0'
