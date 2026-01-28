@@ -6094,7 +6094,7 @@ input:checked ~ .switch-paddle::after {
   left: 2.25rem;
 }
 input:focus-visible ~ .switch-paddle {
-  background: rgb(73.8, 73.8, 73.8);
+  background: rgb(181.8, 181.8, 181.8);
 }
 input:focus-visible ~ .switch-paddle::after {
   background: #fefefe;
@@ -6340,7 +6340,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   margin: 0 0.75rem;
   opacity: 1;
   content: "/";
-  color: #525252;
+  color: #cacaca;
 }
 .breadcrumbs a {
   color: #D5D2C5;
@@ -7146,11 +7146,11 @@ a.thumbnail image {
 }
 .menu .is-active > a {
   background: #D5D2C5;
-  color: #000000;
+  color: #0a0a0a;
 }
 .menu .active > a {
   background: #D5D2C5;
-  color: #000000;
+  color: #0a0a0a;
 }
 .menu.align-left {
   justify-content: flex-start;
@@ -7807,7 +7807,7 @@ a.thumbnail image {
 }
 
 .position-left.is-transition-push {
-  box-shadow: inset -13px 0 20px -13px rgba(0, 0, 0, 0.25);
+  box-shadow: inset -13px 0 20px -13px rgba(10, 10, 10, 0.25);
 }
 
 .position-right {
@@ -7863,7 +7863,7 @@ a.thumbnail image {
 }
 
 .position-right.is-transition-push {
-  box-shadow: inset 13px 0 20px -13px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 13px 0 20px -13px rgba(10, 10, 10, 0.25);
 }
 
 .position-top {
@@ -7895,7 +7895,7 @@ a.thumbnail image {
 }
 
 .position-top.is-transition-push {
-  box-shadow: inset 0 -13px 20px -13px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 -13px 20px -13px rgba(10, 10, 10, 0.25);
 }
 
 .position-bottom {
@@ -7927,7 +7927,7 @@ a.thumbnail image {
 }
 
 .position-bottom.is-transition-push {
-  box-shadow: inset 0 13px 20px -13px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 13px 20px -13px rgba(10, 10, 10, 0.25);
 }
 
 .off-canvas-content {
