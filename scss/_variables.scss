@@ -1,58 +1,53 @@
+// ==============================================
+// FONTS - Production Values
+// ==============================================
 $primary-font: neue-haas-unica, sans-serif;
 $accent-font: "BreveText", sans-serif;
-$headline-font: "BreveSlabTitle", sans-serif;
-$cta-font: "Acto", sans-serif;
 $icon-font: "Fontello";
 
-$breve-display: "BreveDisplay", sans-serif;
+// ==============================================
+// BRAND COLORS - Production Values from sparkle.css
+// ==============================================
 
-$primary-color-1: #560d20;
-$primary-color-2: #760626;
-$primary-color-3: #98012e;
-$primary-color-4: #962733;
-$primary-color-5: #c6403d;
-$primary-color-6: #8c2332;
-$secondary-color-1: #765b3a;
-$secondary-color-2: #876f4f;
-$secondary-color-3: #b8a162;
-$secondary-color-4: #ebd5ab;
-$secondary-color-5: #c2b89d;
-$secondary-color-6: #9f042d;
-$secondary-color-7: #29282e;
-$neutral-color-1: #000000;
-$neutral-color-2: #18171e;
-$neutral-color-3: #525252;
-$neutral-color-4: #d1d1d2;
-$neutral-color-5: #e0e0e0;
-$neutral-color-6: #f9f9f9;
-$neutral-color-7: #e9e9e9;
-$neutral-color-8: #888888;
-$neutral-color-9: #fefefe;
-$neutral-color-10: #BAA8AD;
-$accent-color-1a: #2f254d;
-$accent-color-1b: #534779;
-$accent-color-1c: #6d6191;
-$accent-color-2a: #033b4a;
-$accent-color-2b: #375060; // Production DU teal (was #05637b bright cyan)
-$accent-color-2c: #2090ac;
-$accent-color-3a: #506121;
-$accent-color-3b: #7a9032;
-$accent-color-3c: #9aa76f;
-$accent-color-4a: #757575;
+// Primary Brand Colors
+$du-crimson: #BA0C2F;      // DU Crimson Red (primary brand color) - 100+ uses in production
+$du-gold: #A89968;         // DU Gold (secondary accent) - 74 uses in production
+$du-tan-light: #D5D2C5;    // Light Tan/Beige (tertiary accent) - 49 uses in production
+$du-teal: #375060;         // DU Teal (unit accent) - 100+ uses in production
 
-$accent-color-brand-1: #94404b;
-$accent-color-brand-2: #811f2c;
-$accent-color-brand-3: #66141e;
-$accent-color-brand-4: #4d0b13;
+// Neutral Colors (Grays & Black/White)
+$black: #000000;
+$near-black: #18171e;      // Very dark gray, almost black - text color
+$dark-gray: #0a0a0a;       // Near black
+$charcoal-gray: #54565B;   // Dark charcoal gray - 26 uses
+$medium-gray: #525252;     // Body text gray
+$medium-gray-2: #888888;
+$light-gray: #cacaca;      // Foundation default
+$light-gray-2: #d1d1d2;    // Borders, dividers
+$light-gray-3: #e0e0e0;    // Lighter borders
+$light-gray-4: #e9e9e9;
+$ultra-light-gray: #efefef; // Very light gray backgrounds - 28 uses
+$very-light-gray: #f4f4f4; // Almost white backgrounds - 29 uses
+$off-white: #f9f9f9;       // Light backgrounds
+$white: #fefefe;           // Text on dark backgrounds
+$pure-white: #ffffff;      // Pure white - 85 uses
 
-$unit-accent-color-teal: #375060; // Production DU teal (was #126379)
-$unit-accent-color-purple: #544976;
-$unit-accent-color-green: #586b2c;
-$unit-accent-color-gold: #8c7846;
-$unit-accent-color-grey: #535353;
-$unit-accent-color-red: #960e33;
+// Unit Accent Colors (for different schools/units)
+$unit-accent-teal: #375060;
+$unit-accent-purple: #544976;
+$unit-accent-green: #586b2c;
+$unit-accent-gold: #8c7846;
+$unit-accent-grey: #535353;
+$unit-accent-red: #960e33;
 
-$link-accessibility-color-gold-dark: #765b3a; // #bda474 => #765b3a
-$link-accessibility-color-gold-light: #8b6e4a; // #8b6e4a => #A58D5B
-$link-accessibility-color-teal-dark: #033b4a; // #05637b => #033b4a
-$link-accessibility-color-teal-light: #375060; // #2090ac => #05637b => #375060 (sparkle.css production value)
+// Additional Production Colors
+$gold-light: #CCBA8C;      // Lighter gold variant
+$dark-purple-gray: #2A2930;
+$brown-gray: #6b655d;
+$pink-gray: #BAA8AD;
+
+// Link Accessibility Colors
+$link-gold-dark: #765b3a;
+$link-gold-light: #8b6e4a;
+$link-teal-dark: #033b4a;
+$link-teal-light: #375060;

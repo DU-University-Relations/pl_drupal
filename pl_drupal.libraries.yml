@@ -3,12 +3,20 @@ core:
   version: '10.0.0'
   css:
     theme:
-      # See web/themes/custom/pl_drupal/scss/style.scss for compiled.
+      # Foundation framework (compiled from scss/foundation.scss)
+      dest/foundation.css:
+        weight: -10
+        preprocess: true
+      # Third-party libraries
       dest/libraries/motion-ui/dist/motion-ui.min.css:
+        weight: -5
         preprocess: true
       dest/libraries/slick-carousel/slick/slick.css:
+        weight: -5
         preprocess: true
+      # DU custom styles (compiled from scss/style.scss)
       dest/style.css:
+        weight: 0
         preprocess: false
   js:
     dest/libraries/foundation-sites/dist/js/foundation.min.js:

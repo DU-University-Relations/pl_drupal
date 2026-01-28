@@ -1,21 +1,10 @@
 //
-// Config
+// DU Alumni Custom Styles Only
+// This file compiles to style.css and contains only DU-specific customizations
+// Foundation is loaded separately via foundation.css
 //
 
 @import "variables";
-
-// Foundation Sites 6.9.0 (modern version)
-@import "foundation-sites/scss/foundation";
-@import "foundation-sites/scss/util/util";
-
-@import "settings";
-
-@include foundation-everything;
-@include foundation-flex-classes;
-@include foundation-flex-grid;
-
-// Drupal Seven admin theme tabs (moved from core to contrib in Drupal 10)
-@import "../../../../themes/contrib/seven/css/components/tabs";
 
 // DU Alumni Customizations extracted from production sparkle.css
 // Contains all DU-specific styles (extracted from sparkle.css, Foundation base removed)

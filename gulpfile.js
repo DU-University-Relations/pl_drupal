@@ -27,15 +27,26 @@ gulp.task('sass-dev', function () {
     .pipe(gulp.dest('dest'));
 });
 
-gulp.task('sass', function () {
-  return gulp.src(config.src)
-    .pipe(sassGlob())
+gulp.task('sass', function (done) {
+  // Compile Foundation framework
+  gulp.src('./scss/foundation.scss')
     .pipe(sass({
       loadPaths: config.css.loadPaths,
       quietDeps: true,
       silenceDeprecations: ['import'],
     }).on('error', sass.logError))
     .pipe(gulp.dest('dest'));
+
+  // Compile DU custom styles  
+  gulp.src('./scss/style.scss')
+    .pipe(sassGlob())
+    .pipe(sass({
+      loadPaths: config.css.loadPaths,
+      quietDeps: true,
+      silenceDeprecations: ['import'],
+    }).on('error', sass.logError))
+    .pipe(gulp.dest('dest'))
+    .on('end', done);
 });
 
 gulp.task('copy-libs', function (done) {
