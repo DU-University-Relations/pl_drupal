@@ -38,11 +38,6 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('dest'));
 });
 
-gulp.task('copy-foundation-js', function () {
-  return gulp.src('./node_modules/foundation-sites/dist/js/**/*')
-    .pipe(gulp.dest('dest/foundation/js'));
-});
-
 gulp.task('copy-libs', function (done) {
   // Foundation Sites
   gulp.src('./node_modules/foundation-sites/dist/js/foundation.min.js')
@@ -79,7 +74,7 @@ gulp.task('copy-images', function () {
     .pipe(gulp.dest('dest/images'));
 });
 
-gulp.task('build', gulp.series('copy-libs', 'copy-images', 'sass', 'copy-foundation-js'));
+gulp.task('build', gulp.series('copy-libs', 'copy-images', 'sass'));
 
 gulp.task('watch', function () {
     gulp.watch(['du-resources/**/*.scss', 'scss/**/*.scss'], gulp.series('sass-dev'));
