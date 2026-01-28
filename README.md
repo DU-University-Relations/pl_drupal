@@ -1,52 +1,126 @@
-[![Build Status](https://travis-ci.org/pattern-lab/edition-php-drupal-standard.svg?branch=master)](https://travis-ci.org/pattern-lab/edition-php-drupal-standard)
+# PL Drupal D10 Theme
 
-# Pattern Lab Twig Standard Edition for Drupal 
+**Drupal 10 compatible theme** - Pattern Lab dependencies removed as of January 2026.
 
-The Standard Edition for Drupal gives developers and designers a clean and stable base from which to develop a Drupal compatible pattern library.
+This theme previously used Pattern Lab for component development but has been migrated to a standard Drupal 10 theme. See [D10_UPGRADE.md](D10_UPGRADE.md) for complete migration details.
 
-## Prerequistes 
+## Prerequisites
 
-- [`composer`](https://getcomposer.org)
+- Node.js v24 (use `nvm use` to switch to the correct version)
+- npm
 
-## First Time Install
+## Installation
 
-1. Run `composer create-project pattern-lab/edition-drupal-standard FOLDERNAME` (Assuming you wanted it in a directory called `FOLDERNAME`).
-1. Select a starterkit from menu. If asked about replacing files, do it.
-1. Commit new files generated.
+1. Clone this repository into your Drupal `themes/custom/` directory
+2. Install Node dependencies:
+   ```bash
+   nvm use
+   npm install
+   ```
+3. Build the theme assets:
+   ```bash
+   npm run build
+   ```
+4. Enable the theme in Drupal
 
-## Using It
+## Development Workflow
 
-After installing and committing, others cloning the repo need to run `composer install` to install dependencies.
+### Build Commands
 
-## Helpful Commands
+**Production build:**
+```bash
+npm run build
+```
 
-These are some helpful commands you can use on the command line for working with Pattern Lab.
+Compiles SCSS and copies Foundation JS to `dest/` directory.
 
-### One line start
+**Development build with watch:**
+```bash
+npm run watch
+```
 
-This will compile PL and watch for changes while running the local server:
+Watches for SCSS changes and recompiles automatically with sourcemaps.
 
-    composer start --timeout=0
+### Build Output
 
-### Generate Pattern Lab
+- **CSS**: Compiled to `dest/style.css`
+- **Foundation JS**: Bundled to `dest/foundation/js/`
+- **Sourcemaps**: Generated during development builds
 
-To generate the front-end for Pattern Lab type:
+## Theme Structure
 
-    php core/console --generate
+```
+pl_drupal/
+├── dest/              # Compiled CSS and bundled JS
+├── du-resources/      # DU-specific SCSS (base, overrides, units, micro)
+├── js/                # Custom JavaScript behaviors
+├── scss/              # Main SCSS files
+├── templates/         # Twig templates
+│   ├── block/
+│   ├── node/
+│   ├── paragraph/
+│   └── ...
+└── gulpfile.js        # Build configuration
+```
 
-### Start a server to view Pattern Lab
+## Dependencies
 
-You can use PHP's built-in web server to review your Pattern Lab project in a browser. In a separate window type:
+### Theme Dependencies
+- **Drupal Modules**:
+  - `drupal:components` (provides Twig namespaces)
+  - `drupal:twig_field_value`
+  - `drupal:twig_tweak`
 
-    php core/console --server
+- **Core Libraries**:
+  - `core/jquery`
+  - `core/drupal`
+  - `core/jquery.cookie`
+  - `core/once`
 
-Then open [http://localhost:8080](http://localhost:8080) in your browser.
+### Front-end Dependencies
+- Foundation Sites 6.9.0
+- Motion UI 2.0.3
+- Slick Carousel 1.8.1
 
-### Install a StarterKit
+## Migration from Pattern Lab
 
-To install a near-empty StarterKit as a starting point for your project type:
+This theme was migrated from Drupal 9 with Pattern Lab to Drupal 10 without Pattern Lab. Key changes:
 
-    php core/console --starterkit --init
+- Pattern Lab infrastructure completely removed
+- Build system updated to Gulp 5 + Dart Sass
+- Foundation upgraded to 6.9.0
+- jQuery.once API replaced with Drupal.once
+- Node.js v24 required
+
+For complete migration details, see [D10_UPGRADE.md](D10_UPGRADE.md).
+
+## Troubleshooting
+
+**Build fails with Sass errors:**
+- Ensure you're using Node v24: `nvm use`
+- Delete `node_modules` and `package-lock.json`, then run `npm install`
+
+**jQuery errors in console:**
+- Verify `core/once` is loaded in libraries.yml
+- Check that Drupal.once is being used instead of jQuery.once
+
+**Foundation components not working:**
+- Check that Foundation JS is properly bundled in `dest/foundation/js/`
+- Verify library paths in `pl_drupal.libraries.yml`
+
+## Contributing
+
+When making changes:
+
+1. Create a feature branch
+2. Make your changes
+3. Run `npm run build` to ensure build succeeds
+4. Test in a Drupal environment
+5. Commit with clear, descriptive messages
+
+## Support
+
+For questions or issues related to the Drupal 10 migration, see [D10_UPGRADE.md](D10_UPGRADE.md).
 
 To install a specific StarterKit from GitHub type:
 
