@@ -4,7 +4,7 @@ This document tracks the migration of the pl_drupal theme from Drupal 9 to Drupa
 
 ## Overview
 
-The theme has been upgraded to Drupal 10 compatibility with Pattern Lab completely removed. The theme is now named **"PL Drupal D10 (Post-Pattern Lab Era)"** version 4.0.0.
+The theme has been upgraded to Drupal 10 compatibility with Pattern Lab completely removed. The theme is now named **"PL Drupal D10 (Post-Pattern Lab Era)"** version 10.0.0.
 
 ## Migration Timeline
 
@@ -38,8 +38,11 @@ The theme has been upgraded to Drupal 10 compatibility with Pattern Lab complete
   - Added browser-sync 3.0.3 for development
 - Fixed `gulpfile.js`:
   - Configured to use Dart Sass: `require('gulp-sass')(require('sass'))`
-  - Set to compile only main `style.scss` (not all partials)
-  - Added `copy-foundation-js` task to bundle Foundation JS to `dest/foundation/js/`
+  - Split CSS compilation into two tasks: `sass-foundation` and `sass-custom`
+  - Added `copy-libs` task to copy npm libraries to `dest/libraries/`
+  - Added `copy-images` task to copy images to `dest/images/`
+  - Removed all Pattern Lab configuration and tasks
+  - Removed core.js dependency (was Pattern Lab related)
   - Added error handling and Sass deprecation silencing
 - Updated `scss/style.scss`:
   - Changed slick-carousel import to use node_modules path
@@ -121,11 +124,13 @@ Extracted all DU customizations from production sparkle.css and migrated to Foun
 
 ### Changed
 - Theme name: "PL Drupal" → "PL Drupal D10 (Post-Pattern Lab Era)"
-- Version: 3.x → 4.0.0
+- Version: 3.x → 10.0.0
 - Core requirement: `^8 || ^9 || ^10` → `^10`
 - jQuery.once API → Drupal.once API
 - Foundation: 6.7.5 → 6.9.0
+- Motion UI: 2.0.3 → 2.0.8
 - Node: Any version → v24 (specified in `.nvmrc`)
+- Library management: Composer npm-asset/CDN → npm with gulp copy tasks
 
 ### Preserved
 - Component namespaces in `pl_drupal.info.yml` (required for Components module)
@@ -171,17 +176,13 @@ npm run build
 
 ### Foundation JavaScript
 
-Foundation JS files are now bundled from node_modules to `dest/foundation/js/` during build. The theme's `pl_drupal.libraries.yml` should reference Foundation from this location.
+Foundation JS files are copied from node_modules to `dest/libraries/foundation-sites/` during the build process. The theme's `pl_drupal.libraries.yml` references:
 
-Current reference (to be updated):
 ```yaml
-/libraries/foundation-sites/dist/js/foundation.min.js
+/themes/custom/pl_drupal/dest/libraries/foundation-sites/dist/js/foundation.min.js
 ```
 
-Should become:
-```yaml
-/themes/custom/pl_drupal/dest/foundation/js/foundation.min.js
-```
+All npm libraries (Foundation, Motion UI, Slick, Clipboard, Isotope, ScrollTo) are copied to `dest/libraries/` by the `copy-libs` gulp task.
 
 ## Components Module Namespaces
 
@@ -199,14 +200,17 @@ components:
       - source/_patterns/05-pages/01-content-page
 ```
 
-**Note**: These paths still reference `source/_patterns/` but the actual Pattern Lab source was removed. The directories still exist as regular Twig template directories.
+**Note**: These paths reference `source/_patterns/` which are no longer Pattern Lab files but regular Twig template directories used by the Drupal Components module. Pattern Lab infrastructure (composer.json, core/, config/, build scripts) was removed, but the template organization structure was preserved.
 
 ## Dependencies
 
 ### npm (package.json)
 - foundation-sites: ^6.9.0
-- motion-ui: ^2.0.3
+- motion-ui: ^2.0.8
 - slick-carousel: ^1.8.1
+- clipboard: ^2.0.11
+- isotope-layout: ^3.0.6
+- jquery.scrollto: ^2.1.3
 - gulp: ^5.0.1
 - gulp-sass: ^6.0.1 (with Dart Sass)
 - sass: ^1.69.0
@@ -281,11 +285,13 @@ The compiled CSS shows format changes from 6.7.5 to 6.9.0 (functionally identica
 
 ## Known Issues / Technical Debt
 
-1. **Component namespace paths**: Still reference `source/_patterns/` directories which no longer contain Pattern Lab infrastructure - just Twig templates. Consider renaming to `templates/components/`.
+1. **Component namespace paths**: Still reference `source/_patterns/` directories which no longer contain Pattern Lab infrastructure - just Twig templates used by Drupal Components module. Consider renaming to `templates/components/` for clarity.
 
 2. **Deprecated Sass functions**: Foundation 6.9.0 uses deprecated `darken()` and `scale-color()` functions. Warnings silenced with `silenceDeprecations: ['import']`.
 
 3. **Large monolithic customizations file**: _du-customizations-only.scss is 21,954 lines. Consider splitting into logical components when stable.
+
+4. **Build process consolidation**: The `copy-libs` task copies all npm libraries on every build. Consider optimizing to only copy when package.json changes.
 
 ## Future Improvements
 
