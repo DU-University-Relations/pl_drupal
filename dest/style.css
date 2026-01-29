@@ -4678,7 +4678,7 @@ body {
 
   font-variant: normal;
   text-transform: none;
-
+  
   line-height: 1em;
 
   margin-left: 0.2em;
@@ -4805,7 +4805,7 @@ body {
 
 .icon-du-cust-search:before {
   content: "\e806";
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 .icon-du-check:before {
@@ -5334,7 +5334,7 @@ table td + td {
   background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 100%);
   background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 100%);
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='$pure-white',GradientType=1 );
   right: 0;
   left: unset;
 }
@@ -5343,7 +5343,7 @@ table td + td {
   background: -moz-linear-gradient(left, white 0%, rgba(255, 255, 255, 0) 100%);
   background: -webkit-linear-gradient(left, white 0%, rgba(255, 255, 255, 0) 100%);
   background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$pure-white', endColorstr='#00ffffff',GradientType=1 );
   left: 0;
 }
 
@@ -5529,13 +5529,13 @@ table td + td {
 }
 
 .find-an-expert .views-view-grid .views-row .views-col .views-field-field-profile-photo img:hover {
-  border: 3px solid #fff;
+  border: 3px solid #ffffff;
   transition: all 0.25s ease;
 }
 
 .find-an-expert .blazy--view--find-an-expert .views-row .views-col:hover .views-field-view-node,
 .find-an-expert .views-view-grid .views-row .views-col:hover .views-field-view-node {
-
+  
 }
 
 .find-an-expert-page {
@@ -5662,10 +5662,10 @@ table td + td {
   }
 }
 .find-an-expert-page .field_email-field:hover {
-  border-left: 6px solid #ba0c2f;
-  border-top: 6px solid #ba0c2f;
-  border-bottom: 6px solid #ba0c2f;
-  border-right: 6px solid #ba0c2f;
+  border-left: 6px solid #BA0C2F;
+  border-top: 6px solid #BA0C2F;
+  border-bottom: 6px solid #BA0C2F;
+  border-right: 6px solid #BA0C2F;
 }
 
 .find-an-expert-page .field_email-field a {
@@ -5693,7 +5693,7 @@ table td + td {
 .find-an-expert-page .back-to-expert-page button:hover {
   color: #A89968;
   background-color: white;
-  border: 1px solid #ba0c2f;
+  border: 1px solid #BA0C2F;
 }
 
 @keyframes fadeRight {
@@ -6323,7 +6323,7 @@ table td + td {
 .index-list dt,
 [class^=index-list--] dt,
 [class*=" index-list--"] dt {
-  color: #fff;
+  color: #ffffff;
   line-height: 1.45;
   margin-bottom: 0.2rem;
 }
@@ -6331,7 +6331,7 @@ table td + td {
 .index-list dd,
 [class^=index-list--] dd,
 [class*=" index-list--"] dd {
-  color: #fff;
+  color: #ffffff;
   line-height: 1.5;
   margin-bottom: 1.2rem;
   font-size: 1.6rem;
@@ -6346,7 +6346,7 @@ table td + td {
 .index-list a,
 [class^=index-list--] a,
 [class*=" index-list--"] a {
-  color: #fff;
+  color: #ffffff;
 }
 
 .index-list a:hover, .index-list a:focus,
@@ -8563,7 +8563,7 @@ blockquote p {
 .cards-list__holder:after {
   content: "";
   display: inline-block;
-  border-bottom: 2.8rem solid #fff;
+  border-bottom: 2.8rem solid #ffffff;
   border-left: 2.8rem solid transparent;
   border-right: 2.8rem solid transparent;
   position: absolute;
@@ -8873,7 +8873,7 @@ blockquote p {
   }
 }
 .cards-list-module > .row > .columns, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .columns, .cards-list-module > .paragraph--type--du-in-the-news-list > .columns, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .columns, .paragraph--type--du-in-the-news-list .cards-list-module > .row > .views-element-container, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .views-element-container, .cards-list-module > .paragraph--type--du-in-the-news-list > .views-element-container, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .views-element-container, .cards-list-module > .row > .paragraph--type--du-in-the-news-list, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .paragraph--type--du-in-the-news-list, .cards-list-module > .paragraph--type--du-in-the-news-list > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .row > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .paragraph--type--du-in-the-news-list > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > header {
-
+  
   width: 25%;
   float: left;
   flex: auto;
@@ -8881,13 +8881,13 @@ blockquote p {
 
 @media print, screen and (max-width: 63.99875em) {
   .cards-list-module > .row > .columns, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .columns, .cards-list-module > .paragraph--type--du-in-the-news-list > .columns, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .columns, .paragraph--type--du-in-the-news-list .cards-list-module > .row > .views-element-container, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .views-element-container, .cards-list-module > .paragraph--type--du-in-the-news-list > .views-element-container, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .views-element-container, .cards-list-module > .row > .paragraph--type--du-in-the-news-list, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .paragraph--type--du-in-the-news-list, .cards-list-module > .paragraph--type--du-in-the-news-list > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .row > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .paragraph--type--du-in-the-news-list > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > header {
-
+    
     width: 32%;
   }
 }
 @media (max-width: 915px) {
   .cards-list-module > .row > .columns, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .columns, .cards-list-module > .paragraph--type--du-in-the-news-list > .columns, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .columns, .paragraph--type--du-in-the-news-list .cards-list-module > .row > .views-element-container, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .views-element-container, .cards-list-module > .paragraph--type--du-in-the-news-list > .views-element-container, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .views-element-container, .cards-list-module > .row > .paragraph--type--du-in-the-news-list, .paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > .paragraph--type--du-in-the-news-list, .cards-list-module > .paragraph--type--du-in-the-news-list > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .row > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .views-element-container > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > .paragraph--type--du-in-the-news-list > header, .show-pager.paragraph--type--du-in-the-news-list .cards-list-module > header > header {
-
+    
     width: 31%;
   }
 }
@@ -9502,7 +9502,7 @@ blockquote p {
   display: block;
   width: 6.5rem;
   height: 6.5rem;
-  color: #fff;
+  color: #ffffff;
   border: 0.2rem solid #d1d1d2;
   padding: 0;
   position: relative;
@@ -9532,7 +9532,7 @@ blockquote p {
 
 #cludo-search-results .cludo-page-navigation .search_page_list li.next a:hover::before,
 #cludo-search-results .cludo-page-navigation .search_page_list li.previous a:hover::before {
-  color: #fff;
+  color: #ffffff;
 }
 
 @media screen {
@@ -9690,16 +9690,16 @@ blockquote p {
     overflow-wrap: break-word;
     word-wrap: break-word;
     -ms-word-break: break-all;
-
+    
     word-break: break-all;
-
+    
     word-break: break-word;
-
+    
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
-
+    
   }
   .contact-single-module .contact-single-module__content .contact-list li a:hover {
     color: #ffffff;
@@ -9808,7 +9808,7 @@ blockquote p {
   .contacts-module .contacts-module__content .contact-list li {
     margin-left: 0;
     color: #ffffff;
-    border-color: #928E91;
+    border-color: #928E91; 
     line-height: 1.25;
   }
   .contacts-module .contacts-module__content .contact-list li a {
@@ -9876,7 +9876,7 @@ blockquote p {
   text-decoration: none;
   display: inline-block;
   color: white;
-  background-color: #54565B;
+  background-color: #54565B; 
   transition: all 0.25s ease;
 }
 
@@ -10235,13 +10235,13 @@ ul.two-col {
 }
 
 ul.two-col li {
-
+  
   -webkit-column-break-inside: avoid;
-
+  
   page-break-inside: avoid;
-
+  
   break-inside: avoid-column;
-
+  
 }
 
 @media screen and (max-width: 700px) {
@@ -10689,7 +10689,7 @@ ul.accordion li {
   background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.64) 21%, white 62%, white 100%);
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.64) 21%, white 62%, white 100%);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.64) 21%, white 62%, white 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='$pure-white',GradientType=0 );
 }
 
 .js .show-hide-toggle a {
@@ -10712,9 +10712,9 @@ ul.accordion li {
 .js .show-hide-toggle a [class*=du-icon]:before {
   width: 3rem;
   height: 3rem;
-  border: 0.1rem solid #54565b;
+  border: 0.1rem solid #54565B;
   background-color: white;
-  color: #54565b;
+  color: #54565B;
   padding: 0;
   font-size: 2.3rem;
   line-height: 2.7rem;
@@ -10732,7 +10732,7 @@ ul.accordion li {
 .js .show-hide-toggle a:hover [class*=icon-du]:before,
 .js .show-hide-toggle a:hover [class*=du-icon]:before, .js .show-hide-toggle a:focus [class*=icon-du]:before,
 .js .show-hide-toggle a:focus [class*=du-icon]:before {
-  background-color: #54565b;
+  background-color: #54565B;
   color: white;
 }
 
@@ -10829,7 +10829,7 @@ ul.accordion li {
 }
 
 #du-loader > span {
-
+  
   font-size: 3rem;
   position: absolute;
   top: 50%;
@@ -11577,7 +11577,7 @@ ul.slick-dots li {
     background-repeat: no-repeat;
     background-color: white;
     background-size: 20px 100%, 20px 100%, 15px 100%, 15px 100%;
-
+    
     background-attachment: local, local, scroll, scroll;
   }
   .copy-module .content table::-webkit-scrollbar {
@@ -11706,7 +11706,7 @@ body:not(.unit-site).du-home header.core-inline-site {
 }
 
 @media screen and (max-width: 1024px) {
-
+  
   .off-canvas-wrap .utility-menu .home-anchor-wrap.expanded {
     margin-left: 0;
     margin-right: 0;
@@ -11927,12 +11927,12 @@ body:not(.unit-site).du-home header.core-inline-site {
   }
 }
 .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .columns.shrink #search-toggler > li > a:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .columns.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .columns.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .columns.shrink #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .columns.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .paragraph--type--du-in-the-news-list .shrink.views-element-container #search-toggler > li > a:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.views-element-container #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #search-toggler > li > a:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.views-element-container #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.views-element-container #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.views-element-container #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .show-pager.paragraph--type--du-in-the-news-list header.shrink #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded header.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container header.shrink #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container header.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .show-pager.paragraph--type--du-in-the-news-list header.shrink #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list header.shrink #search-toggler > li > a:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded header.shrink #search-toggler > li > a:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded header.shrink #search-toggler > li > a:hover {
-  background-color: #FEFEFE;
+  background-color: #fefefe;
 }
 
 .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .columns.shrink #search-toggler > li > a:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .columns.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .columns.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .columns.shrink #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .columns.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .paragraph--type--du-in-the-news-list .shrink.views-element-container #search-toggler > li > a:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.views-element-container #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #search-toggler > li > a:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.views-element-container #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.views-element-container #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.views-element-container #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .show-pager.paragraph--type--du-in-the-news-list header.shrink #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded header.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container header.shrink #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container header.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .show-pager.paragraph--type--du-in-the-news-list header.shrink #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list header.shrink #search-toggler > li > a:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded header.shrink #search-toggler > li > a:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded header.shrink #search-toggler > li > a:focus {
   outline: none;
-  background-color: #FEFEFE;
+  background-color: #fefefe;
 }
 
 @media screen and (max-width: 1024px) {
@@ -11960,12 +11960,12 @@ body:not(.unit-site).du-home header.core-inline-site {
   }
 }
 .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .columns.shrink #main-menu-toggler button:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .columns.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .columns.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .columns.shrink #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .columns.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .paragraph--type--du-in-the-news-list .shrink.views-element-container #main-menu-toggler button:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.views-element-container #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #main-menu-toggler button:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.views-element-container #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.views-element-container #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.views-element-container #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:hover, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .show-pager.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded header.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container header.shrink #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container header.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .show-pager.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button:hover, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded header.shrink #main-menu-toggler button:hover, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded header.shrink #main-menu-toggler button:hover {
-  background-color: #FEFEFE;
+  background-color: #fefefe;
 }
 
 .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .columns.shrink #main-menu-toggler button:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .columns.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .columns.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .columns.shrink #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .columns.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .paragraph--type--du-in-the-news-list .shrink.views-element-container #main-menu-toggler button:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.views-element-container #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #main-menu-toggler button:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.views-element-container #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.views-element-container #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.views-element-container #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:focus, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .show-pager.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded header.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container header.shrink #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container header.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .show-pager.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button:focus, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded header.shrink #main-menu-toggler button:focus, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded header.shrink #main-menu-toggler button:focus {
   outline: none;
-  background-color: #FEFEFE;
+  background-color: #fefefe;
 }
 
 .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .columns.shrink #main-menu-toggler button.icon-du-cust-menu, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .columns.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .columns.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .columns.shrink #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .columns.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .paragraph--type--du-in-the-news-list .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.views-element-container #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button.icon-du-cust-menu, .paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded .shrink.paragraph--type--du-in-the-news-list #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .show-pager.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded header.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > .expanded.views-element-container header.shrink #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.views-element-container header.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list .show-pager.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .expanded.paragraph--type--du-in-the-news-list header.shrink #main-menu-toggler button.icon-du-cust-menu, .off-canvas-wrap .header.core-inline-site .show-pager.paragraph--type--du-in-the-news-list #main-menu-wrap > header.expanded header.shrink #main-menu-toggler button.icon-du-cust-menu, .show-pager.paragraph--type--du-in-the-news-list .off-canvas-wrap .header.core-inline-site #main-menu-wrap > header.expanded header.shrink #main-menu-toggler button.icon-du-cust-menu {
@@ -12608,7 +12608,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .course-info-card__holder:after {
   content: "";
   display: inline-block;
-  border-bottom: 2.8rem solid #fff;
+  border-bottom: 2.8rem solid #ffffff;
   border-left: 2.8rem solid transparent;
   border-right: 2.8rem solid transparent;
   position: absolute;
@@ -13025,7 +13025,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   padding-top: 1.8rem;
   position: relative;
   margin-bottom: 3.3rem;
-  color: #000;
+  color: #000000;
 }
 
 @media print, screen and (min-width: 48em) {
@@ -13039,7 +13039,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .cta-module.cta-module--large .content .hero-headline-wrapper .hero-subhead + p:after,
 .hero-headline-wrapper .cta-module.cta-module--large .content .hero-subhead + p:after {
   content: "";
-  background-color: #fff;
+  background-color: #ffffff;
   width: 7.8rem;
   height: 0.6rem;
   position: absolute;
@@ -13049,17 +13049,17 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 .cta-module--gold .content h2 + p:after {
-  background-color: #000 !important;
+  background-color: #000000 !important;
 }
 
 .cta-module--overlay-gold .content p {
-  color: #000 !important;
+  color: #000000 !important;
 }
 
 .cta-module--overlay-purple .content h2, .cta-module--overlay-purple .content p,
 .cta-module--black .content h2, .cta-module--black .content p,
 .cta-module--teal .content h2, .cta-module--teal .content p {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 .cta-module.cta-module--large .content .btn-wrap {
@@ -13095,7 +13095,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 .cta-module--green .content p:after {
-  background-color: #000 !important;
+  background-color: #000000 !important;
 }
 
 .cta-module--gold .content {
@@ -13107,7 +13107,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 .cta-module--black .content p:after {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .cta-module[class*=overlay] {
@@ -13131,7 +13131,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 
 .cta-module--overlay-black .content h2, .cta-module--overlay-black .content,
 .cta-module--overlay-teal .content h2, .cta-module--overlay-teal .content {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 .cta-module--overlay-black:before {
@@ -13140,22 +13140,22 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 .cta-module--overlay-teal:before {
-  background-color: #375060;
+  background-color: #375060; 
   opacity: 0.75;
 }
 
 .cta-module--overlay-purple:before {
-  background-color: #375060;
+  background-color: #375060; 
   opacity: 0.75;
 }
 
 .cta-module--overlay-green:before {
-  background-color: #D5D2C5;
+  background-color: #D5D2C5; 
   opacity: 0.75;
 }
 
 .cta-module--overlay-gold:before {
-  background-color: #D5D2C5;
+  background-color: #D5D2C5; 
   opacity: 0.75;
 }
 
@@ -13177,7 +13177,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .cta-module--overlay-teal .content h4,
 .cta-module--overlay-teal .content h5,
 .cta-module--overlay-teal .content h6 {
-  color: #fff !important;
+  color: #ffffff !important;
   text-align: center !important;
 }
 
@@ -13197,7 +13197,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .cta-module--teal .content h5,
 .cta-module--overlay-teal .content h6,
 .cta-module--teal .content h6 {
-  color: #fff !important;
+  color: #ffffff !important;
   font-weight: 500 !important;
   text-align: center !important;
 }
@@ -13242,7 +13242,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .cta-module--overlay-teal .content p a,
 .cta-module--black .content p a,
 .cta-module--teal .content p a {
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -13596,7 +13596,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   right: 0;
   bottom: 0;
   font-family: neue-haas-unica, sans-serif;
-  color: #fff;
+  color: #ffffff;
   font-size: 2.2rem;
   font-weight: 700;
   display: none;
@@ -13622,7 +13622,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .du-news-list-content div.news-image:hover .news-image-overlay, .du-news-list-content div.news-image:focus .news-image-overlay {
   display: block;
   background: rgba(0, 0, 0, 0.42);
-  color: #fff;
+  color: #ffffff;
 }
 
 .paragraph--type--du-in-the-news-list .logo-image {
@@ -13680,7 +13680,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .elevate-cards-holder:after {
   content: "";
   display: inline-block;
-  border-bottom: 2.8rem solid #fff;
+  border-bottom: 2.8rem solid #ffffff;
   border-left: 2.8rem solid transparent;
   border-right: 2.8rem solid transparent;
   position: absolute;
@@ -14213,20 +14213,20 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 #enhanced-expanding-list-container ul.accordion .accordion-item.is-active a.accordion-title, #school-list-container ul.accordion .accordion-item.is-active a.accordion-title {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 #enhanced-expanding-list-container ul.accordion .accordion-item.is-active a.accordion-title:before, #school-list-container ul.accordion .accordion-item.is-active a.accordion-title:before {
   font-family: "Fontello";
   content: "\e808";
   color: white;
-  background-color: #54565B;
+  background-color: #54565B; 
   position: absolute;
   line-height: 2.7rem;
   width: 3rem;
   height: 3rem;
   text-align: center;
-  border: 0.1rem solid #54565B;
+  border: 0.1rem solid #54565B; 
   font-size: 2.3rem;
 }
 
@@ -14288,7 +14288,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 #enhanced-expanding-list-container ul.accordion .accordion-item .accordion-content, #school-list-container ul.accordion .accordion-item .accordion-content {
-  background-color: #fff;
+  background-color: #ffffff;
   padding-top: 0;
 }
 
@@ -14331,7 +14331,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   }
 }
 #enhanced-expanding-list-container ul.accordion .accordion-item h4, #school-list-container ul.accordion .accordion-item h4 {
-  color: #000;
+  color: #000000;
   font-family: neue-haas-unica, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -14363,7 +14363,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 #enhanced-expanding-list-container ul.accordion .accordion-item p.title-headline, #enhanced-expanding-list-container ul.accordion .accordion-item p.division, #school-list-container ul.accordion .accordion-item p.title-headline, #school-list-container ul.accordion .accordion-item p.division {
-  color: #000;
+  color: #000000;
   font-family: neue-haas-unica, sans-serif;
   font-weight: 600;
   margin-bottom: 0.7rem;
@@ -14590,13 +14590,13 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 .events-listing__date-filters #byDate .hasDatepicker a.ui-datepicker-prev, .events-listing__date-filters #byDate .hasDatepicker a.ui-datepicker-next {
-  background-color: #fff;
+  background-color: #ffffff;
   width: 5.5rem;
   display: none;
 }
 
 .events-listing__date-filters #byDate .hasDatepicker .ui-datepicker-title {
-  background-color: #fff;
+  background-color: #ffffff;
   border: 0.1rem solid #a31e39;
   padding-top: 0.5rem;
   margin: 0 4.1rem;
@@ -14687,7 +14687,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   margin-bottom: 6.5rem;
   padding-left: 0;
   padding-right: 0;
-
+  
 }
 
 @media print, screen and (min-width: 48em) {
@@ -15174,7 +15174,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 .new-featured-events {
   margin-bottom: 7rem;
   position: relative;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 @media print, screen and (min-width: 48em) {
@@ -15289,7 +15289,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   top: 50%;
   left: 50%;
   opacity: 0;
-  color: #fff;
+  color: #ffffff;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease 0.1s;
 }
@@ -15317,9 +15317,9 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   height: 80px;
   padding: 12px 0 0;
   border-radius: 100%;
-  border: 3px solid #fff;
+  border: 3px solid #ffffff;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   background-color: #BA0C2F;
   text-transform: uppercase;
   font-weight: 700;
@@ -16883,7 +16883,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   visibility: hidden;
   width: 20rem;
   background-color: #555;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   border-radius: 0.6rem;
   padding: 0.5rem;
@@ -17475,7 +17475,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
 }
 
 .filter-button:hover, .filter-button:focus, .filter-button.open {
-  color: #fff;
+  color: #ffffff;
   background: #BA0C2F;
   border-color: #BA0C2F;
   transition: all 0.25s ease;
@@ -17985,7 +17985,7 @@ article#main-content div.row #profile-list-counselors .resource-listing, article
   height: auto;
   margin-bottom: 1.8rem;
   padding: 0;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 0.2rem solid #eee;
   z-index: 500;
 }
@@ -18247,7 +18247,7 @@ form .action.form_action {
 
 form .form_action_submit button.form_button_submit {
   background-color: #BA0C2F !important;
-  color: #fff !important;
+  color: #ffffff !important;
   transition: all 0.25s ease !important;
 }
 
@@ -18788,7 +18788,7 @@ header .hero-media__caption .hero-media__caption__text > a:hover p, header .hero
 }
 
 header .hero-media__caption .hero-media__caption__text p {
-  color: #fff;
+  color: #ffffff;
   opacity: 1;
   margin-bottom: 0;
   font-size: 1.6rem;
@@ -19515,7 +19515,7 @@ body.unit-site.du-home header .hero-media > video {
 }
 
 .image-with-caption figure figcaption p {
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 0;
   line-height: 2.4rem;
   font-size: 1.3rem;
@@ -19910,7 +19910,7 @@ body.unit-site.du-home header .hero-media > video {
   font-family: neue-haas-unica, sans-serif;
   display: inline-block;
   color: #BA0C2F;
-  background-color: #fff;
+  background-color: #ffffff;
   transition: all 0.25s ease;
 }
 
@@ -19920,7 +19920,7 @@ body.unit-site.du-home header .hero-media > video {
 
 .key-faculty .one_col .learn-more:hover {
   background-color: #BA0C2F;
-  color: #fff;
+  color: #ffffff;
   transition: all 0.25s ease;
 }
 
@@ -20573,7 +20573,7 @@ body.unit-site.du-home header .hero-media > video {
 
 .list-filter .list-filter-filter-button {
   width: 12%;
-  color: #fff;
+  color: #ffffff;
   background-color: #BA0C2F;
   text-transform: uppercase;
   font-weight: bold;
@@ -20644,11 +20644,11 @@ body.unit-site.du-home header .hero-media > video {
 .listing-filters {
   position: absolute;
   z-index: 1;
-  background: #2a2930;
+  background: #2A2930;
   color: white;
   display: none;
   width: 100%;
-
+  
 }
 
 .listing-filters.open {
@@ -20732,7 +20732,7 @@ body.unit-site.du-home header .hero-media > video {
 .listing-filters:after {
   content: "";
   display: inline-block;
-  border-bottom: 2rem solid #2a2930;
+  border-bottom: 2rem solid #2A2930;
   border-left: 2rem solid transparent;
   border-right: 2rem solid transparent;
   position: absolute;
@@ -21518,7 +21518,7 @@ body.unit-site.du-home header .hero-media > video {
 }
 
 youtube-embed {
-  background-color: #000;
+  background-color: #000000;
   position: relative;
   display: block;
   contain: content;
@@ -21735,7 +21735,7 @@ youtube-embed.yt-activated > .yt-playbtn {
   right: 0;
   bottom: 0;
   font-family: neue-haas-unica, sans-serif;
-  color: #fff;
+  color: #ffffff;
   font-size: 2.2rem;
   font-weight: 700;
   display: none;
@@ -21882,7 +21882,7 @@ youtube-embed.yt-activated > .yt-playbtn {
   right: 0;
   bottom: 0;
   font-family: neue-haas-unica, sans-serif;
-  color: #fff;
+  color: #ffffff;
   font-size: 2.2rem;
   font-weight: 700;
   display: none;
@@ -22010,7 +22010,7 @@ youtube-embed.yt-activated > .yt-playbtn {
   right: 0;
   bottom: 0;
   font-family: neue-haas-unica, sans-serif;
-  color: #fff;
+  color: #ffffff;
   font-size: 2.2rem;
   font-weight: 700;
   display: none;
@@ -22267,7 +22267,7 @@ youtube-embed.yt-activated > .yt-playbtn {
 }
 
 @media print {
-
+  
   header {
     height: auto;
   }
@@ -22538,15 +22538,15 @@ youtube-embed.yt-activated > .yt-playbtn {
   }
   .contact-single-module__content .social-media li > a {
     padding-left: 0;
-
+    
     overflow-wrap: break-word;
     word-wrap: break-word;
     -ms-word-break: break-all;
-
+    
     word-break: break-all;
-
+    
     word-break: break-word;
-
+    
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
@@ -24858,7 +24858,7 @@ body #main-content .stories-module .stories-module__story .content, body.du-home
   }
 }
 .sub-menu__back-link, .sub-menu__back-link a {
-  color: #54565b;
+  color: #54565B;
   font-size: 1.6rem;
   text-transform: uppercase;
   margin-top: -0.5rem;
@@ -24937,7 +24937,7 @@ body #main-content .stories-module .stories-module__story .content, body.du-home
   background-repeat: no-repeat;
   background-color: white;
   background-size: 2rem 100%, 2rem 100%, remx 100%, 1rem 100%;
-
+  
   background-attachment: local, local, scroll, scroll;
   text-align: center;
   overflow-x: scroll;
@@ -25185,7 +25185,7 @@ body:not(.du-home) .swapping-img-feature .list-of-links--alt a::before {
     background-repeat: no-repeat;
     background-color: white;
     background-size: 2rem 100%, 2rem 100%, 10px 100%, 10px 100%;
-
+    
     background-attachment: local, local, scroll, scroll;
   }
 }
@@ -25819,7 +25819,7 @@ div.testimonial-blockquote .text-wrapper {
 }
 @media screen {
   .header #main-menu-wrap #alt-logo {
-    background-color: #fff;
+    background-color: #ffffff;
     text-align: center;
   }
   .header #main-menu-wrap #alt-logo.mobile {
@@ -25906,7 +25906,7 @@ div.testimonial-blockquote .text-wrapper {
     white-space: nowrap !important;
     border: 0 !important;
   }
-
+  
   .off-canvas-wrap .header #main-menu-wrap a.logo.inline-site .logo img {
     max-height: 100% !important;
     height: auto !important;
@@ -25914,12 +25914,12 @@ div.testimonial-blockquote .text-wrapper {
     display: block !important;
     flex-shrink: 0 !important;
   }
-
+  
   html body .off-canvas-wrap .header #main-menu-wrap a.logo.inline-site .site-identity {
     display: block !important;
     max-width: 100% !important;
-    flex: 1 1 100%;
-    margin: 0 0 0.5rem 0.8rem;
+    flex: 1 1 100%; 
+    margin: 0 0 0.5rem 0.8rem; 
   }
   html body .off-canvas-wrap .header #main-menu-wrap a.logo.inline-site .site-prefix {
     font-size: 1.2rem !important;
@@ -25954,8 +25954,8 @@ div.testimonial-blockquote .text-wrapper {
     box-shadow: none !important;
   }
   .off-canvas-wrap .header #unit-main-menu-toggler .icon-du-cust-menu {
-    font-size: 2rem;
-    color: #000 !important;
+    font-size: 2rem; 
+    color: #000000 !important; 
   }
   .off-canvas-wrap .header.core-inline-site #main-menu-wrap > .row.expanded .columns.shrink #search-toggler > li > a {
     width: auto;
@@ -25986,7 +25986,7 @@ div.testimonial-blockquote .text-wrapper {
     justify-content: space-between !important;
     width: 100% !important;
     padding: 0 !important;
-    overflow: visible !important;
+    overflow: visible !important; 
     height: auto !important;
     min-height: auto !important;
   }
@@ -27253,7 +27253,7 @@ body:not(.du-home) .wide-carousel__wrapper {
   max-height: 75vh;
   z-index: 5;
   overflow: auto;
-  background: #fff;
+  background: #ffffff;
 }
 
 @media print, screen and (min-width: 64em) {
@@ -27315,13 +27315,13 @@ body:not(.du-home) .wide-carousel__wrapper {
 }
 
 .unit-elevate-cart-popup ul li, .core-elevate-cart-popup ul li {
-
+  
   -webkit-column-break-inside: avoid;
-
+  
   page-break-inside: avoid;
-
+  
   break-inside: avoid-column;
-
+  
 }
 
 @media print, screen and (max-width: 63.99875em) {
@@ -27617,7 +27617,7 @@ body .hero-overlay {
   .unit-header .unit-hero-media {
     display: flex;
     align-items: center;
-
+    
   }
 }
 .unit-header .hero-media__caption {
@@ -27672,7 +27672,7 @@ body .hero-overlay {
 }
 
 .unit-header .hero-media__caption .hero-media__caption__text p {
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 0;
   font-size: 1.6rem;
   line-height: 2rem;
@@ -28182,7 +28182,7 @@ div.faculty-profile-container .information {
   display: none;
   max-height: 75vh;
   overflow: auto;
-  background: #fff;
+  background: #ffffff;
 }
 
 @media print, screen and (min-width: 64em) {
@@ -28244,13 +28244,13 @@ div.faculty-profile-container .information {
 }
 
 .unit-site .unit-resources-for ul li {
-
+  
   -webkit-column-break-inside: avoid;
-
+  
   page-break-inside: avoid;
-
+  
   break-inside: avoid-column;
-
+  
 }
 
 @media print, screen and (max-width: 63.99875em) {
@@ -28490,7 +28490,7 @@ div.faculty-profile-container .information {
   display: none;
   max-height: 75vh;
   overflow: auto;
-  background: #fff;
+  background: #ffffff;
 }
 
 @media print, screen and (min-width: 64em) {
@@ -29546,7 +29546,7 @@ body.adminimal-admin-toolbar.unit-site {
   top: 9px;
   right: 9px;
   font-size: 1rem;
-  color: #fff;
+  color: #ffffff;
   background-color: #BA0C2F;
   border-radius: 50%;
   width: 15px;
@@ -29806,7 +29806,7 @@ body.adminimal-admin-toolbar.unit-site {
   }
 }
 .micro footer .cards-module {
-  background: #fff;
+  background: #ffffff;
   position: relative;
 }
 
@@ -29841,10 +29841,10 @@ body.adminimal-admin-toolbar.unit-site {
   overflow: hidden;
   box-sizing: border-box;
   width: 100%;
-
+  
   margin: -1px 0 0;
   padding: 9px 2em 7px 1em;
-
+  
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #375060;
@@ -29865,7 +29865,7 @@ body.adminimal-admin-toolbar.unit-site {
 }
 
 @media screen and (min-width: 18.75em) {
-
+  
   .tabs.primary a {
     background: url(../../../../misc/icons/0074bd/chevron-right.svg) 99% center no-repeat;
   }
@@ -29879,9 +29879,9 @@ body.adminimal-admin-toolbar.unit-site {
   z-index: 10;
   top: 2px;
   right: 0;
-
+  
   left: auto;
-
+  
   display: block;
   box-sizing: content-box;
   width: 25%;
@@ -29890,9 +29890,9 @@ body.adminimal-admin-toolbar.unit-site {
   text-align: center;
   letter-spacing: 0.1em;
   border-left: 0;
-
+  
   border-radius: 0 4px 0 0;
-
+  
   outline: 0;
   font-family: neue-haas-unica, sans-serif;
   font-size: 1.25em;
@@ -29901,9 +29901,9 @@ body.adminimal-admin-toolbar.unit-site {
 .tabs.secondary .tabs__tab {
   display: block;
   margin-left: -1px;
-
+  
   padding: 5px 15px 5px 16px;
-
+  
   -webkit-transition: border-color 0.2s, background-color 0.2s;
   transition: border-color 0.2s, background-color 0.2s;
   color: #375060;
@@ -29912,10 +29912,10 @@ body.adminimal-admin-toolbar.unit-site {
 .tabs.secondary .tabs__tab:hover,
 .tabs.secondary .tabs__tab:focus {
   padding-left: 15px;
-
+  
   color: #375060;
   border-left: 2px solid #375060;
-
+  
 }
 
 [dir=rtl] .tabs.secondary .tabs__tab:hover,
