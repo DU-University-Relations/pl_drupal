@@ -38,7 +38,7 @@ gulp.task('sass', function (done) {
     }).on('error', sass.logError))
     .pipe(gulp.dest('dest'));
 
-  // Compile DU custom styles  
+  // Compile DU custom styles
   gulp.src('./scss/style.scss')
     .pipe(sassGlob())
     .pipe(sass({
@@ -56,6 +56,10 @@ gulp.task('sass', function (done) {
       return ''; // Remove all other comments
     }))
     .pipe(replace(/\n\s*\n\s*\n+/g, '\n\n')) // Reduce multiple blank lines to max 1
+    .pipe(replace(
+      /(\.column, \.columns[^{]*\{)\s*flex:\s*1\s+1\s+0px;/g,
+      '$1\n  /* flex: 1 1 0px; */'
+    )) // Comment out flex definition for .column, .columns selector
     .pipe(gulp.dest('dest'))
     .on('end', done);
 });
