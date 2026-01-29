@@ -2,8 +2,8 @@
 
 /**
  * Build Foundation 6.7.5 Reference
- * 
- * Temporarily installs Foundation 6.7.5, compiles it with settings, 
+ *
+ * Temporarily installs Foundation 6.7.5, compiles it with settings,
  * and saves as reference. Then restores Foundation 6.9.0.
  */
 
@@ -25,7 +25,7 @@ const lockBackup = fs.existsSync(PACKAGE_LOCK) ? fs.readFileSync(PACKAGE_LOCK, '
 try {
   // Install Foundation 6.7.5
   console.log('2. Installing Foundation 6.7.5 temporarily...');
-  execSync('npm install foundation-sites@6.7.5 --save-exact', { 
+  execSync('npm install foundation-sites@6.7.5 --save-exact', {
     cwd: path.join(__dirname, '..'),
     stdio: 'inherit'
   });
@@ -40,19 +40,19 @@ try {
   // Copy foundation.css as reference
   console.log('\n4. Saving Foundation 6.7.5 reference...');
   const foundationCSS = fs.readFileSync(path.join(__dirname, '../dest/foundation.css'), 'utf8');
-  
+
   const header = `/**
  * Foundation for Sites 6.7.5 Reference
  * Compiled on ${new Date().toISOString().split('T')[0]}
- * 
+ *
  * This is Foundation 6.7.5 compiled with DU settings from scss/_settings.scss
  * Used as a reference for extraction comparisons to match legacy sparkle.css
  */
 
 `;
-  
+
   fs.writeFileSync(OUTPUT_FILE, header + foundationCSS, 'utf8');
-  
+
   const stats = fs.statSync(OUTPUT_FILE);
   console.log(`✓ Foundation 6.7.5 reference saved (${(stats.size / 1024).toFixed(2)} KB)\n`);
 
@@ -63,12 +63,12 @@ try {
   if (lockBackup) {
     fs.writeFileSync(PACKAGE_LOCK, lockBackup, 'utf8');
   }
-  
+
   execSync('npm install', {
     cwd: path.join(__dirname, '..'),
     stdio: 'inherit'
   });
-  
+
   console.log('\n✓ Foundation 6.9.0 restored');
   console.log(`✓ Reference file ready: ${OUTPUT_FILE}\n`);
 }

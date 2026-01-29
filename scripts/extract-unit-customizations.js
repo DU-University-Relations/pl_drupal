@@ -112,7 +112,7 @@ async function extract() {
   // Remove empty media queries and at-rules
   console.log('Cleaning up empty media queries...');
   let emptyMediaCount = 0;
-  
+
   // Keep removing empty at-rules until none are left (nested empty at-rules)
   let hasEmpty = true;
   while (hasEmpty) {
@@ -134,21 +134,21 @@ async function extract() {
 
   // Clean up comments and excessive whitespace
   console.log('Removing all CSS comments and cleaning whitespace...');
-  
+
   // Remove all CSS comments (both single-line and multi-line)
   unitCSS = unitCSS.replace(/\/\*[\s\S]*?\*\//g, '');
-  
+
   // Remove empty media queries that became empty after comment removal
   // Matches @media...{ } with only whitespace inside
   unitCSS = unitCSS.replace(/@media[^{]*\{\s*\}/g, '');
   unitCSS = unitCSS.replace(/@[a-zA-Z-]+[^{]*\{\s*\}/g, '');
-  
+
   // Clean up any remaining lines that only have whitespace
   unitCSS = unitCSS.replace(/^\s*$/gm, '');
-  
+
   // Reduce multiple consecutive blank lines to maximum of 2
   unitCSS = unitCSS.replace(/\n\s*\n\s*\n+/g, '\n\n');
-  
+
   console.log('Cleanup complete\n');
 
   // Add header comment

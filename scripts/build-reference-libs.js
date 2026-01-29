@@ -3,9 +3,9 @@
 /**
  * Build Reference Libraries CSS
  *
- * Uses Foundation 6.7.5 reference (extracted from sparkle.css), then concatenates 
+ * Uses Foundation 6.7.5 reference (extracted from sparkle.css), then concatenates
  * with Drupal Seven tabs and Slick carousel CSS for comparison during extraction.
- * 
+ *
  * IMPORTANT: Sparkle.css was built with Foundation 6.7.5. We use a pre-extracted
  * Foundation 6.7.5 reference file to ensure accurate comparison.
  */

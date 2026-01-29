@@ -2,10 +2,10 @@
 
 /**
  * Extract Foundation 6.7.5 Reference from Sparkle.css
- * 
+ *
  * One-time script to extract pure Foundation 6.7.5 CSS from sparkle.css
  * and save it as a static reference file for extraction comparisons.
- * 
+ *
  * Run this once to create: scripts/foundation-675-reference.css
  */
 
@@ -55,7 +55,7 @@ let duRuleCount = 0;
 root.walkRules(rule => {
   // Check if selector contains any DU-specific patterns
   const isDURule = duPatterns.some(pattern => pattern.test(rule.selector));
-  
+
   if (!isDURule) {
     // This appears to be a Foundation rule
     foundationRoot.append(rule.clone());
@@ -68,11 +68,11 @@ root.walkRules(rule => {
 // Also copy media queries and other at-rules that don't have DU patterns
 root.walkAtRules(atRule => {
   // Check if at-rule contains DU patterns in params or has DU rules inside
-  const hasDUPattern = duPatterns.some(pattern => 
-    pattern.test(atRule.params) || 
+  const hasDUPattern = duPatterns.some(pattern =>
+    pattern.test(atRule.params) ||
     (atRule.toString().match(/\.du-|\.paragraph--type--|\.alumni/))
   );
-  
+
   if (!hasDUPattern) {
     foundationRoot.append(atRule.clone());
   }
@@ -84,7 +84,7 @@ const outputCSS = foundationRoot.toString();
 const header = `/**
  * Foundation for Sites 6.7.5 Reference
  * Extracted from sparkle.css on ${new Date().toISOString().split('T')[0]}
- * 
+ *
  * This is a static reference file used for extraction comparisons.
  * It contains Foundation 6.7.5 CSS with DU-specific customizations removed.
  */
