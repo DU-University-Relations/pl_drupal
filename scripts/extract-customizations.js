@@ -251,10 +251,9 @@ async function extract() {
   // Convert to string
   let customCSS = sparkleRoot.toString();
 
-  // Replace with variables (TEMPORARILY DISABLED)
-  // console.log('Replacing colors and fonts with SCSS variables...');
-  // customCSS = replaceWithVariables(customCSS, colorMap, fontMap);
-  console.log('Skipping variable replacement (temporarily disabled)\n');
+  // Replace with variables
+  console.log('Replacing colors and fonts with SCSS variables...');
+  customCSS = replaceWithVariables(customCSS, colorMap, fontMap);
 
   // Clean up empty structures
   console.log('Removing empty media queries and at-rules...');
