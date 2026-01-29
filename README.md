@@ -41,6 +41,20 @@ npm run watch
 
 Watches for SCSS changes and recompiles automatically with sourcemaps.
 
+**Extract DU customizations from sparkle.css:**
+```bash
+npm run extract-customizations
+```
+
+Regenerates `_du-customizations-only.scss` by extracting DU-specific styles from sparkle.css and removing Foundation library code.
+
+**Extract unit theme customizations (pl_unit):**
+```bash
+npm run extract-unit-customizations
+```
+
+Extracts pl_unit theme-specific styles to `../pl_unit/dest/sparkle-unit.css` by comparing against pl_drupal base theme.
+
 ### Making Style Changes
 
 **⚠️ IMPORTANT: Most style changes should be made to `scss/_du-customizations-only.scss`**
