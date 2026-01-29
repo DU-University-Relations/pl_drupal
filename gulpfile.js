@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass')(require('sass'));
 const sassGlob = require('gulp-sass-glob');
+const replace = require('gulp-replace');
 
 const config = {
     src: './scss/style.scss',  // Only compile the main file, not all scss files
@@ -45,6 +46,16 @@ gulp.task('sass', function (done) {
       quietDeps: true,
       silenceDeprecations: ['import'],
     }).on('error', sass.logError))
+    .pipe(replace(/\/\*[\s\S]*?\*\//g, function(match, offset, string) {
+      // Keep only the first CSS comment block (typically the license header)
+      // Strip all subsequent comments
+      const firstCommentEnd = string.indexOf('*/') + 2;
+      if (offset < firstCommentEnd) {
+        return match; // Keep first comment
+      }
+      return ''; // Remove all other comments
+    }))
+    .pipe(replace(/\n\s*\n\s*\n+/g, '\n\n')) // Reduce multiple blank lines to max 1
     .pipe(gulp.dest('dest'))
     .on('end', done);
 });
