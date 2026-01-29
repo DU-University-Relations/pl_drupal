@@ -408,7 +408,7 @@ function pl_drupal_preprocess_page(&$variables) {
 
           if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
             $video = $hero_paragraph->get('field_hero_video')->entity;
-            $variables['hero_video_url'] = file_create_url($video->get('uri')
+            $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
               ->getString());
           }
 
@@ -504,7 +504,7 @@ function pl_drupal_preprocess_page(&$variables) {
                       }
                       if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
                         $video = $hero_paragraph->get('field_hero_video')->entity;
-                        $variables['hero_video_url'] = file_create_url($video->get('uri')
+                        $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
                           ->getString());
                       }
                       if ($hero_paragraph->hasField('field_unit_hero_link')) {
@@ -725,7 +725,7 @@ function pl_drupal_preprocess_node(&$variables) {
           $image = $feature_media_image->first()->entity;
           if (!empty($image)) {
             $image = $image->getFileUri();
-            $absolute_path = file_create_url($image);
+            $absolute_path = \Drupal::service('file_url_generator')->generateAbsoluteString($image);
             $variables['feature_image'] = $absolute_path;
           }
         }

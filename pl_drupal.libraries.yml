@@ -5,7 +5,7 @@ core:
     theme:
       # Foundation framework (compiled from scss/foundation.scss)
       dest/foundation.css:
-        weight: -10
+        weight: 0
         preprocess: true
       # Third-party libraries
       dest/libraries/motion-ui/dist/motion-ui.min.css:
@@ -16,7 +16,7 @@ core:
         preprocess: true
       # DU custom styles (compiled from scss/style.scss)
       dest/style.css:
-        weight: 0
+        weight: 5
         preprocess: false
   js:
     dest/libraries/foundation-sites/dist/js/foundation.min.js:
