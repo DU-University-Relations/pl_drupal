@@ -101,15 +101,53 @@ function hexToRgb(hex) {
 }
 
 /**
+ * Normalize CSS selector for consistent comparison
+ */
+function normalizeSelector(selector) {
+  return selector
+    .trim()
+    // Normalize whitespace around combinators
+    .replace(/\s*([>+~])\s*/g, '$1')
+    // Collapse multiple spaces
+    .replace(/\s+/g, ' ')
+    // Lowercase for case-insensitive comparison
+    .toLowerCase();
+}
+
+/**
+ * Normalize CSS value for consistent comparison
+ */
+function normalizeValue(value) {
+  return value
+    // Normalize whitespace
+    .replace(/\s+/g, ' ')
+    .trim()
+    // Normalize 3-digit hex to 6-digit (#fff → #ffffff)
+    .replace(/#([0-9a-fA-F]{3})\b/g, (match, hex) => {
+      return '#' + hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    })
+    // Lowercase all hex colors
+    .replace(/#[0-9a-fA-F]{6}/gi, (match) => match.toLowerCase())
+    // Normalize zero values (0px, 0em, 0rem → 0)
+    .replace(/\b0(px|em|rem|%|vh|vw|pt|cm|mm|in)\b/g, '0')
+    // Normalize calc() spacing
+    .replace(/calc\(\s*/g, 'calc(')
+    .replace(/\s*\)/g, ')')
+    // Normalize rgba/rgb spacing
+    .replace(/rgba?\(\s*/g, (match) => match.replace(/\s+/g, ''))
+    .replace(/,\s*/g, ',');
+}
+
+/**
  * Create a unique key for a CSS rule (selector + declarations)
+ * Uses normalization to catch rules with formatting variations
  */
 function getRuleKey(rule) {
-  const selector = rule.selector ? rule.selector.trim() : '';
+  const selector = normalizeSelector(rule.selector || '');
   const declarations = [];
 
   rule.walkDecls(decl => {
-    // Normalize declaration value for comparison
-    const value = decl.value.replace(/\s+/g, ' ').trim();
+    const value = normalizeValue(decl.value);
     declarations.push(`${decl.prop}:${value}`);
   });
 
@@ -122,7 +160,10 @@ function getRuleKey(rule) {
 async function buildReferenceSet(referenceContent) {
   const referenceSet = new Set();
 
-  const root = postcss.parse(referenceContent, { from: REFERENCE_CSS });
+  // Strip important comments that Sass preserves (/*! ... */)
+  const cleaned = referenceContent.replace(/\/\*![\s\S]*?\*\//g, '');
+
+  const root = postcss.parse(cleaned, { from: REFERENCE_CSS });
 
   root.walkRules(rule => {
     const key = getRuleKey(rule);
@@ -209,18 +250,92 @@ async function extract() {
 
   // Parse sparkle.css
   console.log('Parsing sparkle.css...');
-  const sparkleRoot = postcss.parse(sparkleContent, { from: SPARKLE_CSS });
+  // Strip important comments that Sass preserves (/*! ... */)
+  const cleanedSparkle = sparkleContent.replace(/\/\*![\s\S]*?\*\//g, '');
+  const sparkleRoot = postcss.parse(cleanedSparkle, { from: SPARKLE_CSS });
 
   // Filter out library rules
   console.log('Filtering library rules...');
   let removedCount = 0;
   let keptCount = 0;
+  let patternRemovedCount = 0;
   const removedRules = [];
+
+  // Known Foundation patterns to remove (catches rules with different settings)
+  const foundationPatterns = [
+    // Foundation grid system
+    /^\.grid-container\b/,
+    /^\.grid-x\b/,
+    /^\.grid-y\b/,
+    /^\.grid-margin-x\b/,
+    /^\.grid-margin-y\b/,
+    /^\.grid-padding-x\b/,
+    /^\.grid-padding-y\b/,
+    /^\.grid-frame\b/,
+    /^\.cell\b/,
+    /^\.small-\d+\b/,
+    /^\.medium-\d+\b/,
+    /^\.large-\d+\b/,
+    /^\.xlarge-\d+\b/,
+    /^\.xxlarge-\d+\b/,
+    /^\.xxxlarge-\d+\b/,
+    // normalize.css browser fixes (Firefox <4, Safari/Chrome <2011)
+    /^\[type=["']?(button|reset|submit|checkbox|radio|number|search|file)["']?\]/,
+    /::-moz-focus-inner/,
+    /::-moz-focusring/,
+    /::-webkit-(inner-spin-button|outer-spin-button|search-decoration)/,
+    /^\[data-what(input|intent)=/,
+    /^div,\s*dl,\s*dt,\s*dd,/,
+    // Foundation components (base library code)
+    /^\.tooltip\.(bottom|top|left|right)::before/,
+    /^\.switch-(paddle|active|inactive)/,
+    /^\.drilldown/,
+    /^\.is-drilldown-submenu/,
+    /^\.js-drilldown-back/,
+    /^\.clearfix::(before|after)/,
+    /^\.tabs::(before|after)/,
+  ];
+
+  function isFoundationPattern(selector) {
+    if (!selector) return false;
+    
+    // Split by comma and check each part
+    const selectors = selector.split(',').map(s => s.trim());
+    return selectors.every(sel => {
+      // Check if the selector matches any pattern directly
+      if (foundationPatterns.some(pattern => pattern.test(sel))) {
+        return true;
+      }
+      
+      // For class-based patterns, extract the base class
+      const baseClass = sel.match(/\.([\w-]+)/);
+      if (baseClass) {
+        const className = '.' + baseClass[1];
+        return foundationPatterns.some(pattern => pattern.test(className));
+      }
+      
+      return false;
+    });
+  }
 
   sparkleRoot.walkRules(rule => {
     const key = getRuleKey(rule);
+    let shouldRemove = false;
+    let reason = '';
+
+    // Check exact match first
     if (referenceSet.has(key)) {
-      // Save the rule before removing it
+      shouldRemove = true;
+      reason = 'exact';
+    }
+    // Check Foundation pattern match
+    else if (isFoundationPattern(rule.selector)) {
+      shouldRemove = true;
+      reason = 'pattern';
+      patternRemovedCount++;
+    }
+
+    if (shouldRemove) {
       removedRules.push(rule.toString());
       rule.remove();
       removedCount++;
@@ -229,7 +344,7 @@ async function extract() {
     }
   });
 
-  console.log(`Removed ${removedCount} library rules, kept ${keptCount} custom rules\n`);
+  console.log(`Removed ${removedCount} library rules (${removedCount - patternRemovedCount} exact, ${patternRemovedCount} pattern), kept ${keptCount} custom rules\n`);
 
   // Save removed rules for review
   if (removedRules.length > 0) {
@@ -237,7 +352,7 @@ async function extract() {
  * Library Rules Removed During Extraction
  * Generated on ${new Date().toISOString().split('T')[0]}
  *
- * These ${removedCount} rules matched Foundation 6.7.5, Drupal tabs, or Slick carousel
+ * These ${removedCount} rules matched Foundation, Drupal tabs, or Slick carousel
  * and were filtered out as library code.
  *
  * Review this file to ensure no DU-specific customizations were accidentally removed.
@@ -255,18 +370,20 @@ async function extract() {
   console.log('Replacing colors and fonts with SCSS variables...');
   customCSS = replaceWithVariables(customCSS, colorMap, fontMap);
 
-  // Clean up empty structures
+  // Clean up empty structures and Foundation comments
   console.log('Removing empty media queries and at-rules...');
   customCSS = customCSS
     .replace(/@media[^{]*\{\s*\}/g, '') // Empty media queries
     .replace(/@[a-zA-Z-]+[^{]*\{\s*\}/g, '') // Empty at-rules
+    // Remove Foundation version comment blocks
+    .replace(/\/\*\*[\s\S]*?Foundation for Sites[\s\S]*?Version[\s\S]*?Licensed[\s\S]*?\*\//g, '')
     .replace(/^\s*$/gm, '') // Whitespace-only lines
     .replace(/\n\s*\n\s*\n+/g, '\n\n'); // Reduce multiple blank lines
 
   // Add header comment
   const header = `/**
  * DU Alumni Customizations
- * Extracted from sparkle.css (Foundation 6.7.5 based)
+ * Extracted from sparkle.css
  * Auto-generated on ${new Date().toISOString().split('T')[0]}
  *
  * This file contains only DU-specific styles.
