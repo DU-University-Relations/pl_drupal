@@ -5,6 +5,9 @@ const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass')(require('sass'));
 const sassGlob = require('gulp-sass-glob');
 const replace = require('gulp-replace');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 const config = {
     src: './scss/style.scss',  // Only compile the main file, not all scss files
@@ -24,6 +27,9 @@ gulp.task('sass-dev', function () {
       quietDeps: true,
       silenceDeprecations: ['import'],
     }).on('error', sass.logError))
+    .pipe(postcss([
+      autoprefixer()
+    ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dest'));
 });
@@ -36,6 +42,10 @@ gulp.task('sass', function (done) {
       quietDeps: true,
       silenceDeprecations: ['import'],
     }).on('error', sass.logError))
+    .pipe(postcss([
+      autoprefixer(),
+      cssnano()
+    ]))
     .pipe(gulp.dest('dest'));
 
   // Compile DU custom styles
@@ -60,6 +70,10 @@ gulp.task('sass', function (done) {
       /(\.column, \.columns[^{]*\{)\s*flex:\s*1\s+1\s+0px;/g,
       '$1\n  /* flex: 1 1 0px; */'
     )) // Comment out flex definition for .column, .columns selector
+    .pipe(postcss([
+      autoprefixer(),
+      cssnano()
+    ]))
     .pipe(gulp.dest('dest'))
     .on('end', done);
 });

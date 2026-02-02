@@ -11,8 +11,11 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.23",
     "browser-sync": "^3.0.3",
+    "cssnano": "^7.1.2",
     "gulp": "^5.0.1",
+    "gulp-postcss": "^10.0.0",
     "gulp-replace": "^1.1.4",
     "gulp-sass": "^6.0.1",
     "gulp-sass-glob": "^1.1.0",
@@ -22,6 +25,12 @@
     "postcss-scss": "^4.0.9",
     "sass": "^1.69.0"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
   "overrides": {
     "postcss": "^8.4.31"
   },
