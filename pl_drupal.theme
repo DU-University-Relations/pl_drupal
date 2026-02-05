@@ -259,15 +259,6 @@ function pl_drupal_preprocess(&$variables, $hook, $info) {
     $variables['experts'] = $render_array;
   }
 
-  // Provide view output for the Gallery - Date View.
-  if ($info['template'] == 'paragraph--gallery-date') {
-    $args = [];
-
-    $view = Views::getView('gallery_dates');
-    $render_array = $view->buildRenderable('block_1', $args);
-    $variables['gallery_date'] = $render_array;
-  }
-
   // Provide view output for the Handbook View.
   if ($info['template'] == 'paragraph--handbook') {
     $args = [];
@@ -417,7 +408,7 @@ function pl_drupal_preprocess_page(&$variables) {
 
           if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
             $video = $hero_paragraph->get('field_hero_video')->entity;
-            $variables['hero_video_url'] = file_create_url($video->get('uri')
+            $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
               ->getString());
           }
 
@@ -513,7 +504,7 @@ function pl_drupal_preprocess_page(&$variables) {
                       }
                       if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
                         $video = $hero_paragraph->get('field_hero_video')->entity;
-                        $variables['hero_video_url'] = file_create_url($video->get('uri')
+                        $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
                           ->getString());
                       }
                       if ($hero_paragraph->hasField('field_unit_hero_link')) {
@@ -734,7 +725,7 @@ function pl_drupal_preprocess_node(&$variables) {
           $image = $feature_media_image->first()->entity;
           if (!empty($image)) {
             $image = $image->getFileUri();
-            $absolute_path = file_create_url($image);
+            $absolute_path = \Drupal::service('file_url_generator')->generateAbsoluteString($image);
             $variables['feature_image'] = $absolute_path;
           }
         }
@@ -1174,4 +1165,90 @@ function pl_drupal_preprocess_menu__utility_menu(&$variables) {
  */
 function pl_drupal_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'form__' . $variables['element']['#form_id'];
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function pl_drupal_form_system_theme_settings_alter(&$form, &$form_state) {
+  // Add a dropdown for selecting the subtheme.
+  $form['css_style_selection'] = [
+    '#type' => 'select',
+    '#title' => t('Select CSS Style Mode'),
+    '#options' => [
+      'default' => t('Default'),
+      'sparkle' => t('Sparkle'),
+      'beta' => t('Beta'),
+    ],
+    '#default_value' => theme_get_setting('css_style_selection'),
+    '#description' => t('Select the CSS style for this site.'),
+  ];
+  // add an additional submit handler
+  $form['#submit'][] = 'pl_drupal_form_submit';
+}
+
+/**
+ * Custom submit handler
+ */
+ function pl_drupal_form_submit(){
+  // @TODO - this really only needs to run if css_style_selection changes
+  drupal_flush_all_caches();
+  \Drupal::messenger()->addStatus(t('Cache has been cleared. Everyone should now see the front end theme using the version of the CSS you selected.'));
+ }
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function pl_drupal_library_info_alter(&$libraries, $extension) {
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  if ($default_theme === 'pl_drupal' && isset($libraries['core']['css']['theme'])) {
+    // $libraries['core']['css']['theme'] key starts = 'dest/style.css',
+    // but can be reset to 'dest/sparkle.css' or 'https://cdn.du.edu/css/style-www.css'
+
+    $css_style = \Drupal::config('pl_drupal.settings')->get('css_style_selection') ?: 'default';
+
+    //we don't care what it was previously set to
+    // try to unset all 3 of the potential options if they exist
+
+    if (isset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/style.css'])) {
+      unset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/style.css']);
+    }
+    if (isset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/sparkle.css'])) {
+      unset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/sparkle.css']);
+    }
+    if (isset($libraries['core']['css']['theme']['https://cdn.du.edu/css/style-www.css'])) {
+      unset($libraries['core']['css']['theme']['https://cdn.du.edu/css/style-www.css']);
+    }
+
+    switch($css_style) {
+      case 'sparkle':
+        $new_path_key = '/themes/custom/pl_drupal/dest/sparkle.css';
+        break;
+      case 'beta':
+        $new_path_key = 'https://cdn.du.edu/css/style-www.css';
+        break;
+      default:
+       $new_path_key = '/themes/custom/pl_drupal/dest/style.css';
+    }
+
+    // there is a lot more we could be doing here, but this is enough for the MVP
+    $css_options = array('preprocess' => 1);
+
+    $libraries['core']['css']['theme'][$new_path_key] = $css_options;
+
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function pl_drupal_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+  $css_style = \Drupal::config('pl_drupal.settings')->get('css_style_selection');
+  // wrap this in default theme check so it doesn't file when unit or micro are being used
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  if ($default_theme === 'pl_drupal') {
+      if ($css_style == 'sparkle' || $css_style == 'beta') {
+        unset($css['themes/custom/pl_drupal/dest/style.css']);
+      }
+  }
 }

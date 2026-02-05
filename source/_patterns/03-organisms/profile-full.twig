@@ -326,8 +326,10 @@
                         {% if content.field_prof_concentration_link[0] %}
                             <h3>Concentrations</h3>
                             <ul>
-                                {% for key, item in content.field_prof_concentration_link if key|first != '#' %}
+                                {% for key, item in content.field_prof_concentration_link %}
+                                    {% if key|first != '#' %}
                                     <li>{{ item }}</li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         {% endif %}

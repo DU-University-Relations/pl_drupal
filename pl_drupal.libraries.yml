@@ -1,24 +1,42 @@
+# Attached globally in pl_drupal.info.yml.
 core:
-  version: '1.1.0'
+  version: '10.0.0'
   css:
     theme:
-      js/motion-ui/dist/motion-ui.min.css:
+      # Foundation framework (compiled from scss/foundation.scss)
+      dest/foundation.css:
+        weight: 0
         preprocess: true
+      # Third-party libraries
+      dest/libraries/motion-ui/dist/motion-ui.min.css:
+        weight: -5
+        preprocess: true
+      dest/libraries/slick-carousel/slick/slick.css:
+        weight: -5
+        preprocess: true
+      # DU custom styles (compiled from scss/style.scss)
       dest/style.css:
+        weight: 5
         preprocess: false
-
   js:
-    js/foundation-sites/dist/js/foundation.min.js:
+    dest/libraries/foundation-sites/dist/js/foundation.min.js:
+      minified: true
       preprocess: false
+    dest/libraries/motion-ui/dist/motion-ui.min.js:
+      minified: true
+      preprocess: false
+    dest/libraries/isotope-layout/dist/isotope.pkgd.min.js:
+      minified: true
+      preprocess: false
+    dest/libraries/jquery.scrollto/jquery.scrollTo.min.js:
+      minified: true
+      preprocess: false
+    dest/libraries/slick-carousel/slick/slick.min.js:
+      minified: true
+      preprocess: true
     js/app.js:
       preprocess: true
-    js/motion-ui/dist/motion-ui.min.js:
-      preprocess: false
     js/menu_dropdown_adjust.js:
-      preprocess: true
-    js/experiential_slideshow.js:
-      preprocess: true
-    https://cdn.jsdelivr.net/clipboard.js/1.5.10/clipboard.min.js:
       preprocess: true
     https://admission.du.edu/ping:
       type: external
@@ -30,34 +48,60 @@ core:
       preprocess: false
       attributes:
         async: true
-
-  # see all in Drupal's `core/core.libraries.yml`
   dependencies:
     - core/jquery
-    - core/once
     - core/drupal
-    - core/jquery.cookie
-  
+    - core/once
+    - core/js-cookie
 
+# Attached in: pl_drupal.theme line 755.
 profile:
-  version: 1.x
+  version: '10.0.0'
   js:
     js/fullprofile.js:
       preprocess: true
+  dependencies:
+    - core/jquery
+    - core/drupal
 
+# Attached in: pl_drupal.theme line 738.
 research-project:
-  version: 1.x
+  version: '10.0.0'
   js:
     js/fullresearchproject.js:
       preprocess: true
+  dependencies:
+    - core/jquery
+    - core/drupal
 
+# Attached globally in pl_drupal.info.yml.
 attach_utm_cookies:
-  version: 1.x
+  version: '10.0.0'
   js:
     js/attach_utm_cookies.js:
       preprocess: true
   dependencies:
     - core/jquery
     - core/drupal
-    - core/drupalSettings
-    # not totally sure which dependancy's are needed
+
+# Attached in: pl_drupal.theme line 306 for inline unit sites.
+# Do we need this? Was kind of broken.
+core-inline:
+  version: '10.0.0'
+  css:
+    theme:
+      dest/core-inline.css:
+        preprocess: false
+
+# Attached in templates/paragraph/paragraph--experiential_story.html.twig.
+experiential_slideshow:
+  version: '10.0.0'
+  js:
+    dest/libraries/clipboard/dist/clipboard.min.js:
+      minified: true
+      preprocess: false
+    js/experiential_slideshow.js:
+      preprocess: true
+  dependencies:
+    - core/jquery
+    - core/drupal

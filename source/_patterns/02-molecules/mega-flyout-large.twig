@@ -21,25 +21,7 @@
                 <ul>
                     {% for link in links %}
                         <li>
-                        {% if link['#url'].options.attributes.class.0 and link['#url'].options.attributes.class.0 == 'external-link-gold' %}
-                            <a
-                                {% if link['#url'].external == true and link['#url'].uri %}
-                                    href="{{ link['#url'].uri }}"
-                                {% else %}
-                                    href="{{ link['#url'] }}"
-                                {% endif %}
-                                {% if link['#url'].options.attributes.target %}target="{{ link['#url'].options.attributes.target }}"{% endif %}
-                                {% if link['#url'].options.attributes.rel %}rel="{{ link['#url'].options.attributes.rel }}"{% endif %}
-                                {% if link['#url'].options.attributes.class.0 %}class="{{ link['#url'].options.attributes.class.0 }}"{% endif %}
-                                {% if link['#url'].options.attributes.title %}title="{{ link['#url'].options.attributes.title }}"{% endif %}
-                                {% if link['#url'].options.attributes['data-toggle'] %}data-toggle="{{ link['#url'].options.attributes['data-toggle'] }}"{% endif %}
-                                {% if link['#url'].options['fragment'] %}fragment="{{ link['#url'].options['fragment'] }}"{% endif %}
-                                {% if link['#url'].external == false and link['#url'].routeParameters['node'] %}data-drupal-link-system-path="node/{{ link['#url'].routeParameters['node'] }}"{% endif %}
-                                {% if link['#url'].external == false and link['#url'].routeParameters['file_id'] %}data-drupal-link-system-path="file/{{ link['#url'].routeParameters['file_id'] }}"{% endif %}
-                            >{{ link['#title'] }}<i class="external-link-icon icon-du-link-ext-alt"></i></a>
-                        {% else %}
                             {{ link }}
-                        {% endif %}
                         </li>
                     {% endfor %}
                 </ul>

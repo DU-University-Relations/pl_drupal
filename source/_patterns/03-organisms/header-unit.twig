@@ -26,13 +26,19 @@
                         <div class="columns shrink">
                             {% if image_logo is empty %}
                                 <a href="{{ logo_url }}" class="logo">
+                                {% if site_prefix == 'The Robert & Judi' %}
+                                    <div class="site-logo newman-center-logo">
+                                        <img src="/themes/custom/pl_drupal/images/NCPA-small-2.png" alt="Newman Center Presents">
+                                    </div>
+                                {% else %}
                                     <div class="site-logo">
-                                        <img src="/{{ active_theme_path() }}/images/svg/university-of-denver-du-logo-unit.svg" width="80" alt="University of Denver">
+                                        <img src="/themes/custom/pl_drupal/images/svg/university-of-denver-du-logo-unit.svg" width="80" alt="University of Denver">
                                     </div>
                                     <div class="site-identity">
                                         <span class="site-prefix">{{ site_prefix }}</span>
                                         <span class="site-name">{{ site_name }}</span>
                                     </div>
+                                {% endif %}
                                 </a>
                             {% else %}
                                 <a href="{{ logo_url }}" class="logo image">

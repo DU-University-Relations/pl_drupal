@@ -1,9 +1,11 @@
 <div class="large-image-module__container">
+    {% if title is defined and title is not empty %}
     <div class="row">
         <div class="columns">
             <h3 class="btm-divider">{{ title }}</h3>
         </div>
     </div>
+    {% endif %}
     <div class="orbit large-image-module" role="region" data-auto-play="false" aria-label="Large Image Carousel" data-orbit data-options="{% if slide_animation %} {{ slide_animation }} {% endif %}">
         <div class="large-image-module__wrapper orbit-wrapper">
             <ul class="orbit-container">

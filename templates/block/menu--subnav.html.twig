@@ -35,26 +35,7 @@
         {% endif %}
         {% for item in items %}
             <li {{ item.is_active ?  item.attributes.addClass('active') : item.attributes }} >
-                {% if not item.is_active and item.url.options.attributes.class.0 and item.url.options.attributes.class.0 == 'external-link-gold' %}
-                    <a
-                       {% if item.url.external == true and item.url.uri %}
-                           href="{{ item.url.uri }}"
-                       {% else %}
-                           href="{{ item.url }}"
-                       {% endif %}
-                       {% if item.url.options.attributes.target %}target="{{ item.url.options.attributes.target }}"{% endif %}
-                       {% if item.url.options.attributes.rel %}rel="{{ item.url.options.attributes.rel }}"{% endif %}
-
-                       {% if item.url.options.attributes.class.0 %}class="{{ item.url.options.attributes.class.0 }}"{% endif %}
-                       {% if item.url.options.attributes.title %}title="{{ item.url.options.attributes.title }}"{% endif %}
-                       {% if item.url.options.attributes['data-toggle'] %}data-toggle="{{ item.url.options.attributes['data-toggle'] }}"{% endif %}
-                       {% if item.url.options['fragment'] %}fragment="{{ item.url.options['fragment'] }}"{% endif %}
-                       {% if item.url.external == false and item.url.routeParameters['node'] %}data-drupal-link-system-path="node/{{ item.url.routeParameters['node'] }}"{% endif %}
-                       {% if item.url.external == false and item.url.routeParameters['file_id'] %}data-drupal-link-system-path="file/{{ item.url.routeParameters['file_id'] }}"{% endif %}
-                    >{{ item.title }}<i class="external-link-icon icon-du-link-ext-alt"></i></a>
-                {% else %}
-                    {{ link(item.title, item.url) }}
-                {% endif %}
+                {{ link(item.title, item.url) }}
 
                 {% if item.below %}
                     {{ menus.menu_links(item.below, attributes, menu_level + 1) }}

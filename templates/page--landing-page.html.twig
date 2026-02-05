@@ -1,13 +1,6 @@
-{% apply spaceless %}
+{% set content %}
   {% for item in node.field_landing_content %}
     {{ drupal_entity('paragraph', item.target_id) }}
   {% endfor %}
-  {% for item in node.field_landing_content %}
-    {% if item.entity.bundle() == "custom_markup" %}
-      {% set custom_js = item.entity.field_custom_javascript.value %}
-      {% if custom_js is not empty %}
-        <script>{{ custom_js|raw }}</script>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-{% endapply %}
+{% endset %}
+{{ content|spaceless }}

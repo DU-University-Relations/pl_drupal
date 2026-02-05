@@ -14,11 +14,19 @@
                     <div class="row expanded">
                         <div class="columns shrink">
                             <a href="{{ logo_url }}" class="logo {% if inline_site %}inline-site{% endif %}">
-                                {{ logo|raw }}
-                                <div class="site-identity">
-                                    <span class="site-prefix">{{ site_prefix }}</span>
-                                    <span class="site-name">{{ site_name }}</span>
-                                </div>
+                               {# Custom logo for inline site NWSSCOE #}
+                               {% if site_name == 'NWSS CoE' %}
+                                    <div class="site-logo">
+                                        <img src="/themes/custom/pl_drupal/images/DU_CDPHE_Combined_Logo.png" width="80" alt="University of Denver">
+                                    </div>
+                                    {{ logo_text|raw }}
+                                {% else %}
+                                    {{ logo|raw }}
+                                    <div class="site-identity">
+                                        <span class="site-prefix">{{ site_prefix }}</span>
+                                        <span class="site-name">{{ site_name }}</span>
+                                    </div>
+                                {% endif %}
                             </a>
                         </div>
                         <div class="columns">

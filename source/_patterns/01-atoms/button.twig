@@ -1,7 +1,7 @@
 <a role="button" href="{{ url|raw }}"
    class="btn
    {% if type %}btn--{{ type }}{% endif %}
-   {{ altClass }} {{ styleModifier }}"
+   {{ altClass|default([])|join(' ') }} {{ styleModifier }}"
         {% if data|length > 0 %}
             data-{{ data.key }}="{{ data.value }}"
         {% endif %}
