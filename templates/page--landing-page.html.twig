@@ -1,5 +1,6 @@
-{% apply spaceless %}
+{% set content %}
   {% for item in node.field_landing_content %}
     {{ drupal_entity('paragraph', item.target_id) }}
   {% endfor %}
-{% endapply %}
+{% endset %}
+{{ content|spaceless }}

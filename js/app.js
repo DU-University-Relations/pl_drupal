@@ -35,7 +35,9 @@
   Drupal.behaviors.card_list_module = {
       attach: function (context, settings) {
           if (!$('.cards-list-module').hasClass('js-card-list-processed')) {
-              $('.cards-list-module').once('card_list_module').addClass('js-card-list-processed');
+              $(once('card_list_module', '.cards-list-module', context)).each(function() {
+                  $(this).addClass('js-card-list-processed');
+              });
 
               if (typeof $grid !== 'undefined') {
                 $('.btn--academic-filter.active[data-filter]').triggerHandler('click', {sort:true,sortBy:['name']});
@@ -810,14 +812,14 @@
       });
         // ALERTS
         // --informational--
-        $('#du-alert.du-alert--notification').toggleClass('du-alert--notification--show', !$.cookie('alert-notification-closed'));
+        $('#du-alert.du-alert--notification').toggleClass('du-alert--notification--show', !Cookies.get('alert-notification-closed'));
         $('#du-alert.du-alert--notification .du-alert__action-button').on('click', function() {
             $('#du-alert.du-alert--notification').removeClass('du-alert--notification--show');
-            $.cookie('alert-notification-closed', true);
+            Cookies.set('alert-notification-closed', 'true', { expires: 365 });
             $('.du-alert--active').removeClass('du-alert--active');
         });
         // --urgent--
-        $('#du-alert.du-alert--urgent').toggleClass('du-alert--notification--show', !$.cookie('alert-notification-closed'));
+        $('#du-alert.du-alert--urgent').toggleClass('du-alert--notification--show', !Cookies.get('alert-notification-closed'));
         $('#urgent-alert-toggle').click(function() {
             $(this).children().toggleClass('icon-du-up-arrow');
             $(this).children().toggleClass('icon-du-down-arrow');
@@ -1673,12 +1675,14 @@ function reCalcSticky() {
 
     Drupal.behaviors.buttonHandleClick = {
         attach: function(context, settings) {
-            $('button.handle-click').once('handle-button-click').on('click', function(e){
-                e.preventDefault();
-                var href = $(this).attr('data-href');
-                if (typeof href !== "undefined") {
-                    window.location.href = href;
-                }
+            $(once('handle-button-click', 'button.handle-click', context)).each(function() {
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    var href = $(this).attr('data-href');
+                    if (typeof href !== "undefined") {
+                        window.location.href = href;
+                    }
+                });
             });
         }
     };
@@ -1735,33 +1739,39 @@ function reCalcSticky() {
     });
     Drupal.behaviors.resourcesResetClick = {
         attach: function(context, settings) {
-            $('#views-reset-button').once('resource-reset-click').on('click', function(e){
-                e.preventDefault();
-                window.location.href = window.location.href;
+            $(once('resource-reset-click', '#views-reset-button', context)).each(function() {
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    window.location.href = window.location.href;
+                });
             });
         }
     };
     Drupal.behaviors.searchBlockInit = {
         attach: function(context, settings) {
-            $('input#site-search-input').once('init-search').on('keypress', function(e){
-                if (e.keyCode == 13 || e.which == 13) {
-                    e.preventDefault();
-                    var value = $(this).val();
-                    this.blur()
-                    startSearch(value);
-                }
+            $(once('init-search', 'input#site-search-input', context)).each(function() {
+                $(this).on('keypress', function(e){
+                    if (e.keyCode == 13 || e.which == 13) {
+                        e.preventDefault();
+                        var value = $(this).val();
+                        this.blur()
+                        startSearch(value);
+                    }
+                });
             });
         }
     };
     Drupal.behaviors.initSiteSearchNoResult = {
         attach: function(context, settings) {
-            $('input#no-result-site-search-input').once('init-site-search-no-result').on('keypress', function(e){
-                if (e.keyCode == 13 || e.which == 13) {
-                    e.preventDefault();
-                    var value = $(this).val();
-                    this.blur()
-                    startSearch(value);
-                }
+            $(once('init-site-search-no-result', 'input#no-result-site-search-input', context)).each(function() {
+                $(this).on('keypress', function(e){
+                    if (e.keyCode == 13 || e.which == 13) {
+                        e.preventDefault();
+                        var value = $(this).val();
+                        this.blur()
+                        startSearch(value);
+                    }
+                });
             });
         }
     };
@@ -1772,7 +1782,7 @@ function reCalcSticky() {
 
     Drupal.behaviors.resourceListAutoSubmitInit = {
         attach: function(context, settings) {
-            $(document).once('first-time-resource').ready(function(){
+            $(once('first-time-resource', document, context)).each(function() {
                 if (!firstTimeLoad) {
                     $('#views-exposed-form-resources-block-1 #edit-submit-resources').trigger('click');
                 }
@@ -2272,7 +2282,8 @@ function reCalcSticky() {
                     $(window).scrollTop(sessionStorage.scrollTop);
                 }
             }
-            sessionStorage.scrollTop.clear();
+            // Clear the scrollTop value from sessionStorage
+            sessionStorage.removeItem('scrollTop');
         });
 
         /**

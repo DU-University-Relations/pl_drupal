@@ -1,205 +1,125 @@
 'use strict';
 
-const core = require('./core');
-const exec = require('child_process').exec;
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sassGlob = require('gulp-sass-glob');
-const join = require('path').join;
-const consolePath = './core/console';
-const notifier = require('node-notifier');
+const replace = require('gulp-replace');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
-const path = require('path');
-const yaml = require('js-yaml');
-const fs = require('fs');
-const glob = require('glob');
-
-var done;
-
-var config = {
-    src: [
-        './scss/**/*.scss',
-        './source/_patterns/**/*.scss'
-    ],
+const config = {
+    src: './scss/style.scss',  // Only compile the main file, not all scss files
     css: {
-        includePaths: [
+        loadPaths: [
             './node_modules'
         ]
-    },
-
-    patternLab: {
-        enabled: true,
-        configFile: 'config/config.yml',
-        watchedExtensions: [
-            'twig',
-            'json',
-            'yaml',
-            'yml',
-            'md',
-            'jpg',
-            'jpeg',
-            'png',
-        ],
-        injectFiles: [],
-        bowerBasePath: './',
-        twigNamespaces: {
-            addToDrupalThemeFile: true,
-            sets: [
-                {
-                    namespace: 'atoms',
-                    paths: ['source/_patterns/01-atoms/'],
-                },  {
-                    namespace: 'molecules',
-                    paths: ['source/_patterns/02-molecules/'],
-                },
-                {
-                    namespace: 'organisms',
-                    paths: ['source/_patterns/03-organisms/'],
-                }, {
-                    namespace: 'templates',
-                    paths: ['source/_patterns/04-templates/'],
-                }, {
-                    namespace: 'pages',
-                    paths: ['source/_patterns/05-pages/'],
-                }
-            ],
-        },
-
-    },
-    drupal: {
-        enabled: true,
-        themeFile: 'pl_drupal.info.yml',
-        // when these files change
-        watch: [
-            'templates/**',
-            '*.theme',
-        ],
-        // run this command
-        command: 'drush cache-rebuild',
-        // in this directory
-        dir: './',
-    },
-
+    }
 };
-
-let plConfig = yaml.safeLoad(
-    fs.readFileSync(config.patternLab.configFile, 'utf8')
-);
-
-
-const plRoot = path.join(config.patternLab.configFile, '../..');
-const plSource = path.join(plRoot, plConfig.sourceDir);
-const plPublic = path.join(plRoot, plConfig.publicDir);
-const plMeta = path.join(plSource, '/_meta');
-const watchTriggeredTasks = [];
-
 
 gulp.task('sass-dev', function () {
   return gulp.src(config.src)
     .pipe(sassGlob())
-    .pipe(sourcemaps.init({
-      debug: config.debug,
-    }))
+    .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: config.css.includePaths,
-    }))
+      loadPaths: config.css.loadPaths,
+      quietDeps: true,
+      silenceDeprecations: ['import'],
+    }).on('error', sass.logError))
+    .pipe(postcss([
+      autoprefixer()
+    ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dest'));
 });
 
-gulp.task('sass', function () {
-  return gulp.src(config.src)
+gulp.task('sass', function (done) {
+  // Compile Foundation framework
+  gulp.src('./scss/foundation.scss')
+    .pipe(sass({
+      loadPaths: config.css.loadPaths,
+      quietDeps: true,
+      silenceDeprecations: ['import'],
+    }).on('error', sass.logError))
+    .pipe(postcss([
+      autoprefixer(),
+      cssnano()
+    ]))
+    .pipe(gulp.dest('dest'));
+
+  // Compile DU custom styles
+  gulp.src('./scss/style.scss')
     .pipe(sassGlob())
     .pipe(sass({
-      includePaths: config.css.includePaths,
+      loadPaths: config.css.loadPaths,
+      quietDeps: true,
+      silenceDeprecations: ['import'],
+    }).on('error', sass.logError))
+    .pipe(replace(/\/\*[\s\S]*?\*\//g, function(match, offset, string) {
+      // Keep only the first CSS comment block (typically the license header)
+      // Strip all subsequent comments
+      const firstCommentEnd = string.indexOf('*/') + 2;
+      if (offset < firstCommentEnd) {
+        return match; // Keep first comment
+      }
+      return ''; // Remove all other comments
     }))
-    .pipe(gulp.dest('dest'));
+    .pipe(replace(/\n\s*\n\s*\n+/g, '\n\n')) // Reduce multiple blank lines to max 1
+    .pipe(replace(
+      /(\.column, \.columns[^{]*\{)\s*flex:\s*1\s+1\s+0px;/g,
+      '$1\n  /* flex: 1 1 0px; */'
+    )) // Comment out flex definition for .column, .columns selector
+    .pipe(postcss([
+      autoprefixer(),
+      cssnano()
+    ]))
+    .pipe(gulp.dest('dest'))
+    .on('end', done);
 });
 
-gulp.task('pattern-lab', gulp.series(function buildPromise () {
-  return new Promise(function (resolve, reject) {
-    core.sh(`php ${consolePath} --generate`, true, (err) => {
-      resolve();
-    });
-  });
-}));
+gulp.task('copy-libs', function (done) {
+  // Foundation Sites
+  gulp.src('./node_modules/foundation-sites/dist/js/foundation.min.js')
+    .pipe(gulp.dest('dest/libraries/foundation-sites/dist/js'));
 
-gulp.task('build', gulp.series('sass','pattern-lab'));
+  // Motion UI
+  gulp.src('./node_modules/motion-ui/dist/motion-ui.min.*')
+    .pipe(gulp.dest('dest/libraries/motion-ui/dist'));
 
-gulp.task('watch', gulp.series(function () {
-    gulp.watch(['du-resources/**/*.scss', 'scss/**/*.scss', 'source/_patterns/**/*.scss'], gulp.series('sass-dev'));
-}));
+  // Slick Carousel
+  gulp.src([
+    './node_modules/slick-carousel/slick/slick.min.js',
+    './node_modules/slick-carousel/slick/slick.css'
+  ])
+    .pipe(gulp.dest('dest/libraries/slick-carousel/slick'));
 
+  // Isotope Layout
+  gulp.src('./node_modules/isotope-layout/dist/isotope.pkgd.min.js')
+    .pipe(gulp.dest('dest/libraries/isotope-layout/dist'));
 
-gulp.task('twigNamespaces', function () {
+  // jQuery scrollTo
+  gulp.src('./node_modules/jquery.scrollto/jquery.scrollTo.min.js')
+    .pipe(gulp.dest('dest/libraries/jquery.scrollto'));
 
-  return new Promise(function (resolve, reject) {
-    addTwigNamespaceConfigToPl();
-    if (config.patternLab.twigNamespaces.addToDrupalThemeFile) {
-      addTwigNamespaceConfigToDrupal(done);
-    }
-    resolve();
-  });
+  // Clipboard.js
+  gulp.src('./node_modules/clipboard/dist/clipboard.min.js')
+    .pipe(gulp.dest('dest/libraries/clipboard/dist'));
+
+  done();
 });
 
-
-
-/******** Utility functions ******/
-
-
-
-function getTwigNamespaceConfig(workingDir) {
-    workingDir = workingDir || process.cwd(); // eslint-disable-line no-param-reassign
-    const twigNamespaceConfig = {};
-    config.patternLab.twigNamespaces.sets.forEach((namespaceSet) => {
-        const pathArray = namespaceSet.paths.map((pathBase) => {
-                const results = glob.sync(path.join(pathBase, '**/*.twig')).map((pathItem) => { // eslint-disable-line arrow-body-style
-                        return path.relative(workingDir, path.dirname(pathItem));
+gulp.task('copy-images', function () {
+  return gulp.src('./images/**/*')
+    .pipe(gulp.dest('dest/images'));
 });
-results.unshift(path.relative(workingDir, pathBase));
-return results;
-});
-twigNamespaceConfig[namespaceSet.namespace] = {
-    paths: core.uniqueArray(core.flattenArray(pathArray)),
-};
-});
-return twigNamespaceConfig;
-}
 
-function addTwigNamespaceConfigToDrupal(done) {
-    const twigNamespaceConfig = getTwigNamespaceConfig(path.dirname(config.drupal.themeFile));
-    const drupalThemeFile = yaml.safeLoad(
-        fs.readFileSync(config.drupal.themeFile, 'utf8')
-    );
-   Object.assign(drupalThemeFile['component-libraries'], twigNamespaceConfig);
-    const newThemeFile = yaml.safeDump(drupalThemeFile);
-    fs.writeFileSync(config.drupal.themeFile, newThemeFile, 'utf8');
-    // done();
-}
+gulp.task('build', gulp.series('copy-libs', 'copy-images', 'sass'));
 
-function addTwigNamespaceConfigToPl(done) {
-    const twigNamespaceConfig = getTwigNamespaceConfig(plRoot);
-    plConfig = yaml.safeLoad(
-        fs.readFileSync(config.patternLab.configFile, 'utf8')
-    );
-    if (!plConfig.plugins) {
-        Object.assign(plConfig, {
-            plugins: {
-                twigNamespaces: { enabled: true, namespaces: {} },
-            },
-        });
-    } else if (!plConfig.plugins.twigNamespaces) {
-        Object.assign(plConfig.plugins, {
-            twigNamespaces: { enabled: true, namespaces: {} },
-        });
-    } else if (!plConfig.plugins.twigNamespaces.namespaces) {
-        plConfig.plugins.twigNamespaces.namespaces = {};
-    }
-    Object.assign(plConfig.plugins.twigNamespaces.namespaces, twigNamespaceConfig);
-    const newConfigFile = yaml.safeDump(plConfig);
-    fs.writeFileSync(config.patternLab.configFile, newConfigFile, 'utf8');
-    // done();
-}
+gulp.task('watch', function () {
+    gulp.watch(['du-resources/**/*.scss', 'scss/**/*.scss'], gulp.series('sass-dev'));
+});
+
+gulp.task('default', gulp.series('build'));
 
 

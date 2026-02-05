@@ -1,65 +1,178 @@
-[![Build Status](https://travis-ci.org/pattern-lab/edition-php-drupal-standard.svg?branch=master)](https://travis-ci.org/pattern-lab/edition-php-drupal-standard)
+# PL Drupal D10 Theme
 
-# Pattern Lab Twig Standard Edition for Drupal 
+**Drupal 10 compatible theme** - Pattern Lab dependencies removed as of January 2026.
 
-The Standard Edition for Drupal gives developers and designers a clean and stable base from which to develop a Drupal compatible pattern library.
+This theme previously used Pattern Lab for component development but has been migrated to a standard Drupal 10 theme. See [D10_UPGRADE.md](D10_UPGRADE.md) for complete migration details.
 
-## Prerequistes 
+## Prerequisites
 
-- [`composer`](https://getcomposer.org)
+- Node.js v24 (use `nvm use` to switch to the correct version)
+- npm
 
-## First Time Install
+## Installation
 
-1. Run `composer create-project pattern-lab/edition-drupal-standard FOLDERNAME` (Assuming you wanted it in a directory called `FOLDERNAME`).
-1. Select a starterkit from menu. If asked about replacing files, do it.
-1. Commit new files generated.
+1. Clone this repository into your Drupal `themes/custom/` directory
+2. Install Node dependencies:
+   ```bash
+   nvm use
+   npm install
+   ```
+3. Build the theme assets:
+   ```bash
+   npm run build
+   ```
+4. Enable the theme in Drupal
 
-## Using It
+## Development Workflow
 
-After installing and committing, others cloning the repo need to run `composer install` to install dependencies.
+### Build Commands
 
-## Helpful Commands
+**Production build:**
+```bash
+npm run build
+```
 
-These are some helpful commands you can use on the command line for working with Pattern Lab.
+Compiles SCSS, copies npm libraries to `dest/libraries/`, and bundles images.
 
-### One line start
+**Development build with watch:**
+```bash
+npm run watch
+```
 
-This will compile PL and watch for changes while running the local server:
+Watches for SCSS changes and recompiles automatically with sourcemaps.
 
-    composer start --timeout=0
+**Extract DU customizations from sparkle.css:**
+```bash
+npm run extract-customizations
+```
 
-### Generate Pattern Lab
+Regenerates `_du-customizations-only.scss` by extracting DU-specific styles from sparkle.css and removing Foundation library code.
 
-To generate the front-end for Pattern Lab type:
+**Extract unit theme customizations (pl_unit):**
+```bash
+npm run extract-unit-customizations
+```
 
-    php core/console --generate
+Extracts pl_unit theme-specific styles to `../pl_unit/dest/sparkle-unit.css` by comparing against pl_drupal base theme.
 
-### Start a server to view Pattern Lab
+### Making Style Changes
 
-You can use PHP's built-in web server to review your Pattern Lab project in a browser. In a separate window type:
+**⚠️ IMPORTANT: Most style changes should be made to `scss/_du-customizations-only.scss`**
 
-    php core/console --server
+This file contains all DU-specific customizations (21,954 lines) extracted from production sparkle.css. This is where you should make changes for:
 
-Then open [http://localhost:8080](http://localhost:8080) in your browser.
+- Component styling (buttons, cards, navigation, etc.)
+- Custom layouts and overrides
+- DU-specific design implementations
+- Production hotfixes and manual edits
 
-### Install a StarterKit
+**Other SCSS files:**
+- `scss/_variables.scss` - DU brand colors and fonts (edit carefully)
+- `scss/_settings.scss` - Foundation framework configuration (rarely change)
+- `scss/foundation.scss` - Foundation framework entry point (don't edit)
+- `scss/style.scss` - Imports for DU customizations (don't edit unless adding new files)
 
-To install a near-empty StarterKit as a starting point for your project type:
+**Workflow for style changes:**
+1. Edit `scss/_du-customizations-only.scss`
+2. Run `npm run watch` to see changes live
+3. Test in browser
+4. Commit changes
 
-    php core/console --starterkit --init
+### Build Output
 
-To install a specific StarterKit from GitHub type:
+- **CSS**: `dest/style.css` (DU customizations) and `dest/foundation.css` (Foundation framework)
+- **Libraries**: npm packages copied to `dest/libraries/` (Foundation, Motion UI, Slick, etc.)
+- **Images**: Copied to `dest/images/`
+- **Sourcemaps**: Generated during development builds
 
-    php core/console --starterkit --install <starterkit-vendor/starterkit-name>
+## Theme Structure
 
-### Updating Pattern Lab
+```
+pl_drupal/
+├── dest/                    # Build output
+│   ├── style.css           # DU customizations (compiled)
+│   ├── foundation.css      # Foundation framework (compiled)
+│   └── libraries/          # npm libraries copied here
+├── scss/                    # Source SCSS
+│   ├── _variables.scss     # DU brand colors & fonts
+│   ├── _settings.scss      # Foundation 6.9.0 config
+│   ├── _du-customizations-only.scss  # All DU custom styles (21,954 lines)
+│   ├── foundation.scss     # Foundation entry point
+│   └── style.scss          # DU customizations entry point
+├── js/                      # Custom JavaScript behaviors
+├── templates/               # Twig templates
+├── source/_patterns/        # Component directories (for Drupal Components module)
+└── gulpfile.js             # Build configuration
+```
 
-	composer update
+## Dependencies
 
-## Other Documentation
+### Theme Dependencies
+- **Drupal Modules**:
+  - `drupal:components` (provides Twig namespaces for source/_patterns/)
+  - `drupal:twig_field_value`
+  - `drupal:twig_tweak`
 
-These are crucial pieces that contains documentation that is good to understand:
+- **Core Libraries**:
+  - `core/jquery`
+  - `core/drupal`
+  - `core/jquery.cookie`
+  - `core/once` (Drupal.once API)
 
-- [`pattern-lab/patternengine-twig`](https://github.com/pattern-lab/patternengine-php-twig)
-- [`aleksip/plugin-data-transform`](https://github.com/aleksip/plugin-data-transform)
-- [Twig templating language](http://twig.sensiolabs.org/documentation)
+### Front-end Dependencies (npm)
+- foundation-sites: ^6.9.0
+- motion-ui: ^2.0.8
+- slick-carousel: ^1.8.1
+- clipboard: ^2.0.11
+- isotope-layout: ^3.0.6
+- jquery.scrollto: ^2.1.3
+
+All libraries are copied to `dest/libraries/` during build and served from the theme (no CDN dependencies).
+
+## Migration from Pattern Lab
+
+This theme was migrated from Drupal 9 with Pattern Lab to Drupal 10 without Pattern Lab. Key changes:
+
+- Pattern Lab infrastructure completely removed
+- Build system updated to Gulp 5 + Dart Sass
+- Foundation upgraded to 6.9.0
+- jQuery.once API replaced with Drupal.once
+- Node.js v24 required
+- All front-end libraries managed via npm (no Composer npm-asset or CDN)
+- Production sparkle.css customizations migrated to Foundation 6.9.0 base
+
+For complete migration details, see [D10_UPGRADE.md](D10_UPGRADE.md).
+
+## Troubleshooting
+
+**Build fails with Sass errors:**
+- Ensure you're using Node v24: `nvm use`
+- Delete `node_modules` and `package-lock.json`, then run `npm install`
+
+**jQuery errors in console:**
+- Verify `core/once` is loaded in libraries.yml
+- Check that Drupal.once is being used instead of jQuery.once
+
+**Foundation components not working:**
+- Check that Foundation JS is at `dest/libraries/foundation-sites/dist/js/foundation.min.js`
+- Verify library paths in `pl_drupal.libraries.yml`
+
+**Missing libraries after npm install:**
+- Run `npm run build` to execute copy-libs and copy-images tasks
+
+## Contributing
+
+When making style changes:
+
+1. Create a feature branch
+2. **Edit `scss/_du-customizations-only.scss`** (this is where most changes go)
+3. Run `npm run watch` during development
+4. Test thoroughly in a Drupal environment
+5. Run `npm run build` to verify production build succeeds
+6. Commit with clear, descriptive messages
+
+**Note:** Avoid editing Foundation framework files (`_settings.scss`, `foundation.scss`) unless you're intentionally changing the framework configuration.
+
+## Support
+
+For questions or issues related to the Drupal 10 migration, see [D10_UPGRADE.md](D10_UPGRADE.md).

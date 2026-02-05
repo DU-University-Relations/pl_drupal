@@ -46,29 +46,30 @@
 
                     {% if article_type[0] %}
 
-                            {% for key, item in article_type if key|first != '#' %}
+                            {% for key, item in article_type %}
+                                {% if key|first != '#' %}
                                 {{ item }}<span>&nbsp;&nbsp;&bull;</span>
+                                {% endif %}
                             {% endfor %}
 
                     {% endif %}
 
                 </div>
 
-                {% set article_categories = content.field_article_category|field_value %}
                 {% block article_category %}
-                    <div class="news-category">
-                        {% for category in article_categories %}
-                            {% set category_title = category['#title'] %}
-                            {% set category_tid = category['#options'].entity.id %}
-                            {% set category_link = article_category_location ~ category_title | replace({' ': '-'}) | lower %}
-
-                            {% if loop.last %}
-                                <a href="{{ category_link }}">{{ category_title }}</a>
-                            {% else %}
-                                <a href="{{ category_link }}">{{ category_title }}</a>,
-                            {% endif %}
-                        {% endfor %}<span>&nbsp;&bull;</span>
-                    </div>
+                    {% if node.field_article_category is not empty %}
+                        <div class="news-category">
+                            {% for category in node.field_article_category %}
+                                {% set category_title = category.entity.label %}
+                                {% set category_link = article_category_location ~ category_title | replace({' ': '-'}) | lower %}
+                                {% if loop.last %}
+                                    <a href="{{ category_link }}">{{ category_title }}</a>
+                                {% else %}
+                                    <a href="{{ category_link }}">{{ category_title }}</a>,
+                                {% endif %}
+                            {% endfor %}<span>&nbsp;•</span>
+                        </div>
+                    {% endif %}
                 {% endblock %}
 
                 <div class="columns">{{ publish_date }}</div>

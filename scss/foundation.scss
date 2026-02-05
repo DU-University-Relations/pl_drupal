@@ -1,0 +1,17 @@
+//
+// Foundation Sites Only
+// This file compiles to foundation.css and contains only the Foundation framework
+//
+
+// Foundation Sites 6.9.0
+@import "foundation-sites/scss/foundation";
+@import "foundation-sites/scss/util/util";
+
+@import "settings";
+
+@include foundation-everything;
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+
+// Drupal Seven admin theme tabs (moved from core to contrib in Drupal 10)
+@import "../../../../themes/contrib/seven/css/components/tabs";

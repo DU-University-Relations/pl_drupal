@@ -1,9 +1,0 @@
-<a href="#" class="{{ button.cssClass }}">
-	{% include "@atoms/image.twig" with button %}
-	<div class="content">
-		{% if button.icon %}
-			{% include "@atoms/image.twig" with button.icon %}
-		{% endif %}
-		<p>{{ button.title }}</p>
-	</div>
-</a>

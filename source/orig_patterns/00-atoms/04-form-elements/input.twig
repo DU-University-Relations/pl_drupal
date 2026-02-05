@@ -1,5 +1,0 @@
-<label>{% if required %}<span class="du-form__required">*</span>{% endif %}{% if off_screen %}
-    <span class="show-for-sr">{% endif %}{{ label|raw }}{% if off_screen %}</span>{% endif %}
-    <input type="{% if not input_type %}text{% endif %}{% if input_type %}{{ input_type }}{% endif %}" placeholder="{{ placeholder_text }}"{% if required %} required="true"{% endif %} />
-    {% if error %}<span class="du-form__error" id="emailError">This is an error message.</span>{% endif %}
-</label>

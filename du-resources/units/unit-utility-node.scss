@@ -1,9 +1,0 @@
-.unit-site {
-  .utility-page {
-    article#main-content {
-      @include breakpoint(small down) {
-        margin-top: 5rem;
-      }
-    }
-  }
-}

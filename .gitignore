@@ -1,0 +1,19 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+
+# Build dependencies
+node_modules/
+
+# IDE files
+.idea
+
+# Backup files
+dest/style.css.backup
+
+# Temporary reference files
+scripts/.reference-libs.css
+scripts/.removed-library-rules.css
+
+# Diff reports
+scripts/extraction-diff-report.txt

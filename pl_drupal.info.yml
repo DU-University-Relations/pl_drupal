@@ -1,12 +1,11 @@
-name: Drupal Patternlab
+name: 'PL Drupal D10 (Post-Pattern Lab Era)'
 type: theme
-description: Base theme with Pattern Lab
+description: Drupal 10 theme - Pattern Lab dependencies removed
 base theme: false
-version: 3.2.2
-core_version_requirement: ^8 || ^9 || ^10
+version: 10.0.0
+core_version_requirement: ^10
 libraries:
   - pl_drupal/core
-  - pl_drupal/js_header
   - pl_drupal/attach_utm_cookies
 regions:
   header: Header
@@ -29,6 +28,6 @@ components:
       - source/_patterns/05-pages
       - source/_patterns/05-pages/01-content-page
 dependencies:
-  - drupal:components
-  - drupal:twig_field_value
-  - drupal:twig_tweak
+  - components:components
+  - twig_field_value:twig_field_value
+  - twig_tweak:twig_tweak
