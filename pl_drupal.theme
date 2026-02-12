@@ -1056,6 +1056,26 @@ function _pl_drupal_menu_process_submenu(&$submenu, $current_path) {
 /**
  * Implements hook_preprocess_views_view().
  */
+function pl_drupal_preprocess_views_view(&$variables) {
+  $view_id = $variables['view']->id();
+
+  // Attach component-filters library for views that use isotope filtering.
+  $filter_views = [
+    'programs',
+    'academic_programs',
+    'event_list',
+    'activity_card_list',
+    'find_an_expert',
+  ];
+
+  if (in_array($view_id, $filter_views)) {
+    $variables['#attached']['library'][] = 'pl_drupal/component-filters';
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_unformatted().
+ */
 function pl_drupal_preprocess_views_view_unformatted(&$vars) {
   $view = $vars['view'];
   if ($view->id() == 'du_in_the_news') {
