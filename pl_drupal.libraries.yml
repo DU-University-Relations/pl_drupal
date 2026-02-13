@@ -25,9 +25,6 @@ core:
     dest/libraries/motion-ui/dist/motion-ui.min.js:
       minified: true
       preprocess: false
-    dest/libraries/isotope-layout/dist/isotope.pkgd.min.js:
-      minified: true
-      preprocess: false
     dest/libraries/jquery.scrollto/jquery.scrollTo.min.js:
       minified: true
       preprocess: false
@@ -105,3 +102,26 @@ experiential_slideshow:
   dependencies:
     - core/jquery
     - core/drupal
+
+# Vendor library: Isotope Layout (v3.0.6)
+vendor-isotope:
+  version: '3.0.6'
+  js:
+    dest/libraries/isotope-layout/dist/isotope.pkgd.min.js:
+      minified: true
+      preprocess: false
+  dependencies:
+    - core/jquery
+
+# Attached conditionally for card/event filtering with isotope.
+component-filters:
+  version: '10.0.0'
+  js:
+    js/component-filters.js:
+      preprocess: true
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - pl_drupal/core
+    - pl_drupal/vendor-isotope
