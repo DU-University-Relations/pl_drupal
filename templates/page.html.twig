@@ -1,68 +1,65 @@
-
 {% if catastrophic_alert %}
     {{ page.content_top }}
     {{ page.content }}
 {% else %}
-    {% embed "@templates/page.twig" %}
-        {% block audience_nav %}
-            {{ page.audience_nav }}
-        {% endblock %}
+    {% embed "@templates/page-unit.twig" %}
+        {% set hide_hero = true %}
         {% if hero_video_url %}
             {% set hero_video = {
                 "id": "hero-video",
                 "is_hero_video": true,
                 "mp4_url": hero_video_url
             } %}
+            {% set hide_hero = false %}
         {% endif %}
         {% if hero_url %}
-            {% if (is_utility_page == FALSE) and (image_type == FALSE) %}
-                {% set hero_image = {
-                    '#type': 'responsive_image',
-                    '#responsive_image_style_id': 'hero_image',
-                    '#uri': hero_url,
-                    '#attributes': { 'alt': hero_alt },
-                } %}
-            {% elseif (image_type == '1') %}
-                {% set hero_image = {
-                    '#type': 'responsive_image',
-                    '#responsive_image_style_id': 'short_image',
-                    '#uri': hero_url,
-                    '#attributes': { 'alt': hero_alt },
-                } %}
-            {% else %}
-                {% set hero_image = {
-                    '#type': 'responsive_image',
-                    '#responsive_image_style_id': 'utility_hero',
-                    '#uri': hero_url,
-                    '#attributes': { 'alt': hero_alt },
-                } %}
-            {% endif %}
+          {% if (is_utility_page == FALSE) and (image_type == FALSE) %}
+              {% set hero_image = {
+                  '#type': 'responsive_image',
+                  '#responsive_image_style_id': 'hero_image',
+                  '#uri': hero_url,
+                  '#attributes': { 'alt': hero_alt },
+              } %}
+              {% set hide_hero = false %}
+          {% elseif (image_type == '1') %}
+              {% set hero_image = {
+                  '#type': 'responsive_image',
+                  '#responsive_image_style_id': 'short_image',
+                  '#uri': hero_url,
+                  '#attributes': { 'alt': hero_alt },
+              } %}
+              {% set hide_hero = false %}
+          {% else %}
+              {% set hero_image = {
+                  '#type': 'responsive_image',
+                  '#responsive_image_style_id': 'utility_hero',
+                  '#uri': hero_url,
+                  '#attributes': { 'alt': hero_alt },
+              } %}
+              {% set hide_hero = false %}
+          {% endif %}
         {% endif %}
-        {% set page_class = "off-canvas-content" %}
-        {% if is_utility_page %}
-            {% set page_class = page_class ~ " " ~ utility_page_hero_css %}
-        {% endif %}
-        {% if hide_hero %}
-            {% set page_class = page_class ~ " hide-hero" %}
-        {% endif %}
-        {% if inline_site %}
-            {% set logo = "<div class=\"logo\"><img src=\"" ~ logo_image_unit ~ "\" alt=\"Logo\"/></div>" %}
-            {% set logo_text = "<div class=\"site-identity\"><span class=\"site-name\">" ~ site_name ~ "</div>" %}
-        {% else %}
-            {% set logo = "<span><img src=\"" ~ logo_image ~ "\" alt=\"Logo\"/ width=\"224\"/>" %}
+        {% if experiential_story %}
+            {% set hide_hero = false %}
         {% endif %}
         {% block page_head %}
-            {% embed "@organisms/header.twig" %}
+            {% embed "@organisms/header-unit.twig" %}
+                {% set image_logo = unit_image_logo %}
+                {% set logo =  "<img src=\"" ~ unit_logo ~ "\" alt=\"Logo\">" %}
+
                 {% block utility_nav %}
-                    {% embed "@molecules/utility-nav.twig" %}
+                    {% embed "@molecules/unit-utility-nav.twig" %}
                         {% block utility_menu %}
-                            {{ page.utility_nav }}
+                        {{ page.utility_nav }}
                         {% endblock %}
                     {% endembed %}
                 {% endblock %}
+                {% block utility_flyouts %}
+                    {{ page.utility_flyouts }}
+                {% endblock %}
+
                 {% block utility_nav_sm %}
-                    {% embed "@molecules/utility-nav-sm.twig" %}
-                        {% set extra_class =  'show-for-small-only ' %}
+                    {% embed "@molecules/unit-utility-nav.twig" %}
                         {% block utility_menu %}
                             {{ page.utility_nav }}
                         {% endblock %}
@@ -71,6 +68,7 @@
                 {% block mega_nav %}
                     {{ page.mega_nav }}
                 {% endblock %}
+
             {% endembed %}
         {% endblock %}
         {% block content_top %}
@@ -80,11 +78,7 @@
             {{ page.content }}
         {% endblock %}
         {% block footer %}
-            {% embed "@organisms/footer.twig" %}
-                {% block footer_content %}
-                    {{ page.footer }}
-                {% endblock %}
-            {% endembed %}
+            {{ page.footer }}
         {% endblock %}
     {% endembed %}
 {% endif %}

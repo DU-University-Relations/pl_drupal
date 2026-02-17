@@ -23,14 +23,47 @@
  * @see template_preprocess_html()
  */
 #}
-
-{% set path = 'path-' ~ root_path|clean_class %}
+{% set site_url = url("<current>") %}
 
 <!DOCTYPE html>
 <html{{ html_attributes }}>
 <head>
-    {# Temporarily loading core termly script here to help it appear first #}
-    <script data-cfasync="false" src="https://app.termly.io/resource-blocker/7ba1b5fc-00c7-40fb-b9cb-ebbd46725653?autoBlock=on" async></script>
+    {# Temporarily loading each termly script here to help it appear first #}
+    {% if 'lawlibrary' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/8b202767-d6fc-45ff-aab3-6a61d608a2b9?autoBlock=on" async></script>
+    {% elseif 'library' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/7b8c0098-caf4-408e-9db2-013345088fb8?autoBlock=on" async></script>
+    {% elseif 'law' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/62c4825a-8b96-442f-8f0d-a4b32e68c23c?autoBlock=on" async></script>
+    {% elseif 'academicaffairs' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/e58991a2-9938-49d1-b380-380f49220c5b?autoBlock=on" async></script>
+    {% elseif 'alumni' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/d49c536b-909b-4798-8194-9a6023f0fa0b?autoBlock=on" async></script>
+    {% elseif 'professional' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/7e9c37c7-af3f-4181-a670-ec7f434e16e2?autoBlock=on" async></script>
+    {% elseif 'give' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/6e2223a9-0f7d-4134-b76a-c504f97a9b50?autoBlock=on" async></script>
+    {% elseif 'psychology' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/03eca1d6-4afa-41e5-9ebb-13dcdf48186d?autoBlock=on" async></script>
+    {% elseif 'internationalization' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/f6ad8c62-54c1-40c6-a59a-0121f04a671c?autoBlock=on" async></script>
+     {% elseif 'liberalarts' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/8f142037-8edf-4256-8fc9-20d63dd6830d?autoBlock=on" async></script>
+    {% elseif 'newmancenterpresents' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/5df91b44-bf90-47f0-afc6-de406ccdbf82?autoBlock=on" async></script>
+   {% elseif 'ritchieschool' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/f635db4a-070b-4edb-810f-19f25e65feb9?autoBlock=on" async></script>
+    {% elseif 'science' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/2b11733f-262f-43ed-a9f6-7a31ac6e0f36?autoBlock=on" async></script>
+    {% elseif 'socialwork' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/b6443d98-87a2-499b-8b4e-669e9dd23a9b?autoBlock=on" async></script>
+    {% elseif 'studentaffairs' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/ce1382b6-b4dc-4d77-9619-7e797bc67817?autoBlock=on" async></script>
+    {% elseif 'morgridge' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/17e7676c-3bce-432f-af8e-c2165b41676c?autoBlock=on" async></script>
+    {% elseif 'transportation' in site_url|render|render %}
+        <script data-cfasync="false" src="https://app.termly.io/resource-blocker/44ab1a94-2767-465a-a6de-9dfe2cdaf18b?autoBlock=on" async></script>
+    {% endif %}
     <head-placeholder token="{{ placeholder_token }}">
         <title>{{ head_title|safe_join(' | ') }}</title>
         <css-placeholder token="{{ placeholder_token }}">
@@ -39,11 +72,9 @@
 </head>
 
 
-<body {{ attributes.addClass(path) }} {% if unit_site_theme %}{{ attributes.addClass(unit_site_theme) }}{% else %}{{ attributes }}{% endif %}>
-
+<body {% if unit_site_theme %}{{ attributes.addClass(unit_site_theme, unit_tid, 'unit-site') }}{% else %}{{ attributes.addClass(unit_tid, 'unit-site') }}{% endif %}>
 <p class="show-on-focus">
     <a href="#main-content">Skip to Content</a></p>
-
 <div class="off-canvas-wrap">
     {{ page_top }}
     {{ page }}

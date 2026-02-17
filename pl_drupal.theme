@@ -16,6 +16,7 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\views\Views;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_theme_suggestions_page_alter().
@@ -30,9 +31,41 @@ function pl_drupal_theme_suggestions_page_alter(array &$suggestions, array $vari
  * Implements hook_preprocess_html().
  */
 function pl_drupal_preprocess_html(&$variables) {
-  $settings = \Drupal::config('du_profiles.settings');
-  if (!empty($settings->get('profile_background_tab_text'))) {
-    $variables['background_tab'] = $settings->get('profile_background_tab_text');
+  // Unit site theme configuration.
+  $settings = \Drupal::config('du_unit_site_config.settings');
+  if (!empty($settings->get('unit_site_theme'))) {
+    $variables['unit_site_theme'] = 'unit-theme-' . $settings->get('unit_site_theme');
+  }
+
+  if (!empty($settings->get('unit_site_prefix'))) {
+    $variables['site_prefix'] = $settings->get('unit_site_prefix');
+  }
+
+  $config = \Drupal::configFactory()->getEditable('du_unit_site_config.settings');
+  $term_id = $config->get('unit_site_term');
+  $term = Term::load($term_id);
+  if (!empty($term) && $term->hasField('field_unit_abbreviation')) {
+    $term_abbr = $term->get('field_unit_abbreviation')->value;
+    $variables['unit_tid'] = $term_abbr;
+  }
+
+  // Set the selected subtheme as a theme variable.
+  $config = \Drupal::config('pl_drupal.settings');
+  $subtheme_selection = $config->get('subtheme_selection');
+  if (!empty($config->get('subtheme_selection'))) {
+    $variables['subtheme_selection'] = $subtheme_selection;
+  }
+
+  // Set the CSS style selection as a theme variable.
+  $css_style_selection = $config->get('css_style_selection');
+  if (!empty($css_style_selection)) {
+    $variables['css_style_selection'] = $css_style_selection;
+  }
+
+  // Profile background tab text.
+  $profile_settings = \Drupal::config('du_profiles.settings');
+  if (!empty($profile_settings->get('profile_background_tab_text'))) {
+    $variables['background_tab'] = $profile_settings->get('profile_background_tab_text');
   }
 }
 
@@ -82,14 +115,18 @@ function pl_drupal_preprocess(&$variables, $hook, $info) {
       foreach ($tids as $tid) {
         $tags[] = $tid['target_id'];
       }
-      $results = views_get_view_result('stories', 'block_1', implode(',', $tags));
+      $view = Views::getView('stories');
+      $view->setDisplay('block_1');
+      $view->setArguments([implode(',', $tags)]);
+      $view->execute();
+      $results = $view->result;
       $view_mode = 'related_snippet';
       foreach ($results as $result) {
         $node = Node::load($result->nid);
         $story = \Drupal::entityTypeManager()
           ->getViewBuilder('node')
           ->view($node, $view_mode);
-        $stories[] = render($story);
+        $stories[] = $story;
       }
       $variables['related_stories'] = $stories;
     }
@@ -104,14 +141,18 @@ function pl_drupal_preprocess(&$variables, $hook, $info) {
       foreach ($tids as $tid) {
         $tags[] = $tid['target_id'];
       }
-      $results = views_get_view_result('stories', 'block_2', implode(',', $tags));
+      $view = Views::getView('stories');
+      $view->setDisplay('block_2');
+      $view->setArguments([implode(',', $tags)]);
+      $view->execute();
+      $results = $view->result;
       $view_mode = 'automated_snippet';
       foreach ($results as $result) {
         $node = Node::load($result->nid);
         $story = \Drupal::entityTypeManager()
           ->getViewBuilder('node')
           ->view($node, $view_mode);
-        $stories[] = render($story);
+        $stories[] = $story;
       }
       $variables['related_stories'] = $stories;
     }
@@ -294,6 +335,14 @@ function pl_drupal_preprocess_views_view_field(&$variables) {
 function pl_drupal_preprocess_page(&$variables) {
   global $base_url;
 
+  $site_config = \Drupal::config('system.site');
+  $variables['site_name'] = $site_config->get('name');
+
+  $unit_settings = \Drupal::config('du_unit_site_config.settings');
+  if (!empty($unit_settings->get('unit_site_prefix'))) {
+    $variables['site_prefix'] = $unit_settings->get('unit_site_prefix');
+  }
+
   // Determine if this node is part of an inline unit.
   $inline_unit = FALSE;
   if (\Drupal::moduleHandler()->moduleExists('du_inline_unit')) {
@@ -324,6 +373,7 @@ function pl_drupal_preprocess_page(&$variables) {
   $variables['logo_url'] = '/';
   $variables['logo_image'] = $base_url . '/' . $theme->getPath() . '/images/svg/university-of-denver-du-logo-main.svg';
   $variables['logo_image_unit'] = $base_url . '/' . $theme->getPath() . '/images/svg/university-of-denver-du-logo-unit.svg';
+  $variables['unit_logo'] = $base_url . '/' . $theme->getPath() . '/images/logo_shield_unit.png';
 
   // Default to 0 for show resources for menu.
   $variables['hide_resources_for_menu'] = 0;
@@ -333,9 +383,14 @@ function pl_drupal_preprocess_page(&$variables) {
   $variables['menu_item_count'] = 1;
   if (!empty($inline_unit)) {
     $variables['inline_site'] = TRUE;
-    $variables['logo_url'] = $inline_unit->field_home_page->entity->path->alias;
+    if ($inline_unit->hasField('field_home_page') && !empty($inline_unit->field_home_page->entity)) {
+      $variables['logo_url'] = $inline_unit->field_home_page->entity->path->alias;
+    }
 
-    $logo = $inline_unit->field_inline_unit_logo->first();
+    $logo = NULL;
+    if ($inline_unit->hasField('field_inline_unit_logo')) {
+      $logo = $inline_unit->field_inline_unit_logo->first();
+    }
     if (!empty($logo)) {
       $logo_value = $logo->getValue();
       $logo_fid = $logo_value['target_id'] ?? NULL;
@@ -343,19 +398,24 @@ function pl_drupal_preprocess_page(&$variables) {
     }
 
     // Set the site prefix and name.
-    $variables['site_prefix'] = $inline_unit->field_site_prefix->value;
-    $variables['site_name'] = $inline_unit->field_site_name->value;
+    if ($inline_unit->hasField('field_site_prefix')) {
+      $variables['site_prefix'] = $inline_unit->field_site_prefix->value;
+    }
+    if ($inline_unit->hasField('field_site_name')) {
+      $variables['site_name'] = $inline_unit->field_site_name->value;
+    }
 
     if (!empty($logo_fid)) {
       $logo = File::load($logo_fid);
       $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('unit_header_logo');
       if ($style) {
         $variables['logo_image'] = $style->buildUrl($logo->getFileUri());
+        $variables['unit_logo'] = $style->buildUrl($logo->getFileUri());
       }
     }
 
     // Get inline unit hide_resources_for_menu value.
-    if (isset($inline_unit->field_hide_resources_for_menu)) {
+    if ($inline_unit->hasField('field_hide_resources_for_menu') && isset($inline_unit->field_hide_resources_for_menu)) {
       $variables['hide_resources_for_menu'] = $inline_unit->field_hide_resources_for_menu->value;
     }
 
@@ -372,6 +432,21 @@ function pl_drupal_preprocess_page(&$variables) {
     if ($settings->get('unit_hide_resources_for_menu') !== "NULL" and !empty($settings->get('unit_hide_resources_for_menu'))) {
       $variables['hide_resources_for_menu'] = $settings->get('unit_hide_resources_for_menu');
     }
+
+    // Load unit logo from config if available.
+    if (empty($logo_fid)) {
+      $logo_fid = $settings->get('unit_site_logo');
+    }
+    if (empty($logo_alt)) {
+      $logo_alt = $settings->get('unit_site_logo_alt');
+    }
+    if (!empty($logo_fid)) {
+      $logo = File::load($logo_fid);
+      $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('unit_header_logo');
+      if (!empty($style)) {
+        $variables['unit_logo'] = $style->buildUrl($logo->getFileUri());
+      }
+    }
   }
 
   // Reset static value for this function variable to
@@ -383,20 +458,27 @@ function pl_drupal_preprocess_page(&$variables) {
     $node_type = $variables['node']->bundle();
 
     // Setup hero paragraph values from node that will be used in page template header area.
-    if (isset($variables['node']->field_hero_media_header)) {
-      $hero_paragraph = $variables['node']->field_hero_media_header->entity;
+    if (isset($variables['node']->field_unit_hero_media_header) || isset($variables['node']->field_hero_media_header)) {
+      // Try unit field first, then standard field.
+      $hero_paragraph = $variables['node']->field_unit_hero_media_header->entity ?? $variables['node']->field_hero_media_header->entity ?? NULL;
       if ($hero_paragraph) {
         if ($hero_paragraph->getType() == 'experiential_story') {
           $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
           $build = $view_builder->view($hero_paragraph, 'full');
-          $variables['experiential_story'] = render($build);
+          $variables['experiential_story'] = $build;
         }
         else {
-          if (!empty($hero_paragraph->get('field_image_type'))) {
+          // Check for unit image type field first, then standard.
+          if ($hero_paragraph->hasField('field_unit_image_type') && !empty($hero_paragraph->get('field_unit_image_type'))) {
+            $image_type = $hero_paragraph->get('field_unit_image_type')->value;
+            $variables['image_type'] = $image_type;
+          }
+          elseif ($hero_paragraph->hasField('field_image_type') && !empty($hero_paragraph->get('field_image_type'))) {
             $image_type = $hero_paragraph->get('field_image_type')->value;
             $variables['image_type'] = $image_type;
           }
-          if (!empty($hero_paragraph->get('field_hero_image')->entity)) {
+
+          if ($hero_paragraph->hasField('field_hero_image') && !empty($hero_paragraph->get('field_hero_image')->entity)) {
             $image = $hero_paragraph->get('field_hero_image')->entity;
             $variables['hero_url'] = $image->get('uri')->getString();
             $image_value = $hero_paragraph->get('field_hero_image')->first()->getValue();
@@ -406,7 +488,7 @@ function pl_drupal_preprocess_page(&$variables) {
             $variables['hero_alt'] = 'hero image';
           }
 
-          if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
+          if ($hero_paragraph->hasField('field_hero_video') && !empty($hero_paragraph->get('field_hero_video')->entity)) {
             $video = $hero_paragraph->get('field_hero_video')->entity;
             $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
               ->getString());
@@ -415,14 +497,64 @@ function pl_drupal_preprocess_page(&$variables) {
           if ($node_type == 'home_page') {
             $variables['is_home'] = TRUE;
             $variables['headline']['type'] = 'h1';
-            $variables['headline']['title'] = $hero_paragraph->get('field_hero_caption')->value;
+            // Check unit headline field first, then standard field.
+            if ($hero_paragraph->hasField('field_unit_hero_headline') && !empty($hero_paragraph->get('field_unit_hero_headline'))) {
+              $variables['headline']['title'] = $hero_paragraph->get('field_unit_hero_headline')->value;
+            }
+            elseif ($hero_paragraph->hasField('field_hero_caption') && !empty($hero_paragraph->get('field_hero_caption'))) {
+              $variables['headline']['title'] = $hero_paragraph->get('field_hero_caption')->value;
+            }
+
+            // Support for unit hero display class.
+            if ($hero_paragraph->hasField('field_unit_hero_display') && !empty($hero_paragraph->get('field_unit_hero_display'))) {
+              $variables['hero_class'] = $hero_paragraph->get('field_unit_hero_display')->value;
+            }
+
+            // Support for unit hero caption.
+            if ($hero_paragraph->hasField('field_unit_hero_link') && $hero_paragraph->hasField('field_unit_hero_caption') && !empty($hero_paragraph->get('field_unit_hero_caption'))) {
+              $variables['hero_caption'] = $hero_paragraph->get('field_unit_hero_caption')->value;
+            }
+
+            // Support for multiple hero links (unit style).
+            if ($hero_paragraph->hasField('field_unit_hero_link')) {
+              $hero_link_array = $hero_paragraph->get('field_unit_hero_link');
+              if (count($hero_link_array) > 0) {
+                if (!empty($hero_link_array[0])) {
+                  $variables['hero_link'][0]['title'] = $hero_link_array[0]->title;
+                  $variables['hero_link'][0]['href'] = Url::fromUri($hero_link_array[0]->uri);
+                }
+                if (count($hero_link_array) > 1 && !empty($hero_link_array[1])) {
+                  $variables['hero_link'][1]['title'] = $hero_link_array[1]->title;
+                  $variables['hero_link'][1]['href'] = Url::fromUri($hero_link_array[1]->uri);
+                }
+              }
+            }
           }
           else {
-            $variables['hero_caption'] = $hero_paragraph->get('field_hero_caption')->value;
+            // Check unit caption field first, then standard field.
+            if ($hero_paragraph->hasField('field_unit_hero_caption') && !empty($hero_paragraph->get('field_unit_hero_caption'))) {
+              $variables['hero_caption'] = $hero_paragraph->get('field_unit_hero_caption')->value;
+            }
+            elseif ($hero_paragraph->hasField('field_hero_caption') && !empty($hero_paragraph->get('field_hero_caption'))) {
+              $variables['hero_caption'] = $hero_paragraph->get('field_hero_caption')->value;
+            }
           }
-          $variables['hero_headline'] = $hero_paragraph->get('field_headline')->value;
-          $variables['hero_subhead'] = $hero_paragraph->get('field_subhead')->value;
-          $variables['hero_embed'] = $hero_paragraph->get('field_hero_embed')->value;
+          if ($hero_paragraph->hasField('field_headline')) {
+            $variables['hero_headline'] = $hero_paragraph->get('field_headline')->value;
+          }
+          if ($hero_paragraph->hasField('field_subhead')) {
+            $variables['hero_subhead'] = $hero_paragraph->get('field_subhead')->value;
+          }
+          // Check unit embed field first, then standard field.
+          if ($hero_paragraph->hasField('field_unit_hero_embed') && !empty($hero_paragraph->get('field_unit_hero_embed'))) {
+            $variables['hero_embed'] = $hero_paragraph->get('field_unit_hero_embed')->value;
+          }
+          elseif ($hero_paragraph->hasField('field_hero_embed') && !empty($hero_paragraph->get('field_hero_embed'))) {
+            $variables['hero_embed'] = $hero_paragraph->get('field_hero_embed')->value;
+          }
+          if ($hero_paragraph->hasField('field_unit_hero_embed')) {
+            $variables['unit_hero_embed'] = $hero_paragraph->get('field_unit_hero_embed')->value ?? '';
+          }
         }
       }
     }
@@ -431,11 +563,15 @@ function pl_drupal_preprocess_page(&$variables) {
     }
     if (isset($node_type) && $node_type == 'local_program') {
       $variables['headline']['type'] = 'h1';
+      $variables['hero_title'] = TRUE;
+      $variables['hero_background'] = TRUE;
     }
     if (isset($node_type) && $node_type == 'academic_program') {
       $variables['headline']['type'] = 'h1';
+      $variables['hero_title'] = TRUE;
+      $variables['hero_background'] = TRUE;
       // For Academic Program, if field_page_title is set, use that as the headline title.
-      if (!empty($variables['node']->get('field_page_title')->value)) {
+      if ($variables['node']->hasField('field_page_title') && !empty($variables['node']->get('field_page_title')->value)) {
         $variables['headline']['title'] = $variables['node']->get('field_page_title')->value;
       }
     }
@@ -446,13 +582,13 @@ function pl_drupal_preprocess_page(&$variables) {
       // Utility Pages don't use hero caption as far as design spec, reset to blank.
       $variables['hero_caption'] = '';
 
-      if (isset($variables['node']->field_hide_social_media_region) && $variables['node']->get('field_hide_social_media_region')->value) {
+      if ($variables['node']->hasField('field_hide_social_media_region') && $variables['node']->get('field_hide_social_media_region')->value) {
         // Remove footer Social Media Bar if this functionality and field is set and is true for removing it from display.
         unset($variables['page']['footer']['socialmediabar']);
         unset($variables['page']['footer']['defaultsocialmedia']);
       }
     }
-    if (isset($variables['node']->field_hide_footer_cta_region) && $variables['node']->get('field_hide_footer_cta_region')->value) {
+    if ($variables['node']->hasField('field_hide_footer_cta_region') && $variables['node']->get('field_hide_footer_cta_region')->value) {
       // Remove Footer CTA Bar if this functionality and field is set and is true for removing it from display.
       unset($variables['page']['footer']['defaultfooterctas']);
       unset($variables['page']['footer']['footerctas']);
@@ -476,8 +612,12 @@ function pl_drupal_preprocess_page(&$variables) {
                 $entity = \Drupal::routeMatch()
                   ->getParameter($entityTypeIndicator);
                 if (is_object($entity) && $entity instanceof ContentEntityInterface) {
-                  if (($entity->hasField('field_hero_media_header') && !empty($entity->get('field_hero_media_header'))) || ($entity->hasField('field_program_hero_image') && !empty($entity->get('field_program_hero_image')))) {
-                    if ($entity->hasField('field_hero_media_header')) {
+                  if (($entity->hasField('field_unit_hero_media_header') && !empty($entity->get('field_unit_hero_media_header'))) || ($entity->hasField('field_hero_media_header') && !empty($entity->get('field_hero_media_header'))) || ($entity->hasField('field_program_hero_image') && !empty($entity->get('field_program_hero_image')))) {
+                    // Check for unit hero field first, then standard field.
+                    if ($entity->hasField('field_unit_hero_media_header')) {
+                      $hero_paragraph = $entity->get('field_unit_hero_media_header')->entity;
+                    }
+                    elseif ($entity->hasField('field_hero_media_header')) {
                       $hero_paragraph = $entity->get('field_hero_media_header')->entity;
                     }
                     else {
@@ -490,7 +630,7 @@ function pl_drupal_preprocess_page(&$variables) {
                       $hero_program_field = NULL;
                     }
                     if ($hero_paragraph) {
-                      if (!empty($hero_paragraph->get('field_hero_image')->entity)) {
+                      if ($hero_paragraph->hasField('field_hero_image') && !empty($hero_paragraph->get('field_hero_image')->entity)) {
                         $image = $hero_paragraph->get('field_hero_image')->entity;
                         $variables['hero_url'] = $image->get('uri')
                           ->getString();
@@ -502,7 +642,7 @@ function pl_drupal_preprocess_page(&$variables) {
                       else {
                         $variables['hero_alt'] = 'hero image';
                       }
-                      if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
+                      if ($hero_paragraph->hasField('field_hero_video') && !empty($hero_paragraph->get('field_hero_video')->entity)) {
                         $video = $hero_paragraph->get('field_hero_video')->entity;
                         $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
                           ->getString());
@@ -532,7 +672,7 @@ function pl_drupal_preprocess_page(&$variables) {
   // there is another utility block specified, then use that.
   $block_id = 'utilitymenu';
   $block_id2 = 'utilitymenu_2';
-  if (!empty($inline_unit) && !empty($inline_unit->field_utility_block->entity)) {
+  if (!empty($inline_unit) && $inline_unit->hasField('field_utility_block') && !empty($inline_unit->field_utility_block->entity)) {
     $block_id = $block_id2 = $inline_unit->field_utility_block->entity->id();
   }
 
@@ -542,7 +682,7 @@ function pl_drupal_preprocess_page(&$variables) {
     $block_content = \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($block);
-    $variables['utility_menu_desktop'] = ['#markup' => \Drupal::service('renderer')->render($block_content)];
+    $variables['utility_menu_desktop'] = $block_content;
   }
 
   // Rendering unique utility menu for mobile.
@@ -551,7 +691,7 @@ function pl_drupal_preprocess_page(&$variables) {
     $block_content = \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($block);
-    $variables['utility_menu_mobile'] = ['#markup' => \Drupal::service('renderer')->render($block_content)];
+    $variables['utility_menu_mobile'] = $block_content;
   }
 
   if (\Drupal::moduleHandler()->moduleExists('du_elevate_display')) {
@@ -583,7 +723,10 @@ function pl_drupal_preprocess_paragraph(&$variables) {
 
     // Override the link for admission steps to the most recent admission steps
     // node.
-    $url = $paragraph->field_app_info_card_link->first()->getValue()['uri'] ?? '';
+    $url = '';
+    if ($paragraph->hasField('field_app_info_card_link')) {
+      $url = $paragraph->field_app_info_card_link->first()->getValue()['uri'] ?? '';
+    }
     if (strpos($url, 'admission-steps') !== FALSE) {
       // Loop through parent entities until we get to the academic program node.
       $academic_program = $paragraph->getParentEntity();
@@ -610,7 +753,7 @@ function pl_drupal_preprocess_paragraph(&$variables) {
 
     // If the admission steps is found, set the deadline to the closest deadline
     // that hasn't passed.
-    if (!empty($admission_steps)) {
+    if (!empty($admission_steps) && $admission_steps->hasField('field_academic_year')) {
       $year = explode('-', $admission_steps->field_academic_year->value);
       if (is_numeric($year[0]) && is_numeric($year[1])) {
         $fields = [
@@ -633,7 +776,6 @@ function pl_drupal_preprocess_paragraph(&$variables) {
         ];
         $now = new DrupalDateTime();
         $nearest_deadline = NULL;
-        $nearest_name = NULL;
         foreach ($fields as $field => $name) {
           $date = $admission_steps->{$field}->value;
           if (!empty($date)) {
@@ -658,13 +800,26 @@ function pl_drupal_preprocess_paragraph(&$variables) {
   elseif ($bundle == 'homepage_section_copy') {
     $variables['headline_type'] = 'h2';
     $node = $paragraph->getParentEntity();
-    if (!empty($node) && !empty($node->field_hero_media_header)) {
-      $hero_media_header = $node->field_hero_media_header->entity;
+    // Check for unit hero field first, then standard field.
+    if (!empty($node) && (($node->hasField('field_unit_hero_media_header') && !empty($node->field_unit_hero_media_header)) || ($node->hasField('field_hero_media_header') && !empty($node->field_hero_media_header)))) {
+      $hero_media_header = ($node->hasField('field_unit_hero_media_header') ? $node->field_unit_hero_media_header->entity : NULL) ?? ($node->hasField('field_hero_media_header') ? $node->field_hero_media_header->entity : NULL) ?? NULL;
       if (!empty($hero_media_header)) {
-        $variables['headline_type'] = !empty($hero_media_header->field_hero_caption->value) ? 'h2' : 'h1';
+        // Check unit headline field first, then standard field.
+        $hero_caption_check = ($hero_media_header->hasField('field_unit_hero_headline') && !empty($hero_media_header->field_unit_hero_headline->value))
+          ? $hero_media_header->field_unit_hero_headline->value
+          : (($hero_media_header->hasField('field_hero_caption') && !empty($hero_media_header->field_hero_caption->value)) ? $hero_media_header->field_hero_caption->value : NULL);
+
+        $variables['headline_type'] = !empty($hero_caption_check) ? 'h2' : 'h1';
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function pl_drupal_preprocess_block(&$variables) {
+  $variables['content']['#attributes']['block'] = $variables['attributes']['id'];
 }
 
 /**
@@ -674,13 +829,15 @@ function pl_drupal_preprocess_paragraph__news_carousel_item(&$variables) {
   $paragraph = $variables['paragraph'];
   $title = '';
   $description = '';
-  if (!empty($paragraph->field_link->uri) && strpos($paragraph->field_link->uri, 'entity:') !== FALSE) {
+  if ($paragraph->hasField('field_link') && !empty($paragraph->field_link->uri) && strpos($paragraph->field_link->uri, 'entity:') !== FALSE) {
     $params = Url::fromUri('internal:' . str_replace('entity:', '/', $paragraph->field_link->uri))->getRouteParameters();
     $entity_type = key($params);
     $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
     if ($entity_type === 'node' && $entity->bundle() === 'article') {
       $title = strip_tags($entity->title->value);
-      $description = strip_tags($entity->field_article_teaser->value);
+      if ($entity->hasField('field_article_teaser')) {
+        $description = strip_tags($entity->field_article_teaser->value);
+      }
     }
   }
   $variables['title'] = $title;
@@ -716,10 +873,13 @@ function pl_drupal_preprocess_node(&$variables) {
   // Grabing feature image from article for schema.
   if ($variables['node']->bundle() == 'article') {
     $node = $variables['node'];
-    $paragraph = $node->field_page_overview->entity ?? NULL;
-    if (!empty($paragraph)) {
+    $paragraph = NULL;
+    if ($node->hasField('field_page_overview')) {
+      $paragraph = $node->field_page_overview->entity ?? NULL;
+    }
+    if (!empty($paragraph) && $paragraph->hasField('field_feature_media')) {
       $nested_paragraph = $paragraph->field_feature_media->entity ?? NULL;
-      if (!empty($nested_paragraph)) {
+      if (!empty($nested_paragraph) && $nested_paragraph->hasField('field_feature_media_image')) {
         $feature_media_image = $nested_paragraph->field_feature_media_image ?? NULL;
         if (!empty($feature_media_image)) {
           $image = $feature_media_image->first()->entity;
@@ -738,13 +898,15 @@ function pl_drupal_preprocess_node(&$variables) {
     $variables['#attached']['library'][] = 'pl_drupal/research-project';
     $unit_affiliation_url = NULL;
     $unit_affiliation_name = NULL;
-    $res_proj_unit = $variables['node']->field_res_proj_unit->entity;
-    if (!is_null($res_proj_unit)) {
-      $unit_id = $res_proj_unit->get('tid')->value;
-      $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($unit_id);
-      if (!empty($term_obj->field_unit_url) && isset($term_obj->field_unit_url) && !is_null($term_obj->field_unit_url->uri)) {
-        $unit_affiliation_url = $term_obj->field_unit_url->uri;
-        $unit_affiliation_name = $term_obj->name->value;
+    if ($variables['node']->hasField('field_res_proj_unit')) {
+      $res_proj_unit = $variables['node']->field_res_proj_unit->entity;
+      if (!is_null($res_proj_unit)) {
+        $unit_id = $res_proj_unit->get('tid')->value;
+        $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($unit_id);
+        if ($term_obj && $term_obj->hasField('field_unit_url') && !is_null($term_obj->field_unit_url->uri)) {
+          $unit_affiliation_url = $term_obj->field_unit_url->uri;
+          $unit_affiliation_name = $term_obj->name->value;
+        }
       }
     }
     $variables['content']['field_res_proj_unit_url'] = $unit_affiliation_url;
@@ -758,14 +920,14 @@ function pl_drupal_preprocess_node(&$variables) {
     $vid = "unit";
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
     $unit_affiliation_arr = [];
-    if (count($variables['node']->field_profile_unit_affiliation) > 1) {
+    if ($variables['node']->hasField('field_profile_unit_affiliation') && count($variables['node']->field_profile_unit_affiliation) > 1) {
       $nodes = $variables['node']->field_profile_unit_affiliation;
       foreach ($nodes as $node) {
         $nid = $node->entity->get('tid')->value;
         foreach ($terms as $term) {
           if ($nid === $term->tid) {
             $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid);
-            if (!empty($term_obj->field_unit_url) && isset($term_obj->field_unit_url) && !is_null($term_obj->field_unit_url->uri)) {
+            if ($term_obj->hasField('field_unit_url') && !is_null($term_obj->field_unit_url->uri)) {
               $unit_affiliation_arr[] = $term_obj->field_unit_url->uri;
             }
             else {
@@ -781,13 +943,13 @@ function pl_drupal_preprocess_node(&$variables) {
         $variables['content']['field_profile_unit_affiliation'][$i] = $new_arr;
       }
     }
-    else {
+    elseif ($variables['node']->hasField('field_profile_unit_affiliation')) {
       if (!is_null($variables['node']->field_profile_unit_affiliation->entity)) {
         $node = $variables['node']->field_profile_unit_affiliation->entity->get('tid')->value;
         foreach ($terms as $term) {
           if ($node === $term->tid) {
             $term_obj = Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid);
-            if (!empty($term_obj->field_unit_url) && isset($term_obj->field_unit_url) && !is_null($term_obj->field_unit_url->uri)) {
+            if ($term_obj->hasField('field_unit_url') && !is_null($term_obj->field_unit_url->uri)) {
               $unit_affiliation_arr[] = $term_obj->field_unit_url->uri;
             }
             else {
@@ -805,13 +967,13 @@ function pl_drupal_preprocess_node(&$variables) {
     }
 
     // Hide custom tab if no content is provided.
-    if (empty($variables['node']->field_custom_tab_title->value) && empty($variables['node']->field_custom_tab_text->value)) {
+    if ($variables['node']->hasField('field_custom_tab_title') && $variables['node']->hasField('field_custom_tab_text') && empty($variables['node']->field_custom_tab_title->value) && empty($variables['node']->field_custom_tab_text->value)) {
       $variables['hide_custom_tab'] = TRUE;
     }
 
     // Render HTML for "What I do" field.
     $variables['what_i_do'] = ['#markup' => ''];
-    if (!empty($variables['node']->field_profile_what_i_do->value)) {
+    if ($variables['node']->hasField('field_profile_what_i_do') && !empty($variables['node']->field_profile_what_i_do->value)) {
       $variables['what_i_do'] = ['#markup' => $variables['node']->field_profile_what_i_do->value];
     }
   }
@@ -827,7 +989,7 @@ function pl_drupal_preprocess_region(&$variables) {
       $node = \Drupal::routeMatch()->getParameter('node');
       if (isset($node) && $node instanceof NodeInterface) {
         $inline_unit = du_inline_unit_get_inline_unit($node);
-        if (!empty($inline_unit) && !empty($inline_unit->field_menu->entity)) {
+        if (!empty($inline_unit) && $inline_unit->hasField('field_menu') && !empty($inline_unit->field_menu->entity)) {
           // Render the inline unit menu to overwrite the main menu.
           $menu = $inline_unit->field_menu->entity->id();
           $block_manager = \Drupal::service('plugin.manager.block');
@@ -863,7 +1025,9 @@ function pl_drupal_add_regions_to_node($allowed_regions, &$variables) {
   $theme = \Drupal::theme()->getActiveTheme()->getName();
 
   // Retrieve theme regions.
-  $available_regions = system_region_list($theme, 'REGIONS_ALL');
+  $theme_handler = \Drupal::service('theme_handler');
+  $theme_info = $theme_handler->listInfo()[$theme];
+  $available_regions = $theme_info->info['regions'] ?? [];
 
   // Validate allowed regions with available regions.
   $regions = array_intersect(array_keys($available_regions), $allowed_regions);
@@ -916,6 +1080,12 @@ function pl_drupal_add_regions_to_node($allowed_regions, &$variables) {
  * Implements hook_theme_suggestions_HOOK_alter() for form templates.
  */
 function pl_drupal_theme_suggestions_menu_alter(array &$suggestions, array &$variables) {
+  // Check for block attribute (unit style).
+  if (isset($variables['attributes']['block'])) {
+    $suggestions[0] = 'menu__utility_menu';
+    $suggestions[] = 'menu__utilitymenu';
+  }
+
   $key = '';
   $module_handler = \Drupal::moduleHandler();
   if ($module_handler->moduleExists('du_inline_unit') && !empty($variables['menu_name'])) {
@@ -949,6 +1119,18 @@ function pl_drupal_theme_suggestions_menu_alter(array &$suggestions, array &$var
  * Implements hook_theme_suggestions_HOOK_alter() for form templates.
  */
 function pl_drupal_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Add utility menu suggestion if in utility_nav region.
+  if (isset($variables['elements']['#id'])) {
+    $block = Block::load($variables['elements']['#id']);
+    if (!empty($block)) {
+      $region = $block->getRegion();
+      if ($region == 'utility_nav') {
+        $suggestions = [];
+        $suggestions[] = 'block__system_menu_block__utility_menu';
+      }
+    }
+  }
+
   // Block suggestions for custom block bundles.
   if (isset($variables['elements']['content']['#block_content'])) {
     $bundle = $variables['elements']['content']['#block_content']->bundle();
@@ -1191,30 +1373,33 @@ function pl_drupal_theme_suggestions_form_alter(array &$suggestions, array $vari
  * Implements hook_form_system_theme_settings_alter().
  */
 function pl_drupal_form_system_theme_settings_alter(&$form, &$form_state) {
+  // Load the current configuration for the theme settings.
+  $config = \Drupal::config('pl_drupal.settings');
+
   // Add a dropdown for selecting the subtheme.
   $form['css_style_selection'] = [
     '#type' => 'select',
-    '#title' => t('Select CSS Style Mode'),
+    '#title' => t('Select CSS Style for this site'),
     '#options' => [
       'default' => t('Default'),
       'sparkle' => t('Sparkle'),
       'beta' => t('Beta'),
     ],
-    '#default_value' => theme_get_setting('css_style_selection'),
-    '#description' => t('Select the CSS style for this site.'),
+    '#default_value' => $config->get('css_style_selection') ?: 'default',
+    '#description' => t('Select the CSS style for this site. Current value: @current_value', ['@current_value' => $config->get('css_style_selection') ?: 'default']),
   ];
-  // add an additional submit handler
+  // Add an additional submit handler.
   $form['#submit'][] = 'pl_drupal_form_submit';
 }
 
 /**
- * Custom submit handler
+ * Custom submit handler.
  */
- function pl_drupal_form_submit(){
-  // @TODO - this really only needs to run if css_style_selection changes
+function pl_drupal_form_submit() {
+  // @todo Fix this to only run if css_style_selection changes.
   drupal_flush_all_caches();
   \Drupal::messenger()->addStatus(t('Cache has been cleared. Everyone should now see the front end theme using the version of the CSS you selected.'));
- }
+}
 
 /**
  * Implements hook_library_info_alter().
@@ -1222,14 +1407,10 @@ function pl_drupal_form_system_theme_settings_alter(&$form, &$form_state) {
 function pl_drupal_library_info_alter(&$libraries, $extension) {
   $default_theme = \Drupal::config('system.theme')->get('default');
   if ($default_theme === 'pl_drupal' && isset($libraries['core']['css']['theme'])) {
-    // $libraries['core']['css']['theme'] key starts = 'dest/style.css',
-    // but can be reset to 'dest/sparkle.css' or 'https://cdn.du.edu/css/style-www.css'
-
     $css_style = \Drupal::config('pl_drupal.settings')->get('css_style_selection') ?: 'default';
 
-    //we don't care what it was previously set to
-    // try to unset all 3 of the potential options if they exist
-
+    // We don't care what it was previously set to.
+    // Try to unset all 3 of the potential options if they exist.
     if (isset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/style.css'])) {
       unset($libraries['core']['css']['theme']['/themes/custom/pl_drupal/dest/style.css']);
     }
@@ -1240,19 +1421,22 @@ function pl_drupal_library_info_alter(&$libraries, $extension) {
       unset($libraries['core']['css']['theme']['https://cdn.du.edu/css/style-www.css']);
     }
 
-    switch($css_style) {
+    switch ($css_style) {
       case 'sparkle':
         $new_path_key = '/themes/custom/pl_drupal/dest/sparkle.css';
         break;
+
       case 'beta':
         $new_path_key = 'https://cdn.du.edu/css/style-www.css';
         break;
+
       default:
-       $new_path_key = '/themes/custom/pl_drupal/dest/style.css';
+        $new_path_key = '/themes/custom/pl_drupal/dest/style.css';
     }
 
-    // there is a lot more we could be doing here, but this is enough for the MVP
-    $css_options = array('preprocess' => 1);
+    // There is a lot more we could be doing here.
+    // This is enough for the MVP.
+    $css_options = ['preprocess' => 1];
 
     $libraries['core']['css']['theme'][$new_path_key] = $css_options;
 
@@ -1264,11 +1448,12 @@ function pl_drupal_library_info_alter(&$libraries, $extension) {
  */
 function pl_drupal_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
   $css_style = \Drupal::config('pl_drupal.settings')->get('css_style_selection');
-  // wrap this in default theme check so it doesn't file when unit or micro are being used
+  // Wrap this in default theme check.
+  // It doesn't file when unit or micro are being used.
   $default_theme = \Drupal::config('system.theme')->get('default');
   if ($default_theme === 'pl_drupal') {
-      if ($css_style == 'sparkle' || $css_style == 'beta') {
-        unset($css['themes/custom/pl_drupal/dest/style.css']);
-      }
+    if ($css_style == 'sparkle' || $css_style == 'beta') {
+      // unset($css['themes/custom/pl_drupal/dest/style.css']);
+    }
   }
 }
