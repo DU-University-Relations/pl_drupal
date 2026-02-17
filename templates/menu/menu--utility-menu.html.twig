@@ -24,9 +24,10 @@
 
 {%
   set utility_menu_options = {
-  "hide_resource_for_menu": utility_resource_for_menu_display,
-  "flyout_title": flyout_menu_title,
-}
+    "hide_resource_for_menu": utility_resource_for_menu_display,
+    "du_elevate_display_active": du_elevate_display_active,
+    "flyout_title": flyout_menu_title,
+  }
 %}
 
 {#
@@ -42,7 +43,7 @@
 {%
     set ul_classes = [
     'menu',
-    'align-right',
+    'utility-links',
 ]
 %}
 
@@ -53,19 +54,48 @@
     {% endif %}
     <div class="menu-toggle-utility">
       <span class="menu-toggle-utility__title">Explore</span>
-    {% for item in items %}
-      <li{{ item.attributes }}>
-        {{ link(item.title, item.url) }}
-        {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-        {% endif %}
-      </li>
-    {% endfor %}
+      {% for item in items %}
+        <li{{ item.attributes }}>
+          {{ link(item.title, item.url) }}
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        </li>
+      {% endfor %}
     </div>
-    {% if not utility_menu_options.hide_resource_for_menu %}
-      <li class="audience-menu"><a href="#audience-menu" data-toggle="audience-menu">{{ utility_menu_options.flyout_title ? utility_menu_options.flyout_title : "Resources For" }}</a></li>
-    {% endif %}
-
     </ul>
+      <ul class="menu meta-navigation">
+        {% if not utility_menu_options.hide_resource_for_menu %}
+          <li>
+              <a href="#utility-resources-for" class="unit-utility-menu__audience-button">
+                  <span class="toggle-icon">{% include "@atoms/_du-icon.twig" with {"icon_name": "user", "bold":true} %}</span>
+                  <span class="toggle-label">{{ utility_menu_options.flyout_title ? utility_menu_options.flyout_title : "Resources For" }}</span>
+                  <span class="icon-du-down-dir"></span>
+              </a>
+          </li>
+        {% endif %}
+          <li>
+              <a href="#utility-sites-list" class="unit-utility-menu__sites-button">
+                  <span class="toggle-icon">{% include "@atoms/_du-icon.twig" with {"icon_name": "main-logo"} %}</span>
+                  <span class="toggle-label">DU Websites</span>
+                  <span class="icon-du-down-dir"></span>
+              </a>
+          </li>
+          <li>
+              <a href="#utility-main-search" class="unit-utility-menu__search-button">
+                  <span class="toggle-icon">{% include "@atoms/_du-icon.twig" with {"icon_name": "cust-search"} %}</span>
+                  <span class="toggle-label">Search</span>
+              </a>
+          </li>
+          {% if utility_menu_options.du_elevate_display_active %}
+            <li>
+              <a href="#utility-elevate-cart-popup" class="unit-utility-menu__cart-button">
+                <span class="toggle-icon">{% include "@atoms/_du-icon.twig" with {"icon_name": "basket"} %}</span>
+                <span class="toggle-label">Cart</span>
+                <span class="items-in-cart">6</span>
+              </a>
+            </li>
+          {% endif %}
+      </ul>
   {% endif %}
 {% endmacro %}

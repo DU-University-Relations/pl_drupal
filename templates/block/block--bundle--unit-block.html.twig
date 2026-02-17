@@ -1,0 +1,90 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set unit = content.field_unit|field_target_entity %}
+{% set footer = {
+    "address": {
+        "office": unit.field_unit_office.value,
+        "division": unit.field_unit_division.value,
+        "university": unit.field_unit_university.value,
+        "address1": unit.field_unit_address1.value,
+        "address2": unit.field_unit_address2.value
+    },
+    "info": {
+        "email": unit.field_unit_email.value,
+        "phone": unit.field_unit_phone.value,
+        "fax": unit.field_unit_fax.value
+    }
+} %}
+{% set footerlinks = [] %}
+{% for items in unit.field_unit_footer_link %}
+    {% set footerlink = {
+        "title": items.title,
+        "href": items.uri,
+        "alt_text": items.options.attributes.title,
+        "target": items.options.attributes.target,
+        "onclick": items.options.attributes.onclick
+    } %}
+    {% set footerlinks = footerlinks|merge([footerlink]) %}
+{% endfor %}
+{% if (unit.field_unit_url is not empty) and (unit.field_unit_logo is not empty) %}
+    {% set href = unit.field_unit_url.0.uri %}
+    {% set cssClass = "logo" %}
+    {% set alt_text = unit.field_unit_logo.0.alt %}
+    {% set src = file_url(unit.field_unit_logo.0.entity.uri.value) %}
+    {% set image = {
+      "alt_text": alt_text,
+      "src": src,
+    } %}
+    {% set logo = {
+        "logo": {
+            "href": href,
+            "cssClass": cssClass,
+            "image": image,
+        }
+    } %}
+{% endif %}
+{% set icons = [] %}
+{% for link in unit.field_unit_social_links %}
+    {% set icon = {
+        "icon_class": link.entity.field_du_icon.value,
+        "url": link.entity.field_icon_link_link.0.url
+    } %}
+    {% set icons = icons|merge([icon]) %}
+{% endfor %}
+{% set social = {
+    "social": {
+        "text": content.field_social_links_title|field_value,
+        "icons" : icons
+    }
+} %}
+{% set footer = footer|merge(social) %}
+{% include "@organisms/footer-site-level.twig" with footer %}
+
