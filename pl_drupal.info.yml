@@ -2,7 +2,7 @@ name: 'PL Drupal D10 (Post-Pattern Lab Era)'
 type: theme
 description: Drupal 10 theme - Pattern Lab dependencies removed
 base theme: false
-version: 3.0.0-alpha3
+version: 3.0.0-alpha4
 core_version_requirement: ^10
 libraries:
   - pl_drupal/core
