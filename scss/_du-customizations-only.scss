@@ -1,7 +1,7 @@
 /**
  * DU Alumni Customizations
  * Extracted from sparkle.css
- * Auto-generated on 2026-02-13
+ * Auto-generated on 2026-02-20
  *
  * This file contains only DU-specific styles.
  * Foundation, Drupal tabs, and Slick carousel styles have been removed.
@@ -2402,10 +2402,6 @@ body {
 /* '' */
 .icon-info:before {
   content: '\f129'; }
-
-/* '' */
-.icon-du-calendar-empty:before {
-  content: '\f133'; }
 
 /* '' */
 .icon-du-chevron-circle-right:before {
@@ -6144,7 +6140,7 @@ a.btn#red-grey:hover {
   background-color: $du-crimson;
   text-decoration: underline;
   transition: all 0.25s ease; }
-.btn.btn--event-filter, .btn.btn--academic-filter, button.default.btn--event-filter, button.default.btn--academic-filter, a.btn.btn--event-filter, a.btn.btn--academic-filter {
+.btn.btn--academic-filter, button.default.btn--academic-filter, a.btn.btn--academic-filter {
   border: .2rem solid #b1b1b1;
   background-color: white;
   color: #81796f !important;
@@ -6155,13 +6151,13 @@ a.btn#red-grey:hover {
   text-align: center;
   line-height: 1;
   transition: all 0.25s ease; }
-.btn.btn--event-filter:hover, .btn.btn--event-filter:focus, .btn.btn--event-filter.active, .btn.btn--academic-filter:hover, .btn.btn--academic-filter:focus, .btn.btn--academic-filter.active, button.default.btn--event-filter:hover, button.default.btn--event-filter:focus, button.default.btn--event-filter.active, button.default.btn--academic-filter:hover, button.default.btn--academic-filter:focus, button.default.btn--academic-filter.active, a.btn.btn--event-filter:hover, a.btn.btn--event-filter:focus,a.btn.btn--event-filter.active, a.btn.btn--academic-filter:hover, a.btn.btn--academic-filter:focus, a.btn.btn--academic-filter.active {
+.btn.btn--academic-filter:hover, .btn.btn--academic-filter:focus, .btn.btn--academic-filter.active, button.default.btn--academic-filter:hover, button.default.btn--academic-filter:focus, button.default.btn--academic-filter.active, a.btn.btn--academic-filter:hover, a.btn.btn--academic-filter:focus, a.btn.btn--academic-filter.active {
   background-color: $du-crimson;
   text-decoration: none;
   border: 0.2rem solid $du-crimson;
   color: white !important;
   transition: all 0.25s ease; }
-.btn.btn--event-filter.info, .btn.btn--academic-filter.info, button.default.btn--event-filter.info, button.default.btn--academic-filter.info, a.btn.btn--event-filter.info, a.btn.btn--academic-filter.info {
+.btn.btn--academic-filter.info, button.default.btn--academic-filter.info, a.btn.btn--academic-filter.info {
   width: 4.5rem;
   font-size: 2.6rem;
   padding: .8rem 0;
@@ -9459,266 +9455,6 @@ body.du-home article#main-content .cta-module .content h3 {
       border-bottom: 0.1rem solid $light-gray-2;
       padding-bottom: 4%; }
 
-.event-card {
-  height: 100%;
-  color: $medium-gray;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; }
-  @media print, screen and (min-width: 48em) {
-    .event-card {
-      padding-right: 1.0rem; } }
-  .event-card:hover h3, .event-card:focus h3 {
-    color: $link-teal-light; }
-  .event-card:hover .btn, .event-card:focus .btn {
-    background-color: #898B8E; }
-  .event-card p {
-    font-size: 1.5rem;
-    margin-bottom: 0; }
-    @media print, screen and (min-width: 48em) {
-      .event-card p {
-        font-size: 1.6rem; } }
-    .event-card p:first-child {
-      font-size: 1.7rem;
-      font-weight: 600;}
-    .event-card p [class*="icon-du"] {
-      color: $near-black; }
-  .event-card h3 {
-    font-size: 2.2rem;
-    line-height: 2.8rem;
-    margin-top: .1rem;
-    color: $near-black;
-    font-weight: 600;}
-    @media print, screen and (min-width: 48em) {
-      .event-card h3 {
-        font-size: 2.2rem;
-        line-height: 1.3; } }
-  .event-card .event-listing__details-button {
-    margin-top: auto; }
-  .event-card .btn {
-    padding: .7rem 2.4rem;
-    margin-top: 1.7rem; }
-  .event-card.visible {
-    width: 30%;
-    padding-right: 2%;
-    height: 30.0rem; }
-
-@media print, screen and (min-width: 48em) {
-  .columns.event-full, .paragraph--type--du-in-the-news-list .event-full.views-element-container, .event-full.paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list header.event-full {
-    margin-bottom: 5rem; } }
-
-.events-listing__top-filters {
-  border-bottom: 0.2rem solid $light-gray-2;
-  text-align: center; }
-  @media print, screen and (min-width: 48em) {
-    .events-listing__top-filters {
-      text-align: left; } }
-  @media print, screen and (max-width: 47.99875em) {
-    .events-listing__top-filters > .columns:first-child, .paragraph--type--du-in-the-news-list .events-listing__top-filters > .views-element-container:first-child, .events-listing__top-filters > .paragraph--type--du-in-the-news-list:first-child, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > header:first-child {
-      border-width: 0; }
-      .events-listing__top-filters > .columns:first-child + .columns, .paragraph--type--du-in-the-news-list .events-listing__top-filters > .views-element-container:first-child + .columns, .events-listing__top-filters > .paragraph--type--du-in-the-news-list:first-child + .columns, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > header:first-child + .columns, .paragraph--type--du-in-the-news-list .events-listing__top-filters > .columns:first-child + .views-element-container, .paragraph--type--du-in-the-news-list .events-listing__top-filters > .views-element-container:first-child + .views-element-container, .paragraph--type--du-in-the-news-list .events-listing__top-filters > .paragraph--type--du-in-the-news-list:first-child + .views-element-container, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > header:first-child + .views-element-container, .events-listing__top-filters > .columns:first-child + .paragraph--type--du-in-the-news-list, .paragraph--type--du-in-the-news-list .events-listing__top-filters > .views-element-container:first-child + .paragraph--type--du-in-the-news-list, .events-listing__top-filters > .paragraph--type--du-in-the-news-list:first-child + .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > header:first-child + .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > .columns:first-child + header, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > .views-element-container:first-child + header, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > .paragraph--type--du-in-the-news-list:first-child + header, .show-pager.paragraph--type--du-in-the-news-list .events-listing__top-filters > header:first-child + header {
-        padding-bottom: 1.6rem; } }
-  .filters-off .events-listing__top-filters .event-filter-dropdown-holder {
-    display: none; }
-  .event-audience-filter-off .events-listing__top-filters .event-audience-filter-holder {
-    display: none; }
-  .event-type-filter-off .events-listing__top-filters .event-type-filter-holder {
-    display: none; }
-  .events-listing__top-filters .js-form-item.js-form-type-select {
-    width: 100%; }
-  .events-listing__top-filters input[type='submit'] {
-    margin-top: 4.0rem;
-    margin-left: .8rem; }
-  #datepickerImageStart, #datepickerImageEnd {
-    text-align: center; }
-  .events-listing__top-filters #calendar-list > ul li {
-    margin-left: 0;
-    margin-bottom: 1.2rem; }
-    .events-listing__top-filters #calendar-list > ul li:before {
-      background-color: transparent;
-      content: inherit; }
-    .events-listing__top-filters #calendar-list > ul li a {
-      border: none;
-      color: $link-teal-light;
-      width: 20.0rem;
-      text-align: left;
-      padding-left: .4rem; 
-      text-decoration: underline; 
-      transition: all .25s ease; }
-      .events-listing__top-filters #calendar-list > ul li a:hover, .events-listing__top-filters #calendar-list > ul li a:focus {
-        text-decoration:none;
-        transition: all .25s ease; }
-      .events-listing__top-filters #calendar-list > ul li a:before {
-        background-color: transparent; }
-
-.events-listing__date-filters h2, .events-listing__date-filters .hero-headline-wrapper .hero-subhead, .hero-headline-wrapper .events-listing__date-filters .hero-subhead {
-  font-size: 3.0rem;
-  font-weight: 800;
-  text-align: center; }
-  @media print, screen and (min-width: 48em) {
-    .events-listing__date-filters h2, .events-listing__date-filters .hero-headline-wrapper .hero-subhead, .hero-headline-wrapper .events-listing__date-filters .hero-subhead {
-      font-size: 3.6rem;
-      text-align: left; } }
-
-.events-listing__date-filters #month-nav {
-  padding-top: 2.0rem;
-  padding-bottom: 2.0rem;
-  border-bottom: 1.0rem solid #a31e39; }
-  .events-listing__date-filters #month-nav .month-range {
-    padding-top: 0;
-    padding-left: 2.0rem;
-    width: 100%; }
-
-.events-listing__date-filters #byDate {
-  padding-top: 2.0rem;
-  padding-bottom: 2.0rem;
-  border-bottom: none;
-  position: relative; }
-  .events-listing__date-filters #byDate h2, .events-listing__date-filters #byDate .hero-headline-wrapper .hero-subhead, .hero-headline-wrapper .events-listing__date-filters #byDate .hero-subhead {
-    margin-left: 0;
-    display: block;
-    color: $charcoal-gray; 
-    text-align: center;}
-    @media print, screen and (min-width: 64em) {
-      .events-listing__date-filters #byDate h2, .events-listing__date-filters #byDate .hero-headline-wrapper .hero-subhead, .hero-headline-wrapper .events-listing__date-filters #byDate .hero-subhead {
-        margin-left: 0.9rem;} }
-  .events-listing__date-filters #byDate > .columns > .columns > image, .events-listing__date-filters .paragraph--type--du-in-the-news-list #byDate > .views-element-container > .columns > image, .paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .views-element-container > .columns > image, .events-listing__date-filters #byDate > .paragraph--type--du-in-the-news-list > .columns > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > header > .columns > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > header > .columns > image, .events-listing__date-filters .paragraph--type--du-in-the-news-list #byDate > .columns > .views-element-container > image, .paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .columns > .views-element-container > image, .events-listing__date-filters .paragraph--type--du-in-the-news-list #byDate > .views-element-container > .views-element-container > image, .paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .views-element-container > .views-element-container > image, .events-listing__date-filters #byDate > .paragraph--type--du-in-the-news-list > .views-element-container > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > header > .views-element-container > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > header > .views-element-container > image, .events-listing__date-filters #byDate > .columns > .paragraph--type--du-in-the-news-list > image, .events-listing__date-filters .paragraph--type--du-in-the-news-list #byDate > .views-element-container > .paragraph--type--du-in-the-news-list > image, .paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .views-element-container > .paragraph--type--du-in-the-news-list > image, .events-listing__date-filters #byDate > .paragraph--type--du-in-the-news-list > .paragraph--type--du-in-the-news-list > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > header > .paragraph--type--du-in-the-news-list > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > header > .paragraph--type--du-in-the-news-list > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > .columns > header > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .columns > header > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > .views-element-container > header > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .views-element-container > header > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > .paragraph--type--du-in-the-news-list > header > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > .paragraph--type--du-in-the-news-list > header > image, .events-listing__date-filters .show-pager.paragraph--type--du-in-the-news-list #byDate > header > header > image, .show-pager.paragraph--type--du-in-the-news-list .events-listing__date-filters #byDate > header > header > image {
-    vertical-align: top; }
-  .events-listing__date-filters #byDate .hasDatepicker {
-    position: absolute;
-    z-index: 1;
-    max-width: 92vw; }
-    @media print, screen and (min-width: 48em) {
-      .events-listing__date-filters #byDate .hasDatepicker {
-        max-width: inherit; } }
-    .events-listing__date-filters #byDate .hasDatepicker#datepicker-end {
-      right: 0; }
-    .events-listing__date-filters #byDate .hasDatepicker a.ui-datepicker-prev, .events-listing__date-filters #byDate .hasDatepicker a.ui-datepicker-next {
-      background-color: $pure-white;
-      width: 5.5rem;
-      display: none; }
-    .events-listing__date-filters #byDate .hasDatepicker .ui-datepicker-title {
-      background-color: $pure-white;
-      border: .1rem solid #a31e39;
-      padding-top: .5rem;
-      margin: 0 4.1rem; }
-      .events-listing__date-filters #byDate .hasDatepicker .ui-datepicker-title .ui-datepicker-month {
-        display: inline-block;
-        width: 70%;
-        padding-right: 1.0rem;
-        height: 4.1rem; }
-      .events-listing__date-filters #byDate .hasDatepicker .ui-datepicker-title .ui-datepicker-year {
-        display: inline-block;
-        font-size: 2.2rem; }
-    @media print, screen and (max-width: 47.99875em) {
-      .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar {
-        width: 90vw;
-        display: block; }
-        .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar > thead {
-          width: 90vw;
-          display: block; }
-          .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar > thead > tr {
-            width: 90vw;
-            display: block; }
-            .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar > thead > tr > th {
-              width: 12.857vw;
-              padding: 0.9rem; } }
-    @media print, screen and (max-width: 47.99875em) {
-      .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar tbody {
-        width: 90vw;
-        display: block; }
-        .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar tbody > tr > td {
-          font-size: 1.2rem;
-          width: 12.857vw;
-          padding: 0.9rem; }
-          .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar tbody > tr > td a {
-            width: auto;
-            height: auto;
-            border: none; } }
-    @media print, screen and (max-width: 47.99875em) {
-      .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar tbody thead th {
-        font-size: 1.2rem; } }
-    .events-listing__date-filters #byDate .hasDatepicker table.ui-datepicker-calendar tbody thead th td {
-      padding: 0.018rem; }
-
-.events-listing__date-filters a {
-  color: $du-tan-light;
-  display: inline-block;
-  width: 4.0rem;
-  height: 4.0rem;
-  border: 0.2rem solid $light-gray-2;
-  text-align: center; }
-  .events-listing__date-filters a [class*="icon-du"] {
-    font-size: 2.3rem; }
-    .events-listing__date-filters a [class*="icon-du"]:before {
-      margin: 0;
-      width: auto;
-      height: auto; }
-  .events-listing__date-filters a:hover, .events-listing__date-filters a:focus {
-    background-color: $du-tan-light;
-    border-color: $du-tan-light;
-    color: white; }
-
-.events-listing__items {
-  padding-top: 3.9rem;
-  margin-bottom: 6.5rem;
-  padding-left: 0;
-  padding-right: 0;
-  /*.js & > .columns:nth-child(1n+7) .events-listing__item {
-		display: none;
-	}*/ }
-  @media print, screen and (min-width: 48em) {
-    .events-listing__items > .columns, .paragraph--type--du-in-the-news-list .events-listing__items > .views-element-container, .events-listing__items > .paragraph--type--du-in-the-news-list, .show-pager.paragraph--type--du-in-the-news-list .events-listing__items > header {
-      padding-right: 2.6rem; } }
-  .events-listing__items .events-listing__item {
-    margin-bottom: 4.5rem;
-    padding-right: 0.4rem;
-    padding-left: 0.4rem;
-    width: 50%;
-    float: left; }
-    @media print, screen and (min-width: 48em) {
-      .events-listing__items .events-listing__item {
-        padding-right: 0.8rem;
-        padding-left: 0.8rem; } }
-    .events-listing__items .events-listing__item, .events-listing__items .events-listing__item:last-child:not(:first-child) {
-      float: left;
-      clear: none; }
-    .events-listing__items .events-listing__item:last-child:not(:first-child) {
-      float: right; }
-    @media print, screen and (min-width: 48em) {
-      .events-listing__items .events-listing__item {
-        padding-right: 0.4rem;
-        padding-left: 0.4rem;
-        width: 33.33333%;
-        float: left; } }
-  @media print, screen and (min-width: 48em) and (min-width: 48em) {
-    .events-listing__items .events-listing__item {
-      padding-right: 0.8rem;
-      padding-left: 0.8rem; } }
-    @media print, screen and (min-width: 48em) {
-        .events-listing__items .events-listing__item, .events-listing__items .events-listing__item:last-child:not(:first-child) {
-          float: left;
-          clear: none; }
-        .events-listing__items .events-listing__item:last-child:not(:first-child) {
-          float: right; } }
-    @media print, screen and (min-width: 64em) {
-      .events-listing__items .events-listing__item {
-        padding-right: 0.4rem;
-        padding-left: 0.4rem;
-        width: 25%;
-        float: left; } }
-  @media print, screen and (min-width: 64em) and (min-width: 48em) {
-    .events-listing__items .events-listing__item {
-      padding-right: 0.8rem;
-      padding-left: 0.8rem; } }
-    @media print, screen and (min-width: 64em) {
-        .events-listing__items .events-listing__item, .events-listing__items .events-listing__item:last-child:not(:first-child) {
-          float: left;
-          clear: none; }
-        .events-listing__items .events-listing__item:last-child:not(:first-child) {
-          float: right; } }
-
 .featured-events-module {
   margin-bottom: 7.0rem;
   position: relative; }
@@ -10151,14 +9887,6 @@ body.du-home article#main-content .cta-module .content h3 {
         .new-featured-events .wrapper .bottom .featured-events__content .featured-events__details .icon-du-location:before {
           margin: 0; }
 
-.event__details {
-  font-size: 2.0rem;
-  color: $near-black;
-  font-weight: 600;
-  margin-bottom: 2.2rem; }
-  .event__details p {
-    margin-bottom: .6rem; }
-
 .utility-page aside {
   margin-top: 1.8rem; }
   @media print, screen and (min-width: 64em) {
@@ -10166,118 +9894,6 @@ body.du-home article#main-content .cta-module .content h3 {
       margin-top: .9rem; } }
   .utility-page aside a + a {
     margin-left: .5rem; }
-
-#events-listing__show-more a {
-  display: block;
-  text-decoration: none;
-  border-bottom: 0.1rem solid $light-gray-2;
-  position: relative;
-  height: 1.5rem; }
-  #events-listing__show-more a [class*="icon-du"] {
-    position: absolute;
-    margin-left: -1.55rem;
-    left: 50%;
-    bottom: -1.4rem; }
-    #events-listing__show-more a [class*="icon-du"]:before {
-      width: 3.0rem;
-      height: 3.0rem;
-      border: 0.1rem solid $du-tan-light;
-      background-color: white;
-      color: #81796f;
-      padding: 0;
-      font-size: 2.3rem;
-      line-height: 2.7rem;
-      transition: background-color 0.5s ease;
-      border-radius: 1.6rem;
-      margin-left: 0;
-      margin-right: 0; }
-  #events-listing__show-more a:hover [class*="icon-du"]:before, #events-listing__show-more a:focus [class*="icon-du"]:before {
-    background-color: $du-tan-light;
-    color: white; }
-
-.events-listing__no-events {
-  display: none;
-  margin-top: 4.0rem;
-  margin-bottom: 6.0rem;
-  width: 100%;
-  text-align: center; }
-
-.event-detail footer {
-  margin-top: 3.5rem; }
-
-.event-filter-dropdown-holder {
-  position: relative;
-  margin: 2.4rem auto 0;
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap; }
-  @media print, screen and (min-width: 64em) {
-    .event-filter-dropdown-holder {
-      margin-top: 5.0rem; } }
-  .event-filter-dropdown-holder form.button-group {
-    flex-wrap: wrap;
-    justify-content: center; }
-  .event-filter-dropdown-holder .btn.btn--event-filter,
-  .event-filter-dropdown-holder a.btn.btn--event-filter:not(.info) {
-    height: auto;
-    width: calc(50% - 1.0rem);
-    min-width: 13.0rem;
-    text-transform: uppercase;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: .5rem;
-    margin-right: .5rem;
-    margin-bottom: 1.0rem;
-    font-size: 1.4rem; }
-    @media print, screen and (min-width: 48em) {
-      .event-filter-dropdown-holder .btn.btn--event-filter,
-      .event-filter-dropdown-holder a.btn.btn--event-filter:not(.info) {
-        width: auto;
-        padding: 1.3rem 1.0rem; } }
-    @media print, screen and (min-width: 64em) {
-      .event-filter-dropdown-holder .btn.btn--event-filter,
-      .event-filter-dropdown-holder a.btn.btn--event-filter:not(.info) {
-        font-size: 1.6rem;
-        min-width: 17.0rem; } }
-  .event-filter-dropdown-holder a.btn.btn--event-filter.info {
-    min-width: 0;
-    position: relative; }
-    .event-filter-dropdown-holder a.btn.btn--event-filter.info.active:after {
-      content: '';
-      border-bottom: 2.9rem solid $dark-purple-gray;
-      border-right: 2.9rem solid transparent;
-      border-left: 2.9rem solid transparent;
-      width: 5.8rem;
-      display: inline-block;
-      position: absolute;
-      bottom: -3.9rem;
-      left: 50%;
-      transform: translateX(-50%); }
-  @media print, screen and (min-width: 48em) {
-    .event-filter-dropdown-holder p + p {
-      margin-left: 1.0rem; }
-    .event-filter-dropdown-holder .btn + .btn {
-      margin-left: 1.0rem; } }
-
-.event-container {
-  margin-bottom: 5.0rem; }
-  .event-container span.location, .event-container span.audience {
-    margin-left: -3.0rem;
-    padding-left: 3.0rem;
-    display: inline-table;
-    width: 50.0rem;
-    max-width: 85vw; }
-    @media print, screen and (min-width: 48em) {
-      .event-container span.location, .event-container span.audience {
-        width: 55.0rem; } }
-    @media print, screen and (min-width: 64em) {
-      .event-container span.location, .event-container span.audience {
-        width: 59.0rem; }
-        .event-container span.location > span, .event-container span.audience > span {
-          width: 45.0rem;
-          display: inherit; } }
-  .event-container div.description {
-    margin: .1remx 0 3.0rem; }
 
 .add-this {
   margin-top: 3.0rem;
@@ -15265,10 +14881,6 @@ blockquote {
       height: auto; }
   .large-image-module .large-image-module__toggle {
     display: none !important; }
-  #events-listing__show-more {
-    display: none; }
-  .js #events-listing > .columns:nth-child(1n+7) .events-listing__item, .js .paragraph--type--du-in-the-news-list #events-listing > .views-element-container:nth-child(1n+7) .events-listing__item, .paragraph--type--du-in-the-news-list .js #events-listing > .views-element-container:nth-child(1n+7) .events-listing__item, .js #events-listing > .paragraph--type--du-in-the-news-list:nth-child(1n+7) .events-listing__item, .js .show-pager.paragraph--type--du-in-the-news-list #events-listing > header:nth-child(1n+7) .events-listing__item, .show-pager.paragraph--type--du-in-the-news-list .js #events-listing > header:nth-child(1n+7) .events-listing__item {
-    display: block; }
   #du-alert .du-alert__action-button {
     display: none; }
   #du-alert #du-alert__content {
