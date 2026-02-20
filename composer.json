@@ -1,6 +1,6 @@
 {
   "name":             "university-of-denver/pl_drupal",
-  "version":          "3.0.0-alpha5",
+  "version":          "3.0.0-alpha6",
   "description":      "Fork of Standard Edition of Pattern Lab for Drupal.",
   "keywords":         ["pattern lab", "drupal"],
   "homepage":         "http://patternlab.io",
