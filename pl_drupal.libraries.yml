@@ -18,6 +18,9 @@ core:
       dest/style.css:
         weight: 5
         preprocess: false
+      https://use.typekit.net/tir4vjc.css:
+        type: external
+        preprocess: false
   js:
     dest/libraries/foundation-sites/dist/js/foundation.min.js:
       minified: true
