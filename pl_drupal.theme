@@ -820,7 +820,19 @@ function pl_drupal_preprocess_paragraph(&$variables) {
  * Implements hook_preprocess_block().
  */
 function pl_drupal_preprocess_block(&$variables) {
-  $variables['content']['#attributes']['block'] = $variables['attributes']['id'];
+  // Set block attribute on all blocks, but exclude specific menus that should
+  // not use the utility menu template (e.g., footer-menu, main menu).
+  $excluded_menus = [
+    'system_menu_block:footer-menu',
+    'system_menu_block:main',
+  ];
+
+  $plugin_id = $variables['plugin_id'] ?? '';
+
+  // Don't set block attribute for excluded menu blocks.
+  if (!in_array($plugin_id, $excluded_menus)) {
+    $variables['content']['#attributes']['block'] = $variables['attributes']['id'];
+  }
 }
 
 /**
