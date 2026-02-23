@@ -562,17 +562,8 @@
       //Search clear
       $('button.search-clear').on('click', function(e) {
         $('#search-input').val('');
-
-        // For events search, only clear out the search param.
-        if ($(this).parent('.search-box--events').length > 0) {
-          var href = new URL(window.location.href);
-          href.searchParams.set('search', '');
-          window.location.href = href;
-        }
-        else {
-          $(this).closest('form').submit();
-        }
       });
+
       $('ul#search button.search-submit').on('click', function(e){
          var keywords = $('#site-search-input').val();
          startSearch(keywords);
