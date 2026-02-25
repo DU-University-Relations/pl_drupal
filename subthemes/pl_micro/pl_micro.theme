@@ -24,12 +24,12 @@ function pl_micro_preprocess_html(&$variables) {
   }
 
   $config = \Drupal::configFactory()->getEditable('du_unit_site_config.settings');
-  $term_id = $config->get('unit_site_term');
-  $term = Term::load($term_id);
-  if (!empty($term)) {
-    $term_name = $term->getName();
-    $term_abbr = $term->get('field_unit_abbreviation')->value;
-    $variables['unit_tid'] = $term_abbr;
+  if (!empty($config->get('unit_site_term'))) {
+    $term = Term::load($config->get('unit_site_term'));
+    if (!empty($term) && $term->hasField('field_unit_abbreviation')) {
+      $term_abbr = $term->get('field_unit_abbreviation')->value;
+      $variables['unit_tid'] = $term_abbr;
+    }
   }
 }
 
