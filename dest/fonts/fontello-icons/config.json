@@ -40,7 +40,15 @@
       "uid": "627abcdb627cb1789e009c08e2678ef9",
       "css": "du-twitter",
       "code": 61593,
-      "src": "fontawesome"
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z",
+        "width": 1000
+      },
+      "search": [
+        "du-twitter"
+      ]
     },
     {
       "uid": "43fcf807461234935e65261328e1dff6",
@@ -479,20 +487,6 @@
       "css": "du-cancel",
       "code": 59430,
       "src": "fontawesome"
-    },
-    {
-      "uid": "386046efc852ab1ec7e1f25597f343c0",
-      "css": "shield",
-      "code": 59398,
-      "src": "custom_icons",
-      "selected": true,
-      "svg": {
-        "path": "",
-        "width": 783
-      },
-      "search": [
-        "shield"
-      ]
     },
     {
       "uid": "313fb1e0aea108649eb0d0a796beb864",
