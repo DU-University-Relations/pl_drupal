@@ -26,7 +26,6 @@ button,
 input,
 optgroup,
 select,
-.du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single,
 textarea {
   font-family: inherit;
   font-size: 100%;
@@ -34,8 +33,7 @@ textarea {
   margin: 0; }
 
 button,
-select,
-.du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single {
+select {
   text-transform: none; }
 
 button,
@@ -50,8 +48,7 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText; }
 
-select,
-.du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single {
+select {
   box-sizing: border-box;
   width: 100%;
   border-radius: 0; }
@@ -60,7 +57,6 @@ button,
 input,
 optgroup,
 select,
-.du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single,
 textarea {
   font-family: inherit; }
 
@@ -113,8 +109,7 @@ label {
   margin: 0;
   white-space: nowrap; }
 
-select,
-.du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single {
+select {
   height: 3.3rem;
   margin: 0 0 1.6rem;
   padding: 0.5rem;
@@ -136,24 +131,23 @@ select,
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
   @media screen and (min-width: 0\0) {
 
-    select,
-    .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single {
+    select {
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg=="); } }
-  select:focus, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single:focus {
+  select:focus {
     outline: none;
     border: 1px solid #8a8a8a;
     background-color: $white;
     box-shadow: 0 0 5px $light-gray;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
-  select:disabled, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single:disabled {
+  select:disabled {
     background-color: #e6e6e6;
     cursor: not-allowed; }
-  select::-ms-expand, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single::-ms-expand {
+  select::-ms-expand {
     display: none; }
-  select[multiple], .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single[multiple] {
+  select[multiple] {
     height: auto;
     background-image: none; }
-  select:not([multiple]), .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single:not([multiple]) {
+  select:not([multiple]) {
     padding-top: 0;
     padding-bottom: 0; }
 
@@ -1418,8 +1412,6 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
     padding: 1.3rem 1.5rem; }
   .menu input,
   .menu select,
-  .menu .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single,
-  .du-tuition-calculator-calculator .chosen-container-single.chosen-select .menu .chosen-single,
   .menu a,
   .menu button {
     margin-bottom: 0; }
@@ -3365,83 +3357,6 @@ table {
       color: $near-black;
       background-color: white;
       border-color: black; }
-
-.du-tuition-calculator-calculator {
-  margin: 4rem 0; }
-  .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single {
-    margin-bottom: 0 !important; }
-  .du-tuition-calculator-calculator .chosen-container-single .chosen-single div b,
-  .du-tuition-calculator-calculator .chosen-container-active.chosen-with-drop .chosen-single div b {
-    background: none !important; }
-  .du-tuition-calculator-calculator .chosen-container-single .chosen-drop .chosen-search {
-    height: 4.5rem; }
-    .du-tuition-calculator-calculator .chosen-container-single .chosen-drop .chosen-search .chosen-search-input {
-      background-size: 69px 52px !important;
-      padding: .4rem 3rem .4rem .5rem;
-      background: url("chosen-sprite.png") no-repeat 100% -28px;
-      height: 3.5rem;
-      font-size: 1.6rem; }
-  .du-tuition-calculator-calculator .chosen-container .chosen-results li.active-result {
-    font-size: 1.6rem;
-    line-height: 1.2; }
-  .du-tuition-calculator-calculator .js-form-item label,
-  .du-tuition-calculator-calculator .js-form-item legend,
-  .du-tuition-calculator-calculator fieldset label,
-  .du-tuition-calculator-calculator fieldset legend {
-    font-family: $primary-font;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: $medium-gray;
-    display: block;
-    margin-bottom: 1rem; }
-    .du-tuition-calculator-calculator .js-form-item label.option,
-    .du-tuition-calculator-calculator .js-form-item legend.option,
-    .du-tuition-calculator-calculator fieldset label.option,
-    .du-tuition-calculator-calculator fieldset legend.option {
-      font-weight: normal;
-      display: inline; }
-  .du-tuition-calculator-calculator .js-form-item select, .du-tuition-calculator-calculator .js-form-item .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .js-form-item .chosen-single,
-  .du-tuition-calculator-calculator .js-form-item .chosen-select,
-  .du-tuition-calculator-calculator fieldset select,
-  .du-tuition-calculator-calculator fieldset .chosen-container-single.chosen-select .chosen-single,
-  .du-tuition-calculator-calculator .chosen-container-single.chosen-select fieldset .chosen-single,
-  .du-tuition-calculator-calculator fieldset .chosen-select {
-    margin-bottom: 3rem;
-    width: 100%; }
-    @media print, screen and (min-width: 48em) {
-      .du-tuition-calculator-calculator .js-form-item select, .du-tuition-calculator-calculator .js-form-item .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .js-form-item .chosen-single,
-      .du-tuition-calculator-calculator .js-form-item .chosen-select,
-      .du-tuition-calculator-calculator fieldset select,
-      .du-tuition-calculator-calculator fieldset .chosen-container-single.chosen-select .chosen-single,
-      .du-tuition-calculator-calculator .chosen-container-single.chosen-select fieldset .chosen-single,
-      .du-tuition-calculator-calculator fieldset .chosen-select {
-        width: 30rem !important; } }
-  .du-tuition-calculator-calculator #edit-search-option--wrapper {
-    margin-top: 2rem; }
-  @media (min-width: 400px) {
-    .du-tuition-calculator-calculator #edit-search-option {
-      display: flex; } }
-  .du-tuition-calculator-calculator #edit-academic-year--wrapper {
-    padding-bottom: 2rem;
-    border-bottom: 3px solid $light-gray-2; }
-    .du-tuition-calculator-calculator #edit-academic-year--wrapper .form-item-academic-year input {
-      margin: 0; }
-  .du-tuition-calculator-calculator .dutc-per-credit,
-  .du-tuition-calculator-calculator .dutc-annual {
-    font-weight: bold;
-    font-size: 2.2rem;
-    margin-top: 3rem; }
-    .du-tuition-calculator-calculator .dutc-per-credit .dutc-per-credit-cost,
-    .du-tuition-calculator-calculator .dutc-per-credit .dutc-annual-cost,
-    .du-tuition-calculator-calculator .dutc-annual .dutc-per-credit-cost,
-    .du-tuition-calculator-calculator .dutc-annual .dutc-annual-cost {
-      font-size: 3.6rem;
-      font-family: $primary-font; }
-  .du-tuition-calculator-calculator .dutc-disclaimer {
-    font-size: 1.6rem;
-    font-style: italic; }
-  .du-tuition-calculator-calculator .dutc-footer {
-    margin-top: 2rem; }
 
 #academic-filters {
   position: relative; }
@@ -9232,10 +9147,10 @@ body.du-home article#main-content .cta-module .content h3 {
   .elevate-cards-list input {
     margin-bottom: 0; } }
 
-.elevate-cards-list select, .elevate-cards-list .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .elevate-cards-list .chosen-single {
+.elevate-cards-list select {
   height: 4.1rem; }
   @media print, screen and (min-width: 48em) {
-    .elevate-cards-list select, .elevate-cards-list .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .elevate-cards-list .chosen-single {
+    .elevate-cards-list select {
       margin-bottom: 0; } }
 
 .cart-item {
@@ -11964,7 +11879,7 @@ body.du-home article#main-content .cta-module .content h3 {
     .newsroom-find-stories-by-search .form-item-sort-by label {
       line-height: 1.3;
       margin-bottom: 0; }
-    .newsroom-find-stories-by-search .form-item-sort-by select, .newsroom-find-stories-by-search .form-item-sort-by .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .newsroom-find-stories-by-search .form-item-sort-by .chosen-single {
+    .newsroom-find-stories-by-search .form-item-sort-by select {
       width: 120px; }
   .newsroom-find-stories-by-search .newsroom-search-results,
   .newsroom-find-stories-by-search .newsroom-search-results-header,
@@ -12251,12 +12166,12 @@ form .du-form__error {
 form button:hover, form button:focus {
   cursor: pointer; }
 
-form select, form .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select form .chosen-single {
+form select {
   background-size: 1.1rem 1.0rem;
   -webkit-appearance: none;
   -moz-appearance: none; }
 
-form select::-ms-expand, form .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single::-ms-expand, .du-tuition-calculator-calculator .chosen-container-single.chosen-select form .chosen-single::-ms-expand {
+form select::-ms-expand {
   display: none; }
 
 form input[type="email"] {
@@ -14000,7 +13915,7 @@ body.unit-site.du-home header .hero-media > video {
     width: 66.6666%; }
   .listing-filters .marketing-specializations-form-item .form-item {
     max-width: 50%; }
-  .listing-filters select, .listing-filters .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .listing-filters .chosen-single {
+  .listing-filters select {
     background-image: none; }
   .listing-filters .form-actions {
     margin-top: 1.5rem;
@@ -15896,10 +15811,10 @@ blockquote {
   @media print, screen and (min-width: 48em) {
     .records-view input {
       margin-bottom: 0; } }
-  .records-view select, .records-view .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .records-view .chosen-single {
+  .records-view select {
     height: 4.1rem; }
     @media print, screen and (min-width: 48em) {
-      .records-view select, .records-view .du-tuition-calculator-calculator .chosen-container-single.chosen-select .chosen-single, .du-tuition-calculator-calculator .chosen-container-single.chosen-select .records-view .chosen-single {
+      .records-view select {
         margin-bottom: 0; } }
   .records-view .form-item.js-form-item-search {
     max-width: 75%;
