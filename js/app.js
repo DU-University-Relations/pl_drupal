@@ -2091,8 +2091,10 @@ function reCalcSticky() {
     Drupal.behaviors.utilityMenuExploreDropdownUpdate = {
         attach: function() {
             // Clicking the Explore button will open up the dropdown on CORE.
-            $('.menu-toggle-utility').click(function() {
-                $('.menu-toggle-utility li').toggle();
+            // Target only the title span, not the whole container, so that clicks
+            // on child links (e.g. "Give") don't bubble up and toggle the items.
+            $('.menu-toggle-utility__title').click(function() {
+              $('.menu-toggle-utility li').toggle();
             });
         }
     }
