@@ -10,6 +10,9 @@
 
 @charset "UTF-8";
 
+// Import fontello icon font styles
+@import "../du-resources/base/fontello";
+
 @media print, screen and (min-width: 40em) {
   .reveal, .reveal.tiny, .reveal.small, .reveal.large {
     right: auto;

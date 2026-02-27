@@ -199,7 +199,11 @@
 .icon-du-spin3:before { content: '\e832'; } /* '' */
 .icon-firefox:before { content: '\e840'; } /* '' */
 .icon-info-circled-alt:before { content: '\f086'; } /* '' */
-.icon-du-twitter:before { content: '\f099'; } /* '' */
+.icon-du-twitter:before { 
+  content: '\f099';
+  font-size: 0.75em;
+  vertical-align: .25em;
+} /* '' */
 .icon-du-facebook:before { content: '\f09a'; } /* '' */
 .icon-du-rss:before { content: '\f09e'; } /* '' */
 .icon-du-filter:before { content: '\f0b0'; } /* '' */
