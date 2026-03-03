@@ -10,6 +10,7 @@ libraries:
 regions:
   header: Header
   utility_nav: Utility Nav
+  utility_flyouts: Utility Flyouts
   audience_nav: Audience Nav
   mega_nav: Mega Nav
   content_top: Content Top
