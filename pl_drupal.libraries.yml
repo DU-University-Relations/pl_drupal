@@ -74,16 +74,6 @@ research-project:
     - core/jquery
     - core/drupal
 
-# Attached globally in pl_drupal.info.yml.
-attach_utm_cookies:
-  version: '10.0.0'
-  js:
-    js/attach_utm_cookies.js:
-      preprocess: true
-  dependencies:
-    - core/jquery
-    - core/drupal
-
 # Attached in: pl_drupal.theme line 306 for inline unit sites.
 # Do we need this? Was kind of broken.
 core-inline:
