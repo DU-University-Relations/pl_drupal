@@ -1,7 +1,8 @@
-name: DU Micro site
+name: Transition Theme (Micro)
 type: theme
 description: Micro site theme with Pattern Lab
 base theme: pl_drupal
+version: 3.0.0-beta1
 core_version_requirement: ^8 || ^9 || ^10
 libraries: {}
 regions:

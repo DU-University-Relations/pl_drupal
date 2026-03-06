@@ -1,16 +1,14 @@
-name: 'PL Drupal D10 (Post-Pattern Lab Era)'
+name: 'Transition Theme'
 type: theme
 description: Drupal 10 theme - Pattern Lab dependencies removed
 base theme: false
-version: 3.0.0-alpha7
+version: 3.0.0-beta1
 core_version_requirement: ^10
 libraries:
   - pl_drupal/core
 regions:
-  header: Header
   utility_nav: Utility Nav
   utility_flyouts: Utility Flyouts
-  audience_nav: Audience Nav
   mega_nav: Mega Nav
   content_top: Content Top
   content: Content
