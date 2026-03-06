@@ -11,6 +11,7 @@ $icon-font: "Fontello";
 
 // Primary Brand Colors
 $du-crimson: #BA0C2F;      // DU Crimson Red (primary brand color) - 100+ uses in production
+$du-crimson-light: mix(white, $du-crimson, 90%); // Light crimson tint for error backgrounds
 $du-gold: #A89968;         // DU Gold (secondary accent) - 74 uses in production
 $du-tan-light: #D5D2C5;    // Light Tan/Beige (tertiary accent) - 49 uses in production
 $du-teal: #375060;         // DU Teal (unit accent) - 100+ uses in production
