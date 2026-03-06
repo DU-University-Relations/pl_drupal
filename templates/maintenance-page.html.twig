@@ -2,83 +2,12 @@
     {{ page.content_top }}
     {{ page.content }}
 {% else %}
-    {% embed "@templates/page-unit.twig" %}
-        {% set hide_hero = true %}
-        {% if hero_video_url %}
-            {% set hero_video = {
-                "id": "hero-video",
-                "is_hero_video": true,
-                "mp4_url": hero_video_url
-            } %}
-            {% set hide_hero = false %}
-        {% endif %}
-        {% if hero_url %}
-          {% if (is_utility_page == FALSE) and (image_type == FALSE) %}
-              {% set hero_image = {
-                  '#type': 'responsive_image',
-                  '#responsive_image_style_id': 'hero_image',
-                  '#uri': hero_url,
-                  '#attributes': { 'alt': hero_alt },
-              } %}
-              {% set hide_hero = false %}
-          {% elseif (image_type == '1') %}
-              {% set hero_image = {
-                  '#type': 'responsive_image',
-                  '#responsive_image_style_id': 'short_image',
-                  '#uri': hero_url,
-                  '#attributes': { 'alt': hero_alt },
-              } %}
-              {% set hide_hero = false %}
-          {% else %}
-              {% set hero_image = {
-                  '#type': 'responsive_image',
-                  '#responsive_image_style_id': 'utility_hero',
-                  '#uri': hero_url,
-                  '#attributes': { 'alt': hero_alt },
-              } %}
-              {% set hide_hero = false %}
-          {% endif %}
-        {% endif %}
-        {% if experiential_story %}
-            {% set hide_hero = false %}
-        {% endif %}
-        {% block page_head %}
-            {% embed "@organisms/header-unit.twig" %}
-                {% set image_logo = unit_image_logo %}
-                {% set logo =  "<img src=\"" ~ unit_logo ~ "\" alt=\"Logo\">" %}
-
-                {% block utility_nav %}
-                    {% embed "@molecules/unit-utility-nav.twig" %}
-                        {% block utility_menu %}
-                        {{ page.utility_nav }}
-                        {% endblock %}
-                    {% endembed %}
-                {% endblock %}
-                {% block utility_flyouts %}
-                    {{ page.utility_flyouts }}
-                {% endblock %}
-
-                {% block utility_nav_sm %}
-                    {% embed "@molecules/unit-utility-nav.twig" %}
-                        {% block utility_menu %}
-                            {{ page.utility_nav }}
-                        {% endblock %}
-                    {% endembed %}
-                {% endblock %}
-                {% block mega_nav %}
-                    {{ page.mega_nav }}
-                {% endblock %}
-
-            {% endembed %}
-        {% endblock %}
-        {% block content_top %}
-            {{ page.content_top }}
-        {% endblock %}
-        {% block content %}
-            {{ page.content }}
-        {% endblock %}
-        {% block footer %}
-            {{ page.footer }}
+    {% embed "@organisms/header-unit.twig" %}
+        {% block mega_nav %}
+            {# No mega nav on maintenance page. #}
         {% endblock %}
     {% endembed %}
+    <div class="row">
+        {{ page.content }}
+    </div>
 {% endif %}
