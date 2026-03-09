@@ -5,6 +5,10 @@
 # Build dependencies
 node_modules/
 
+# Compiled CSS (built during release)
+dest/style.css
+dest/foundation.css
+
 # IDE files
 .idea
 
