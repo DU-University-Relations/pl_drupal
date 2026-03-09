@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Theme override for status messages.
+ *
+ * Each Drupal message type is mapped to a Foundation callout variant and a
+ * Fontello icon:
+ *   - status  → .callout.success  + icon-du-check
+ *   - warning → .callout.warning  + icon-du-attention-circled
+ *   - error   → .callout.alert    + icon-du-cancel
+ *
+ * Available variables:
+ * - message_list: List of messages to be displayed, indexed by message type.
+ * - status_headings: List of text for the message headings, indexed by type.
+ * - attributes: HTML attributes for the element wrapping all messages.
+ * - title_ids: List of IDs to use for the heading of each message type.
+ *
+ * @see template_preprocess_status_messages()
+ */
+#}
+
+{%
+  set type_map = {
+    'status':  { 'callout': 'success',  'icon': 'icon-du-check' },
+    'warning': { 'callout': 'warning',  'icon': 'icon-du-attention-circled' },
+    'error':   { 'callout': 'alert',    'icon': 'icon-du-cancel' },
+  }
+%}
+
+<div data-drupal-messages>
+  {% for type, messages in message_list %}
+    {% set config = type_map[type] ?? { 'callout': 'primary', 'icon': 'icon-du-info-circled' } %}
+    <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes.addClass('callout', config.callout)|without('role', 'aria-label') }}>
+      {% if type == 'error' %}<div role="alert">{% endif %}
+      {% if status_headings[type] %}
+        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
+      {% endif %}
+      {% if messages|length > 1 %}
+        <ul class="du-messages__list">
+          {% for message in messages %}
+            <li class="du-messages__item">
+              <span class="{{ config.icon }} du-messages__icon" aria-hidden="true"></span>
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="du-messages__single">
+          <span class="{{ config.icon }} du-messages__icon" aria-hidden="true"></span>
+          {{ messages|first }}
+        </p>
+      {% endif %}
+      {% if type == 'error' %}</div>{% endif %}
+    </div>
+    {# Reset added classes so they don't carry over to the next iteration #}
+    {% set attributes = attributes.removeClass('callout', config.callout) %}
+  {% endfor %}
+</div>

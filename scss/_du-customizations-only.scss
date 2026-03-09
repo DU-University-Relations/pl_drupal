@@ -1364,8 +1364,34 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
     background-color: $du-tan-light;
     color: $medium-gray; }
   .callout.alert {
-    background-color: $du-tan-light;
+    background-color: $du-crimson-light;
     color: $medium-gray; }
+
+  // Drupal system message icon layout
+  .du-messages__icon {
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+
+  .du-messages__single {
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .du-messages__list {
+    margin: 0;
+    list-style: none;
+  }
+
+  .du-messages__item {
+    display: flex;
+    align-items: flex-start;
+    + .du-messages__item {
+      margin-top: 0.5rem;
+    }
+  }
   .pagination::before, .pagination::after {
     display: table;
     content: ' ';
