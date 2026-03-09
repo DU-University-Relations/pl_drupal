@@ -24,10 +24,26 @@ jobs:
           npm ci
           npm run build
 
+      - name: Package Theme
+        run: |
+          zip -r pl_drupal-${{ github.ref_name }}.zip . \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".gitignore" \
+            --exclude ".idea" \
+            --exclude ".nvmrc" \
+            --exclude "node_modules/*" \
+            --exclude "package.json" \
+            --exclude "package-lock.json" \
+            --exclude "gulpfile.js" \
+            --exclude "scss/*" \
+            --exclude "scripts/*" \
+            --exclude "source/*" \
+            --exclude "dest/style.css.backup"
+
       - name: Upload Release Assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ github.ref_name }} \
-            dest/style.css \
-            dest/foundation.css
+            pl_drupal-${{ github.ref_name }}.zip
