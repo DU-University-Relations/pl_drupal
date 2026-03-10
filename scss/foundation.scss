@@ -13,5 +13,5 @@
 @include foundation-flex-classes;
 @include foundation-flex-grid;
 
-// Drupal Seven admin theme tabs (moved from core to contrib in Drupal 10)
-@import "../../../../themes/contrib/seven/css/components/tabs";
+// Drupal Seven admin theme tabs (vendored copy — original path unavailable in CI)
+@import "vendor/seven-tabs";

@@ -34,9 +34,8 @@ gulp.task('sass-dev', function () {
     .pipe(gulp.dest('dest'));
 });
 
-gulp.task('sass', function (done) {
-  // Compile Foundation framework
-  gulp.src('./scss/foundation.scss')
+gulp.task('sass-foundation', function () {
+  return gulp.src('./scss/foundation.scss')
     .pipe(sass({
       loadPaths: config.css.loadPaths,
       quietDeps: true,
@@ -47,9 +46,11 @@ gulp.task('sass', function (done) {
       cssnano()
     ]))
     .pipe(gulp.dest('dest'));
+});
 
+gulp.task('sass-custom', function () {
   // Compile DU custom styles
-  gulp.src('./scss/style.scss')
+  return gulp.src('./scss/style.scss')
     .pipe(sassGlob())
     .pipe(sass({
       loadPaths: config.css.loadPaths,
@@ -74,9 +75,10 @@ gulp.task('sass', function (done) {
       autoprefixer(),
       cssnano()
     ]))
-    .pipe(gulp.dest('dest'))
-    .on('end', done);
+    .pipe(gulp.dest('dest'));
 });
+
+gulp.task('sass', gulp.parallel('sass-foundation', 'sass-custom'));
 
 gulp.task('copy-libs', function (done) {
   // Foundation Sites

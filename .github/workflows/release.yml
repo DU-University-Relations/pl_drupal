@@ -1,0 +1,49 @@
+name: Release Process
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js with version from .nvmrc
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Build Assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Package Theme
+        run: |
+          zip -r pl_drupal-${{ github.ref_name }}.zip . \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".gitignore" \
+            --exclude ".idea" \
+            --exclude ".nvmrc" \
+            --exclude "node_modules/*" \
+            --exclude "package.json" \
+            --exclude "package-lock.json" \
+            --exclude "gulpfile.js" \
+            --exclude "scss/*" \
+            --exclude "scripts/*" \
+            --exclude "source/*" \
+            --exclude "dest/style.css.backup"
+
+      - name: Upload Release Assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ github.ref_name }} \
+            pl_drupal-${{ github.ref_name }}.zip
