@@ -34,5 +34,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B main-build
           git add -f dest/style.css dest/foundation.css
-          git commit -m "Build CSS from $(git rev-parse --short HEAD^1) [skip ci]
+          git commit -m "Build CSS from $(git rev-parse --short HEAD^1) [skip ci]"
           git push origin main-build --force
