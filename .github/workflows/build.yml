@@ -1,0 +1,38 @@
+name: Build CSS
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js with version from .nvmrc
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Build Assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Push built CSS to main-build branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B main-build
+          git add -f dest/style.css dest/foundation.css
+          git commit -m "Build CSS from $(git rev-parse --short HEAD^1) [skip ci]"
+          git push origin main-build --force
