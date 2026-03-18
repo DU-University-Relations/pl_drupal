@@ -547,7 +547,10 @@ function pl_drupal_preprocess_page(&$variables) {
             $variables['hero_subhead'] = $hero_paragraph->get('field_subhead')->value;
           }
           // Check unit embed field first, then standard field.
-          if ($hero_paragraph->hasField('field_unit_hero_embed') && !empty($hero_paragraph->get('field_unit_hero_embed'))) {
+          // On home_page nodes unit_hero_embed is rendered separately in the
+          // is_home twig block, so skip assigning it to hero_embed there to
+          // avoid the same embed appearing twice.
+          if ((!isset($node_type) || $node_type != 'home_page') && $hero_paragraph->hasField('field_unit_hero_embed') && !empty($hero_paragraph->get('field_unit_hero_embed'))) {
             $variables['hero_embed'] = $hero_paragraph->get('field_unit_hero_embed')->value;
           }
           elseif ($hero_paragraph->hasField('field_hero_embed') && !empty($hero_paragraph->get('field_hero_embed'))) {
