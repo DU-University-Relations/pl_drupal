@@ -63,7 +63,7 @@ select,
 textarea {
   font-family: inherit; }
 
-[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search']:not(#admin-toolbar-search-field-input), [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {
   display: block;
   box-sizing: border-box;
@@ -82,7 +82,7 @@ textarea {
   color: $medium-gray;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
   appearance: none; }
-  [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
+  [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:not(#admin-toolbar-search-field-input):focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
   textarea:focus {
     outline: none;
     border: 1px solid #8a8a8a;
@@ -90,7 +90,7 @@ textarea {
     box-shadow: 0 0 5px $light-gray;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
 
-input[type='search'] {
+input[type='search']:not(#admin-toolbar-search-field-input) {
   box-sizing: border-box; }
 
 label > [type='checkbox'],

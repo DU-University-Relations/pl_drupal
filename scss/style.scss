@@ -8,3 +8,6 @@
 // DU Alumni Customizations extracted from production sparkle.css
 // Contains all DU-specific styles (extracted from sparkle.css, Foundation base removed)
 @import "du-customizations-only";
+
+// Admin UI and global override corrections (must load last to win cascade)
+@import "global";
