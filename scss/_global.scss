@@ -1,58 +1,24 @@
-body {
-  font-size: 1.8rem;
+//
+// Global Overrides
+// Corrections for theme styles that inadvertently affect Drupal admin UI.
+//
+
+// foundation.css sets html { font-size: 10px } which causes rem-based values
+// in admin_toolbar_search.css to compute too small (e.g. 0.8125rem = 8px
+// instead of 13px). Compensate with px equivalents at the intended 16px base.
+// The [type='search'] selectors in _du-customizations-only.scss are excluded
+// from the toolbar input via :not(#admin-toolbar-search-field-input).
+#admin-toolbar-search-field-input {
+  font-size: 13px;  // 0.8125rem @ 16px base
+  min-height: 30px; // 1.875rem @ 16px base
+  line-height: 26px; // 1.625rem @ 16px base
 }
 
-.column10 {
-  width: 10%;
-}
-.column15 {
-  width: 15%;
-}
-.column20 {
-  width: 20%;
-}
-.column25 {
-  width: 25%;
-}
-.column30 {
-  width: 30%;
-}
-.column35 {
-  width: 35%;
-}
-.column40 {
-  width: 40%;
-}
-.column45 {
-  width: 45%;
-}
-.column50 {
-  width: 50%;
-}
-.column55 {
-  width: 55%;
-}
-.column60 {
-  width: 60%;
-}
-.column65 {
-  width: 65%;
-}
-.column70 {
-  width: 70%;
-}
-.column75 {
-  width: 75%;
-}
-.column80 {
-  width: 80%;
-}
-.column85 {
-  width: 85%;
-}
-.column90 {
-  width: 90%;
-}
-.column95 {
-  width: 95%;
+.admin-toolbar-search-autocomplete-list {
+  max-height: 300px; // 18.75rem @ 16px base
+  font-size: 13px;   // 0.8125rem @ 16px base
+
+  @media only screen and (min-width: 769px) {
+    font-size: 16px; // 1rem @ 16px base
+  }
 }
