@@ -63,13 +63,13 @@
     {% endblock %}
 
     {% set partners = content.field_partners_proj|field_value %}
-    {% if project.partners_url %}
-        {% block community_partners %}
+    {% block community_partners %}
+        {% if project.partners_url %}
             {% for partner in partners %}
                 <p class="community-partner">{{ partner }}</p>
             {% endfor %}
-        {% endblock %}
-    {% endif %}
+        {% endif %}
+    {% endblock %}
 
     {% set research_type_list = content.field_research_type_proj|field_value %}
     {% block research_type_taxonomy %}
