@@ -23,7 +23,11 @@ This theme previously used Pattern Lab for component development but has been mi
    ```
 4. Enable the theme in Drupal
 
-## Development Workflow
+## Pull Requests MUST Target main Branch for Packagist Integration
+
+main-build has to be the default branch to use the free version of Packagist, but PRs should target main. Merging to main will trigger a GitHub Action to run through the same build process documented below. Once that process sucessfully runs, a new dev release of the theme to show up on https://packagist.org/packages/university-of-denver/pl_drupal. Targeting the main branch instead of the main-build branch requires editing the PR in GitHub. The D10 Upstream is now configured to allow either the supported release or the dev release, but will default to the supported release unless the dev release is specified in the root, site-specific composer.json. To temporarily move a site to the current dev version of the theme run `composer require university-of-denver/pl_drupal:dev-main-build`. Removing that dependency from the root, site-specific composer.json will cause the build to use the supported version as specified in the upstream-configuration/composer.json.
+
+## Local Development Workflow
 
 ### Build Commands
 
