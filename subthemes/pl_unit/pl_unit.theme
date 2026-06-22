@@ -159,8 +159,8 @@ function pl_unit_preprocess_page(&$variables) {
                       }
                       if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
                         $video = $hero_paragraph->get('field_hero_video')->entity;
-                        $variables['hero_video_url'] = file_create_url($video->get('uri')
-                          ->getString());
+                        $uri = $video->get('uri')->getString();
+                        $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateString($uri);
                       }
                       if ($hero_paragraph->hasField('field_unit_hero_link')) {
                         if (!empty($hero_paragraph->get('field_unit_hero_link')->first())) {
@@ -211,7 +211,7 @@ function pl_unit_preprocess_page(&$variables) {
 
         if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
           $video = $hero_paragraph->get('field_hero_video')->entity;
-          $variables['hero_video_url'] = file_create_url($video->get('uri')
+          $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
             ->getString());
         }
 
