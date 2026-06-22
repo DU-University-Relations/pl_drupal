@@ -211,8 +211,8 @@ function pl_unit_preprocess_page(&$variables) {
 
         if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
           $video = $hero_paragraph->get('field_hero_video')->entity;
-          $uri = $video->get('uri')->getString();
-          $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateString($uri);
+          $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
+            ->getString());
         }
 
         if (!empty($hero_paragraph->get('field_unit_hero_link')->first())) {
