@@ -1,24 +1,5 @@
+# Preserve the legacy subtheme library handle while using base theme assets.
 core:
   version: 1.x
-  css:
-    theme:
-      /core/themes/seven/css/components/tabs.css:
-        preprocess: false
-      bower_components/motion-ui/dist/motion-ui.min.css:
-        preprocess: true
-      dest/style.css:
-        preprocess: false
-  js:
-    dest/script.js:
-      preprocess: true
-    bower_components/foundation-sites/dist/js/foundation.min.js:
-      preprocess: true
-    js/app.js:
-      preprocess: true
-
-  # see all in Drupal's `core/core.libraries.yml`
   dependencies:
-    - core/jquery
-    - core/drupal
-    - core/jquery.cookie
-    - core/jquery.once
+    - pl_drupal/core

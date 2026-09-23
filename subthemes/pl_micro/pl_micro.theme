@@ -70,7 +70,7 @@ function pl_micro_preprocess_page(&$variables) {
       if ($hero_paragraph->getType() == 'experiential_story') {
         $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
         $build = $view_builder->view($hero_paragraph, 'full');
-        $variables['experiential_story'] = render($build);
+        $variables['experiential_story'] = $build;
       }
       else {
         if (!empty($hero_paragraph->get('field_hero_image')->entity)) {
@@ -146,7 +146,7 @@ function pl_micro_preprocess_page(&$variables) {
                       }
                       if (!empty($hero_paragraph->get('field_hero_video')->entity)) {
                         $video = $hero_paragraph->get('field_hero_video')->entity;
-                        $variables['hero_video_url'] = file_create_url($video->get('uri')
+                        $variables['hero_video_url'] = \Drupal::service('file_url_generator')->generateAbsoluteString($video->get('uri')
                           ->getString());
                       }
                       if ($hero_paragraph->hasField('field_unit_hero_link')) {

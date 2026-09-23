@@ -31,6 +31,8 @@ core:
     dest/libraries/jquery.scrollto/jquery.scrollTo.min.js:
       minified: true
       preprocess: false
+    js/jquery-type-compat.js:
+      preprocess: false
     dest/libraries/slick-carousel/slick/slick.min.js:
       minified: true
       preprocess: true
