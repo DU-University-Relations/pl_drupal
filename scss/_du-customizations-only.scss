@@ -11946,7 +11946,8 @@ form.user-login-form {
     margin-top: 2.0rem; }
   form.user-login-form .description {
     font-size: 1.6rem; }
-  form.user-login-form a.simplesamlphp-auth-login-link {
+  form.user-login-form a.simplesamlphp-auth-login-link,
+  form.user-login-form a.samlauth-auth-login-link {
     position: absolute;
     top: 85px;
     font-size: 1.7rem;
@@ -11954,10 +11955,12 @@ form.user-login-form {
     padding: 10px 50px;
     color: white;
     text-decoration: none; }
-    form.user-login-form a.simplesamlphp-auth-login-link:hover {
+    form.user-login-form a.simplesamlphp-auth-login-link:hover,
+    form.user-login-form a.samlauth-auth-login-link:hover {
       background-color: $du-crimson; }
     @media (min-width: 0px) and (max-width: 475px) {
-      form.user-login-form a.simplesamlphp-auth-login-link {
+      form.user-login-form a.simplesamlphp-auth-login-link,
+      form.user-login-form a.samlauth-auth-login-link {
         top: 105px; } }
   form.user-login-form #edit-submit {
     background-color: #D5D2C5c9; }
